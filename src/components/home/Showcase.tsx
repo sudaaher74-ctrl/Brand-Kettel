@@ -39,7 +39,7 @@ export default function Showcase() {
             loading="lazy"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-white/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/30 to-black/60" />
         </motion.div>
 
         {/* Heading */}
@@ -90,7 +90,7 @@ function Fact({
   const y = useTransform(progress, [start, start + 0.12], [16, 0]);
 
   return (
-    <motion.div style={{ opacity, y }} className="bg-white/70 p-4 text-center sm:text-left">
+    <motion.div style={{ opacity, y }} className="bg-surface/80 p-4 text-center sm:text-left">
       <p className="text-[11px] font-semibold uppercase tracking-widest text-accent">{label}</p>
       <p className="mt-1 text-sm font-semibold text-ink">{value}</p>
     </motion.div>

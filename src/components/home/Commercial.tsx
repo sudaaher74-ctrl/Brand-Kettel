@@ -28,8 +28,8 @@ export default function Commercial() {
             loading="lazy"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/90 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/70 to-transparent" />
         </motion.div>
 
         <div className="absolute inset-0 flex items-center">

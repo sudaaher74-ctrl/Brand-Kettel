@@ -37,7 +37,7 @@ export default function Process() {
               return (
                 <li key={s.no} className="relative pl-14 sm:pl-0">
                   {/* Node */}
-                  <span className="absolute left-[11px] top-1.5 z-10 grid h-5 w-5 place-items-center rounded-full border-2 border-accent bg-white sm:left-1/2 sm:-translate-x-1/2">
+                  <span className="absolute left-[11px] top-1.5 z-10 grid h-5 w-5 place-items-center rounded-full border-2 border-accent bg-[#0a0a0a] sm:left-1/2 sm:-translate-x-1/2">
                     <span className="h-2 w-2 rounded-full bg-accent" />
                   </span>
 

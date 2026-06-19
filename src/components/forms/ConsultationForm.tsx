@@ -46,7 +46,7 @@ export default function ConsultationForm() {
       <motion.div
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="grid place-items-center rounded-3xl bg-white/80 p-10 text-center"
+        className="grid place-items-center rounded-3xl bg-surface p-10 text-center border border-line"
       >
         <div className="grid h-14 w-14 place-items-center rounded-full bg-accent/15 text-2xl text-accent">
           ✓

@@ -10,9 +10,6 @@ const nextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
-  experimental: {
-    optimizePackageImports: ['framer-motion', 'gsap'],
-  },
 };
 
 export default nextConfig;
