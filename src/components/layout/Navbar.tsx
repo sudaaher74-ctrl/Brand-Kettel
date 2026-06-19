@@ -113,7 +113,7 @@ export default function Navbar() {
                     <Link
                       href={l.href}
                       onClick={() => setOpen(false)}
-                      className="block rounded-2xl px-4 py-3 text-base font-medium text-ink hover:bg-surface-2 hover:text-accent transition-colors"
+                      className="block rounded-2xl px-4 py-3 text-base font-medium text-ink hover:bg-surface2 hover:text-accent transition-colors"
                     >
                       {l.label}
                     </Link>

@@ -10,7 +10,7 @@ const config: Config = {
       colors: {
         background: '#0a0a0a',
         surface: '#111111',
-        'surface-2': '#1a1a1a',
+        surface2: '#1a1a1a',
         card: '#141414',
         accent: {
           DEFAULT: '#C9A86A',
