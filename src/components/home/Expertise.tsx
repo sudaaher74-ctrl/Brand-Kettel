@@ -30,7 +30,7 @@ export default function Expertise() {
               transition={{ duration: 0.7, delay: (i % 3) * 0.06, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ rotateY: 4, rotateX: -2 }}
               style={{ transformStyle: 'preserve-3d' }}
-              className="group relative w-[78vw] max-w-[340px] shrink-0 snap-start overflow-hidden rounded-3xl bg-card shadow-card sm:w-[360px]"
+              className="group relative w-[78vw] max-w-[340px] shrink-0 snap-start overflow-hidden rounded-none bg-card shadow-card sm:w-[360px]"
             >
               <div className="relative aspect-[3/4] overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -41,7 +41,7 @@ export default function Expertise() {
                   className="h-full w-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
-                <span className="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-accent">
+                <span className="absolute right-4 top-4 rounded-sm bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-accent">
                   {s.tag}
                 </span>
                 <div className="absolute inset-x-0 bottom-0 p-5">
