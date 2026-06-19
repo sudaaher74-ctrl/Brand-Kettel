@@ -6,7 +6,7 @@ export default function ProjectGrid({ items }: { items: Project[] }) {
     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((p, i) => (
         <Reveal key={p.slug} index={i % 3} as="div">
-          <article className="group h-full overflow-hidden rounded-3xl bg-card shadow-card transition-shadow duration-300 hover:shadow-float">
+          <article className="group h-full overflow-hidden rounded-none bg-card shadow-card transition-shadow duration-300 hover:shadow-float">
             <div className="relative aspect-[4/3] overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -16,7 +16,7 @@ export default function ProjectGrid({ items }: { items: Project[] }) {
                 className="h-full w-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
               />
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink/45 to-transparent" />
-              <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-accent">
+              <span className="absolute left-4 top-4 rounded-sm bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-accent">
                 {p.category}
               </span>
             </div>

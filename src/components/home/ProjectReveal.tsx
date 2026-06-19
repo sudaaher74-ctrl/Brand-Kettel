@@ -49,7 +49,7 @@ function FloatingCard({
 
   return (
     <motion.div style={{ y }} className="will-change-transform">
-      <TiltCard className="group h-full overflow-hidden rounded-3xl bg-card shadow-card">
+      <TiltCard className="group h-full overflow-hidden rounded-none bg-card shadow-card">
         <div className="relative aspect-[4/3] overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -60,7 +60,7 @@ function FloatingCard({
             style={{ transform: 'translateZ(40px)' }}
           />
           <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink/45 to-transparent" />
-          <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-accent">
+          <span className="absolute left-4 top-4 rounded-sm bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-accent">
             {String(index + 1).padStart(2, '0')}
           </span>
           <div className="absolute inset-x-0 bottom-0 p-4" style={{ transform: 'translateZ(60px)' }}>
