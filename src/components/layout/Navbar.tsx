@@ -33,11 +33,13 @@ export default function Navbar() {
           <nav
             className={cn(
               'flex items-center justify-between rounded-full px-4 py-2.5 transition-all duration-500 ease-smooth',
-              scrolled ? 'glass shadow-soft' : 'bg-transparent'
+              scrolled
+                ? 'glass shadow-card border border-[#c9a86a]/10'
+                : 'bg-transparent'
             )}
           >
             <Link href="/" className="group flex items-center gap-2.5" onClick={() => setOpen(false)}>
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-ink text-sm font-semibold text-white">
+              <span className="grid h-9 w-9 place-items-center rounded-xl bg-accent text-sm font-semibold text-[#0a0a0a]">
                 BK
               </span>
               <span className="hidden flex-col leading-none sm:flex">
@@ -53,7 +55,7 @@ export default function Navbar() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="rounded-full px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-ink"
+                  className="rounded-full px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-accent"
                 >
                   {l.label}
                 </Link>
@@ -68,7 +70,7 @@ export default function Navbar() {
                 aria-label="Toggle menu"
                 aria-expanded={open}
                 onClick={() => setOpen((v) => !v)}
-                className="grid h-10 w-10 place-items-center rounded-full border border-line bg-white lg:hidden"
+                className="grid h-10 w-10 place-items-center rounded-full border border-line bg-surface lg:hidden"
               >
                 <span className="relative block h-3 w-5">
                   <span
@@ -99,7 +101,7 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="container-px lg:hidden"
           >
-            <div className="glass mt-2 rounded-3xl p-4 shadow-card">
+            <div className="glass mt-2 rounded-3xl p-4 shadow-card border border-[#c9a86a]/10">
               <div className="grid gap-1">
                 {navLinks.map((l, i) => (
                   <motion.div
@@ -111,7 +113,7 @@ export default function Navbar() {
                     <Link
                       href={l.href}
                       onClick={() => setOpen(false)}
-                      className="block rounded-2xl px-4 py-3 text-base font-medium text-ink hover:bg-surface"
+                      className="block rounded-2xl px-4 py-3 text-base font-medium text-ink hover:bg-surface-2 hover:text-accent transition-colors"
                     >
                       {l.label}
                     </Link>

@@ -8,19 +8,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#FFFFFF',
-        surface: '#F8F9FA',
-        card: '#FFFFFF',
+        background: '#0a0a0a',
+        surface: '#111111',
+        'surface-2': '#1a1a1a',
+        card: '#141414',
         accent: {
           DEFAULT: '#C9A86A',
           soft: '#E4D3AF',
-          dark: '#B0905030',
+          dark: '#A8883A',
         },
         ink: {
-          DEFAULT: '#2D3748',
-          muted: '#718096',
+          DEFAULT: '#F0ECE4',
+          muted: '#8A8278',
         },
-        line: '#E2E8F0',
+        line: '#222222',
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
@@ -35,10 +36,11 @@ const config: Config = {
         '3xl': '2.25rem',
       },
       boxShadow: {
-        soft: '0 4px 24px -8px rgba(45, 55, 72, 0.10)',
-        card: '0 12px 40px -12px rgba(45, 55, 72, 0.14)',
-        float: '0 30px 60px -24px rgba(45, 55, 72, 0.22)',
-        accent: '0 18px 40px -16px rgba(201, 168, 106, 0.45)',
+        soft: '0 4px 24px -8px rgba(0, 0, 0, 0.60)',
+        card: '0 12px 40px -12px rgba(0, 0, 0, 0.70)',
+        float: '0 30px 60px -24px rgba(0, 0, 0, 0.80)',
+        accent: '0 18px 40px -16px rgba(201, 168, 106, 0.35)',
+        'glow-gold': '0 0 40px rgba(201, 168, 106, 0.15)',
       },
       transitionTimingFunction: {
         smooth: 'cubic-bezier(0.22, 1, 0.36, 1)',
@@ -52,10 +54,15 @@ const config: Config = {
           '0%': { backgroundPosition: '-200% 0' },
           '100%': { backgroundPosition: '200% 0' },
         },
+        'gold-pulse': {
+          '0%, 100%': { opacity: '0.6' },
+          '50%': { opacity: '1' },
+        },
       },
       animation: {
         floaty: 'floaty 6s ease-in-out infinite',
         shimmer: 'shimmer 8s linear infinite',
+        'gold-pulse': 'gold-pulse 3s ease-in-out infinite',
       },
     },
   },

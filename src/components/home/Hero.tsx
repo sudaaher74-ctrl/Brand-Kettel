@@ -18,7 +18,7 @@ export default function Hero() {
   const fgY = useTransform(scrollYProgress, [0, 1], ['0%', '-32%']);
   const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '-10%']);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 1], [0.35, 0.6]);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 1], [0.55, 0.78]);
 
   return (
     <section ref={ref} className="relative h-[115svh] w-full scene overflow-hidden">
@@ -37,12 +37,12 @@ export default function Hero() {
           />
         </motion.div>
 
-        {/* Soft light wash — keeps it bright, never dark */}
+        {/* Deep dark overlay for luxury black theme */}
         <motion.div
           style={{ opacity: overlayOpacity }}
-          className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/20 to-white/85"
+          className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-black/50" />
 
         {/* Floating mid-depth furniture chip */}
         <motion.div
@@ -124,7 +124,7 @@ export default function Hero() {
           style={{ opacity: contentOpacity }}
           className="absolute bottom-6 left-1/2 -translate-x-1/2"
         >
-          <div className="flex h-9 w-5 items-start justify-center rounded-full border border-ink/30 p-1">
+          <div className="flex h-9 w-5 items-start justify-center rounded-full border border-white/20 p-1">
             <span className="h-2 w-1 animate-bounce rounded-full bg-accent" />
           </div>
         </motion.div>
