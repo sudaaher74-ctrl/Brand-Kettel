@@ -175,8 +175,6 @@ export const navLinks = [
   { href: '/services', label: 'Services' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/process', label: 'Process' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
 ];
 
 export const servicesDropdown = [
