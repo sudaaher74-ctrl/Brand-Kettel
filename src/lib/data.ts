@@ -172,11 +172,24 @@ export const expertiseCategories = [
 export const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
-  { href: '/commercial-projects', label: 'Commercial' },
-  { href: '/residential-interiors', label: 'Residential' },
   { href: '/services', label: 'Services' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/process', label: 'Process' },
   { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' },
+];
+
+export const servicesDropdown = [
+  {
+    href: '/commercial-projects',
+    label: 'Commercial',
+    description: 'Offices, retail fit-outs & showrooms',
+    icon: '◉',
+  },
+  {
+    href: '/residential-interiors',
+    label: 'Residential',
+    description: 'Bespoke homes & private interiors',
+    icon: '◎',
+  },
 ];
