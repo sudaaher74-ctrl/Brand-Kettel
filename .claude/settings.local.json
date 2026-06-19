@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(pnpm -v)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(cat /tmp/bk-dev.log | tail -20)",
+      "Bash(pkill -f \"next dev\")",
+      "mcp__Claude_Preview__preview_start"
+    ]
+  }
+}

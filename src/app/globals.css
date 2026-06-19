@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #ffffff;
+  --surface: #f8f9fa;
+  --accent: #c9a86a;
+  --ink: #2d3748;
+  --ink-muted: #718096;
+  --line: #e2e8f0;
+}
+
+@layer base {
+  * {
+    @apply border-line;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: auto; /* Lenis owns scrolling */
+  }
+
+  body {
+    @apply bg-background text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Lenis */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  ::selection {
+    background: rgba(201, 168, 106, 0.25);
+    color: var(--ink);
+  }
+
+  h1, h2, h3 {
+    @apply font-display tracking-tight;
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply mx-auto w-full max-w-container px-5 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 ease-smooth;
+  }
+  .btn-primary {
+    @apply btn bg-ink text-white shadow-soft hover:-translate-y-0.5 hover:shadow-card;
+  }
+  .btn-accent {
+    @apply btn bg-accent text-white shadow-accent hover:-translate-y-0.5;
+  }
+  .btn-ghost {
+    @apply btn border border-line bg-white text-ink hover:border-accent hover:text-accent;
+  }
+
+  /* Shared 3D perspective context */
+  .scene {
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink outline-none transition
+      placeholder:text-ink-muted/60 focus:border-accent focus:ring-2 focus:ring-accent/20;
+  }
+
+  .grain-soft {
+    background-image: radial-gradient(transparent 1px, rgba(0, 0, 0, 0.012) 1px);
+    background-size: 3px 3px;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

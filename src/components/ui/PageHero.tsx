@@ -1,0 +1,70 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
+export default function PageHero({
+  eyebrow,
+  title,
+  subtitle,
+  image,
+}: {
+  eyebrow: string;
+  title: string;
+  subtitle?: string;
+  image: string;
+}) {
+  return (
+    <section className="relative overflow-hidden bg-surface pt-28 sm:pt-36">
+      <div className="container-px relative pb-12 sm:pb-16">
+        <div className="grid items-center gap-8 lg:grid-cols-2">
+          <div>
+            <motion.span
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="eyebrow"
+            >
+              <span className="h-px w-6 bg-accent" />
+              {eyebrow}
+            </motion.span>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-4 text-4xl font-semibold leading-[1.05] text-ink sm:text-5xl md:text-6xl"
+            >
+              {title}
+            </motion.h1>
+            {subtitle && (
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="mt-5 max-w-lg text-base leading-relaxed text-ink-muted sm:text-lg"
+              >
+                {subtitle}
+              </motion.p>
+            )}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, rotateY: -8 }}
+            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="scene"
+          >
+            <div className="overflow-hidden rounded-[2rem] shadow-float" style={{ transformStyle: 'preserve-3d' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={image}
+                alt={title}
+                className="aspect-[4/3] w-full object-cover"
+                fetchPriority="high"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}

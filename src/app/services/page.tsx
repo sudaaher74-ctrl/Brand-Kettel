@@ -1,0 +1,67 @@
+import type { Metadata } from 'next';
+import PageHero from '@/components/ui/PageHero';
+import SectionHeading from '@/components/ui/SectionHeading';
+import Reveal from '@/components/ui/Reveal';
+import { services } from '@/lib/data';
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Services — Design, Build & Furnish',
+  description:
+    'Commercial interiors, retail stores, jewellery showrooms, office fit-outs, residential interiors and custom furniture — delivered turnkey by Brand Kettle BuildSpaces.',
+  keywords: [
+    'Commercial Interior Design',
+    'Office Interior Design',
+    'Retail Interior Design',
+    'Jewellery Showroom Design',
+    'Turnkey Interior Solutions',
+  ],
+};
+
+export default function ServicesPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Services"
+        title="Design, Build & Furnish — under one roof"
+        subtitle="Six disciplines, one accountable team, delivered end-to-end from concept to handover."
+        image="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1400&q=70"
+      />
+
+      <section className="bg-background py-16 sm:py-24">
+        <div className="container-px">
+          <SectionHeading eyebrow="What we do" title="Capabilities across every commercial discipline" />
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((s, i) => (
+              <Reveal key={s.title} index={i % 3}>
+                <article className="group h-full overflow-hidden rounded-3xl bg-card shadow-card transition-shadow duration-300 hover:shadow-float">
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={s.image}
+                      alt={s.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-accent">
+                      {s.tag}
+                    </span>
+                    <h3 className="mt-2 font-display text-xl font-semibold text-ink">{s.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-muted">{s.description}</p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Link href="/contact" className="btn-accent">
+              Discuss your requirement
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
