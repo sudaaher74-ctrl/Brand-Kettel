@@ -17,6 +17,22 @@ type Project = {
   blurb: string;
 };
 
+function mapCaseStudyToProject(c: typeof fallbackProjects[0]): Project {
+  return {
+    id: c.slug,
+    slug: c.slug,
+    name: c.title,
+    location: c.location || '',
+    category: c.category,
+    area: c.keyStat || '',
+    year: '',
+    segment: '',
+    image: c.images[0] || '',
+    gallery: c.images,
+    blurb: c.description
+  };
+}
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 async function getProject(slug: string): Promise<Project | null> {
@@ -25,13 +41,13 @@ async function getProject(slug: string): Promise<Project | null> {
     if (!res.ok) {
       // Fallback to static data if backend is not available
       const fallback = fallbackProjects.find(p => p.slug === slug);
-      return fallback || null;
+      return fallback ? mapCaseStudyToProject(fallback) : null;
     }
     return res.json();
   } catch (e) {
     // Fallback to static data if fetch throws
     const fallback = fallbackProjects.find(p => p.slug === slug);
-    return fallback || null;
+    return fallback ? mapCaseStudyToProject(fallback) : null;
   }
 }
 
