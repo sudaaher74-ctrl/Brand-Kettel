@@ -1,0 +1,55 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const mongodb_1 = require("../lib/mongodb");
+const mongodb_2 = require("mongodb");
+const data_1 = require("../lib/data");
+const router = (0, express_1.Router)();
+router.get('/', async (req, res) => {
+    const db = await (0, mongodb_1.getDb)();
+    if (!db) {
+        return res.json(data_1.projects.map((p, i) => ({ ...p, id: `static-${i}` })));
+    }
+    const docs = await db.collection('projects').find({}).sort({ order: 1, createdAt: 1 }).toArray();
+    if (docs.length === 0) {
+        const seed = data_1.projects.map((p, i) => ({ ...p, order: i, createdAt: new Date(), updatedAt: new Date() }));
+        await db.collection('projects').insertMany(seed);
+        const fresh = await db.collection('projects').find({}).sort({ order: 1 }).toArray();
+        return res.json(fresh.map(d => ({ ...d, id: d._id.toString(), _id: undefined })));
+    }
+    res.json(docs.map(d => ({ ...d, id: d._id.toString(), _id: undefined })));
+});
+router.post('/', async (req, res) => {
+    const db = await (0, mongodb_1.getDb)();
+    if (!db)
+        return res.status(503).json({ error: 'Database not configured' });
+    const count = await db.collection('projects').countDocuments();
+    const doc = { ...req.body, order: count, createdAt: new Date(), updatedAt: new Date() };
+    const result = await db.collection('projects').insertOne(doc);
+    res.status(201).json({ id: result.insertedId.toString() });
+});
+router.get('/:id', async (req, res) => {
+    const db = await (0, mongodb_1.getDb)();
+    if (!db)
+        return res.status(503).json({ error: 'Database not configured' });
+    const doc = await db.collection('projects').findOne({ _id: new mongodb_2.ObjectId(req.params.id) });
+    if (!doc)
+        return res.status(404).json({ error: 'Not found' });
+    res.json({ ...doc, id: doc._id.toString(), _id: undefined });
+});
+router.put('/:id', async (req, res) => {
+    const db = await (0, mongodb_1.getDb)();
+    if (!db)
+        return res.status(503).json({ error: 'Database not configured' });
+    const update = Object.fromEntries(Object.entries(req.body).filter(([k]) => k !== '_id' && k !== 'id'));
+    await db.collection('projects').updateOne({ _id: new mongodb_2.ObjectId(req.params.id) }, { $set: { ...update, updatedAt: new Date() } });
+    res.json({ ok: true });
+});
+router.delete('/:id', async (req, res) => {
+    const db = await (0, mongodb_1.getDb)();
+    if (!db)
+        return res.status(503).json({ error: 'Database not configured' });
+    await db.collection('projects').deleteOne({ _id: new mongodb_2.ObjectId(req.params.id) });
+    res.json({ ok: true });
+});
+exports.default = router;
