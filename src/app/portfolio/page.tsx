@@ -12,22 +12,10 @@ export const metadata: Metadata = {
 
 export default function PortfolioPage() {
   return (
-    <>
-      <PageHero
-        eyebrow="Portfolio"
-        title="Every space, designed to deliver"
-        subtitle="A selection of commercial and residential projects across India."
-        image="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=70"
-      />
-
-      <section className="bg-background py-16 sm:py-24">
-        <div className="container-px">
-          <SectionHeading eyebrow="All projects" title="Selected work" />
-          <div className="mt-12">
-            <FilterableProjectGallery projects={caseStudies} />
-          </div>
-        </div>
-      </section>
-    </>
+    <section className="bg-background py-8 sm:py-12">
+      <div className="container-px">
+        <FilterableProjectGallery projects={caseStudies} />
+      </div>
+    </section>
   );
 }
