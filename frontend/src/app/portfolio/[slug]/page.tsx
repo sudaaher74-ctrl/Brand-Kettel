@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import { caseStudies as fallbackProjects } from '@/lib/projectsData';
 
 type Project = {
   id: string;
@@ -16,13 +17,21 @@ type Project = {
   blurb: string;
 };
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+
 async function getProject(slug: string): Promise<Project | null> {
   try {
-    const res = await fetch(`http://localhost:3001/api/admin/projects/${slug}`, { next: { revalidate: 60 } });
-    if (!res.ok) return null;
+    const res = await fetch(`${API_URL}/api/admin/projects/${slug}`, { next: { revalidate: 60 } });
+    if (!res.ok) {
+      // Fallback to static data if backend is not available
+      const fallback = fallbackProjects.find(p => p.slug === slug);
+      return fallback || null;
+    }
     return res.json();
   } catch (e) {
-    return null;
+    // Fallback to static data if fetch throws
+    const fallback = fallbackProjects.find(p => p.slug === slug);
+    return fallback || null;
   }
 }
 
