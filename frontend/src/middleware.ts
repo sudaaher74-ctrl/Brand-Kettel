@@ -5,17 +5,10 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (pathname === '/admin/login') {
-    return NextResponse.next();
+    return NextResponse.redirect(new URL('/admin/projects', request.url));
   }
 
-  const cookie = request.cookies.get(ADMIN_COOKIE)?.value;
-  const expected = await computeAdminToken();
-
-  if (!expected || cookie !== expected) {
-    const loginUrl = new URL('/admin/login', request.url);
-    return NextResponse.redirect(loginUrl);
-  }
-
+  // Temporarily disable login system
   return NextResponse.next();
 }
 
