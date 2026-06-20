@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
-import ProjectGrid from '@/components/ui/ProjectGrid';
-import { projects } from '@/lib/data';
+import FilterableProjectGallery from '@/components/ui/FilterableProjectGallery';
+import { caseStudies } from '@/lib/projectsData';
 
 export const metadata: Metadata = {
   title: 'Portfolio — Commercial & Residential Interior Projects',
@@ -24,7 +24,7 @@ export default function PortfolioPage() {
         <div className="container-px">
           <SectionHeading eyebrow="All projects" title="Selected work" />
           <div className="mt-12">
-            <ProjectGrid items={projects} />
+            <FilterableProjectGallery projects={caseStudies} />
           </div>
         </div>
       </section>

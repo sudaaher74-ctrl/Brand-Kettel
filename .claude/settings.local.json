@@ -7,7 +7,9 @@
       "Bash(npm run *)",
       "Bash(cat /tmp/bk-dev.log | tail -20)",
       "Bash(pkill -f \"next dev\")",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "mcp__visualize__read_me",
+      "mcp__visualize__show_widget"
     ]
   }
 }
