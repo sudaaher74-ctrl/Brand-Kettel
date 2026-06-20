@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
+import rateLimit from 'express-rate-limit';
+import { requireAuth } from './middlewares/requireAuth';
 
 dotenv.config();
 
@@ -20,16 +22,31 @@ app.get('/', (req, res) => {
   res.json({ status: 'ok' });
 });
 
+const contactLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10,
+  message: { error: 'Too many requests, please try again later.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 import adminRoutes from './routes/admin';
 import projectsRoutes from './routes/projects';
 import contactRoutes from './routes/contact';
 import authRoutes from './routes/auth';
 import seoRoutes from './routes/seo';
 
-app.use('/api/admin', adminRoutes);
-app.use('/api/admin/projects', projectsRoutes);
-app.use('/api/admin', authRoutes); // login/logout
-app.use('/api/contact', contactRoutes);
+// Public auth routes
+app.use('/api/admin', authRoutes);
+
+// Protected admin routes
+app.use('/api/admin/projects', requireAuth, projectsRoutes);
+app.use('/api/admin', requireAuth, adminRoutes);
+
+// Public rate-limited routes
+app.use('/api/contact', contactLimiter, contactRoutes);
+
+// Public SEO routes
 app.use('/api/seo', seoRoutes);
 
 app.listen(PORT, () => {

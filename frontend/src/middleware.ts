@@ -1,17 +1,21 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { ADMIN_COOKIE, computeAdminToken } from '@/lib/adminAuth';
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  if (pathname === '/admin/login') {
-    return NextResponse.redirect(new URL('/admin/projects', request.url));
+export function middleware(request: NextRequest) {
+  const token = request.cookies.get('brandkettle_admin_token')?.value;
+  const isLoginPage = request.nextUrl.pathname === '/admin/login';
+  
+  if (!token && !isLoginPage) {
+    return NextResponse.redirect(new URL('/admin/login', request.url));
   }
-
-  // Temporarily disable login system
+  
+  if (token && isLoginPage) {
+    return NextResponse.redirect(new URL('/admin', request.url));
+  }
+  
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: '/admin/:path*',
 };
