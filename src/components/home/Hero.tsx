@@ -30,7 +30,7 @@ export default function Hero() {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/imgs/p061_076.jpg"
+            src="/imgs/commercial/home1.png"
             alt="Modern commercial office interior by Brand Kettle BuildSpaces"
             className="h-full w-full object-cover"
             fetchPriority="high"

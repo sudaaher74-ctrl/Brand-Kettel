@@ -126,8 +126,7 @@ export const projects: Project[] = [
     gallery: ['/imgs/commercial/p100_133.jpg',],
     blurb: 'Government & Institutional Project.',
     segment: 'commercial',
-  }
-
+  },
   {
     slug: 'gucci',
     name: 'Gucci',
@@ -137,7 +136,7 @@ export const projects: Project[] = [
     year: '',
     image: '/imgs/commercial/gucci.png',
     gallery: ['/imgs/commercial/gucci.png', '/imgs/commercial/gucci1.png'],
-    blurb: 'First high-end luxury project reflecting the iconic elegance of the brand.',
+    blurb: "First high-end luxury project reflecting the iconic elegance of the brand.",
     segment: 'commercial',
   },
   {

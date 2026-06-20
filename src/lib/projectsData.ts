@@ -13,7 +13,7 @@ export const caseStudies: CaseStudy[] = [
     slug: 'gucci',
     title: 'Gucci',
     category: 'Retail',
-    description: 'BrandKettle's first high-end luxury project. Every detail, from custom finishes to ambient lighting, reflects the iconic elegance of the Gucci brand.',
+    description: "BrandKettle's first high-end luxury project. Every detail, from custom finishes to ambient lighting, reflects the iconic elegance of the Gucci brand.",
     keyStat: 'First Luxury Project',
     images: [
       '/imgs/commercial/gucci.png',
