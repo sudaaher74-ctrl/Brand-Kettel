@@ -189,37 +189,37 @@ export const services: Service[] = [
     title: 'Commercial Interiors',
     tag: 'Core',
     description: 'Workplaces, headquarters and corporate environments designed for performance.',
-    image: '/imgs/p062_077.jpg',
+    image: '/imgs/p077_108.jpg',
   },
   {
     title: 'Retail Stores',
     tag: 'Core',
     description: 'Conversion-focused retail experiences that elevate your brand at every touchpoint.',
-    image: '/imgs/p062_077.jpg',
+    image: '/imgs/p061_076.jpg',
   },
   {
     title: 'Jewellery Showrooms',
     tag: 'Core',
     description: 'Secure, luminous showroom design crafted for high-value display.',
-    image: '/imgs/p062_077.jpg',
+    image: '/imgs/p068_089.jpg',
   },
   {
     title: 'Office Fit-Outs',
     tag: 'Core',
     description: 'Fast, precise fit-outs delivered turnkey, from bare shell to handover.',
-    image: '/imgs/p062_077.jpg',
+    image: '/imgs/p079_110.jpg',
   },
   {
     title: 'Residential Interiors',
     tag: 'Premium',
     description: 'Bespoke homes where comfort, craft and detail meet.',
-    image: '/imgs/p062_077.jpg',
+    image: '/imgs/p076_107.jpg',
   },
   {
     title: 'Custom Furniture',
     tag: 'Craft',
     description: 'In-house manufacturing of made-to-measure furniture and joinery.',
-    image: '/imgs/p062_077.jpg',
+    image: '/imgs/p071_096.jpg',
   },
 ];
 
