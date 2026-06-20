@@ -51,7 +51,7 @@ export const projects: Project[] = [
     area: '475 sq yd',
     year: '',
     image: '/imgs/residential/p076_107.jpg',
-    gallery: ['/imgs/residential/p076_107.jpg'],
+    gallery: ['/imgs/residential/p076_107.jpg', '/imgs/residential/image.png'],
     blurb: 'Blending comfort, functionality and exclusivity with a modern façade.',
     segment: 'commercial',
   },
@@ -127,6 +127,31 @@ export const projects: Project[] = [
     blurb: 'Government & Institutional Project.',
     segment: 'commercial',
   }
+
+  {
+    slug: 'gucci',
+    name: 'Gucci',
+    location: 'India',
+    category: 'Luxury Retail',
+    area: '',
+    year: '',
+    image: '/imgs/commercial/gucci.png',
+    gallery: ['/imgs/commercial/gucci.png', '/imgs/commercial/gucci1.png'],
+    blurb: 'First high-end luxury project reflecting the iconic elegance of the brand.',
+    segment: 'commercial',
+  },
+  {
+    slug: 'giva',
+    name: 'Giva',
+    location: 'India',
+    category: 'Jewellery Showroom',
+    area: '',
+    year: '',
+    image: '/imgs/commercial/giaa.png',
+    gallery: ['/imgs/commercial/giaa.png', '/imgs/commercial/jwellary.png', '/imgs/commercial/jwellary2.png'],
+    blurb: 'Giva store by BrandKettle.',
+    segment: 'commercial',
+  },
 ];
 
 export type Service = {

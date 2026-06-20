@@ -10,6 +10,28 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: 'gucci',
+    title: 'Gucci',
+    category: 'Retail',
+    description: 'BrandKettle's first high-end luxury project. Every detail, from custom finishes to ambient lighting, reflects the iconic elegance of the Gucci brand.',
+    keyStat: 'First Luxury Project',
+    images: [
+      '/imgs/commercial/gucci.png',
+      '/imgs/commercial/gucci1.png',
+    ],
+  },
+  {
+    slug: 'giva',
+    title: 'Giva',
+    category: 'Retail',
+    description: 'Giva store by BrandKettle.',
+    images: [
+      '/imgs/commercial/giaa.png',
+      '/imgs/commercial/jwellary.png',
+      '/imgs/commercial/jwellary2.png',
+    ],
+  },
+  {
     slug: 'ramada-encore-bareilly',
     title: 'Ramada Encore Hotel',
     location: 'Bareilly',
@@ -39,6 +61,7 @@ export const caseStudies: CaseStudy[] = [
     description: 'A premium builder floor blending comfort, functionality and exclusivity with a modern façade and luxury design — redefining contemporary urban living.',
     keyStat: '475 sq yd',
     images: [      '/imgs/residential/p076_107.jpg',
+      '/imgs/residential/image.png',
     ],
   },
   {
