@@ -10,14 +10,6 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: 'tira',
-    title: 'Tira',
-    category: 'Retail',
-    description: 'Tira store by BrandKettle.',
-    images: [      '/imgs/commercial/p061_076.jpg',
-    ],
-  },
-  {
     slug: 'ramada-encore-bareilly',
     title: 'Ramada Encore Hotel',
     location: 'Bareilly',
@@ -25,23 +17,8 @@ export const caseStudies: CaseStudy[] = [
     description: 'BrandKettle\'s first collaboration with a luxury hotel — centrally located in the medical hub. A new chapter where brand identity meets functionality.',
     keyStat: 'First collaboration with a luxury hotel',
     images: [
-      '/imgs/commercial/p062_077.jpg',
-      '/imgs/commercial/p063_078.jpg',
       '/imgs/commercial/p064_079.jpg',
-      '/imgs/commercial/p065_082.jpg',
-      '/imgs/commercial/p066_085.jpg',
     ],
-  },
-  {
-    slug: 'radisson-blu-greater-noida',
-    title: 'Radisson Blu Hotel',
-    location: 'Greater Noida',
-    category: 'Hospitality',
-    description: 'A landmark property in the heart of the city\'s corporate and residential hub. Work elevates the guest experience.',
-    images: [
-      '/imgs/commercial/p068_089.jpg',
-      '/imgs/commercial/p069_091.jpg',
-      '/imgs/commercial/p070_094.jpg',    ],
   },
   {
     slug: 'havana-lounge',
@@ -52,7 +29,6 @@ export const caseStudies: CaseStudy[] = [
     images: [
       '/imgs/commercial/p071_096.jpg',
       '/imgs/commercial/p072_097.jpg',
-      '/imgs/commercial/p073_100.jpg',
     ],
   },
   {
@@ -85,26 +61,6 @@ export const caseStudies: CaseStudy[] = [
     description: 'Creating a vibrant and inviting space that brings the renowned brand to the heart of Delhi.',
     images: [
       '/imgs/commercial/p080_111.jpg',
-    ],
-  },
-  {
-    slug: 'nipccd',
-    title: 'NIPCCD by NBCC',
-    category: 'Government',
-    description: 'Government and Institutional Project.',
-    images: [      '/imgs/commercial/p082_113.jpg',
-      '/imgs/commercial/p083_114.jpg',
-    ],
-  },
-  {
-    slug: 'cgewho',
-    title: 'CGEWHO Project',
-    category: 'Government',
-    description: 'Government and Institutional Project.',
-    images: [
-      '/imgs/commercial/p085_116.jpg',
-      '/imgs/commercial/p086_117.jpg',
-      '/imgs/commercial/p087_118.jpg',
     ],
   },
   {
@@ -143,8 +99,6 @@ export const caseStudies: CaseStudy[] = [
     description: 'Government and Institutional Project.',
     images: [
       '/imgs/commercial/p100_133.jpg',
-      '/imgs/commercial/p101_134.jpg',
-      '/imgs/commercial/p102_135.jpg',
     ],
   },
 ];
