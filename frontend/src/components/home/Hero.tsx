@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import MagneticButton from '@/components/ui/MagneticButton';
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -109,12 +110,16 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.34, ease: [0.22, 1, 0.36, 1] }}
               className="mt-8 flex flex-wrap gap-3"
             >
-              <Link href="/portfolio" className="btn-primary">
-                View Projects
-              </Link>
-              <Link href="/contact" className="btn-ghost">
-                Book Consultation
-              </Link>
+              <MagneticButton>
+                <Link href="/portfolio" className="btn-primary">
+                  View Projects
+                </Link>
+              </MagneticButton>
+              <MagneticButton>
+                <Link href="/contact" className="btn-ghost">
+                  Book Consultation
+                </Link>
+              </MagneticButton>
             </motion.div>
           </div>
         </motion.div>

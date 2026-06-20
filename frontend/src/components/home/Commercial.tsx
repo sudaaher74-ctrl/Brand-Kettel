@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import MagneticButton from '@/components/ui/MagneticButton';
 
 export default function Commercial() {
   const ref = useRef<HTMLDivElement>(null);
@@ -45,9 +46,11 @@ export default function Commercial() {
                 We deliver office interiors, retail environments, showrooms, and turnkey commercial
                 spaces designed for performance and brand impact.
               </p>
-              <Link href="/commercial-projects" className="btn-primary mt-8">
-                Explore Commercial Projects
-              </Link>
+              <MagneticButton className="mt-8">
+                <Link href="/commercial-projects" className="btn-primary">
+                  Explore Commercial Projects
+                </Link>
+              </MagneticButton>
             </motion.div>
           </div>
         </div>
