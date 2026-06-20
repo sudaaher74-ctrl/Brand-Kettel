@@ -4,6 +4,8 @@ const express_1 = require("express");
 const mongodb_1 = require("../lib/mongodb");
 const mongodb_2 = require("mongodb");
 const data_1 = require("../lib/data");
+const schemas_1 = require("../lib/schemas");
+const requireAuth_1 = require("../middlewares/requireAuth");
 const router = (0, express_1.Router)();
 router.get('/', async (req, res) => {
     const db = await (0, mongodb_1.getDb)();
@@ -19,14 +21,20 @@ router.get('/', async (req, res) => {
     }
     res.json(docs.map(d => ({ ...d, id: d._id.toString(), _id: undefined })));
 });
-router.post('/', async (req, res) => {
+router.post('/', requireAuth_1.requireAuth, async (req, res) => {
     const db = await (0, mongodb_1.getDb)();
     if (!db)
         return res.status(503).json({ error: 'Database not configured' });
-    const count = await db.collection('projects').countDocuments();
-    const doc = { ...req.body, order: count, createdAt: new Date(), updatedAt: new Date() };
-    const result = await db.collection('projects').insertOne(doc);
-    res.status(201).json({ id: result.insertedId.toString() });
+    try {
+        const validatedData = schemas_1.ProjectSchema.parse(req.body);
+        const count = await db.collection('projects').countDocuments();
+        const doc = { ...validatedData, order: count, createdAt: new Date(), updatedAt: new Date() };
+        const result = await db.collection('projects').insertOne(doc);
+        res.status(201).json({ id: result.insertedId.toString() });
+    }
+    catch (err) {
+        res.status(400).json({ error: 'Validation failed', details: err.errors });
+    }
 });
 router.get('/:id', async (req, res) => {
     const db = await (0, mongodb_1.getDb)();
@@ -39,15 +47,21 @@ router.get('/:id', async (req, res) => {
         return res.status(404).json({ error: 'Not found' });
     res.json({ ...doc, id: doc._id.toString(), _id: undefined });
 });
-router.put('/:id', async (req, res) => {
+router.put('/:id', requireAuth_1.requireAuth, async (req, res) => {
     const db = await (0, mongodb_1.getDb)();
     if (!db)
         return res.status(503).json({ error: 'Database not configured' });
-    const update = Object.fromEntries(Object.entries(req.body).filter(([k]) => k !== '_id' && k !== 'id'));
-    await db.collection('projects').updateOne({ _id: new mongodb_2.ObjectId(req.params.id) }, { $set: { ...update, updatedAt: new Date() } });
-    res.json({ ok: true });
+    try {
+        const validatedData = schemas_1.ProjectSchema.partial().parse(req.body);
+        const update = Object.fromEntries(Object.entries(validatedData).filter(([k]) => k !== '_id' && k !== 'id'));
+        await db.collection('projects').updateOne({ _id: new mongodb_2.ObjectId(req.params.id) }, { $set: { ...update, updatedAt: new Date() } });
+        res.json({ ok: true });
+    }
+    catch (err) {
+        res.status(400).json({ error: 'Validation failed', details: err.errors });
+    }
 });
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', requireAuth_1.requireAuth, async (req, res) => {
     const db = await (0, mongodb_1.getDb)();
     if (!db)
         return res.status(503).json({ error: 'Database not configured' });

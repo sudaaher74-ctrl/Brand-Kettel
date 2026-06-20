@@ -8,7 +8,6 @@ const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
-const requireAuth_1 = require("./middlewares/requireAuth");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3001;
@@ -36,9 +35,9 @@ const auth_1 = __importDefault(require("./routes/auth"));
 const seo_1 = __importDefault(require("./routes/seo"));
 // Public auth routes
 app.use('/api/admin', auth_1.default);
-// Protected admin routes
-app.use('/api/admin/projects', requireAuth_1.requireAuth, projects_1.default);
-app.use('/api/admin', requireAuth_1.requireAuth, admin_1.default);
+// Admin API routes (auth handled individually per route)
+app.use('/api/admin/projects', projects_1.default);
+app.use('/api/admin', admin_1.default);
 // Public rate-limited routes
 app.use('/api/contact', contactLimiter, contact_1.default);
 // Public SEO routes

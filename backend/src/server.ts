@@ -39,9 +39,9 @@ import seoRoutes from './routes/seo';
 // Public auth routes
 app.use('/api/admin', authRoutes);
 
-// Protected admin routes
-app.use('/api/admin/projects', requireAuth, projectsRoutes);
-app.use('/api/admin', requireAuth, adminRoutes);
+// Admin API routes (auth handled individually per route)
+app.use('/api/admin/projects', projectsRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Public rate-limited routes
 app.use('/api/contact', contactLimiter, contactRoutes);
