@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { getDb } from '../lib/mongodb';
 import { ObjectId } from 'mongodb';
+import { BlogPostSchema } from '../lib/schemas';
 
 const router = Router();
 
@@ -15,10 +16,14 @@ router.get('/blog', async (req, res) => {
 router.post('/blog', async (req, res) => {
   const db = await getDb();
   if (!db) return res.status(503).json({ error: 'Database not configured' });
-  const body = req.body;
-  const doc = { ...body, publishedAt: body.published ? new Date() : null, createdAt: new Date(), updatedAt: new Date() };
-  const result = await db.collection('blog_posts').insertOne(doc);
-  res.status(201).json({ id: result.insertedId.toString() });
+  try {
+    const validatedData = BlogPostSchema.parse(req.body);
+    const doc = { ...validatedData, publishedAt: validatedData.published ? new Date() : null, createdAt: new Date(), updatedAt: new Date() };
+    const result = await db.collection('blog_posts').insertOne(doc);
+    res.status(201).json({ id: result.insertedId.toString() });
+  } catch (err: any) {
+    res.status(400).json({ error: 'Validation failed', details: err.errors });
+  }
 });
 
 router.get('/blog/:id', async (req, res) => {
@@ -34,10 +39,15 @@ router.get('/blog/:id', async (req, res) => {
 router.put('/blog/:id', async (req, res) => {
   const db = await getDb();
   if (!db) return res.status(503).json({ error: 'Database not configured' });
-  const update = Object.fromEntries(Object.entries(req.body).filter(([k]) => k !== '_id' && k !== 'id'));
-  if (update.published && !update.publishedAt) update.publishedAt = new Date();
-  await db.collection('blog_posts').updateOne({ _id: new ObjectId(req.params.id) }, { $set: { ...update, updatedAt: new Date() } });
-  res.json({ ok: true });
+  try {
+    const validatedData = BlogPostSchema.partial().parse(req.body);
+    const update = Object.fromEntries(Object.entries(validatedData).filter(([k]) => k !== '_id' && k !== 'id'));
+    if (update.published && !update.publishedAt) update.publishedAt = new Date();
+    await db.collection('blog_posts').updateOne({ _id: new ObjectId(req.params.id) }, { $set: { ...update, updatedAt: new Date() } });
+    res.json({ ok: true });
+  } catch (err: any) {
+    res.status(400).json({ error: 'Validation failed', details: err.errors });
+  }
 });
 
 router.delete('/blog/:id', async (req, res) => {

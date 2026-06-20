@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { getDb } from '../lib/mongodb';
 import { ObjectId } from 'mongodb';
 import { projects as staticProjects } from '../lib/data';
+import { ProjectSchema } from '../lib/schemas';
 
 const router = Router();
 
@@ -23,10 +24,15 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   const db = await getDb();
   if (!db) return res.status(503).json({ error: 'Database not configured' });
-  const count = await db.collection('projects').countDocuments();
-  const doc = { ...req.body, order: count, createdAt: new Date(), updatedAt: new Date() };
-  const result = await db.collection('projects').insertOne(doc);
-  res.status(201).json({ id: result.insertedId.toString() });
+  try {
+    const validatedData = ProjectSchema.parse(req.body);
+    const count = await db.collection('projects').countDocuments();
+    const doc = { ...validatedData, order: count, createdAt: new Date(), updatedAt: new Date() };
+    const result = await db.collection('projects').insertOne(doc);
+    res.status(201).json({ id: result.insertedId.toString() });
+  } catch (err: any) {
+    res.status(400).json({ error: 'Validation failed', details: err.errors });
+  }
 });
 
 router.get('/:id', async (req, res) => {
@@ -42,9 +48,14 @@ router.get('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
   const db = await getDb();
   if (!db) return res.status(503).json({ error: 'Database not configured' });
-  const update = Object.fromEntries(Object.entries(req.body).filter(([k]) => k !== '_id' && k !== 'id'));
-  await db.collection('projects').updateOne({ _id: new ObjectId(req.params.id) }, { $set: { ...update, updatedAt: new Date() } });
-  res.json({ ok: true });
+  try {
+    const validatedData = ProjectSchema.partial().parse(req.body);
+    const update = Object.fromEntries(Object.entries(validatedData).filter(([k]) => k !== '_id' && k !== 'id'));
+    await db.collection('projects').updateOne({ _id: new ObjectId(req.params.id) }, { $set: { ...update, updatedAt: new Date() } });
+    res.json({ ok: true });
+  } catch (err: any) {
+    res.status(400).json({ error: 'Validation failed', details: err.errors });
+  }
 });
 
 router.delete('/:id', async (req, res) => {

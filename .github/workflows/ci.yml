@@ -1,0 +1,67 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js 20
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: Install Backend Dependencies
+      working-directory: ./backend
+      run: npm ci || npm install
+
+    - name: Build Backend
+      working-directory: ./backend
+      run: npm run build
+
+    - name: Install Frontend Dependencies
+      working-directory: ./frontend
+      run: npm ci || npm install
+
+    - name: Install Playwright Browsers
+      working-directory: ./frontend
+      run: npx playwright install --with-deps
+
+    - name: Build Frontend
+      working-directory: ./frontend
+      run: npm run build
+      env:
+        NEXT_PUBLIC_API_URL: http://localhost:3001
+        NEXT_PUBLIC_SITE_URL: http://localhost:3000
+
+    - name: Start Backend server in background
+      working-directory: ./backend
+      run: npm start &
+      env:
+        PORT: 3001
+        ADMIN_PASSWORD: dummy_password_for_tests
+        APP_SECRET: dummy_secret_for_tests
+        # Optional MongoDB setup for tests could be added here, 
+        # but the backend can also run without Mongo to serve static project data fallback.
+
+    - name: Run Playwright tests
+      working-directory: ./frontend
+      run: npx playwright test
+      env:
+        NEXT_PUBLIC_API_URL: http://localhost:3001
+        NEXT_PUBLIC_SITE_URL: http://localhost:3000
+
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-report
+        path: frontend/playwright-report/
+        retention-days: 14
