@@ -14,7 +14,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Tira',
     category: 'Retail',
     description: 'Tira store by BrandKettle.',
-    images: [      '/imgs/p061_076.jpg',
+    images: [      '/imgs/commercial/p061_076.jpg',
     ],
   },
   {
@@ -25,11 +25,11 @@ export const caseStudies: CaseStudy[] = [
     description: 'BrandKettle\'s first collaboration with a luxury hotel — centrally located in the medical hub. A new chapter where brand identity meets functionality.',
     keyStat: 'First collaboration with a luxury hotel',
     images: [
-      '/imgs/p062_077.jpg',
-      '/imgs/p063_078.jpg',
-      '/imgs/p064_079.jpg',
-      '/imgs/p065_082.jpg',
-      '/imgs/p066_085.jpg',
+      '/imgs/commercial/p062_077.jpg',
+      '/imgs/commercial/p063_078.jpg',
+      '/imgs/commercial/p064_079.jpg',
+      '/imgs/commercial/p065_082.jpg',
+      '/imgs/commercial/p066_085.jpg',
     ],
   },
   {
@@ -39,9 +39,9 @@ export const caseStudies: CaseStudy[] = [
     category: 'Hospitality',
     description: 'A landmark property in the heart of the city\'s corporate and residential hub. Work elevates the guest experience.',
     images: [
-      '/imgs/p068_089.jpg',
-      '/imgs/p069_091.jpg',
-      '/imgs/p070_094.jpg',    ],
+      '/imgs/commercial/p068_089.jpg',
+      '/imgs/commercial/p069_091.jpg',
+      '/imgs/commercial/p070_094.jpg',    ],
   },
   {
     slug: 'havana-lounge',
@@ -50,9 +50,9 @@ export const caseStudies: CaseStudy[] = [
     category: 'Hospitality',
     description: 'A standout rooftop project at the Ramada hotel, highlighting expertise in design thinking, detailing and craftsmanship.',
     images: [
-      '/imgs/p071_096.jpg',
-      '/imgs/p072_097.jpg',
-      '/imgs/p073_100.jpg',
+      '/imgs/commercial/p071_096.jpg',
+      '/imgs/commercial/p072_097.jpg',
+      '/imgs/commercial/p073_100.jpg',
     ],
   },
   {
@@ -62,7 +62,7 @@ export const caseStudies: CaseStudy[] = [
     category: 'Residential',
     description: 'A premium builder floor blending comfort, functionality and exclusivity with a modern façade and luxury design — redefining contemporary urban living.',
     keyStat: '475 sq yd',
-    images: [      '/imgs/p076_107.jpg',
+    images: [      '/imgs/residential/p076_107.jpg',
     ],
   },
   {
@@ -72,9 +72,9 @@ export const caseStudies: CaseStudy[] = [
     category: 'Workspace',
     description: 'A fun and creative co-working space delivered in Faridabad.',
     images: [
-      '/imgs/p077_108.jpg',
-      '/imgs/p078_109.jpg',
-      '/imgs/p079_110.jpg',
+      '/imgs/commercial/p077_108.jpg',
+      '/imgs/commercial/p078_109.jpg',
+      '/imgs/commercial/p079_110.jpg',
     ],
   },
   {
@@ -84,7 +84,7 @@ export const caseStudies: CaseStudy[] = [
     category: 'Hospitality',
     description: 'Creating a vibrant and inviting space that brings the renowned brand to the heart of Delhi.',
     images: [
-      '/imgs/p080_111.jpg',
+      '/imgs/commercial/p080_111.jpg',
     ],
   },
   {
@@ -92,8 +92,8 @@ export const caseStudies: CaseStudy[] = [
     title: 'NIPCCD by NBCC',
     category: 'Government',
     description: 'Government and Institutional Project.',
-    images: [      '/imgs/p082_113.jpg',
-      '/imgs/p083_114.jpg',
+    images: [      '/imgs/commercial/p082_113.jpg',
+      '/imgs/commercial/p083_114.jpg',
     ],
   },
   {
@@ -102,9 +102,9 @@ export const caseStudies: CaseStudy[] = [
     category: 'Government',
     description: 'Government and Institutional Project.',
     images: [
-      '/imgs/p085_116.jpg',
-      '/imgs/p086_117.jpg',
-      '/imgs/p087_118.jpg',
+      '/imgs/commercial/p085_116.jpg',
+      '/imgs/commercial/p086_117.jpg',
+      '/imgs/commercial/p087_118.jpg',
     ],
   },
   {
@@ -112,9 +112,9 @@ export const caseStudies: CaseStudy[] = [
     title: 'IIT Ropar Project',
     category: 'Government',
     description: 'Government and Institutional Project.',
-    images: [      '/imgs/p090_121.jpg',
-      '/imgs/p091_122.jpg',
-      '/imgs/p092_123.jpg',
+    images: [      '/imgs/commercial/p090_121.jpg',
+      '/imgs/commercial/p091_122.jpg',
+      '/imgs/commercial/p092_123.jpg',
     ],
   },
   {
@@ -122,9 +122,9 @@ export const caseStudies: CaseStudy[] = [
     title: 'LIC Project',
     category: 'Government',
     description: 'Government and Institutional Project.',
-    images: [      '/imgs/p094_125.jpg',
-      '/imgs/p095_126.jpg',
-      '/imgs/p096_127.jpg',
+    images: [      '/imgs/commercial/p094_125.jpg',
+      '/imgs/commercial/p095_126.jpg',
+      '/imgs/commercial/p096_127.jpg',
     ],
   },
   {
@@ -132,8 +132,8 @@ export const caseStudies: CaseStudy[] = [
     title: 'IEML Project',
     category: 'Government',
     description: 'Government and Institutional Project.',
-    images: [      '/imgs/p098_129.jpg',
-      '/imgs/p099_130.jpg',
+    images: [      '/imgs/commercial/p098_129.jpg',
+      '/imgs/commercial/p099_130.jpg',
     ],
   },
   {
@@ -142,9 +142,9 @@ export const caseStudies: CaseStudy[] = [
     category: 'Government',
     description: 'Government and Institutional Project.',
     images: [
-      '/imgs/p100_133.jpg',
-      '/imgs/p101_134.jpg',
-      '/imgs/p102_135.jpg',
+      '/imgs/commercial/p100_133.jpg',
+      '/imgs/commercial/p101_134.jpg',
+      '/imgs/commercial/p102_135.jpg',
     ],
   },
 ];
