@@ -40,6 +40,10 @@ export const caseStudies: CaseStudy[] = [
     keyStat: 'First collaboration with a luxury hotel',
     images: [
       '/imgs/commercial/p064_079.jpg',
+      '/imgs/commercial/p064_080.jpg',
+      '/imgs/commercial/p064_081.jpg',
+      '/imgs/commercial/p066_086.jpg',
+      '/imgs/commercial/p066_087.jpg',
     ],
   },
   {
@@ -51,6 +55,10 @@ export const caseStudies: CaseStudy[] = [
     images: [
       '/imgs/commercial/p071_096.jpg',
       '/imgs/commercial/p072_097.jpg',
+      '/imgs/commercial/p072_098.jpg',
+      '/imgs/commercial/p072_099.jpg',
+      '/imgs/commercial/p073_101.jpg',
+      '/imgs/commercial/p073_102.jpg',
     ],
   },
   {
@@ -60,7 +68,8 @@ export const caseStudies: CaseStudy[] = [
     category: 'Residential',
     description: 'A premium builder floor blending comfort, functionality and exclusivity with a modern façade and luxury design — redefining contemporary urban living.',
     keyStat: '475 sq yd',
-    images: [      '/imgs/residential/p076_107.jpg',
+    images: [
+      '/imgs/residential/p076_107.jpg',
       '/imgs/residential/image.png',
     ],
   },
@@ -91,7 +100,8 @@ export const caseStudies: CaseStudy[] = [
     title: 'IIT Ropar Project',
     category: 'Government',
     description: 'Government and Institutional Project.',
-    images: [      '/imgs/commercial/p090_121.jpg',
+    images: [
+      '/imgs/commercial/p090_121.jpg',
       '/imgs/commercial/p091_122.jpg',
       '/imgs/commercial/p092_123.jpg',
     ],
@@ -101,7 +111,8 @@ export const caseStudies: CaseStudy[] = [
     title: 'LIC Project',
     category: 'Government',
     description: 'Government and Institutional Project.',
-    images: [      '/imgs/commercial/p094_125.jpg',
+    images: [
+      '/imgs/commercial/p094_125.jpg',
       '/imgs/commercial/p095_126.jpg',
       '/imgs/commercial/p096_127.jpg',
     ],
@@ -111,8 +122,11 @@ export const caseStudies: CaseStudy[] = [
     title: 'IEML Project',
     category: 'Government',
     description: 'Government and Institutional Project.',
-    images: [      '/imgs/commercial/p098_129.jpg',
+    images: [
+      '/imgs/commercial/p098_129.jpg',
       '/imgs/commercial/p099_130.jpg',
+      '/imgs/commercial/p099_131.jpg',
+      '/imgs/commercial/p099_132.jpg',
     ],
   },
   {
@@ -125,3 +139,4 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
 ];
+
