@@ -24,11 +24,13 @@ import adminRoutes from './routes/admin';
 import projectsRoutes from './routes/projects';
 import contactRoutes from './routes/contact';
 import authRoutes from './routes/auth';
+import seoRoutes from './routes/seo';
 
 app.use('/api/admin', adminRoutes);
 app.use('/api/admin/projects', projectsRoutes);
 app.use('/api/admin', authRoutes); // login/logout
 app.use('/api/contact', contactRoutes);
+app.use('/api/seo', seoRoutes);
 
 app.listen(PORT, () => {
   console.log(`Backend running on port ${PORT}`);

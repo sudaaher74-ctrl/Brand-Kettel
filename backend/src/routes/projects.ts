@@ -32,7 +32,9 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const db = await getDb();
   if (!db) return res.status(503).json({ error: 'Database not configured' });
-  const doc = await db.collection('projects').findOne({ _id: new ObjectId(req.params.id) });
+  const isObjectId = /^[0-9a-fA-F]{24}$/.test(req.params.id);
+  const query = isObjectId ? { _id: new ObjectId(req.params.id) } : { slug: req.params.id };
+  const doc = await db.collection('projects').findOne(query);
   if (!doc) return res.status(404).json({ error: 'Not found' });
   res.json({ ...doc, id: doc._id.toString(), _id: undefined });
 });

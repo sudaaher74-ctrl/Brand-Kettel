@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import SmoothScroll from '@/components/providers/SmoothScroll';
+import StickyContact from '@/components/ui/StickyContact';
 
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -17,6 +18,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       <Navbar />
       <main>{children}</main>
       <Footer />
+      <StickyContact />
     </SmoothScroll>
   );
 }

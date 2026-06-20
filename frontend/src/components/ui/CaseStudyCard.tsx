@@ -13,18 +13,21 @@ export default function CaseStudyCard({ project, index }: { project: CaseStudy; 
   // keeping it simple is often best for performance.
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const mainImage = project.images[currentImageIndex] || project.images[0];
-  const hasMultiple = project.images.length > 1;
+  const imagesArray = project.images || (project as any).gallery || [(project as any).image].filter(Boolean) || [];
+  const mainImage = imagesArray[currentImageIndex] || imagesArray[0] || '';
+  const hasMultiple = imagesArray.length > 1;
 
   return (
     <article className="group flex h-full flex-col overflow-hidden bg-card shadow-card transition-shadow duration-300 hover:shadow-float">
       <div className="relative aspect-[4/3] w-full overflow-hidden">
+        {mainImage && (
         <img
           src={mainImage}
           alt={`${project.title} — ${project.category}`}
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
         />
+        )}
       </div>
     </article>
   );

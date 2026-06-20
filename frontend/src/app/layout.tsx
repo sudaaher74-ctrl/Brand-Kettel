@@ -79,6 +79,23 @@ const orgJsonLd = {
   ],
 };
 
+const localBusinessJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Brand Kettle BuildSpaces',
+  image: `${SITE_URL}/logo.png`,
+  telephone: '+919999999999',
+  url: SITE_URL,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Corporate Office',
+    addressLocality: 'Mumbai',
+    addressRegion: 'Maharashtra',
+    postalCode: '400001',
+    addressCountry: 'IN'
+  }
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
@@ -86,6 +103,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
         <SiteShell>{children}</SiteShell>
       </body>
