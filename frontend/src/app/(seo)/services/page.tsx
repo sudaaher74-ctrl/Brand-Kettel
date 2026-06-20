@@ -4,6 +4,7 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import Reveal from '@/components/ui/Reveal';
 import { services as fallbackServices } from '@/lib/data';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Services — Design, Build & Furnish',
@@ -51,12 +52,12 @@ export default async function ServicesPage() {
               <Reveal key={s.title} index={i % 3}>
                 <article className="group h-full overflow-hidden rounded-3xl bg-card shadow-card transition-shadow duration-300 hover:shadow-float">
                   <div className="relative aspect-[16/10] overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={s.image}
                       alt={s.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
+                      className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </div>
                   <div className="p-6">

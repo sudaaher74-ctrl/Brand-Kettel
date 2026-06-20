@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import MagneticButton from '@/components/ui/MagneticButton';
+import Image from 'next/image';
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -30,11 +31,13 @@ export default function Hero() {
           className="absolute inset-0 will-change-transform"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/imgs/commercial/home1.png"
             alt="Modern commercial office interior by Brand Kettle BuildSpaces"
-            className="h-full w-full object-cover"
-            fetchPriority="high"
+            className="object-cover"
+            fill
+            priority
+            sizes="100vw"
           />
         </motion.div>
 

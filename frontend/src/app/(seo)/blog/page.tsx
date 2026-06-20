@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Reveal from '@/components/ui/Reveal';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Blog — Insights on Commercial Interior Design',
@@ -71,12 +72,12 @@ export default async function BlogPage() {
               <Reveal key={p.id} index={i % 3}>
                 <article className="group h-full overflow-hidden rounded-3xl bg-card shadow-card transition-shadow duration-300 hover:shadow-float">
                   <div className="relative aspect-[16/10] overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={p.coverImage}
                       alt={p.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
+                      className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </div>
                   <div className="p-6">

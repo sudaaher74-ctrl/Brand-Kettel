@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import type { CaseStudy } from '@/lib/projectsData';
+import Image from 'next/image';
 
 // We reuse group-hover styles from the existing site.
 // We display the first image in the card. It's possible to do a carousel,
@@ -21,11 +22,12 @@ export default function CaseStudyCard({ project, index }: { project: CaseStudy; 
     <article className="group flex h-full flex-col overflow-hidden bg-card shadow-card transition-shadow duration-300 hover:shadow-float">
       <div className="relative aspect-[4/3] w-full overflow-hidden">
         {mainImage && (
-        <img
+        <Image
           src={mainImage}
           alt={`${project.title} — ${project.category}`}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
+          className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
+          fill
+          sizes="(max-width: 640px) 100vw, 50vw"
         />
         )}
       </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function PageHero({
   eyebrow,
@@ -53,13 +54,14 @@ export default function PageHero({
             transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="scene"
           >
-            <div className="overflow-hidden rounded-[2rem] shadow-float" style={{ transformStyle: 'preserve-3d' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] shadow-float" style={{ transformStyle: 'preserve-3d' }}>
+              <Image
                 src={image}
                 alt={title}
-                className="aspect-[4/3] w-full object-cover"
-                fetchPriority="high"
+                className="object-cover"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
           </motion.div>

@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 
 type BlogPost = {
   id: string;
@@ -72,7 +73,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {post.image && (
           <div className="mb-12 rounded-2xl overflow-hidden aspect-[21/9] relative">
-            <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+            <Image src={post.image} alt={post.title} className="object-cover" fill sizes="100vw" priority />
           </div>
         )}
 

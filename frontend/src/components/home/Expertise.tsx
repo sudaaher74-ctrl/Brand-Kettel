@@ -2,6 +2,7 @@
 
 import SectionHeading from '@/components/ui/SectionHeading';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 type Service = {
   tag: string;
@@ -39,12 +40,12 @@ export default function Expertise({ services }: { services: Service[] }) {
               className="group relative w-[78vw] max-w-[340px] shrink-0 snap-start overflow-hidden rounded-none bg-card shadow-card sm:w-[360px]"
             >
               <div className="relative aspect-[3/4] overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={s.image}
                   alt={s.title}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 360px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
                 <span className="absolute right-4 top-4 rounded-sm bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-accent">

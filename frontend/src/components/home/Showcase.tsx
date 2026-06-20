@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion';
 import type { Project } from '@/lib/data';
+import Image from 'next/image';
 
 export default function Showcase({ featured }: { featured: Project }) {
   const facts = [
@@ -29,12 +30,12 @@ export default function Showcase({ featured }: { featured: Project }) {
       <div className="sticky top-0 h-svh w-full scene overflow-hidden">
         {/* Background image layer */}
         <motion.div style={{ scale: imgScale, y: imgY }} className="absolute inset-0 will-change-transform">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={featured.image}
             alt={`${featured.name} — ${featured.category}`}
-            loading="lazy"
-            className="h-full w-full object-cover"
+            className="object-cover"
+            fill
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/30 to-black/60" />
         </motion.div>

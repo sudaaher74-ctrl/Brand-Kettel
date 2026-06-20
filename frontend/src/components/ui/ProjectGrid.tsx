@@ -1,5 +1,6 @@
 import type { Project } from '@/lib/data';
 import Reveal from './Reveal';
+import Image from 'next/image';
 
 export default function ProjectGrid({ items }: { items: Project[] }) {
   return (
@@ -9,11 +10,12 @@ export default function ProjectGrid({ items }: { items: Project[] }) {
           <article className="group h-full overflow-hidden rounded-none bg-card shadow-card transition-shadow duration-300 hover:shadow-float">
             <div className="relative aspect-[4/3] overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={p.image}
                 alt={`${p.name} — ${p.category}`}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
+                className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </div>
           </article>

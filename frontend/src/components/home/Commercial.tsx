@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import MagneticButton from '@/components/ui/MagneticButton';
+import Image from 'next/image';
 
 export default function Commercial() {
   const ref = useRef<HTMLDivElement>(null);
@@ -22,12 +23,12 @@ export default function Commercial() {
     <section ref={ref} className="relative h-[220vh] bg-background">
       <div className="sticky top-0 h-svh w-full overflow-hidden">
         <motion.div style={{ scale, x }} className="absolute inset-0 will-change-transform">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/imgs/p061_076.jpg"
             alt="Cinematic walkthrough of a commercial workspace interior"
-            loading="lazy"
-            className="h-full w-full object-cover"
+            className="object-cover"
+            fill
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/90 via-black/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/70 to-transparent" />

@@ -60,7 +60,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
         {project.image && (
           <div className="mb-16 rounded-2xl overflow-hidden aspect-video relative">
-            <img src={project.image} alt={project.name} className="w-full h-full object-cover" />
+            <Image src={project.image} alt={project.name} className="object-cover" fill sizes="100vw" priority />
           </div>
         )}
 
@@ -75,8 +75,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         {project.gallery && project.gallery.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {project.gallery.map((img, i) => (
-              <div key={i} className="rounded-2xl overflow-hidden aspect-video">
-                <img src={img} alt={`${project.name} gallery image ${i + 1}`} loading="lazy" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <div key={i} className="rounded-2xl overflow-hidden aspect-video relative">
+                <Image src={img} alt={`${project.name} gallery image ${i + 1}`} className="object-cover hover:scale-105 transition-transform duration-500" fill sizes="(max-width: 768px) 100vw, 50vw" />
               </div>
             ))}
           </div>

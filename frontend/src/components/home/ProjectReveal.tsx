@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import type { Project } from '@/lib/data';
 import SectionHeading from '@/components/ui/SectionHeading';
 import TiltCard from '@/components/ui/TiltCard';
+import Image from 'next/image';
 
 export default function ProjectReveal({ projects }: { projects: Project[] }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -51,13 +52,13 @@ function FloatingCard({
     <motion.div style={{ y }} className="will-change-transform">
       <TiltCard className="group h-full overflow-hidden rounded-none bg-card shadow-card">
         <div className="relative aspect-[4/3] overflow-hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={project.image}
             alt={`${project.name} — ${project.category}`}
-            loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
+            className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
             style={{ transform: 'translateZ(40px)' }}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
           <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink/45 to-transparent" />
           <span className="absolute left-4 top-4 rounded-sm bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-accent">
