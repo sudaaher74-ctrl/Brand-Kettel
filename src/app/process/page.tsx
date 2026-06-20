@@ -15,7 +15,7 @@ export default function ProcessPage() {
         eyebrow="Process"
         title="A disciplined path from idea to handover"
         subtitle="Six stages designed to remove uncertainty and deliver your space on time."
-        image="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1400&q=70"
+        image="/imgs/p061_076.jpg"
       />
       <Process />
     </>

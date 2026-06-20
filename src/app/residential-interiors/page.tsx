@@ -21,7 +21,7 @@ export default function ResidentialPage() {
         eyebrow="Residential interiors"
         title="Premium homes, crafted with care"
         subtitle="A refined, secondary practice for private clients who value the same execution discipline we bring to commercial work."
-        image="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=70"
+        image="/imgs/p061_076.jpg"
       />
 
       <section className="bg-background py-16 sm:py-24">

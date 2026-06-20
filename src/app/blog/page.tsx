@@ -15,21 +15,21 @@ const posts = [
     excerpt: 'From bare shell to move-in ready — the scope, stages and decisions that shape a turnkey project.',
     category: 'Commercial',
     date: 'Jun 2026',
-    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=70',
+    image: '/imgs/p061_076.jpg',
   },
   {
     title: 'Designing office interiors for hybrid teams',
     excerpt: 'How workplace design is adapting to flexible attendance, focus work and collaboration.',
     category: 'Office',
     date: 'May 2026',
-    image: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=1200&q=70',
+    image: '/imgs/p061_076.jpg',
   },
   {
     title: 'Lighting strategies for jewellery showrooms',
     excerpt: 'Why precision lighting is the single most important decision in showroom design.',
     category: 'Retail',
     date: 'Apr 2026',
-    image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1200&q=70',
+    image: '/imgs/p061_076.jpg',
   },
 ];
 
@@ -40,7 +40,7 @@ export default function BlogPage() {
         eyebrow="Blog"
         title="Insights from the build floor"
         subtitle="Practical thinking on commercial interiors, fit-outs and turnkey delivery."
-        image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=70"
+        image="/imgs/p061_076.jpg"
       />
 
       <section className="bg-background py-16 sm:py-24">

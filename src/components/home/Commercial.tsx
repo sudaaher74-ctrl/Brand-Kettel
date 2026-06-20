@@ -23,7 +23,7 @@ export default function Commercial() {
         <motion.div style={{ scale, x }} className="absolute inset-0 will-change-transform">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=1600&q=70"
+            src="/imgs/p061_076.jpg"
             alt="Cinematic walkthrough of a commercial workspace interior"
             loading="lazy"
             className="h-full w-full object-cover"

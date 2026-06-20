@@ -27,7 +27,7 @@ export default function CommercialProjectsPage() {
         eyebrow="Commercial projects"
         title="Spaces engineered for performance and brand impact"
         subtitle="Our core expertise — office interiors, retail environments, showrooms and turnkey commercial campuses."
-        image="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=70"
+        image="/imgs/p061_076.jpg"
       />
 
       <section className="bg-background py-16 sm:py-24">

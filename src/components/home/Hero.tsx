@@ -30,7 +30,7 @@ export default function Hero() {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=70"
+            src="/imgs/p061_076.jpg"
             alt="Modern commercial office interior by Brand Kettle BuildSpaces"
             className="h-full w-full object-cover"
             fetchPriority="high"

@@ -25,7 +25,7 @@ export default function ServicesPage() {
         eyebrow="Services"
         title="Design, Build & Furnish — under one roof"
         subtitle="Six disciplines, one accountable team, delivered end-to-end from concept to handover."
-        image="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1400&q=70"
+        image="/imgs/p061_076.jpg"
       />
 
       <section className="bg-background py-16 sm:py-24">
