@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion';
 import type { Project } from '@/lib/data';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Showcase({ featured }: { featured: Project }) {
   const facts = [
@@ -52,6 +53,11 @@ export default function Showcase({ featured }: { featured: Project }) {
             <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-semibold leading-tight text-ink sm:text-5xl">
               A turnkey commercial campus, delivered end-to-end
             </h2>
+            <div className="mt-8 flex justify-center pointer-events-auto">
+              <Link href={`/portfolio/${featured.slug}`} className="btn-accent">
+                View Project Details
+              </Link>
+            </div>
           </div>
         </motion.div>
 

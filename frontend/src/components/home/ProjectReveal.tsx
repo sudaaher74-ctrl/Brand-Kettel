@@ -6,6 +6,7 @@ import type { Project } from '@/lib/data';
 import SectionHeading from '@/components/ui/SectionHeading';
 import TiltCard from '@/components/ui/TiltCard';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function ProjectReveal({ projects }: { projects: Project[] }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -50,30 +51,32 @@ function FloatingCard({
 
   return (
     <motion.div style={{ y }} className="will-change-transform">
-      <TiltCard className="group h-full overflow-hidden rounded-none bg-card shadow-card">
-        <div className="relative aspect-[4/3] overflow-hidden">
-          <Image
-            src={project.image}
-            alt={`${project.name} — ${project.category}`}
-            className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
-            style={{ transform: 'translateZ(40px)' }}
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink/45 to-transparent" />
-          <span className="absolute left-4 top-4 rounded-sm bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-accent">
-            {String(index + 1).padStart(2, '0')}
-          </span>
-          <div className="absolute inset-x-0 bottom-0 p-4" style={{ transform: 'translateZ(60px)' }}>
-            <p className="text-xs font-medium text-white/80">{project.category}</p>
-            <h3 className="font-display text-lg font-semibold text-white">{project.name}</h3>
+      <Link href={`/portfolio/${project.slug}`} className="block h-full group">
+        <TiltCard className="h-full overflow-hidden rounded-none bg-card shadow-card">
+          <div className="relative aspect-[4/3] overflow-hidden">
+            <Image
+              src={project.image}
+              alt={`${project.name} — ${project.category}`}
+              className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
+              style={{ transform: 'translateZ(40px)' }}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink/45 to-transparent" />
+            <span className="absolute left-4 top-4 rounded-sm bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-accent">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div className="absolute inset-x-0 bottom-0 p-4" style={{ transform: 'translateZ(60px)' }}>
+              <p className="text-xs font-medium text-white/80">{project.category}</p>
+              <h3 className="font-display text-lg font-semibold text-white">{project.name}</h3>
+            </div>
           </div>
-        </div>
-        <div className="flex items-center justify-between p-4">
-          <span className="text-sm text-ink-muted">{project.location}</span>
-          <span className="text-sm font-semibold text-ink">{project.area}</span>
-        </div>
-      </TiltCard>
+          <div className="flex items-center justify-between p-4">
+            <span className="text-sm text-ink-muted">{project.location}</span>
+            <span className="text-sm font-semibold text-ink">{project.area}</span>
+          </div>
+        </TiltCard>
+      </Link>
     </motion.div>
   );
 }
