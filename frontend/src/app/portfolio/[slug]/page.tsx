@@ -117,7 +117,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <div className="max-w-3xl mx-auto bg-surface rounded-3xl p-8 md:p-12 border border-line">
           <div className="mb-8 text-center">
             <h2 className="font-display text-3xl text-ink mb-4">Inspired by this space?</h2>
-            <p className="text-ink-muted">Let's discuss how we can create something similar for your brand. Fill out the form below and our team will get in touch.</p>
+            <p className="text-ink-muted">Let&apos;s discuss how we can create something similar for your brand. Fill out the form below and our team will get in touch.</p>
           </div>
           <ConsultationForm />
         </div>
