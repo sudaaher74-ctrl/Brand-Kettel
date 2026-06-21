@@ -42,7 +42,7 @@ export default async function CommercialProjectsPage() {
         eyebrow="Commercial projects"
         title="Spaces engineered for performance and brand impact"
         subtitle="Our core expertise — office interiors, retail environments, showrooms and turnkey commercial campuses."
-        image="/imgs/commercial/p071_096.jpg"
+        image="/imgs/commercial/Havana lounge1.jpg"
       />
 
       <section className="bg-background py-16 sm:py-24">
