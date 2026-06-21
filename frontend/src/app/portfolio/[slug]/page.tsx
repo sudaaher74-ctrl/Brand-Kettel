@@ -72,9 +72,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   return (
     <article className="pt-32 pb-24">
-      <div className="container mx-auto px-6">
-        <header className="mb-16">
-          <h1 className="font-display text-4xl md:text-6xl text-slate-900 mb-6">{project.name}</h1>
+      <div className="container mx-auto px-6 max-w-5xl">
+        <header className="mb-12">
+          <h1 className="font-display text-4xl md:text-5xl text-slate-900 mb-6">{project.name}</h1>
           <div className="flex flex-wrap gap-6 text-sm text-slate-600">
             {project.location && <div><span className="font-bold block text-slate-900">Location</span>{project.location}</div>}
             {project.category && <div><span className="font-bold block text-slate-900">Category</span>{project.category}</div>}
@@ -84,13 +84,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </header>
 
         {project.image && (
-          <div className="mb-16 rounded-2xl overflow-hidden aspect-video relative">
-            <Image src={project.image} alt={project.name} className="object-cover" fill sizes="100vw" priority />
+          <div className="mb-12 rounded-2xl overflow-hidden aspect-[16/7] relative w-full">
+            <Image src={project.image} alt={project.name} className="object-cover" fill sizes="(max-width: 1024px) 100vw, 1024px" priority />
           </div>
         )}
 
         {project.blurb && (
-          <div className="max-w-3xl mb-16 text-lg text-slate-700 leading-relaxed">
+          <div className="mb-16 text-lg text-slate-700 leading-relaxed max-w-4xl">
             {project.blurb.split('\n').map((para, i) => (
               <p key={i} className="mb-4">{para}</p>
             ))}
@@ -98,10 +98,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         )}
 
         {project.gallery && project.gallery.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {project.gallery.map((img, i) => (
-              <div key={i} className="rounded-2xl overflow-hidden aspect-video relative">
-                <Image src={img} alt={`${project.name} gallery image ${i + 1}`} className="object-cover hover:scale-105 transition-transform duration-500" fill sizes="(max-width: 768px) 100vw, 50vw" />
+              <div key={i} className="rounded-xl overflow-hidden aspect-[4/3] relative">
+                <Image src={img} alt={`${project.name} gallery image ${i + 1}`} className="object-cover hover:scale-105 transition-transform duration-500" fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
               </div>
             ))}
           </div>
