@@ -50,7 +50,7 @@ export default function AboutPage() {
         eyebrow="About us"
         title="Crafted, Built and Experienced"
         subtitle="We combine design thinking, manufacturing capability and turnkey execution to deliver spaces that are functional, immersive and built to last."
-        image="/imgs/p061_076.jpg"
+        image="/imgs/commercial/home1.png"
       />
 
       {/* ── Company Introduction ── */}

@@ -20,7 +20,7 @@ const PLACEHOLDER_POSTS = [
     excerpt: 'From bare shell to move-in ready — the scope, stages and decisions that shape a turnkey project.',
     category: 'Commercial',
     createdAt: new Date('2026-06-01'),
-    coverImage: '/imgs/p061_076.jpg',
+    coverImage: '/imgs/commercial/p073_101.jpg',
   },
   {
     id: 'placeholder-2',
@@ -28,7 +28,7 @@ const PLACEHOLDER_POSTS = [
     excerpt: 'How workplace design is adapting to flexible attendance, focus work and collaboration.',
     category: 'Office',
     createdAt: new Date('2026-05-01'),
-    coverImage: '/imgs/p061_076.jpg',
+    coverImage: '/imgs/commercial/p073_101.jpg',
   },
   {
     id: 'placeholder-3',
@@ -36,7 +36,7 @@ const PLACEHOLDER_POSTS = [
     excerpt: 'Why precision lighting is the single most important decision in showroom design.',
     category: 'Retail',
     createdAt: new Date('2026-04-01'),
-    coverImage: '/imgs/p061_076.jpg',
+    coverImage: '/imgs/commercial/p073_101.jpg',
   },
 ];
 

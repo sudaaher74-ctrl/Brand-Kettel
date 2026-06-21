@@ -41,7 +41,7 @@ export default async function ServicesPage() {
         eyebrow="Services"
         title="Design, Build & Furnish — under one roof"
         subtitle="Six disciplines, one accountable team, delivered end-to-end from concept to handover."
-        image="/imgs/p061_076.jpg"
+        image="/imgs/commercial/jwellary.png"
       />
 
       <section className="bg-background py-16 sm:py-24">
