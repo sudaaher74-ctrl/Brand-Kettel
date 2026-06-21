@@ -16,7 +16,7 @@ export default function StickyContact() {
       </a>
       <a
         href="tel:+919999999999"
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-slate-900 text-white shadow-lg transition-transform hover:scale-110"
+        className="hidden sm:flex h-14 w-14 items-center justify-center rounded-full bg-slate-900 text-white shadow-lg transition-transform hover:scale-110"
         aria-label="Call Us"
       >
         <svg fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" className="h-6 w-6">
