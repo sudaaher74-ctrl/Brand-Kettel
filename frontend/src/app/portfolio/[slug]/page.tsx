@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { projects as fallbackProjects } from '@/lib/data';
+import ConsultationForm from '@/components/forms/ConsultationForm';
 
 type Project = {
   id: string;
@@ -39,13 +40,11 @@ async function getProject(slug: string): Promise<Project | null> {
   try {
     const res = await fetch(`${API_URL}/api/admin/projects/${slug}`, { next: { revalidate: 60 } });
     if (!res.ok) {
-      // Fallback to static data if backend is not available
       const fallback = fallbackProjects.find(p => p.slug === slug);
       return fallback ? mapToProject(fallback) : null;
     }
     return res.json();
   } catch (e) {
-    // Fallback to static data if fetch throws
     const fallback = fallbackProjects.find(p => p.slug === slug);
     return fallback ? mapToProject(fallback) : null;
   }
@@ -105,7 +104,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
         {/* Downside: All Images */}
         {project.gallery && project.gallery.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-24">
             {project.gallery.map((img, i) => (
               <div key={i} className="rounded-xl overflow-hidden aspect-[4/3] relative">
                 <Image src={img} alt={`${project.name} gallery image ${i + 1}`} className="object-cover hover:scale-105 transition-transform duration-500" fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
@@ -113,6 +112,15 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             ))}
           </div>
         )}
+
+        {/* Consultation Form Section */}
+        <div className="max-w-3xl mx-auto bg-surface rounded-3xl p-8 md:p-12 border border-line">
+          <div className="mb-8 text-center">
+            <h2 className="font-display text-3xl text-ink mb-4">Inspired by this space?</h2>
+            <p className="text-ink-muted">Let's discuss how we can create something similar for your brand. Fill out the form below and our team will get in touch.</p>
+          </div>
+          <ConsultationForm />
+        </div>
       </div>
     </article>
   );
