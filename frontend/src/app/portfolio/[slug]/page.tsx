@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { caseStudies as fallbackProjects } from '@/lib/projectsData';
+import { projects as fallbackProjects } from '@/lib/data';
 
 type Project = {
   id: string;
@@ -17,19 +17,19 @@ type Project = {
   blurb: string;
 };
 
-function mapCaseStudyToProject(c: typeof fallbackProjects[0]): Project {
+function mapToProject(p: typeof fallbackProjects[0]): Project {
   return {
-    id: c.slug,
-    slug: c.slug,
-    name: c.title,
-    location: c.location || '',
-    category: c.category,
-    area: c.keyStat || '',
-    year: '',
-    segment: '',
-    image: c.images[0] || '',
-    gallery: c.images,
-    blurb: c.description
+    id: p.slug,
+    slug: p.slug,
+    name: p.name,
+    location: p.location || '',
+    category: p.category || '',
+    area: p.area || '',
+    year: p.year || '',
+    segment: p.segment || '',
+    image: p.image || '',
+    gallery: p.gallery || [],
+    blurb: p.blurb || ''
   };
 }
 
@@ -41,13 +41,13 @@ async function getProject(slug: string): Promise<Project | null> {
     if (!res.ok) {
       // Fallback to static data if backend is not available
       const fallback = fallbackProjects.find(p => p.slug === slug);
-      return fallback ? mapCaseStudyToProject(fallback) : null;
+      return fallback ? mapToProject(fallback) : null;
     }
     return res.json();
   } catch (e) {
     // Fallback to static data if fetch throws
     const fallback = fallbackProjects.find(p => p.slug === slug);
-    return fallback ? mapCaseStudyToProject(fallback) : null;
+    return fallback ? mapToProject(fallback) : null;
   }
 }
 
