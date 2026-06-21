@@ -77,8 +77,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           {/* Left Side: Information */}
           <div className="flex flex-col">
             <header className="mb-8">
-              <h1 className="font-display text-4xl md:text-5xl text-slate-900 mb-8">{project.name}</h1>
-              <div className="flex flex-col gap-4 text-sm text-slate-900">
+              <h1 className="font-display text-4xl md:text-5xl text-white mb-8">{project.name}</h1>
+              <div className="flex flex-col gap-4 text-sm text-white">
                 {project.location && <div className="grid grid-cols-[100px_1fr]"><span className="font-bold">Location</span><span>{project.location}</span></div>}
                 {project.category && <div className="grid grid-cols-[100px_1fr]"><span className="font-bold">Category</span><span>{project.category}</span></div>}
                 {project.area && <div className="grid grid-cols-[100px_1fr]"><span className="font-bold">Area</span><span>{project.area} sq ft</span></div>}
@@ -87,7 +87,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </header>
 
             {project.blurb && (
-              <div className="text-lg text-slate-900 leading-relaxed">
+              <div className="text-lg text-white leading-relaxed">
                 {project.blurb.split('\n').map((para, i) => (
                   <p key={i} className="mb-4">{para}</p>
                 ))}
