@@ -72,33 +72,40 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   return (
     <article className="pt-32 pb-24">
-      <div className="container mx-auto px-6 max-w-5xl">
-        <header className="mb-12">
-          <h1 className="font-display text-4xl md:text-5xl text-slate-900 mb-6">{project.name}</h1>
-          <div className="flex flex-wrap gap-6 text-sm text-slate-900">
-            {project.location && <div><span className="font-bold block text-slate-900">Location</span>{project.location}</div>}
-            {project.category && <div><span className="font-bold block text-slate-900">Category</span>{project.category}</div>}
-            {project.area && <div><span className="font-bold block text-slate-900">Area</span>{project.area} sq ft</div>}
-            {project.year && <div><span className="font-bold block text-slate-900">Year</span>{project.year}</div>}
-          </div>
-        </header>
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-20">
+          {/* Left Side: Information */}
+          <div className="flex flex-col">
+            <header className="mb-8">
+              <h1 className="font-display text-4xl md:text-5xl text-slate-900 mb-8">{project.name}</h1>
+              <div className="flex flex-col gap-4 text-sm text-slate-900">
+                {project.location && <div className="grid grid-cols-[100px_1fr]"><span className="font-bold">Location</span><span>{project.location}</span></div>}
+                {project.category && <div className="grid grid-cols-[100px_1fr]"><span className="font-bold">Category</span><span>{project.category}</span></div>}
+                {project.area && <div className="grid grid-cols-[100px_1fr]"><span className="font-bold">Area</span><span>{project.area} sq ft</span></div>}
+                {project.year && <div className="grid grid-cols-[100px_1fr]"><span className="font-bold">Year</span><span>{project.year}</span></div>}
+              </div>
+            </header>
 
-        {project.image && (
-          <div className="mb-12 rounded-2xl overflow-hidden aspect-[16/7] relative w-full">
-            <Image src={project.image} alt={project.name} className="object-cover" fill sizes="(max-width: 1024px) 100vw, 1024px" priority />
+            {project.blurb && (
+              <div className="text-lg text-slate-900 leading-relaxed">
+                {project.blurb.split('\n').map((para, i) => (
+                  <p key={i} className="mb-4">{para}</p>
+                ))}
+              </div>
+            )}
           </div>
-        )}
 
-        {project.blurb && (
-          <div className="mb-16 text-lg text-slate-900 leading-relaxed max-w-4xl">
-            {project.blurb.split('\n').map((para, i) => (
-              <p key={i} className="mb-4">{para}</p>
-            ))}
-          </div>
-        )}
+          {/* Right Side: Main Image */}
+          {project.image && (
+            <div className="rounded-2xl overflow-hidden aspect-[4/3] lg:aspect-[4/5] xl:aspect-square relative w-full lg:sticky lg:top-32">
+              <Image src={project.image} alt={project.name} className="object-cover" fill sizes="(max-width: 1024px) 100vw, 50vw" priority />
+            </div>
+          )}
+        </div>
 
+        {/* Downside: All Images */}
         {project.gallery && project.gallery.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {project.gallery.map((img, i) => (
               <div key={i} className="rounded-xl overflow-hidden aspect-[4/3] relative">
                 <Image src={img} alt={`${project.name} gallery image ${i + 1}`} className="object-cover hover:scale-105 transition-transform duration-500" fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" />
