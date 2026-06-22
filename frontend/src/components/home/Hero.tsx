@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -8,10 +9,17 @@ import MagneticButton from '@/components/ui/MagneticButton';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const bgImages = [
+  '/imgs/commercial/home1.png',
+  '/imgs/commercial/brandkettle4.jpg',
+  '/imgs/commercial/khimji1.jpg',
+  '/imgs/commercial/work co workspace.jpg',
+  '/imgs/commercial/jwellary2.png'
+];
+
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoWrapperRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -80,6 +88,45 @@ export default function Hero() {
           scrub: true,
         },
       });
+
+      // Background Slideshow Animation (Video-like Ken Burns effect)
+      const slides = gsap.utils.toArray('.bg-slide') as HTMLElement[];
+      
+      if (slides.length > 1) {
+        // Initialize all slides
+        gsap.set(slides, { opacity: 0, scale: 1, zIndex: 1 });
+        gsap.set(slides[0] as HTMLElement, { opacity: 1, zIndex: 2 });
+        
+        const slideTl = gsap.timeline({ repeat: -1 });
+        
+        slides.forEach((slide: HTMLElement, i) => {
+          const nextIndex = (i + 1) % slides.length;
+          const nextSlide = slides[nextIndex] as HTMLElement;
+          
+          slideTl
+            // Pan and scale the current slide slowly
+            .to(slide, {
+              scale: 1.15,
+              duration: 5,
+              ease: 'none',
+            })
+            // Prepare next slide to be on top and fade it in
+            .set(nextSlide, { zIndex: 3 })
+            .to(nextSlide, {
+              opacity: 1,
+              duration: 1.5,
+              ease: 'power2.inOut',
+            }, '-=1.5')
+            // Reset the old slide once the crossfade is done
+            .set(slide, {
+              opacity: 0,
+              scale: 1,
+              zIndex: 1
+            })
+            // Update nextSlide to be the new active background layer
+            .set(nextSlide, { zIndex: 2 });
+        });
+      }
     }, containerRef);
 
     return () => ctx.revert();
@@ -90,25 +137,29 @@ export default function Hero() {
       ref={containerRef} 
       className="relative h-[100svh] w-full overflow-hidden bg-[#0F172A]"
     >
-      {/* Video Background with Parallax */}
+      {/* Animated Image Slideshow Background with Parallax */}
       <div className="absolute inset-0 h-[120%] -top-[10%] w-full" ref={videoWrapperRef}>
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="h-full w-full object-cover"
-          poster="/imgs/commercial/home1.png"
-        >
-          {/* Placeholder premium architecture video */}
-          <source src="https://cdn.coverr.co/videos/coverr-modern-office-space-2615/1080p.mp4" type="video/mp4" />
-        </video>
+        {bgImages.map((src, index) => (
+          <div 
+            key={src} 
+            className="bg-slide absolute inset-0 h-full w-full will-change-transform"
+            style={{ zIndex: index === 0 ? 2 : 1 }}
+          >
+            <Image
+              src={src}
+              alt={`Brand Kettle Commercial Project ${index + 1}`}
+              fill
+              priority={index === 0}
+              className="object-cover"
+              sizes="100vw"
+            />
+          </div>
+        ))}
       </div>
 
       {/* 40% Dark Overlay */}
-      <div className="absolute inset-0 bg-[#0F172A]/40 z-10" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-black/20 z-10" />
+      <div className="absolute inset-0 bg-[#0F172A]/40 z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-black/20 z-10 pointer-events-none" />
 
       {/* Hero Content */}
       <div 
