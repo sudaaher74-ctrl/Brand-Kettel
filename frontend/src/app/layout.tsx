@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next';
 import { Inter, Fraunces } from 'next/font/google';
 import './globals.css';
 import SiteShell from '@/components/layout/SiteShell';
-import CustomCursor from '@/components/ui/CustomCursor';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -109,7 +108,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
-        <CustomCursor />
         <SiteShell>{children}</SiteShell>
       </body>
     </html>
