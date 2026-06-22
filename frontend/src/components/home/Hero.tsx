@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoWrapperRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -56,7 +57,7 @@ export default function Hero() {
       );
 
       // Parallax effect on scroll
-      gsap.to(videoRef.current, {
+      gsap.to(videoWrapperRef.current, {
         y: '15%',
         ease: 'none',
         scrollTrigger: {
@@ -90,8 +91,9 @@ export default function Hero() {
       className="relative h-[100svh] w-full overflow-hidden bg-[#0F172A]"
     >
       {/* Video Background with Parallax */}
-      <div className="absolute inset-0 h-[120%] -top-[10%] w-full" ref={videoRef}>
+      <div className="absolute inset-0 h-[120%] -top-[10%] w-full" ref={videoWrapperRef}>
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
