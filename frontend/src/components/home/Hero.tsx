@@ -1,142 +1,170 @@
 'use client';
 
 import Link from 'next/link';
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import MagneticButton from '@/components/ui/MagneticButton';
-import Image from 'next/image';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
-  });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
-  // Camera-forward feel: background pushes in, mid layer drifts, content lifts.
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.18]);
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '12%']);
-  const midY = useTransform(scrollYProgress, [0, 1], ['0%', '-18%']);
-  const fgY = useTransform(scrollYProgress, [0, 1], ['0%', '-32%']);
-  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '-10%']);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 1], [0.55, 0.78]);
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Intro animation
+      const tl = gsap.timeline();
+
+      tl.fromTo(
+        '.hero-eyebrow',
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.2 }
+      )
+        .fromTo(
+          '.hero-title',
+          { opacity: 0, y: 50 },
+          { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' },
+          '-=0.8'
+        )
+        .fromTo(
+          '.hero-subtitle',
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 1, ease: 'power3.out' },
+          '-=0.8'
+        )
+        .fromTo(
+          '.hero-btn',
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out' },
+          '-=0.8'
+        )
+        .fromTo(
+          '.scroll-indicator',
+          { opacity: 0 },
+          { opacity: 0.7, duration: 1, ease: 'power2.out' },
+          '-=0.5'
+        );
+
+      // Scroll indicator line animation
+      gsap.fromTo(
+        '.scroll-line',
+        { y: -16, opacity: 0 },
+        { y: 32, opacity: 1, duration: 1.5, repeat: -1, ease: 'power2.inOut' }
+      );
+
+      // Parallax effect on scroll
+      gsap.to(videoRef.current, {
+        y: '15%',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      });
+
+      // Content fade out on scroll
+      gsap.to(contentRef.current, {
+        y: '-10%',
+        opacity: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section ref={ref} className="relative h-[115svh] w-full scene overflow-hidden">
-      <div className="sticky top-0 h-svh w-full overflow-hidden">
-        {/* Background interior — camera pushes forward */}
-        <motion.div
-          style={{ scale: bgScale, y: bgY }}
-          className="absolute inset-0 will-change-transform"
+    <section 
+      ref={containerRef} 
+      className="relative h-[100svh] w-full overflow-hidden bg-[#0F172A]"
+    >
+      {/* Video Background with Parallax */}
+      <div className="absolute inset-0 h-[120%] -top-[10%] w-full" ref={videoRef}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="h-full w-full object-cover"
+          poster="/imgs/commercial/home1.png"
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <Image
-            src="/imgs/commercial/home1.png"
-            alt="Modern commercial office interior by Brand Kettle BuildSpaces"
-            className="object-cover"
-            fill
-            priority
-            sizes="100vw"
-          />
-        </motion.div>
+          {/* Placeholder premium architecture video */}
+          <source src="https://cdn.coverr.co/videos/coverr-modern-office-space-2615/1080p.mp4" type="video/mp4" />
+        </video>
+      </div>
 
-        {/* Deep dark overlay for luxury black theme */}
-        <motion.div
-          style={{ opacity: overlayOpacity }}
-          className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-black/50" />
+      {/* 40% Dark Overlay */}
+      <div className="absolute inset-0 bg-[#0F172A]/40 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-black/20 z-10" />
 
-        {/* Floating mid-depth furniture chip */}
-        <motion.div
-          style={{ y: midY }}
-          className="pointer-events-none absolute right-4 top-[26%] hidden sm:block"
-        >
-          <div className="glass animate-floaty rounded-2xl px-4 py-3 shadow-float">
-            <p className="text-[11px] font-semibold uppercase tracking-widest text-accent">
-              Now building
-            </p>
-            <p className="text-sm font-medium text-ink">42,000 sq.ft HQ · Bengaluru</p>
+      {/* Hero Content */}
+      <div 
+        ref={contentRef}
+        className="relative z-20 flex h-full w-full items-center justify-center px-4 sm:px-8 lg:px-16"
+      >
+        <div className="flex w-full max-w-7xl flex-col items-center justify-center text-center">
+          
+          <div className="hero-eyebrow flex items-center gap-3 mb-6">
+            <span className="h-[2px] w-8 bg-[#C8A97E]" />
+            <span className="text-xs sm:text-sm md:text-base font-semibold tracking-widest text-[#E5E7EB] uppercase">
+              Premium Interior Design
+            </span>
+            <span className="h-[2px] w-8 bg-[#C8A97E]" />
           </div>
-        </motion.div>
 
-        {/* Foreground floating stat */}
-        <motion.div
-          style={{ y: fgY }}
-          className="pointer-events-none absolute bottom-[14%] left-4 hidden sm:block"
-        >
-          <div className="glass rounded-2xl px-4 py-3 shadow-float">
-            <p className="font-display text-2xl font-semibold text-ink">250+</p>
-            <p className="text-xs text-ink-muted">Commercial projects delivered</p>
-          </div>
-        </motion.div>
+          <h1 className="hero-title max-w-5xl text-5xl font-medium leading-[1.1] tracking-tight text-[#FFFFFF] sm:text-6xl md:text-7xl lg:text-8xl">
+            Designing Commercial <br className="hidden md:block" /> Spaces That Inspire
+          </h1>
 
-        {/* Hero content */}
-        <motion.div
-          style={{ y: contentY, opacity: contentOpacity }}
-          className="absolute inset-0 flex items-end pb-20 sm:items-center sm:pb-0"
-        >
-          <div className="container-px">
-            <motion.span
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="eyebrow"
-            >
-              <span className="h-px w-6 bg-accent" />
-              Design · Build · Furnish
-            </motion.span>
+          <p className="hero-subtitle mt-6 max-w-2xl text-lg font-light leading-relaxed text-[#E5E7EB] sm:text-xl">
+            Premium Interior Design, Fit-Out & Turnkey Solutions Across Navi Mumbai
+          </p>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.05] text-ink sm:text-6xl md:text-7xl"
-            >
-              Creating Commercial Spaces That Inspire Growth
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-5 max-w-xl text-base leading-relaxed text-ink-muted sm:text-lg"
-            >
-              Premium Design, Build &amp; Furnish solutions for offices, retail stores, showrooms and
-              modern workspaces.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.34, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-8 flex flex-wrap gap-3"
-            >
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+            <div className="hero-btn w-full sm:w-auto">
               <MagneticButton>
-                <Link href="/portfolio" className="btn-primary">
-                  View Projects
+                <Link
+                  href="/portfolio"
+                  className="group relative flex w-full items-center justify-center overflow-hidden rounded-full bg-[#C8A97E] px-8 py-4 text-sm font-semibold tracking-wide text-white transition-all hover:bg-[#b09265] sm:w-auto"
+                >
+                  <span className="relative z-10">View Projects</span>
                 </Link>
               </MagneticButton>
+            </div>
+            
+            <div className="hero-btn w-full sm:w-auto">
               <MagneticButton>
-                <Link href="/contact" className="btn-ghost">
-                  Book Consultation
+                <Link
+                  href="/contact"
+                  className="group relative flex w-full items-center justify-center overflow-hidden rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-8 py-4 text-sm font-semibold tracking-wide text-[#FFFFFF] transition-all hover:bg-white/20 sm:w-auto"
+                >
+                  <span className="relative z-10">Get Consultation</span>
                 </Link>
               </MagneticButton>
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
+      </div>
 
-        {/* Scroll cue */}
-        <motion.div
-          style={{ opacity: contentOpacity }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2"
-        >
-          <div className="flex h-9 w-5 items-start justify-center rounded-full border border-white/20 p-1">
-            <span className="h-2 w-1 animate-bounce rounded-full bg-accent" />
-          </div>
-        </motion.div>
+      {/* Scroll indicator */}
+      <div className="scroll-indicator absolute bottom-8 left-1/2 z-20 -translate-x-1/2 hidden flex-col items-center gap-3 transition-opacity hover:opacity-100 sm:flex">
+        <span className="text-[10px] font-medium tracking-[0.2em] text-white uppercase opacity-80">Scroll</span>
+        <div className="flex h-12 w-[1px] items-start bg-white/20 overflow-hidden">
+          <div className="scroll-line h-4 w-[1px] bg-white" />
+        </div>
       </div>
     </section>
   );
 }
+
