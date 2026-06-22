@@ -184,7 +184,7 @@ export default function ContentPage() {
             onClick={addItem}
             className="w-full rounded-xl py-3 text-sm font-medium transition-colors"
             style={{ border: '2px dashed #e2e8f0', color: '#94a3b8', background: 'transparent' }}
-            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#c9a86a'; (e.currentTarget as HTMLButtonElement).style.color = '#c9a86a'; }}
+            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#10B981'; (e.currentTarget as HTMLButtonElement).style.color = '#10B981'; }}
             onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#e2e8f0'; (e.currentTarget as HTMLButtonElement).style.color = '#94a3b8'; }}
           >
             + Add item

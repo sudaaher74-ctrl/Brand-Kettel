@@ -13,9 +13,9 @@ const config: Config = {
         surface2: '#1a1a1a',
         card: '#141414',
         accent: {
-          DEFAULT: '#C9A86A',
-          soft: '#E4D3AF',
-          dark: '#A8883A',
+          DEFAULT: '#10B981',
+          soft: '#34D399',
+          dark: '#059669',
         },
         ink: {
           DEFAULT: '#F0ECE4',
@@ -39,8 +39,8 @@ const config: Config = {
         soft: '0 4px 24px -8px rgba(0, 0, 0, 0.60)',
         card: '0 12px 40px -12px rgba(0, 0, 0, 0.70)',
         float: '0 30px 60px -24px rgba(0, 0, 0, 0.80)',
-        accent: '0 18px 40px -16px rgba(201, 168, 106, 0.35)',
-        'glow-gold': '0 0 40px rgba(201, 168, 106, 0.15)',
+        accent: '0 18px 40px -16px rgba(16, 185, 129, 0.35)',
+        'glow-gold': '0 0 40px rgba(16, 185, 129, 0.15)',
       },
       transitionTimingFunction: {
         smooth: 'cubic-bezier(0.22, 1, 0.36, 1)',

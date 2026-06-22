@@ -35,7 +35,7 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
-          <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.15em', color: '#c9a86a', textTransform: 'uppercase', marginBottom: 8 }}>
+          <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.15em', color: '#10B981', textTransform: 'uppercase', marginBottom: 8 }}>
             Admin Portal
           </p>
           <h1 className="text-2xl font-bold" style={{ color: '#0f172a' }}>Brand Kettle</h1>
@@ -63,7 +63,7 @@ export default function LoginPage() {
               color: '#1e293b',
               background: '#f8fafc',
             }}
-            onFocus={e => { e.currentTarget.style.borderColor = '#c9a86a'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(201,168,106,0.15)'; }}
+            onFocus={e => { e.currentTarget.style.borderColor = '#10B981'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(16, 185, 129,0.15)'; }}
             onBlur={e => { e.currentTarget.style.borderColor = '#e2e8f0'; e.currentTarget.style.boxShadow = 'none'; }}
           />
 

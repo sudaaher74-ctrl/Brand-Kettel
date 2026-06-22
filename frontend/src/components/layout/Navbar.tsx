@@ -41,7 +41,7 @@ export default function Navbar() {
           <nav
             className={cn(
               'flex items-center justify-between rounded-full px-4 py-2.5 transition-all duration-500 ease-smooth',
-              scrolled ? 'glass shadow-card border border-[#c9a86a]/10' : 'bg-transparent'
+              scrolled ? 'glass shadow-card border border-[#10B981]/10' : 'bg-transparent'
             )}
           >
             {/* Logo */}
@@ -97,7 +97,7 @@ export default function Navbar() {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 6, scale: 0.97 }}
                             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                            className="absolute left-1/2 top-full mt-2 w-64 -translate-x-1/2 overflow-hidden border border-[#c9a86a]/15 shadow-float"
+                            className="absolute left-1/2 top-full mt-2 w-64 -translate-x-1/2 overflow-hidden border border-[#10B981]/15 shadow-float"
                             style={{ background: 'rgba(10,10,10,0.96)', backdropFilter: 'blur(20px)' }}
                           >
                             {/* View all services link */}
@@ -194,7 +194,7 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="container-px lg:hidden"
           >
-            <div className="glass mt-2 border border-[#c9a86a]/10 p-4 shadow-card">
+            <div className="glass mt-2 border border-[#10B981]/10 p-4 shadow-card">
               <div className="grid gap-1">
                 {navLinks.map((l, i) => {
                   if (l.label === 'Services') {

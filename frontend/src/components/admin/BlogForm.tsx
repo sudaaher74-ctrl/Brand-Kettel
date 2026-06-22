@@ -139,7 +139,7 @@ export default function BlogForm({ initial = {} }: { initial?: PostData }) {
           id="published"
           checked={form.published}
           onChange={e => set('published', e.target.checked)}
-          style={{ width: 16, height: 16, accentColor: '#c9a86a', cursor: 'pointer' }}
+          style={{ width: 16, height: 16, accentColor: '#10B981', cursor: 'pointer' }}
         />
         <label htmlFor="published" style={{ fontSize: 14, color: '#374151', cursor: 'pointer' }}>
           Publish this post

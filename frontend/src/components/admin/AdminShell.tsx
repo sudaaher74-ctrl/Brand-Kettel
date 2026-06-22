@@ -36,7 +36,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
         style={{ background: '#0f172a' }}
       >
         <div className="px-5 py-6" style={{ borderBottom: '1px solid #1e293b' }}>
-          <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.15em', color: '#c9a86a', textTransform: 'uppercase' }}>
+          <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.15em', color: '#10B981', textTransform: 'uppercase' }}>
             Admin
           </p>
           <p className="mt-1 text-sm font-semibold leading-tight" style={{ color: '#f8fafc' }}>
@@ -53,8 +53,8 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
                 href={item.href}
                 className="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors"
                 style={{
-                  color: active ? '#c9a86a' : '#94a3b8',
-                  background: active ? 'rgba(201,168,106,0.08)' : 'transparent',
+                  color: active ? '#10B981' : '#94a3b8',
+                  background: active ? 'rgba(16, 185, 129,0.08)' : 'transparent',
                 }}
               >
                 <span style={{ fontSize: 14 }}>{item.icon}</span>

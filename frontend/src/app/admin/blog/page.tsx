@@ -55,7 +55,7 @@ export default function BlogPage() {
         ) : posts.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 gap-3">
             <p style={{ color: '#64748b', fontSize: 14 }}>No posts yet.</p>
-            <Link href="/admin/blog/new" className="text-sm font-medium" style={{ color: '#c9a86a' }}>Create your first post →</Link>
+            <Link href="/admin/blog/new" className="text-sm font-medium" style={{ color: '#10B981' }}>Create your first post →</Link>
           </div>
         ) : (
           <table className="w-full">
@@ -86,7 +86,7 @@ export default function BlogPage() {
                     {new Date(p.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
                   </td>
                   <td style={{ ...td, textAlign: 'right' }}>
-                    <Link href={`/admin/blog/${p.id}/edit`} className="mr-3 text-sm font-medium" style={{ color: '#c9a86a' }}>
+                    <Link href={`/admin/blog/${p.id}/edit`} className="mr-3 text-sm font-medium" style={{ color: '#10B981' }}>
                       Edit
                     </Link>
                     <button onClick={() => deletePost(p.id, p.title)} className="text-sm" style={{ color: '#ef4444' }}>

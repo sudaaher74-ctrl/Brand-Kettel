@@ -93,7 +93,7 @@ export default function ProjectsPage() {
                     <Link
                       href={`/admin/projects/${p.id}/edit`}
                       className="mr-3 text-sm font-medium"
-                      style={{ color: '#c9a86a' }}
+                      style={{ color: '#10B981' }}
                     >
                       Edit
                     </Link>
