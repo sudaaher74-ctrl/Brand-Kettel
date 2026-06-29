@@ -65,12 +65,14 @@ export const caseStudies: CaseStudy[] = [
     slug: 'taksha-hyderabad',
     title: 'Taksha',
     location: 'Hyderabad',
-    category: 'Residential',
+    category: 'Commercial Spaces',
     description: 'A premium builder floor blending comfort, functionality and exclusivity with a modern façade and luxury design — redefining contemporary urban living.',
     keyStat: '475 sq yd',
     images: [
-      '/imgs/residential/p076_107.jpg',
-      '/imgs/residential/image.png',
+      '/imgs/commercial/taksha.png',
+      '/imgs/commercial/taksha1.png',
+      '/imgs/commercial/taksha3.png',
+      '/imgs/commercial/taksha4.png',
     ],
   },
   {
