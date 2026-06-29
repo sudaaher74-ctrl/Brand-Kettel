@@ -14,6 +14,7 @@ export type Project = {
   gallery?: string[];
   blurb: string;
   segment: 'commercial' | 'residential';
+  alt?: string;
 };
 
 
@@ -30,6 +31,7 @@ export const projects: Project[] = [
     gallery: ['/imgs/commercial/taksha.png', '/imgs/commercial/taksha1.png', '/imgs/commercial/taksha3.png', '/imgs/commercial/taksha4.png'],
     blurb: 'A 475 sq. yd. premium builder floor by Studio AKAAI, blending comfort, functionality and exclusivity with a modern façade and luxury design. Crafted for refined lifestyles, it redefines contemporary urban living.',
     segment: 'commercial',
+    alt: 'Commercial Interior Company in Indore - Taksha Hyderabad Builder Floor',
   },
   {
     slug: 'malabar-gold',
@@ -42,6 +44,7 @@ export const projects: Project[] = [
     gallery: ['/imgs/commercial/malbargold1.jpg', '/imgs/commercial/malbargold2.jpg', '/imgs/commercial/malbargold3.jpg', '/imgs/commercial/malbargold4.jpg'],
     blurb: "BrandKettle's collaboration with Malabar marked a breakthrough in luxury retail — elevating Malabar's presence and reinforcing BrandKettle's reputation as a trusted high-end retail partner, blending creativity and precision. Includes the iconic meeting between Veekkas k Jha and M.P. Ahammed, Chairman of the Malabar Group.\n\n\"If you're looking for a fit-out team that truly understands the power of brand identity… BRANDKETTLE is the one-stop solution… Highly recommended!\" — Malabar Gold & Diamonds",
     segment: 'commercial',
+    alt: 'Jewellery Showroom Interior Designers - Malabar Gold & Diamonds',
   },
   {
     slug: 'png',
@@ -54,6 +57,7 @@ export const projects: Project[] = [
     gallery: ['/imgs/commercial/png1.jpg', '/imgs/commercial/png2.jpg', '/imgs/commercial/png3.jpg'],
     blurb: "BrandKettle transformed a 3,400 sq ft space in Goregaon into a luxurious retail destination in just 27 days. A turnkey project blending elegance and efficiency, bringing the brand's vision to life with precision and speed.",
     segment: 'commercial',
+    alt: 'Jewellery Showroom Fit-Out - PNG Jewellers Goregaon',
   },
   {
     slug: 'giva',
@@ -66,6 +70,7 @@ export const projects: Project[] = [
     gallery: ['/imgs/commercial/giaa.png', '/imgs/commercial/jwellary.png', '/imgs/commercial/jwellary2.png'],
     blurb: 'Giva store by BrandKettle.',
     segment: 'commercial',
+    alt: 'Jewellery Store Interior Design - Giva',
   },
   {
     slug: 'khimji',
@@ -78,6 +83,7 @@ export const projects: Project[] = [
     gallery: ['/imgs/commercial/khimji1.jpg', '/imgs/commercial/khimji2.jpg'],
     blurb: "Building the Khimji store was a learning curve for the team — adopting and delivering interior standards set by a legacy dating back to 1936. Began with a strategic meeting between Directors Mitesh Khimji, Sumeet Khimji and Veekkas k Jha.",
     segment: 'commercial',
+    alt: 'Jewellery Display Solutions - Khimji Jewellers',
   },
   {
     slug: 'havana-lounge-bareilly',
@@ -90,6 +96,7 @@ export const projects: Project[] = [
     gallery: ['/imgs/commercial/Havana lounge1.jpg', '/imgs/commercial/havana lounge2.jpg', '/imgs/commercial/havana lounge 3.jpg', '/imgs/commercial/havana lounge4.jpg', '/imgs/commercial/havna lounge5.jpg'],
     blurb: "A standout rooftop project (Studio AKAAI) on the roof of the Ramada hotel, Bareilly. Highlights BrandKettle's expertise in design thinking, detailing and craftsmanship.",
     segment: 'commercial',
+    alt: 'Commercial Fit-Out Company - Havana Lounge Rooftop Bareilly',
   },
   {
     slug: 'pret-a-manger-delhi',
@@ -102,6 +109,7 @@ export const projects: Project[] = [
     gallery: ['/imgs/commercial/p080_111.jpg'],
     blurb: "The iconic Pret A Manger store brought to life at Select City Walk, Delhi. Showcases BrandKettle's commitment to exceptional design and branding, creating a vibrant, inviting space that brings the renowned brand to the heart of Delhi.",
     segment: 'commercial',
+    alt: 'Retail Fit-Out Company - Pret A Manger Select City Walk',
   },
   {
     slug: 'ramada-encore-bareilly',
@@ -114,6 +122,7 @@ export const projects: Project[] = [
     gallery: [ '/imgs/commercial/ramda encre hotel1.jpg', '/imgs/commercial/ramda encore hotel2.jpg', '/imgs/commercial/ramda encore hotel3.jpg', '/imgs/commercial/p064_079.jpg', '/imgs/commercial/p066_087.jpg'],
     blurb: "BrandKettle's first collaboration with a luxury hotel. Centrally located in the medical hub, under 1 km from Bareilly Jn. train station and 11 km from Bareilly Airport (BEK). A new chapter where brand identity meets functionality.",
     segment: 'commercial',
+    alt: 'Commercial Interior Contractors - Ramada Encore Hotel Bareilly',
   },
   {
     slug: 'gem-jeevan-tara',
@@ -126,6 +135,7 @@ export const projects: Project[] = [
     gallery: ['/imgs/commercial/GEM jeevan tara.jpg'],
     blurb: 'Government & Institutional Project. A turnkey interior fit-out that modernized heritage spaces while preserving architectural integrity, incorporating smart office technologies and contemporary finishes.',
     segment: 'commercial',
+    alt: 'Institutional Furniture - GEM Jeevan Tara Turnkey Fit-Out',
   },
   {
     slug: 'nanokirti-pvt',
@@ -138,6 +148,7 @@ export const projects: Project[] = [
     gallery: ['/imgs/commercial/nanokirti pvt1.jpg', '/imgs/commercial/nanokirti pvt2.jpg', '/imgs/commercial/nanokirti pvt3.jpg'],
     blurb: 'A modernized corporate workspace tailored to reflect a forward-thinking culture. Designed with open collaborative zones, acoustic-treated meeting rooms, and ergonomic workstations to ensure productivity and well-being.',
     segment: 'commercial',
+    alt: 'Office Fit-Out Company - Nanokirti Pvt Corporate Workspace',
   },
   {
     slug: 'and-work-faridabad',
@@ -150,6 +161,7 @@ export const projects: Project[] = [
     gallery: ['/imgs/commercial/work co workspace.jpg', '/imgs/commercial/work co workspace1.jpg', '/imgs/commercial/work co work space2.jpg'],
     blurb: "One of BrandKettle's cherished projects — a fun and creative co-working space delivered in Faridabad.",
     segment: 'commercial',
+    alt: 'Corporate Interior Solutions - &Work Co-working Space Faridabad',
   },
   {
     slug: 'brandkettle',
@@ -162,6 +174,7 @@ export const projects: Project[] = [
     gallery: ['/imgs/commercial/brandkettle1.jpg', '/imgs/commercial/brandkettle2.jpg', '/imgs/commercial/brandkettle3.jpg', '/imgs/commercial/brandkettle4.jpg'],
     blurb: "BrandKettle's own office in the prestigious Vatika Mindscapes, Faridabad. Nestled within a lush, green landscape and designed to exude ultra-luxury, this state-of-the-art complex reflects BrandKettle's commitment to a sophisticated, inspiring workspace. It represents both a strategic expansion and a setting that mirrors the company's brand values and dedication to excellence.",
     segment: 'commercial',
+    alt: 'Custom Furniture Manufacturer - BrandKettle Office Vatika Mindscapes',
   },
   {
     slug: 'gucci',
@@ -174,6 +187,7 @@ export const projects: Project[] = [
     gallery: ['/imgs/commercial/gucci.png', '/imgs/commercial/gucci1.png'],
     blurb: "BrandKettle's first high-end luxury project. After the successful execution of Gucci's premium showroom, the owners personally appreciated the craftsmanship and attention to detail. Every detail — from custom finishes to ambient lighting — reflects the iconic elegance of the Gucci brand.",
     segment: 'commercial',
+    alt: 'Retail Interior Contractors - Gucci Luxury Retail Store',
   },
   {
     slug: 'lic',
@@ -186,6 +200,7 @@ export const projects: Project[] = [
     gallery: ['/imgs/commercial/lic1.jpg', '/imgs/commercial/lic2.jpg', '/imgs/commercial/lic3.jpg', '/imgs/commercial/lic4.jpg'],
     blurb: 'Government & Institutional Project. A comprehensive interior overhaul focusing on ergonomic workspaces, efficient file management systems, and a modernized public-facing customer service area.',
     segment: 'commercial',
+    alt: 'Office Furniture Manufacturer - LIC Government Interior Overhaul',
   },
   {
     slug: 'ieml',
@@ -198,6 +213,7 @@ export const projects: Project[] = [
     gallery: ['/imgs/commercial/p098_129.jpg', '/imgs/commercial/p099_130.jpg', '/imgs/commercial/p099_131.jpg'],
     blurb: 'Government & Institutional Project. Designed and executed massive exhibition halls and convention spaces, requiring highly specialized lighting rigs, modular partitioning systems, and high-traffic flooring solutions.',
     segment: 'commercial',
+    alt: 'Turnkey Interior Solutions - IEML Exhibition Halls',
   }
 ];
 
@@ -304,15 +320,39 @@ export const navLinks = [
 
 export const servicesDropdown = [
   {
-    href: '/commercial-projects',
-    label: 'Commercial',
+    href: '/commercial-fit-outs',
+    label: 'Commercial Fit-Outs',
     description: 'Offices, retail fit-outs & showrooms',
     icon: '◉',
   },
   {
+    href: '/retail-fit-outs',
+    label: 'Retail Fit-Outs',
+    description: 'Store interiors & retail environments',
+    icon: '🛍️',
+  },
+  {
+    href: '/jewellery-showrooms',
+    label: 'Jewellery Showrooms',
+    description: 'High-end secure jewellery displays',
+    icon: '💎',
+  },
+  {
     href: '/residential-interiors',
-    label: 'Residential',
+    label: 'Residential Interiors',
     description: 'Bespoke homes & private interiors',
     icon: '◎',
+  },
+  {
+    href: '/custom-furniture',
+    label: 'Custom Furniture',
+    description: 'Bespoke & modular furniture manufacturing',
+    icon: '🛋️',
+  },
+  {
+    href: '/library-institutional-furniture',
+    label: 'Library & Institutional',
+    description: 'Educational & institutional furniture',
+    icon: '📚',
   },
 ];

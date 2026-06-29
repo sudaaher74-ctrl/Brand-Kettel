@@ -8,9 +8,16 @@ import {
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Residential Interiors — Premium Homes & Villas',
+  title: 'Residential Interior Designers in Indore | Luxury Home Interiors',
   description:
-    'Bespoke residential interiors delivered end-to-end. We craft private homes where comfort, craft and detail converge.',
+    'Award-winning Residential Interior Designers in Indore specializing in Luxury Home Interiors, Premium Home Interiors, and Turnkey Home Interiors. We craft private homes where comfort and craft converge.',
+  keywords: [
+    'Luxury Home Interiors',
+    'Residential Interior Designers',
+    'Premium Home Interiors',
+    'Turnkey Home Interiors',
+    'Residential Interior Designers in Indore'
+  ],
 };
 
 export const revalidate = 60;
@@ -31,8 +38,25 @@ async function getResidentialProjects() {
 export default async function ResidentialPage() {
   const residential = await getResidentialProjects();
 
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Residential Interior Design',
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'Brand Kettle BuildSpaces',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Indore'
+      }
+    },
+    areaServed: 'Indore',
+    description: 'Expert Residential Interior Designers in Indore offering Premium Home Interiors and Turnkey Solutions.'
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <PageHero
         eyebrow="Residential interiors"
         title="Premium homes, crafted with care"

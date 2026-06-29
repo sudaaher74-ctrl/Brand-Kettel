@@ -21,20 +21,21 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://brandkettle.com';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Brand Kettle BuildSpaces — Commercial Interior Design & Turnkey Fit-Outs',
+    default: 'Commercial Fit-Out Company in Indore | Brand Kettle BuildSpaces',
     template: '%s | Brand Kettle BuildSpaces',
   },
   description:
-    'Premium Design, Build & Furnish company specialising in commercial interiors, office interior design, retail fit-outs, jewellery showrooms and turnkey commercial projects across India.',
+    'Brand Kettle BuildSpaces is a premium Design Build Company & Commercial Fit-Out Company in Indore. We provide Turnkey Interior Solutions, Commercial Interior Contractors, and Retail Fit-Outs.',
   keywords: [
-    'Commercial Interior Design',
-    'Office Interior Design',
-    'Retail Interior Design',
-    'Jewellery Showroom Design',
-    'Turnkey Interior Solutions',
     'Commercial Fit-Out Company',
-    'Corporate Office Interiors',
-    'Premium Residential Interiors',
+    'Design Build Company',
+    'Interior Fit-Out Company',
+    'Turnkey Interior Solutions',
+    'Commercial Interior Contractors',
+    'Retail Fit-Out Company',
+    'Office Interior Company',
+    'Custom Furniture Manufacturer',
+    'Commercial Interior Company in Indore',
   ],
   authors: [{ name: 'Brand Kettle BuildSpaces Pvt. Ltd.' }],
   openGraph: {
@@ -67,15 +68,15 @@ const orgJsonLd = {
   '@type': 'Organization',
   name: 'Brand Kettle BuildSpaces Pvt. Ltd.',
   description:
-    'Premium Design, Build & Furnish company specialising in commercial interiors, retail fit-outs and turnkey commercial projects.',
+    'Brand Kettle BuildSpaces is a premium Design Build Company & Commercial Fit-Out Company in Indore providing Turnkey Interior Solutions.',
   url: SITE_URL,
   areaServed: 'IN',
   knowsAbout: [
-    'Commercial Interior Design',
-    'Office Interior Design',
-    'Retail Fit-Outs',
-    'Jewellery Showroom Design',
-    'Turnkey Commercial Projects',
+    'Commercial Fit-Out Company',
+    'Design Build Company',
+    'Interior Fit-Out Company',
+    'Turnkey Interior Solutions',
+    'Retail Fit-Out Company',
   ],
 };
 
@@ -89,9 +90,9 @@ const localBusinessJsonLd = {
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Corporate Office',
-    addressLocality: 'Mumbai',
-    addressRegion: 'Maharashtra',
-    postalCode: '400001',
+    addressLocality: 'Indore',
+    addressRegion: 'Madhya Pradesh',
+    postalCode: '452001',
     addressCountry: 'IN'
   }
 };

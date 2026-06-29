@@ -6,15 +6,15 @@ import { projects as fallbackProjects } from '@/lib/data';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Commercial Projects — Office, Retail & Turnkey Fit-Outs',
+  title: 'Commercial Fit-Out Company in Indore | Office & Corporate Interiors',
   description:
-    'Explore commercial interior projects by Brand Kettle BuildSpaces: corporate office interiors, retail fit-outs, jewellery showrooms and turnkey commercial spaces.',
+    'Leading Commercial Fit-Out Company in Indore providing turnkey Commercial Interior Contractors, Office Fit-Out Company services, and Corporate Interior Solutions for dynamic workspaces.',
   keywords: [
-    'Commercial Interior Design',
-    'Corporate Office Interiors',
-    'Retail Interior Design',
     'Commercial Fit-Out Company',
-    'Turnkey Interior Solutions',
+    'Commercial Interior Contractors',
+    'Office Fit-Out Company',
+    'Corporate Interior Solutions',
+    'Commercial Fit-Out Company in Indore',
   ],
 };
 
@@ -36,8 +36,25 @@ async function getCommercialProjects() {
 export default async function CommercialProjectsPage() {
   const commercial = await getCommercialProjects();
 
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Commercial Fit-Outs',
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'Brand Kettle BuildSpaces',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Indore'
+      }
+    },
+    areaServed: 'Indore',
+    description: 'Turnkey Commercial Interior Contractors and Office Fit-Out Company in Indore.'
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <PageHero
         eyebrow="Commercial projects"
         title="Spaces engineered for performance and brand impact"

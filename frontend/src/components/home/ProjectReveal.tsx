@@ -56,7 +56,7 @@ function FloatingCard({
           <div className="relative aspect-[4/3] overflow-hidden">
             <Image
               src={project.image}
-              alt={`${project.name} — ${project.category}`}
+              alt={project.alt || `${project.name} Project`}
               className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
               style={{ transform: 'translateZ(40px)' }}
               fill

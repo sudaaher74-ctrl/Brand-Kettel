@@ -177,11 +177,11 @@ export default function Hero() {
           </div>
 
           <h1 className="hero-title max-w-5xl text-5xl font-medium leading-[1.1] tracking-tight text-[#FFFFFF] sm:text-6xl md:text-7xl lg:text-8xl">
-            Designing Commercial <br className="hidden md:block" /> Spaces That Inspire
+            Commercial Interior <br className="hidden md:block" /> Company in Indore
           </h1>
 
           <p className="hero-subtitle mt-6 max-w-2xl text-lg font-light leading-relaxed text-[#E5E7EB] sm:text-xl">
-            Premium Interior Design, Fit-Out & Turnkey Solutions Across Navi Mumbai
+            A premium Design Build Company offering Commercial & Retail Turnkey Interior Solutions.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">

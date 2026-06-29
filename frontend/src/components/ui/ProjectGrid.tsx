@@ -13,7 +13,7 @@ export default function ProjectGrid({ items }: { items: Project[] }) {
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
                   src={p.image}
-                  alt={`${p.name} — ${p.category}`}
+                  alt={p.alt || `${p.name} — ${p.category}`}
                   className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
