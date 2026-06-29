@@ -13,7 +13,6 @@ const bgImages = [
   '/imgs/commercial/jwellary.png',
   '/imgs/commercial/gucci.png',
   '/imgs/commercial/home1.png',
-  '/imgs/commercial/khimji1.jpg',
   '/imgs/commercial/brandkettle4.jpg'
 ];
 
