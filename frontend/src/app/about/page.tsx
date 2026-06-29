@@ -243,7 +243,7 @@ export default function AboutPage() {
                   View Projects
                 </Link>
                 <Link href="/contact" className="btn-accent">
-                  Book Consultation
+                  Get in Touch
                 </Link>
               </div>
             </div>

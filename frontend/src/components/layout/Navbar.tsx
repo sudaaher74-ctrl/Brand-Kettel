@@ -156,7 +156,7 @@ export default function Navbar() {
             {/* Right side */}
             <div className="flex items-center gap-2">
               <Link href="/contact" className="btn-accent hidden sm:inline-flex">
-                Book Consultation
+                Get in Touch
               </Link>
               <button
                 aria-label="Toggle menu"
@@ -255,7 +255,7 @@ export default function Navbar() {
                 })}
               </div>
               <Link href="/contact" onClick={() => setOpen(false)} className="btn-accent mt-3 w-full">
-                Book Consultation
+                Get in Touch
               </Link>
             </div>
           </motion.div>
