@@ -41,7 +41,7 @@ export default function Navbar() {
           <nav
             className={cn(
               'flex items-center justify-between rounded-full px-4 py-2.5 transition-all duration-500 ease-smooth',
-              scrolled ? 'glass shadow-card border border-[#10B981]/10' : 'bg-transparent'
+              scrolled ? 'glass shadow-card border border-accent/10' : 'bg-transparent'
             )}
           >
             {/* Logo */}

@@ -6,8 +6,8 @@
   --bg: #0a0a0a;
   --surface: #111111;
   --surface-2: #1a1a1a;
-  --accent: #10B981;
-  --accent-soft: #34D399;
+  --accent: #F5F5DC;
+  --accent-soft: #FDF5E6;
   --ink: #f0ece4;
   --ink-muted: #8a8278;
   --line: #222222;
@@ -44,7 +44,7 @@
   }
 
   ::selection {
-    background: rgba(16, 185, 129, 0.30);
+    background: rgba(245, 245, 220, 0.30);
     color: #f0ece4;
   }
 
@@ -90,7 +90,7 @@
     background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.7) 100%);
     backdrop-filter: blur(24px) saturate(160%);
     -webkit-backdrop-filter: blur(24px) saturate(160%);
-    border: 1px solid rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(245, 245, 220, 0.15);
     box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05), 0 8px 32px 0 rgba(0, 0, 0, 0.4);
   }
 
@@ -104,7 +104,7 @@
   }
 
   .glass-card:hover {
-    border-color: rgba(16, 185, 129, 0.3);
+    border-color: rgba(245, 245, 220, 0.3);
     box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 12px 48px 0 rgba(0, 0, 0, 0.6);
   }
 
@@ -123,7 +123,7 @@
   /* Gold shimmer divider */
   .gold-line {
     height: 1px;
-    background: linear-gradient(90deg, transparent, #10B981 40%, #34D399 60%, transparent);
+    background: linear-gradient(90deg, transparent, #F5F5DC 40%, #FDF5E6 60%, transparent);
     opacity: 0.4;
   }
 }

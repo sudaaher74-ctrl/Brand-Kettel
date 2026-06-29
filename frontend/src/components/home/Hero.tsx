@@ -169,11 +169,11 @@ export default function Hero() {
         <div className="flex w-full max-w-7xl flex-col items-center justify-center text-center">
           
           <div className="hero-eyebrow flex items-center gap-3 mb-6">
-            <span className="h-[2px] w-8 bg-[#10B981]" />
+            <span className="h-[2px] w-8 bg-accent" />
             <span className="text-xs sm:text-sm md:text-base font-semibold tracking-widest text-[#E5E7EB] uppercase">
               Premium Interior Design
             </span>
-            <span className="h-[2px] w-8 bg-[#10B981]" />
+            <span className="h-[2px] w-8 bg-accent" />
           </div>
 
           <h1 className="hero-title max-w-5xl text-5xl font-medium leading-[1.1] tracking-tight text-[#FFFFFF] sm:text-6xl md:text-7xl lg:text-8xl">
@@ -189,7 +189,7 @@ export default function Hero() {
               <MagneticButton>
                 <Link
                   href="/portfolio"
-                  className="group relative flex w-full items-center justify-center overflow-hidden rounded-full bg-[#10B981] px-8 py-4 text-sm font-semibold tracking-wide text-white transition-all hover:bg-[#059669] sm:w-auto"
+                  className="group relative flex w-full items-center justify-center overflow-hidden rounded-full bg-accent px-8 py-4 text-sm font-semibold tracking-wide text-[#0a0a0a] transition-all hover:bg-accent-dark sm:w-auto"
                 >
                   <span className="relative z-10">View Projects</span>
                 </Link>
