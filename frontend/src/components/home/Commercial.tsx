@@ -1,38 +1,58 @@
 'use client';
 
 import Link from 'next/link';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import MagneticButton from '@/components/ui/MagneticButton';
 import Image from 'next/image';
 
 export default function Commercial() {
-  return (
-    <section className="relative bg-surface py-20 sm:py-28">
-      <div className="container-px flex flex-col-reverse md:flex-row items-center gap-12 md:gap-24">
-        {/* Left Side: Text */}
-        <div className="flex-1 text-center md:text-left flex flex-col items-center md:items-start max-w-lg mx-auto md:mx-0">
-          <h2 className="text-3xl md:text-5xl font-light tracking-wide text-ink uppercase mb-6">
-            Commercial Interiors
-          </h2>
-          <p className="text-base text-ink-muted leading-relaxed mb-8">
-            At Brand Kettle, our passion is creating spaces that truly feel impactful. From turnkey commercial workspaces and bespoke furniture to retail transformations, every detail is carefully crafted by our in-house team.
-          </p>
-          <Link
-            href="/commercial-projects"
-            className="inline-flex items-center justify-center border border-ink px-8 py-3 text-xs font-semibold uppercase tracking-widest text-ink transition-colors hover:bg-ink hover:text-surface"
-          >
-            Learn More
-          </Link>
-        </div>
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end end'],
+  });
 
-        {/* Right Side: Portrait Image */}
-        <div className="flex-1 w-full max-w-md mx-auto md:max-w-none">
-          <div className="relative w-full aspect-[4/5] bg-card overflow-hidden">
-            <Image
-              src="/imgs/p061_076.jpg"
-              alt="Commercial workspace interior design"
-              className="object-cover"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+  // Camera glides forward + slightly pans across the workspace.
+  const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1.3]);
+  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-8%']);
+  const panelOpacity = useTransform(scrollYProgress, [0.1, 0.3], [0, 1]);
+  const panelY = useTransform(scrollYProgress, [0.1, 0.45], [40, 0]);
+
+  return (
+    <section ref={ref} className="relative h-[220vh] bg-background">
+      <div className="sticky top-0 h-svh w-full overflow-hidden">
+        <motion.div style={{ scale, x }} className="absolute inset-0 will-change-transform">
+          <Image
+            src="/imgs/p061_076.jpg"
+            alt="Cinematic walkthrough of a commercial workspace interior"
+            className="object-cover"
+            fill
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/90 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/70 to-transparent" />
+        </motion.div>
+
+        <div className="absolute inset-0 flex items-center">
+          <div className="container-px">
+            <motion.div style={{ opacity: panelOpacity, y: panelY }} className="max-w-xl">
+              <span className="eyebrow">
+                <span className="h-px w-6 bg-accent" /> Our core
+              </span>
+              <h2 className="mt-4 text-3xl font-semibold leading-[1.1] text-ink sm:text-5xl">
+                Commercial Interiors Are Our Core Expertise
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-ink-muted sm:text-lg">
+                We deliver office interiors, retail environments, showrooms, and turnkey commercial
+                spaces designed for performance and brand impact.
+              </p>
+              <MagneticButton className="mt-8">
+                <Link href="/commercial-projects" className="btn-primary">
+                  Explore Commercial Projects
+                </Link>
+              </MagneticButton>
+            </motion.div>
           </div>
         </div>
       </div>

@@ -1,18 +1,32 @@
 import ConsultationForm from '@/components/forms/ConsultationForm';
+import Reveal from '@/components/ui/Reveal';
 
 export default function ConsultationCTA() {
   return (
-    <section className="relative overflow-hidden bg-[#e5e4e2] py-24 sm:py-32">
-      <div className="container-px relative flex flex-col items-center justify-center text-center">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-ink uppercase tracking-widest mb-6">
-          Consultation
-        </h2>
-        <p className="max-w-2xl mx-auto text-base text-ink-muted leading-relaxed mb-12">
-          Let&apos;s Build Your Next Project. Share a few details and our team will reach out to plan your space.
-        </p>
-        <div className="w-full max-w-xl mx-auto">
-          <ConsultationForm />
-        </div>
+    <section className="relative overflow-hidden bg-background py-20 sm:py-28">
+      <div
+        className="pointer-events-none absolute left-1/2 top-0 h-80 w-[36rem] -translate-x-1/2 rounded-full bg-accent/10 blur-3xl"
+        aria-hidden
+      />
+      <div className="container-px relative">
+        <Reveal>
+          <div className="glass mx-auto max-w-3xl rounded-[2rem] p-6 shadow-float sm:p-10">
+            <div className="text-center">
+              <span className="eyebrow justify-center">
+                <span className="h-px w-6 bg-accent" /> Consultation
+              </span>
+              <h2 className="mt-4 text-3xl font-semibold leading-tight text-ink sm:text-4xl">
+                Let&apos;s Build Your Next Project
+              </h2>
+              <p className="mx-auto mt-3 max-w-md text-sm text-ink-muted">
+                Share a few details and our team will reach out to plan your space.
+              </p>
+            </div>
+            <div className="mt-8">
+              <ConsultationForm />
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

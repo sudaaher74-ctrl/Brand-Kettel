@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import type { CaseStudy } from '@/lib/projectsData';
 import CaseStudyCard from './CaseStudyCard';
 
-const CATEGORIES = ['All', 'Retail', 'Hospitality', 'Workspace', 'Government', 'Residential'];
+const CATEGORIES = ['All', 'Retail', 'Hospitality', 'Workspace', 'Government', 'Residential', 'Commercial Spaces', 'Luxury Retail', 'Jewellery Showroom', 'Office'];
 
 export default function FilterableProjectGallery({ projects }: { projects: CaseStudy[] }) {
   const [activeCategory, setActiveCategory] = useState('All');
