@@ -175,7 +175,7 @@ export default function Hero() {
             <span className="h-[2px] w-8 bg-accent" />
           </div>
 
-          <h1 className="hero-title max-w-5xl text-5xl font-medium leading-[1.1] tracking-tight text-[#FFFFFF] sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1 className="hero-title max-w-5xl text-5xl font-light leading-[1.1] tracking-widest text-[#FFFFFF] sm:text-6xl md:text-7xl lg:text-8xl uppercase">
             Commercial Interior <br className="hidden md:block" /> Company in Indore
           </h1>
 
@@ -185,36 +185,33 @@ export default function Hero() {
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
             <div className="hero-btn w-full sm:w-auto">
-              <MagneticButton>
-                <Link
-                  href="/portfolio"
-                  className="group relative flex w-full items-center justify-center overflow-hidden rounded-full bg-accent px-8 py-4 text-sm font-semibold tracking-wide text-[#0a0a0a] transition-all hover:bg-accent-dark sm:w-auto"
-                >
-                  <span className="relative z-10">View Projects</span>
-                </Link>
-              </MagneticButton>
+              <Link
+                href="/portfolio"
+                className="group relative flex w-full items-center justify-center overflow-hidden border border-white bg-transparent px-10 py-3 text-xs font-semibold tracking-widest text-white uppercase transition-all hover:bg-white hover:text-black sm:w-auto"
+              >
+                <span className="relative z-10">View Projects</span>
+              </Link>
             </div>
             
             <div className="hero-btn w-full sm:w-auto">
-              <MagneticButton>
-                <Link
-                  href="/contact"
-                  className="group relative flex w-full items-center justify-center overflow-hidden rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-8 py-4 text-sm font-semibold tracking-wide text-[#FFFFFF] transition-all hover:bg-white/20 sm:w-auto"
-                >
-                  <span className="relative z-10">Get Consultation</span>
-                </Link>
-              </MagneticButton>
+              <Link
+                href="/contact"
+                className="group relative flex w-full items-center justify-center overflow-hidden border border-white bg-transparent px-10 py-3 text-xs font-semibold tracking-widest text-white uppercase transition-all hover:bg-white hover:text-black sm:w-auto"
+              >
+                <span className="relative z-10">Get Consultation</span>
+              </Link>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="scroll-indicator absolute bottom-8 left-1/2 z-20 -translate-x-1/2 hidden flex-col items-center gap-3 transition-opacity hover:opacity-100 sm:flex">
-        <span className="text-[10px] font-medium tracking-[0.2em] text-white uppercase opacity-80">Scroll</span>
-        <div className="flex h-12 w-[1px] items-start bg-white/20 overflow-hidden">
-          <div className="scroll-line h-4 w-[1px] bg-white" />
-        </div>
+      {/* Scroll indicator -> Bottom Navigation (PalmLiving Style) */}
+      <div className="absolute bottom-10 left-0 w-full z-30 flex justify-between px-8 sm:px-16 md:px-32">
+        {['COMMERCIAL', 'RETAIL', 'RESIDENTIAL', 'CUSTOM FURNITURE'].map((cat, i) => (
+          <div key={cat} className={`text-white text-sm md:text-2xl font-light tracking-widest uppercase cursor-pointer hover:text-accent transition-colors duration-300 ${i !== 0 ? 'hidden sm:block' : ''}`}>
+            {cat}
+          </div>
+        ))}
       </div>
     </section>
   );
