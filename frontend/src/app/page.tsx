@@ -1,9 +1,16 @@
-import HeroGrid from '@/components/home/HeroGrid';
+import Hero from '@/components/home/Hero';
+import ProjectReveal from '@/components/home/ProjectReveal';
 import Expertise from '@/components/home/Expertise';
-import PromoSection from '@/components/home/PromoSection';
-import {
+import Showcase from '@/components/home/Showcase';
+import Process from '@/components/home/Process';
+import Commercial from '@/components/home/Commercial';
+import Testimonials from '@/components/home/Testimonials';
+import ConsultationCTA from '@/components/home/ConsultationCTA';
+import { 
   projects as fallbackProjects,
-  services as fallbackServices
+  services as fallbackServices,
+  processSteps as fallbackProcess,
+  testimonials as fallbackTestimonials
 } from '@/lib/data';
 
 export const revalidate = 60;
@@ -36,38 +43,19 @@ export default async function HomePage() {
   const featured = projects.find((p) => p.slug === 'meridian-turnkey-campus') ?? projects[0];
 
   const servicesData = await getContent('services', fallbackServices);
+  const processData = await getContent('processSteps', fallbackProcess);
+  const testimonialsData = await getContent('testimonials', fallbackTestimonials);
 
   return (
     <>
-      <HeroGrid />
+      <Hero />
+      <ProjectReveal projects={projects} />
       <Expertise services={servicesData} />
-      <PromoSection
-        eyebrow="Who we are"
-        title="Design & Build"
-        body="A premium Design Build Company offering Commercial & Retail Turnkey Interior Solutions. From concept and 3D visualisation to on-site execution, every detail is crafted by one accountable in-house team."
-        ctaLabel="Learn More"
-        ctaHref="/about"
-        image={featured.image}
-        alt={`${featured.name} — ${featured.category}`}
-      />
-      <PromoSection
-        eyebrow="Our work"
-        title="Our Portfolio"
-        body="Browse our commercial and retail portfolio, showcasing how we've transformed our clients' vision into reality across India — from luxury retail and jewellery showrooms to corporate offices and hospitality."
-        ctaLabel="Explore"
-        ctaHref="/portfolio"
-        image="/imgs/commercial/malbargold1.jpg"
-        alt="Brand Kettle Portfolio"
-      />
-      <PromoSection
-        eyebrow="Get in touch"
-        title="Visit Us"
-        body="Speak with our in-house design and build team about your space. We offer Commercial & Retail Turnkey Interior Solutions, delivered end-to-end on time."
-        ctaLabel="Contact Us"
-        ctaHref="/contact"
-        image="/imgs/commercial/brandkettle1.jpg"
-        alt="Brand Kettle Office"
-      />
+      <Showcase featured={featured} />
+      <Process steps={processData} />
+      <Commercial />
+      <Testimonials testimonials={testimonialsData} />
+      <ConsultationCTA />
     </>
   );
 }

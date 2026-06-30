@@ -16,11 +16,9 @@ export default function Expertise({ services }: { services: Service[] }) {
     <section className="relative bg-background py-20 sm:py-28">
       <div className="container-px">
         <SectionHeading
-          align="center"
           eyebrow="Our expertise"
-          title="WHAT WE BUILD"
+          title="Six disciplines. One accountable team."
           subtitle="Swipe through the services we design, build and furnish end-to-end."
-          className="[&_h2]:uppercase [&_h2]:tracking-tight"
         />
       </div>
 
