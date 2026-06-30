@@ -2,7 +2,7 @@ export type CaseStudy = {
   slug: string;
   title: string;
   location?: string;
-  category: 'Retail' | 'Hospitality' | 'Workspace' | 'Government' | 'Residential';
+  category: 'Retail' | 'Hospitality' | 'Workspace' | 'Government' | 'Residential' | 'Commercial Spaces' | 'Luxury Retail' | 'Jewellery Showroom' | 'Office';
   description: string;
   keyStat?: string;
   images: string[];
