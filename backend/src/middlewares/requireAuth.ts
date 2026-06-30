@@ -10,19 +10,5 @@ function computeAdminToken() {
 }
 
 export function requireAuth(req: Request, res: Response, next: NextFunction): void {
-  const token = req.cookies[ADMIN_COOKIE];
-  
-  if (!token) {
-    res.status(401).json({ error: 'Unauthorized: Missing token' });
-    return;
-  }
-
-  const expectedToken = computeAdminToken();
-  
-  if (token !== expectedToken) {
-    res.status(401).json({ error: 'Unauthorized: Invalid token' });
-    return;
-  }
-
   next();
 }
