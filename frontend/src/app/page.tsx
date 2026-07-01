@@ -1,7 +1,6 @@
 import Hero from '@/components/home/Hero';
 import Welcome from '@/components/home/Welcome';
-import BlueprintExperience from '@/components/home/blueprint/BlueprintExperience';
-import ExpertiseStorytelling from '@/components/home/expertise/ExpertiseStorytelling';
+import Expertise from '@/components/home/Expertise';
 import Showcase from '@/components/home/Showcase';
 import ConsultationCTA from '@/components/home/ConsultationCTA';
 import { 
@@ -27,17 +26,17 @@ async function getContent(type: string, fallback: any) {
 async function getProjects() {
   try {
     const res = await fetch(`${API_URL}/api/admin/projects`, { next: { revalidate: 60 } });
-    if (!res.ok) return fallbackProjects;
+    if (!res.ok) return [];
     const data = await res.json();
-    return Array.isArray(data) && data.length > 0 ? data : fallbackProjects;
+    return Array.isArray(data) && data.length > 0 ? data : [];
   } catch {
-    return fallbackProjects;
+    return [];
   }
 }
 
 export default async function HomePage() {
   const projects = await getProjects();
-  const featured = projects.find((p) => p.slug === 'meridian-turnkey-campus') ?? projects[0];
+  const featured = projects.length > 0 ? (projects.find((p: any) => p.slug === 'meridian-turnkey-campus') ?? projects[0]) : null;
 
   const servicesData = await getContent('services', fallbackServices);
   const processData = await getContent('processSteps', fallbackProcess);
@@ -46,8 +45,7 @@ export default async function HomePage() {
     <>
       <Hero />
       <Welcome />
-      <BlueprintExperience />
-      <ExpertiseStorytelling />
+      <Expertise services={servicesData} />
       <Showcase featured={featured} />
       <ConsultationCTA />
     </>
