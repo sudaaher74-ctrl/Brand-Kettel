@@ -2,13 +2,11 @@ import Hero from '@/components/home/Hero';
 import Welcome from '@/components/home/Welcome';
 import Expertise from '@/components/home/Expertise';
 import Showcase from '@/components/home/Showcase';
-import Testimonials from '@/components/home/Testimonials';
 import ConsultationCTA from '@/components/home/ConsultationCTA';
 import { 
   projects as fallbackProjects,
   services as fallbackServices,
-  processSteps as fallbackProcess,
-  testimonials as fallbackTestimonials
+  processSteps as fallbackProcess
 } from '@/lib/data';
 
 export const revalidate = 60;
@@ -42,7 +40,6 @@ export default async function HomePage() {
 
   const servicesData = await getContent('services', fallbackServices);
   const processData = await getContent('processSteps', fallbackProcess);
-  const testimonialsData = await getContent('testimonials', fallbackTestimonials);
 
   return (
     <>
@@ -50,7 +47,6 @@ export default async function HomePage() {
       <Welcome />
       <Expertise services={servicesData} />
       <Showcase featured={featured} />
-      <Testimonials testimonials={testimonialsData} />
       <ConsultationCTA />
     </>
   );
