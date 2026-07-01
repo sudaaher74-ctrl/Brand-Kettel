@@ -18,7 +18,8 @@ async function getContent(type: string, fallback: any) {
     if (!res.ok) return fallback;
     const data = await res.json();
     return Array.isArray(data) && data.length > 0 ? data : fallback;
-  } catch {
+  } catch (error) {
+    console.warn(`Failed to fetch content type ${type}:`, error);
     return fallback;
   }
 }
@@ -26,11 +27,12 @@ async function getContent(type: string, fallback: any) {
 async function getProjects() {
   try {
     const res = await fetch(`${API_URL}/api/admin/projects`, { next: { revalidate: 60 } });
-    if (!res.ok) return [];
+    if (!res.ok) return fallbackProjects;
     const data = await res.json();
-    return Array.isArray(data) && data.length > 0 ? data : [];
-  } catch {
-    return [];
+    return Array.isArray(data) && data.length > 0 ? data : fallbackProjects;
+  } catch (error) {
+    console.warn(`Failed to fetch projects:`, error);
+    return fallbackProjects;
   }
 }
 

@@ -10,7 +10,9 @@ type Service = {
   image: string; // Keep this in type to match props from page.tsx, but we won't render it
 };
 
-export default function Expertise({ services }: { services: Service[] }) {
+export default function Expertise({ services }: { services: Service[] | null }) {
+  if (!services || !Array.isArray(services) || services.length === 0) return null;
+
   return (
     <section className="relative overflow-hidden bg-background py-20 sm:py-28">
       {/* Decorative background elements */}

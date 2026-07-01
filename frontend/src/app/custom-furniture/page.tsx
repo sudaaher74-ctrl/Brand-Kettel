@@ -29,7 +29,8 @@ async function getFurnitureProjects() {
     const data = await res.json();
     const furniture = (Array.isArray(data) ? data : fallbackProjects).filter((p: any) => p.category.toLowerCase().includes('office') || p.category.toLowerCase().includes('corporate'));
     return furniture.length > 0 ? furniture : fallbackProjects.filter((p) => p.category.toLowerCase().includes('office') || p.category.toLowerCase().includes('corporate'));
-  } catch {
+  } catch (error) {
+    console.warn(`Failed to fetch furniture projects:`, error);
     return fallbackProjects.filter((p) => p.category.toLowerCase().includes('office') || p.category.toLowerCase().includes('corporate'));
   }
 }

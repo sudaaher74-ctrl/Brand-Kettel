@@ -19,7 +19,8 @@ async function getProcess() {
     if (!res.ok) return fallbackProcess;
     const data = await res.json();
     return Array.isArray(data) && data.length > 0 ? data : fallbackProcess;
-  } catch {
+  } catch (error) {
+    console.warn(`Failed to fetch processSteps:`, error);
     return fallbackProcess;
   }
 }

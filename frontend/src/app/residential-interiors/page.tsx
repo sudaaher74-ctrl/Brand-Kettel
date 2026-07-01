@@ -30,7 +30,8 @@ async function getResidentialProjects() {
     const data = await res.json();
     const residential = (Array.isArray(data) ? data : fallbackProjects).filter((p: any) => p.segment === 'residential');
     return residential.length > 0 ? residential : fallbackProjects.filter((p) => p.segment === 'residential');
-  } catch {
+  } catch (error) {
+    console.warn(`Failed to fetch residential projects:`, error);
     return fallbackProjects.filter((p) => p.segment === 'residential');
   }
 }

@@ -28,7 +28,8 @@ async function getRetailProjects() {
     const data = await res.json();
     const retail = (Array.isArray(data) ? data : fallbackProjects).filter((p: any) => p.category.toLowerCase().includes('retail') || p.category.toLowerCase().includes('hospitality'));
     return retail.length > 0 ? retail : fallbackProjects.filter((p) => p.category.toLowerCase().includes('retail') || p.category.toLowerCase().includes('hospitality'));
-  } catch {
+  } catch (error) {
+    console.warn(`Failed to fetch retail projects:`, error);
     return fallbackProjects.filter((p) => p.category.toLowerCase().includes('retail') || p.category.toLowerCase().includes('hospitality'));
   }
 }

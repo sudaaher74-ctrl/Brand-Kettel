@@ -28,7 +28,8 @@ async function getCommercialProjects() {
     const data = await res.json();
     const commercial = (Array.isArray(data) ? data : fallbackProjects).filter((p: any) => p.segment === 'commercial');
     return commercial.length > 0 ? commercial : fallbackProjects.filter((p) => p.segment === 'commercial');
-  } catch {
+  } catch (error) {
+    console.warn(`Failed to fetch commercial projects:`, error);
     return fallbackProjects.filter((p) => p.segment === 'commercial');
   }
 }

@@ -28,7 +28,8 @@ async function getServices() {
     if (!res.ok) return fallbackServices;
     const data = await res.json();
     return Array.isArray(data) && data.length > 0 ? data : fallbackServices;
-  } catch {
+  } catch (error) {
+    console.warn(`Failed to fetch services:`, error);
     return fallbackServices;
   }
 }

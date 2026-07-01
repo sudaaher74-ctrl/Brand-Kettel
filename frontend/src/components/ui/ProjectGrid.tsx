@@ -3,7 +3,9 @@ import Reveal from './Reveal';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function ProjectGrid({ items }: { items: Project[] }) {
+export default function ProjectGrid({ items }: { items: Project[] | null }) {
+  if (!items || !Array.isArray(items) || items.length === 0) return null;
+
   return (
     <div className="grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-2">
       {items.map((p, i) => (

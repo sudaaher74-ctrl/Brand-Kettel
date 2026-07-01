@@ -27,7 +27,8 @@ async function getInstitutionalProjects() {
     const data = await res.json();
     const inst = (Array.isArray(data) ? data : fallbackProjects).filter((p: any) => p.category.toLowerCase().includes('government') || p.category.toLowerCase().includes('institutional'));
     return inst.length > 0 ? inst : fallbackProjects.filter((p) => p.category.toLowerCase().includes('government') || p.category.toLowerCase().includes('institutional'));
-  } catch {
+  } catch (error) {
+    console.warn(`Failed to fetch institutional projects:`, error);
     return fallbackProjects.filter((p) => p.category.toLowerCase().includes('government') || p.category.toLowerCase().includes('institutional'));
   }
 }

@@ -44,7 +44,8 @@ async function getProject(slug: string): Promise<Project | null> {
       return fallback ? mapToProject(fallback) : null;
     }
     return res.json();
-  } catch (e) {
+  } catch (error) {
+    console.warn(`Failed to fetch project ${slug}:`, error);
     const fallback = fallbackProjects.find(p => p.slug === slug);
     return fallback ? mapToProject(fallback) : null;
   }

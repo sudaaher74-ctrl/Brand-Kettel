@@ -27,7 +27,8 @@ async function getJewelleryProjects() {
     const data = await res.json();
     const jewellery = (Array.isArray(data) ? data : fallbackProjects).filter((p: any) => p.category.toLowerCase().includes('jewel'));
     return jewellery.length > 0 ? jewellery : fallbackProjects.filter((p) => p.category.toLowerCase().includes('jewel'));
-  } catch {
+  } catch (error) {
+    console.warn(`Failed to fetch jewellery projects:`, error);
     return fallbackProjects.filter((p) => p.category.toLowerCase().includes('jewel'));
   }
 }

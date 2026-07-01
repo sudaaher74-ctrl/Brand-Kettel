@@ -47,7 +47,8 @@ async function getPosts() {
     const data = await res.json();
     const published = (Array.isArray(data) ? data : []).filter((p: any) => p.published);
     return published.length > 0 ? published : PLACEHOLDER_POSTS;
-  } catch {
+  } catch (error) {
+    console.warn(`Failed to fetch blog posts:`, error);
     return PLACEHOLDER_POSTS;
   }
 }

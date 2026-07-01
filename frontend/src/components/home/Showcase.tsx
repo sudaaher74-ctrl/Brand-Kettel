@@ -6,14 +6,7 @@ import type { Project } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Showcase({ featured }: { featured: Project }) {
-  const facts = [
-    { label: 'Project', value: featured.name },
-    { label: 'Location', value: featured.location },
-    { label: 'Category', value: featured.category },
-    { label: 'Area', value: featured.area },
-    { label: 'Completed', value: featured.year },
-  ];
+export default function Showcase({ featured }: { featured: Project | null }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -25,6 +18,16 @@ export default function Showcase({ featured }: { featured: Project }) {
   const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '-6%']);
   const fgY = useTransform(scrollYProgress, [0, 0.5, 1], ['8%', '0%', '-8%']);
   const headOpacity = useTransform(scrollYProgress, [0, 0.15, 0.4], [0, 1, 1]);
+
+  if (!featured) return null;
+
+  const facts = [
+    { label: 'Project', value: featured.name },
+    { label: 'Location', value: featured.location },
+    { label: 'Category', value: featured.category },
+    { label: 'Area', value: featured.area },
+    { label: 'Completed', value: featured.year },
+  ];
 
   return (
     <section ref={ref} className="relative h-[260vh] bg-surface">

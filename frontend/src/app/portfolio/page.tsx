@@ -19,7 +19,8 @@ async function getProjects() {
     if (!res.ok) return fallbackProjects;
     const data = await res.json();
     return Array.isArray(data) && data.length > 0 ? data : fallbackProjects;
-  } catch {
+  } catch (error) {
+    console.warn(`Failed to fetch portfolio projects:`, error);
     return fallbackProjects;
   }
 }
