@@ -19,7 +19,6 @@ export default function ProjectReveal({ projects }: { projects: Project[] }) {
     <section ref={ref} className="relative bg-surface py-20 sm:py-28">
       <div className="container-px">
         <SectionHeading
-          eyebrow="What we build"
           title="Projects that float to life as you scroll"
           subtitle="From corporate headquarters to retail flagships — explore the spaces we design, build and furnish."
         />
