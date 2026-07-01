@@ -39,6 +39,13 @@ export default function ExpertiseStorytelling() {
 
         {/* Right Side: Expertise Content (40%) */}
         <div className="relative w-full md:w-[40%] h-[50vh] md:h-full bg-white flex items-center shadow-[-20px_0_40px_rgba(0,0,0,0.03)] z-10 border-l border-line">
+          
+          {/* Section Eyebrow (Our Expertise) */}
+          <div className="absolute top-8 md:top-12 left-8 md:left-16 lg:left-24 flex items-center gap-4 z-50">
+            <div className="w-12 h-px bg-accent/40" />
+            <span className="text-sm font-mono uppercase tracking-widest text-accent">Our Expertise</span>
+          </div>
+
           <ExpertiseContent scrollProgress={scrollYProgress} />
         </div>
 

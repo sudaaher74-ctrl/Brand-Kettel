@@ -63,13 +63,10 @@ function ExpertisePane({ data, progress, index }: { data: ExpertiseData, progres
       className="absolute inset-0 flex flex-col justify-center px-8 md:px-16 lg:px-24"
     >
       <div className="flex items-center gap-4 mb-6">
-        <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-accent">
-          Our Expertise
-        </span>
-        <span className="text-sm font-mono text-ink-muted tracking-widest">
+        <span className="text-sm font-mono text-accent/60 tracking-widest">
           {String(index + 1).padStart(2, '0')}
         </span>
-        <div className="h-px w-8 bg-line" />
+        <div className="h-px w-12 bg-line" />
       </div>
 
       <h2 className="font-display text-4xl lg:text-5xl font-semibold text-ink mb-6 tracking-tight">
