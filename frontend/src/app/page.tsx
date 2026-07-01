@@ -2,8 +2,6 @@ import Hero from '@/components/home/Hero';
 import Welcome from '@/components/home/Welcome';
 import Expertise from '@/components/home/Expertise';
 import Showcase from '@/components/home/Showcase';
-import Process from '@/components/home/Process';
-import Commercial from '@/components/home/Commercial';
 import Testimonials from '@/components/home/Testimonials';
 import ConsultationCTA from '@/components/home/ConsultationCTA';
 import { 
@@ -52,8 +50,6 @@ export default async function HomePage() {
       <Welcome />
       <Expertise services={servicesData} />
       <Showcase featured={featured} />
-      <Process steps={processData} />
-      <Commercial />
       <Testimonials testimonials={testimonialsData} />
       <ConsultationCTA />
     </>
