@@ -25,7 +25,7 @@ export default function Welcome() {
               BrandKettle bridges the gap between vision and execution. With years of expertise in commercial interior design, turnkey build-outs, and project management, we help businesses transform their environments.
             </p>
             <p className="mt-6 text-lg">
-              Our approach is rooted in understanding your brand's unique identity and translating it into functional, inspiring spaces that foster growth and innovation. From concept to completion, we manage every detail to ensure a seamless experience.
+              Our approach is rooted in understanding your brand&apos;s unique identity and translating it into functional, inspiring spaces that foster growth and innovation. From concept to completion, we manage every detail to ensure a seamless experience.
             </p>
           </motion.div>
           
