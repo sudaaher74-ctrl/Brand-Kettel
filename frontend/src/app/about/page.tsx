@@ -59,31 +59,21 @@ export default function AboutPage() {
           <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20 items-center">
             <Reveal>
               <span className="eyebrow">
-                <span className="h-px w-6 bg-accent" /> Who we are
+                <span className="h-px w-6 bg-accent" /> Our Story
               </span>
-              <h2 className="mt-4 text-3xl font-semibold leading-[1.1] text-ink sm:text-4xl md:text-5xl">
-                An integrated platform for every interior need
+              <h2 className="mt-4 text-3xl font-semibold leading-[1.2] text-ink sm:text-4xl md:text-4xl italic">
+                &quot;Good spaces aren&apos;t defined by how they look on day one. They&apos;re defined by how well they perform for years to come.&quot;
               </h2>
             </Reveal>
             <div className="space-y-5">
               <Reveal index={1}>
-                <p className="text-base leading-relaxed text-ink-muted">
-                  Brand Kettle BuildSpaces is a <span className="text-ink font-medium">turnkey interior design, fit-out and furniture solutions company</span> creating retail, commercial and residential environments across India.
+                <p className="text-lg leading-relaxed text-ink-muted">
+                  Built on the execution expertise of Brand Kettle Projects Pvt Ltd, Brand Kettle BuildSpaces brings together design, manufacturing and turnkey execution to create retail, commercial and residential spaces.
                 </p>
               </Reveal>
               <Reveal index={2}>
-                <p className="text-base leading-relaxed text-ink-muted">
-                  Built on the execution expertise of Brand Kettle Projects, we combine <span className="text-ink font-medium">design thinking, manufacturing capability and turnkey execution</span> to deliver spaces that are functional, immersive and built to last.
-                </p>
-              </Reveal>
-              <Reveal index={3}>
-                <p className="text-base leading-relaxed text-ink-muted">
-                  We bring together craftsmanship, precision and execution excellence under one integrated platform — from luxury jewellery showrooms and retail environments to corporate workplaces and bespoke residential interiors.
-                </p>
-              </Reveal>
-              <Reveal index={4}>
-                <p className="text-base leading-relaxed text-accent font-medium italic border-l-2 border-accent pl-4">
-                  &quot;We believe great spaces are not just designed — they are crafted, built and experienced.&quot;
+                <p className="text-lg leading-relaxed text-ink-muted">
+                  Every project is thoughtfully designed around our clients&apos; vision, functional needs and the way the space is meant to be experienced.
                 </p>
               </Reveal>
             </div>

@@ -18,10 +18,10 @@ export default function WhyBrandKettle() {
         <SectionHeading
           eyebrow="Why Brand Kettle"
           title="An execution-focused partner you can trust"
-          subtitle="Six reasons developers, business owners and architects choose us for their commercial spaces."
+          subtitle="Four reasons developers, business owners and architects choose us for their commercial spaces."
         />
 
-        <div className="scene mt-12 grid gap-5 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="scene mt-12 grid gap-5 sm:mt-16 sm:grid-cols-2 lg:grid-cols-2 max-w-5xl mx-auto">
           {whyCards.map((c, i) => (
             <motion.div
               key={c.title}

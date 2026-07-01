@@ -251,12 +251,10 @@ export const services: Service[] = [
 ];
 
 export const whyCards = [
-  { title: 'Design + Execution', body: 'One accountable team from concept through construction.' },
-  { title: 'Dedicated Project Team', body: 'A named project lead and crew on every engagement.' },
-  { title: 'Transparent Process', body: 'Clear scope, costing and milestones — no surprises.' },
-  { title: 'Premium Materials', body: 'Specified, sourced and verified for longevity.' },
-  { title: 'Quality Assurance', body: 'Multi-stage QA checks before every handover.' },
-  { title: 'Timely Delivery', body: 'Schedules we plan around and deliver against.' },
+  { title: 'Purpose Before Design', body: 'Every project begins with understanding how the space needs to function—not just how it should look.' },
+  { title: 'Precision in Execution', body: 'Design is only as good as its execution. We believe the quality of every detail matters.' },
+  { title: 'Timelines You Can Count On', body: 'We value your time as much as our own. Every project is planned with clear milestones and delivered with accountability.' },
+  { title: 'Partnerships That Last', body: "For us, a successful project isn't the end of a transaction, it's the beginning of a long-term relationship." },
 ];
 
 export const processSteps = [
