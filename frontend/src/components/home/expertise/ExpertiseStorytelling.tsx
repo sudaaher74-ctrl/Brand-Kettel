@@ -23,12 +23,12 @@ export default function ExpertiseStorytelling() {
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col md:flex-row">
         
         {/* Left Side: Images Canvas (60%) */}
-        <div className="relative w-full md:w-[60%] h-[50vh] md:h-full bg-[#FAFAFA]">
+        <div className="relative w-full md:w-[60%] h-[50vh] md:h-full bg-surface2">
           {/* Subtle architectural grid background */}
           <div 
             className="absolute inset-0 pointer-events-none opacity-20 z-10"
             style={{
-              backgroundImage: `linear-gradient(#e5e5e5 1px, transparent 1px), linear-gradient(90deg, #e5e5e5 1px, transparent 1px)`,
+              backgroundImage: `linear-gradient(#222 1px, transparent 1px), linear-gradient(90deg, #222 1px, transparent 1px)`,
               backgroundSize: '40px 40px'
             }}
           />
@@ -38,7 +38,7 @@ export default function ExpertiseStorytelling() {
         </div>
 
         {/* Right Side: Expertise Content (40%) */}
-        <div className="relative w-full md:w-[40%] h-[50vh] md:h-full bg-white flex items-center shadow-[-20px_0_40px_rgba(0,0,0,0.03)] z-10 border-l border-line">
+        <div className="relative w-full md:w-[40%] h-[50vh] md:h-full bg-surface flex items-center shadow-[-20px_0_40px_rgba(0,0,0,0.5)] z-10 border-l border-line">
           
           {/* Section Eyebrow (Our Expertise) */}
           <div className="absolute top-8 md:top-12 left-8 md:left-16 lg:left-24 flex items-center gap-4 z-50">
