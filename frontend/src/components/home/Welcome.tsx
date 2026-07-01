@@ -6,7 +6,7 @@ import SectionHeading from '@/components/ui/SectionHeading';
 export default function Welcome() {
   return (
     <section className="relative overflow-hidden bg-surface py-20 sm:py-28">
-      <div className="container-px">
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16">
         <SectionHeading
           eyebrow="Who we are"
           title="Welcome to BrandKettle"
