@@ -1,12 +1,9 @@
 'use client';
 
 import { useRef } from 'react';
-import dynamic from 'next/dynamic';
 import { useScroll } from 'framer-motion';
 import ExpertiseContent from './ExpertiseContent';
-
-// Lazy load the 3D Scene to prevent SSR issues and optimize initial load
-const ExpertiseScene = dynamic(() => import('./ExpertiseScene'), { ssr: false });
+import ExpertiseImages from './ExpertiseImages';
 
 export default function ExpertiseStorytelling() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -25,18 +22,18 @@ export default function ExpertiseStorytelling() {
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col md:flex-row">
         
-        {/* Left Side: Interactive 3D Canvas (60%) */}
+        {/* Left Side: Images Canvas (60%) */}
         <div className="relative w-full md:w-[60%] h-[50vh] md:h-full bg-[#FAFAFA]">
           {/* Subtle architectural grid background */}
           <div 
-            className="absolute inset-0 pointer-events-none opacity-20"
+            className="absolute inset-0 pointer-events-none opacity-20 z-10"
             style={{
               backgroundImage: `linear-gradient(#e5e5e5 1px, transparent 1px), linear-gradient(90deg, #e5e5e5 1px, transparent 1px)`,
               backgroundSize: '40px 40px'
             }}
           />
           <div className="absolute inset-0 z-0">
-            <ExpertiseScene scrollProgress={scrollYProgress} />
+            <ExpertiseImages scrollProgress={scrollYProgress} />
           </div>
         </div>
 
