@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import RichTextEditor from './RichTextEditor';
 
 type PostData = {
   id?: string;
@@ -13,6 +14,10 @@ type PostData = {
   category?: string;
   tags?: string[];
   published?: boolean;
+  metaTitle?: string;
+  metaDescription?: string;
+  keywords?: string[];
+  imageAltText?: string;
 };
 
 const label = { display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 4 };
@@ -38,6 +43,10 @@ export default function BlogForm({ initial = {} }: { initial?: PostData }) {
     category: initial.category ?? '',
     tags: (initial.tags ?? []).join(', '),
     published: initial.published ?? false,
+    metaTitle: initial.metaTitle ?? '',
+    metaDescription: initial.metaDescription ?? '',
+    keywords: (initial.keywords ?? []).join(', '),
+    imageAltText: initial.imageAltText ?? '',
   });
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
@@ -58,6 +67,7 @@ export default function BlogForm({ initial = {} }: { initial?: PostData }) {
     const payload = {
       ...form,
       tags: form.tags.split(',').map(t => t.trim()).filter(Boolean),
+      keywords: form.keywords.split(',').map(k => k.trim()).filter(Boolean),
     };
 
     const url = isEdit ? `/api/admin/blog/${initial.id}` : '/api/admin/blog';
@@ -81,56 +91,85 @@ export default function BlogForm({ initial = {} }: { initial?: PostData }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="grid grid-cols-2 gap-5">
-        <div>
-          <label style={label}>Title *</label>
-          <input style={input} value={form.title} onChange={e => set('title', e.target.value)} required />
+    <form onSubmit={handleSubmit} className="space-y-8">
+      {/* Basic Info */}
+      <div className="space-y-5">
+        <h2 className="text-lg font-bold border-b pb-2">Basic Info</h2>
+        <div className="grid grid-cols-2 gap-5">
+          <div>
+            <label style={label}>Title *</label>
+            <input style={input} value={form.title} onChange={e => set('title', e.target.value)} required />
+          </div>
+          <div>
+            <label style={label}>Slug *</label>
+            <input style={input} value={form.slug} onChange={e => set('slug', e.target.value)} required />
+          </div>
         </div>
+
+        <div className="grid grid-cols-2 gap-5">
+          <div>
+            <label style={label}>Category</label>
+            <input style={input} value={form.category} onChange={e => set('category', e.target.value)} placeholder="Commercial, Office, Retail…" />
+          </div>
+          <div>
+            <label style={label}>Tags (comma separated)</label>
+            <input style={input} value={form.tags} onChange={e => set('tags', e.target.value)} placeholder="design, interior, retail" />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-5">
+          <div>
+            <label style={label}>Cover Image URL</label>
+            <input style={input} value={form.coverImage} onChange={e => set('coverImage', e.target.value)} placeholder="/imgs/blog/cover.jpg" />
+            {form.coverImage && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={form.coverImage} alt="" className="mt-2 rounded-lg object-cover" style={{ height: 80, width: 140 }} />
+            )}
+          </div>
+          <div>
+            <label style={label}>Image Alt Text</label>
+            <input style={input} value={form.imageAltText} onChange={e => set('imageAltText', e.target.value)} placeholder="A beautiful commercial interior..." />
+          </div>
+        </div>
+
         <div>
-          <label style={label}>Slug *</label>
-          <input style={input} value={form.slug} onChange={e => set('slug', e.target.value)} required />
+          <label style={label}>Excerpt</label>
+          <textarea
+            style={{ ...input, minHeight: 80, resize: 'vertical' }}
+            value={form.excerpt}
+            onChange={e => set('excerpt', e.target.value)}
+            placeholder="A short summary shown on the blog listing page…"
+          />
+        </div>
+
+        <div>
+          <label style={label}>Content</label>
+          <RichTextEditor value={form.content} onChange={(val) => set('content', val)} />
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-5">
-        <div>
-          <label style={label}>Category</label>
-          <input style={input} value={form.category} onChange={e => set('category', e.target.value)} placeholder="Commercial, Office, Retail…" />
+      {/* SEO Settings */}
+      <div className="space-y-5">
+        <h2 className="text-lg font-bold border-b pb-2">SEO Settings</h2>
+        <div className="grid grid-cols-2 gap-5">
+          <div>
+            <label style={label}>Meta Title</label>
+            <input style={input} value={form.metaTitle} onChange={e => set('metaTitle', e.target.value)} placeholder="SEO Title (defaults to post title)" />
+          </div>
+          <div>
+            <label style={label}>Keywords (comma separated)</label>
+            <input style={input} value={form.keywords} onChange={e => set('keywords', e.target.value)} placeholder="interior design, architecture, office" />
+          </div>
         </div>
         <div>
-          <label style={label}>Tags (comma separated)</label>
-          <input style={input} value={form.tags} onChange={e => set('tags', e.target.value)} placeholder="design, interior, retail" />
+          <label style={label}>Meta Description</label>
+          <textarea
+            style={{ ...input, minHeight: 80, resize: 'vertical' }}
+            value={form.metaDescription}
+            onChange={e => set('metaDescription', e.target.value)}
+            placeholder="SEO Description (defaults to excerpt)"
+          />
         </div>
-      </div>
-
-      <div>
-        <label style={label}>Cover Image URL</label>
-        <input style={input} value={form.coverImage} onChange={e => set('coverImage', e.target.value)} placeholder="/imgs/blog/cover.jpg" />
-        {form.coverImage && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={form.coverImage} alt="" className="mt-2 rounded-lg object-cover" style={{ height: 80, width: 140 }} />
-        )}
-      </div>
-
-      <div>
-        <label style={label}>Excerpt</label>
-        <textarea
-          style={{ ...input, minHeight: 80, resize: 'vertical' }}
-          value={form.excerpt}
-          onChange={e => set('excerpt', e.target.value)}
-          placeholder="A short summary shown on the blog listing page…"
-        />
-      </div>
-
-      <div>
-        <label style={label}>Content</label>
-        <textarea
-          style={{ ...input, minHeight: 260, resize: 'vertical', fontFamily: 'monospace', fontSize: 13 }}
-          value={form.content}
-          onChange={e => set('content', e.target.value)}
-          placeholder="Write the full article here…"
-        />
       </div>
 
       <div className="flex items-center gap-2">

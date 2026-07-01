@@ -35,12 +35,26 @@ import projectsRoutes from './routes/projects';
 import contactRoutes from './routes/contact';
 import authRoutes from './routes/auth';
 import seoRoutes from './routes/seo';
+import servicesRoutes from './routes/services';
+import careersRoutes from './routes/careers';
+import testimonialsRoutes from './routes/testimonials';
+import uploadRoutes from './routes/upload';
+import settingsRoutes from './routes/settings';
+import path from 'path';
 
 // Public auth routes
 app.use('/api/admin', authRoutes);
 
+// Static uploads serving
+app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
+
 // Admin API routes (auth handled individually per route)
 app.use('/api/admin/projects', projectsRoutes);
+app.use('/api/admin/services', servicesRoutes);
+app.use('/api/admin/careers', careersRoutes);
+app.use('/api/admin/testimonials', testimonialsRoutes);
+app.use('/api/admin/upload', uploadRoutes);
+app.use('/api/admin/settings', settingsRoutes);
 app.use('/api/admin', adminRoutes);
 
 // Public rate-limited routes

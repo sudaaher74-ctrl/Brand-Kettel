@@ -86,6 +86,24 @@ router.get('/leads', requireAuth, async (req, res) => {
   res.json(docs.map(d => ({ ...d, id: d._id.toString(), _id: undefined })));
 });
 
+router.put('/leads/:id/status', requireAuth, async (req, res) => {
+  const db = await getDb();
+  if (!db) return res.status(503).json({ error: 'Database not configured' });
+  try {
+    const { status } = req.body;
+    if (!['New', 'Contacted', 'Closed'].includes(status)) {
+      return res.status(400).json({ error: 'Invalid status' });
+    }
+    await db.collection('leads').updateOne(
+      { _id: new ObjectId(req.params.id as string) },
+      { $set: { status, updatedAt: new Date() } }
+    );
+    res.json({ ok: true });
+  } catch (err: any) {
+    res.status(400).json({ error: 'Failed to update status', details: err.message });
+  }
+});
+
 router.delete('/leads/:id', requireAuth, async (req, res) => {
   const db = await getDb();
   if (!db) return res.status(503).json({ error: 'Database not configured' });

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import RichTextEditor from './RichTextEditor';
 
 type ProjectData = {
   id?: string;
@@ -14,11 +15,13 @@ type ProjectData = {
   segment?: string;
   image?: string;
   gallery?: string[];
-  blurb?: string;
+  description?: string;
+  materialsUsed?: string[];
+  status?: string;
   order?: number;
 };
 
-const CATEGORIES = ['Hospitality', 'Commercial Spaces', 'Government', 'Luxury Retail', 'Jewellery Showroom', 'Office', 'Residential'];
+const CATEGORIES = ['Retail', 'Commercial', 'Residential', 'Hospitality', 'Education'];
 
 const label = { display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 4 };
 const input = {
@@ -38,13 +41,15 @@ export default function ProjectForm({ initial = {} }: { initial?: ProjectData })
     name: initial.name ?? '',
     slug: initial.slug ?? '',
     location: initial.location ?? '',
-    category: initial.category ?? 'Commercial Spaces',
+    category: initial.category ?? 'Commercial',
     area: initial.area ?? '',
     year: initial.year ?? '',
     segment: initial.segment ?? 'commercial',
     image: initial.image ?? '',
     gallery: (initial.gallery ?? []).join('\n'),
-    blurb: initial.blurb ?? '',
+    description: initial.description ?? '',
+    materialsUsed: (initial.materialsUsed ?? []).join(', '),
+    status: initial.status ?? 'Completed',
   });
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
@@ -65,6 +70,7 @@ export default function ProjectForm({ initial = {} }: { initial?: ProjectData })
     const payload = {
       ...form,
       gallery: form.gallery.split('\n').map(s => s.trim()).filter(Boolean),
+      materialsUsed: form.materialsUsed.split(',').map(s => s.trim()).filter(Boolean),
     };
 
     const url = isEdit ? `/api/admin/projects/${initial.id}` : '/api/admin/projects';
@@ -100,7 +106,7 @@ export default function ProjectForm({ initial = {} }: { initial?: ProjectData })
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-3 gap-5">
         <div>
           <label style={label}>Location</label>
           <input style={input} value={form.location} onChange={e => set('location', e.target.value)} />
@@ -112,7 +118,18 @@ export default function ProjectForm({ initial = {} }: { initial?: ProjectData })
             value={form.category}
             onChange={e => set('category', e.target.value)}
           >
-            {CATEGORIES.map(c => <option key={c}>{c}</option>)}
+            {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
+          </select>
+        </div>
+        <div>
+          <label style={label}>Status</label>
+          <select
+            style={{ ...input, cursor: 'pointer' }}
+            value={form.status}
+            onChange={e => set('status', e.target.value)}
+          >
+            <option value="Completed">Completed</option>
+            <option value="Ongoing">Ongoing</option>
           </select>
         </div>
       </div>
@@ -140,6 +157,11 @@ export default function ProjectForm({ initial = {} }: { initial?: ProjectData })
       </div>
 
       <div>
+        <label style={label}>Materials Used (comma separated)</label>
+        <input style={input} value={form.materialsUsed} onChange={e => set('materialsUsed', e.target.value)} placeholder="Oak Wood, Marble, Steel" />
+      </div>
+
+      <div>
         <label style={label}>Cover Image URL</label>
         <input style={input} value={form.image} onChange={e => set('image', e.target.value)} placeholder="/imgs/commercial/photo.jpg" />
         {form.image && (
@@ -159,12 +181,8 @@ export default function ProjectForm({ initial = {} }: { initial?: ProjectData })
       </div>
 
       <div>
-        <label style={label}>Blurb / Description</label>
-        <textarea
-          style={{ ...input, minHeight: 80, resize: 'vertical' }}
-          value={form.blurb}
-          onChange={e => set('blurb', e.target.value)}
-        />
+        <label style={label}>Description</label>
+        <RichTextEditor value={form.description} onChange={(val) => set('description', val)} />
       </div>
 
       {error && <p style={{ color: '#dc2626', fontSize: 14 }}>{error}</p>}
