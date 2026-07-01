@@ -39,11 +39,9 @@ export const caseStudies: CaseStudy[] = [
     description: 'BrandKettle\'s first collaboration with a luxury hotel — centrally located in the medical hub. A new chapter where brand identity meets functionality.',
     keyStat: 'First collaboration with a luxury hotel',
     images: [
-      '/imgs/commercial/p064_079.jpg',
-      '/imgs/commercial/p064_080.jpg',
-      '/imgs/commercial/p064_081.jpg',
-      '/imgs/commercial/p066_086.jpg',
-      '/imgs/commercial/p066_087.jpg',
+      '/imgs/commercial/ramda encre hotel1.jpg',
+      '/imgs/commercial/ramda encore hotel2.jpg',
+      '/imgs/commercial/ramda encore hotel3.jpg',
     ],
   },
   {
@@ -53,12 +51,11 @@ export const caseStudies: CaseStudy[] = [
     category: 'Hospitality',
     description: 'A standout rooftop project at the Ramada hotel, highlighting expertise in design thinking, detailing and craftsmanship.',
     images: [
-      '/imgs/commercial/p071_096.jpg',
-      '/imgs/commercial/p072_097.jpg',
-      '/imgs/commercial/p072_098.jpg',
-      '/imgs/commercial/p072_099.jpg',
-      '/imgs/commercial/p073_101.jpg',
-      '/imgs/commercial/p073_102.jpg',
+      '/imgs/commercial/Havana lounge1.jpg',
+      '/imgs/commercial/havana lounge2.jpg',
+      '/imgs/commercial/havana lounge 3.jpg',
+      '/imgs/commercial/havana lounge4.jpg',
+      '/imgs/commercial/havna lounge5.jpg',
     ],
   },
   {
@@ -82,9 +79,9 @@ export const caseStudies: CaseStudy[] = [
     category: 'Workspace',
     description: 'A fun and creative co-working space delivered in Faridabad.',
     images: [
-      '/imgs/commercial/p077_108.jpg',
-      '/imgs/commercial/p078_109.jpg',
-      '/imgs/commercial/p079_110.jpg',
+      '/imgs/commercial/work co workspace.jpg',
+      '/imgs/commercial/work co workspace1.jpg',
+      '/imgs/commercial/work co work space2.jpg',
     ],
   },
   {
@@ -103,9 +100,9 @@ export const caseStudies: CaseStudy[] = [
     category: 'Government',
     description: 'Government and Institutional Project.',
     images: [
-      '/imgs/commercial/p090_121.jpg',
-      '/imgs/commercial/p091_122.jpg',
-      '/imgs/commercial/p092_123.jpg',
+      '/imgs/commercial/nanokirti pvt1.jpg',
+      '/imgs/commercial/nanokirti pvt2.jpg',
+      '/imgs/commercial/nanokirti pvt3.jpg',
     ],
   },
   {
@@ -114,9 +111,10 @@ export const caseStudies: CaseStudy[] = [
     category: 'Government',
     description: 'Government and Institutional Project.',
     images: [
-      '/imgs/commercial/p094_125.jpg',
-      '/imgs/commercial/p095_126.jpg',
-      '/imgs/commercial/p096_127.jpg',
+      '/imgs/commercial/lic1.jpg',
+      '/imgs/commercial/lic2.jpg',
+      '/imgs/commercial/lic3.jpg',
+      '/imgs/commercial/lic4.jpg',
     ],
   },
   {
@@ -128,7 +126,6 @@ export const caseStudies: CaseStudy[] = [
       '/imgs/commercial/p098_129.jpg',
       '/imgs/commercial/p099_130.jpg',
       '/imgs/commercial/p099_131.jpg',
-      '/imgs/commercial/p099_132.jpg',
     ],
   },
   {
@@ -137,7 +134,9 @@ export const caseStudies: CaseStudy[] = [
     category: 'Government',
     description: 'Government and Institutional Project.',
     images: [
-      '/imgs/commercial/p100_133.jpg',
+      '/imgs/commercial/GEM jeevan tara.jpg',
+      '/imgs/commercial/gevantara2.jpg',
+      '/imgs/commercial/geven tara 3.jpg',
     ],
   },
 ];
