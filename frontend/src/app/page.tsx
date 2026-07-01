@@ -1,4 +1,5 @@
 import Hero from '@/components/home/Hero';
+import Welcome from '@/components/home/Welcome';
 import BlueprintExperience from '@/components/home/blueprint/BlueprintExperience';
 import ExpertiseStorytelling from '@/components/home/expertise/ExpertiseStorytelling';
 import Showcase from '@/components/home/Showcase';
@@ -44,6 +45,7 @@ export default async function HomePage() {
   return (
     <>
       <Hero />
+      <Welcome />
       <BlueprintExperience />
       <ExpertiseStorytelling />
       <Showcase featured={featured} />
