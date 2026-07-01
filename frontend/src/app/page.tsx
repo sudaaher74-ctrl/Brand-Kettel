@@ -1,5 +1,4 @@
 import Hero from '@/components/home/Hero';
-import ProjectReveal from '@/components/home/ProjectReveal';
 import Expertise from '@/components/home/Expertise';
 import Showcase from '@/components/home/Showcase';
 import Process from '@/components/home/Process';
@@ -49,7 +48,6 @@ export default async function HomePage() {
   return (
     <>
       <Hero />
-      <ProjectReveal projects={projects} />
       <Expertise services={servicesData} />
       <Showcase featured={featured} />
       <Process steps={processData} />
