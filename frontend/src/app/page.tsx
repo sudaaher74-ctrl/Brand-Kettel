@@ -1,6 +1,6 @@
 import Hero from '@/components/home/Hero';
 import Welcome from '@/components/home/Welcome';
-import Expertise from '@/components/home/Expertise';
+import ExpertiseStorytelling from '@/components/home/expertise/ExpertiseStorytelling';
 import Showcase from '@/components/home/Showcase';
 import ConsultationCTA from '@/components/home/ConsultationCTA';
 import { 
@@ -40,14 +40,11 @@ export default async function HomePage() {
   const projects = await getProjects();
   const featured = projects.length > 0 ? (projects.find((p: any) => p.slug === 'meridian-turnkey-campus') ?? projects[0]) : null;
 
-  const servicesData = await getContent('services', fallbackServices);
-  const processData = await getContent('processSteps', fallbackProcess);
-
   return (
     <>
       <Hero />
       <Welcome />
-      <Expertise services={servicesData} />
+      <ExpertiseStorytelling />
       <Showcase featured={featured} />
       <ConsultationCTA />
     </>
