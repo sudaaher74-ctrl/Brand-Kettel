@@ -4,8 +4,8 @@ import { motion, MotionValue, useTransform } from 'framer-motion';
 import Image from 'next/image';
 
 const IMAGES = [
-  '/imgs/experties1.png',
   '/imgs/experties2.png',
+  '/imgs/experties1.png',
   '/imgs/residential3.png',
 ];
 
