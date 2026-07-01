@@ -1,4 +1,5 @@
 import Hero from '@/components/home/Hero';
+import Welcome from '@/components/home/Welcome';
 import Expertise from '@/components/home/Expertise';
 import Showcase from '@/components/home/Showcase';
 import Process from '@/components/home/Process';
@@ -48,6 +49,7 @@ export default async function HomePage() {
   return (
     <>
       <Hero />
+      <Welcome />
       <Expertise services={servicesData} />
       <Showcase featured={featured} />
       <Process steps={processData} />
