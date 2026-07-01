@@ -9,30 +9,39 @@ export default function CaseStudyCard({ project, index }: { project: CaseStudy; 
   const mainImage = imagesArray[0] || '';
 
   return (
-    <Link href={`/portfolio/${project.slug}`} className="group block h-full">
-      <article className="flex h-full flex-col">
-        {/* Large Portrait Image Container */}
-        <div className="relative aspect-[4/5] w-full overflow-hidden bg-surface">
-          {mainImage && (
-            <Image
-              src={mainImage}
-              alt={`${project.title} — ${project.category}`}
-              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              fill
-              sizes="(max-width: 640px) 100vw, 50vw"
-            />
-          )}
-        </div>
+    <Link href={`/portfolio/${project.slug}`} className="group block h-full w-full overflow-hidden relative">
+      <article className="relative w-full aspect-square bg-surface overflow-hidden">
         
-        {/* Title and Category Below the Image */}
-        <div className="mt-5 flex flex-col items-start gap-1">
-          <h3 className="text-xl font-light tracking-wide text-ink group-hover:text-accent transition-colors duration-300">
-            {project.title}
-          </h3>
-          <p className="text-sm font-light text-ink-muted">
+        {/* Background Image */}
+        {mainImage && (
+          <Image
+            src={mainImage}
+            alt={`${project.title} — ${project.category}`}
+            className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-110"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        )}
+        
+        {/* Dark Hover Overlay */}
+        <div className="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100" />
+        
+        {/* Text Content (slides up and fades in on hover) */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center opacity-0 translate-y-8 transition-all duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:opacity-100 group-hover:translate-y-0">
+          <p className="text-xs sm:text-sm font-medium tracking-[0.2em] text-white/80 uppercase mb-3">
             {project.category}
           </p>
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-wide text-white">
+            {project.title}
+          </h3>
+          
+          <div className="mt-8 opacity-0 translate-y-4 transition-all duration-700 delay-100 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:opacity-100 group-hover:translate-y-0">
+            <span className="inline-block border-b border-white/40 pb-1 text-sm text-white hover:border-white transition-colors duration-300">
+              Discover Project
+            </span>
+          </div>
         </div>
+
       </article>
     </Link>
   );

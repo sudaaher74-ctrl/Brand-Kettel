@@ -15,8 +15,8 @@ export default function FilterableProjectGallery({ projects }: { projects: CaseS
   );
 
   return (
-    <div className="grid gap-x-8 gap-y-16 sm:grid-cols-2">
-      {projects.map((project, index) => (
+    <div className="grid gap-6 sm:gap-8 sm:grid-cols-2">
+      {filteredProjects.map((project, index) => (
         <CaseStudyCard key={project.slug} project={project} index={index} />
       ))}
     </div>
