@@ -12,6 +12,9 @@
   "dependencies": {
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
+    "@tiptap/pm": "^3.27.1",
+    "@tiptap/react": "^3.27.1",
+    "@tiptap/starter-kit": "^3.27.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.18.0",
     "gsap": "^3.12.7",
@@ -21,7 +24,6 @@
     "next": "15.5.19",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "react-quill": "^2.0.0",
     "tailwind-merge": "^2.6.0",
     "three": "^0.185.0",
     "xlsx": "^0.18.5"
