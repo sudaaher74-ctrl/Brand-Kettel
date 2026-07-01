@@ -57,7 +57,7 @@
 
 @layer components {
   .container-px {
-    @apply mx-auto w-full max-w-container px-5 sm:px-8;
+    @apply mx-auto w-full px-5 sm:px-8;
   }
 
   .eyebrow {
