@@ -8,39 +8,46 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#0a0a0a',
-        surface: '#111111',
-        surface2: '#1a1a1a',
-        card: '#141414',
+        background: '#F3F0EB', // Primary Background
+        surface: '#FAF8F5',    // Secondary Background
+        surface2: '#ECE6DE',   // Section Alternate Background
+        card: '#FFFFFF',       // Card Background
         accent: {
-          DEFAULT: '#F5F5DC',
-          soft: '#FDF5E6',
-          dark: '#E6E6B8',
+          DEFAULT: '#8D7458',  // Primary Accent
+          secondary: '#B79B78', // Secondary Accent
+          luxury: '#C8A97E',    // Luxury Gold
+          wood: '#B58E67',      // Natural Wood
+          olive: '#717458',     // Olive Accent
+          hover: '#3A352F',     // Button Hover
         },
         ink: {
-          DEFAULT: '#F0ECE4',
-          muted: '#8A8278',
+          DEFAULT: '#2B2B2B',  // Primary Text
+          secondary: '#5E5952', // Secondary Text
+          muted: '#8B857D',     // Muted Text
         },
-        line: '#222222',
+        line: {
+          DEFAULT: '#D8D1C8',  // Border Color
+          divider: '#E7E1D9',  // Divider
+        },
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
         display: ['var(--font-display)', 'Georgia', 'serif'],
       },
       maxWidth: {
-        container: '1200px',
+        container: '1400px',
       },
       borderRadius: {
-        xl: '1.25rem',
-        '2xl': '1.75rem',
-        '3xl': '2.25rem',
+        xl: '0.75rem', // 12px
+        '2xl': '1rem', // 16px
+        '3xl': '1.25rem', // 20px
       },
       boxShadow: {
-        soft: '0 4px 24px -8px rgba(0, 0, 0, 0.60)',
-        card: '0 12px 40px -12px rgba(0, 0, 0, 0.70)',
-        float: '0 30px 60px -24px rgba(0, 0, 0, 0.80)',
-        accent: '0 18px 40px -16px rgba(245, 245, 220, 0.35)',
-        'glow-gold': '0 0 40px rgba(245, 245, 220, 0.15)',
+        soft: '0 20px 60px rgba(0, 0, 0, 0.05)',
+        card: '0 20px 60px rgba(0, 0, 0, 0.05)',
+        float: '0 30px 60px rgba(0, 0, 0, 0.08)',
+        accent: '0 18px 40px -16px rgba(141, 116, 88, 0.35)',
+        'glow-gold': '0 0 40px rgba(200, 169, 126, 0.15)',
       },
       transitionTimingFunction: {
         smooth: 'cubic-bezier(0.22, 1, 0.36, 1)',

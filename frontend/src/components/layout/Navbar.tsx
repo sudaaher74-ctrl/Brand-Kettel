@@ -97,8 +97,8 @@ export default function Navbar() {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 6, scale: 0.97 }}
                             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                            className="absolute left-1/2 top-full mt-2 w-64 -translate-x-1/2 overflow-hidden border border-[#10B981]/15 shadow-float"
-                            style={{ background: 'rgba(10,10,10,0.96)', backdropFilter: 'blur(20px)' }}
+                            className="absolute left-1/2 top-full mt-2 w-64 -translate-x-1/2 overflow-hidden border border-accent/15 shadow-float rounded-xl"
+                            style={{ background: 'rgba(250, 248, 245, 0.96)', backdropFilter: 'blur(20px)' }}
                           >
                             {/* View all services link */}
                             <div className="border-b border-line px-4 py-2.5">
@@ -117,7 +117,7 @@ export default function Navbar() {
                                 href={item.href}
                                 onClick={() => setServicesOpen(false)}
                                 className={cn(
-                                  'group flex items-start gap-3 px-4 py-4 transition-colors hover:bg-surface',
+                                  'group flex items-start gap-3 px-4 py-4 transition-colors hover:bg-white',
                                   i < servicesDropdown.length - 1 && 'border-b border-line'
                                 )}
                               >
@@ -194,7 +194,7 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="container-px lg:hidden"
           >
-            <div className="glass mt-2 border border-[#10B981]/10 p-4 shadow-card">
+            <div className="glass-card mt-2 border border-accent/15 p-4 shadow-card">
               <div className="grid gap-1">
                 {navLinks.map((l, i) => {
                   if (l.label === 'Services') {

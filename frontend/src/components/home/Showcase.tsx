@@ -30,7 +30,7 @@ export default function Showcase({ featured }: { featured: Project | null }) {
   ];
 
   return (
-    <section ref={ref} className="relative h-[260vh] bg-surface">
+    <section ref={ref} className="relative h-[260vh] bg-background">
       <div className="sticky top-0 h-svh w-full scene overflow-hidden">
         {/* Background image layer */}
         <motion.div style={{ scale: imgScale, y: imgY }} className="absolute inset-0 will-change-transform">
@@ -41,7 +41,7 @@ export default function Showcase({ featured }: { featured: Project | null }) {
             fill
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/30 to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-black/10 to-black/30" />
         </motion.div>
 
         {/* Heading */}
@@ -50,11 +50,11 @@ export default function Showcase({ featured }: { featured: Project | null }) {
           className="absolute inset-x-0 top-[16%] z-10"
         >
           <div className="container-px text-center">
-            <span className="eyebrow justify-center">
+            <span className="eyebrow justify-center text-white">
               <span className="h-px w-6 bg-accent" /> Immersive showcase
             </span>
             <div className="mt-8 flex justify-center pointer-events-auto">
-              <Link href={`/portfolio/${featured.slug}`} className="btn-accent !rounded-none">
+              <Link href={`/portfolio/${featured.slug}`} className="btn-accent !rounded-none px-10 py-5">
                 View Project Details
               </Link>
             </div>
@@ -64,7 +64,7 @@ export default function Showcase({ featured }: { featured: Project | null }) {
         {/* Progressive fact layers */}
         <motion.div style={{ y: fgY }} className="absolute inset-x-0 bottom-10 z-10">
           <div className="container-px">
-            <div className="glass mx-auto grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-3xl shadow-float sm:grid-cols-5">
+            <div className="glass mx-auto grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-xl shadow-soft sm:grid-cols-5">
               {facts.map((f, i) => (
                 <Fact key={f.label} progress={scrollYProgress} index={i} total={facts.length} {...f} />
               ))}
@@ -94,9 +94,9 @@ function Fact({
   const y = useTransform(progress, [start, start + 0.12], [16, 0]);
 
   return (
-    <motion.div style={{ opacity, y }} className="bg-surface/80 p-4 text-center sm:text-left">
+    <motion.div style={{ opacity, y }} className="bg-white/90 p-4 text-center sm:text-left">
       <p className="text-[11px] font-semibold uppercase tracking-widest text-accent">{label}</p>
-      <p className="mt-1 text-sm font-semibold text-ink">{value}</p>
+      <p className="mt-1 text-sm font-light text-ink">{value}</p>
     </motion.div>
   );
 }

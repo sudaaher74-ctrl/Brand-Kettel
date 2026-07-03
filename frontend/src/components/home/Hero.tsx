@@ -55,7 +55,7 @@ export default function Hero() {
   return (
     <section 
       ref={containerRef} 
-      className="relative h-[100svh] w-full overflow-hidden bg-[#0F172A]"
+      className="relative h-[100svh] w-full overflow-hidden bg-background"
     >
       {/* Video Background with Parallax */}
       <div className="absolute inset-0 h-[120%] -top-[10%] w-full" ref={videoWrapperRef}>
@@ -90,8 +90,8 @@ export default function Hero() {
       </div>
 
       {/* Subtle Overlay to blend with the next section */}
-      <div className="absolute inset-0 bg-[#0F172A]/10 z-10 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-background/10 z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10 pointer-events-none" />
     </section>
   );
 }

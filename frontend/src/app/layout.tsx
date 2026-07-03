@@ -13,7 +13,7 @@ const fraunces = Fraunces({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
-  weight: ['400', '500', '600'],
+  weight: ['300', '400', '500', '600'],
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://brandkettle.com';
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0a0a0a',
+  themeColor: '#F3F0EB',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,

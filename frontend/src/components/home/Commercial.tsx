@@ -30,8 +30,8 @@ export default function Commercial() {
             fill
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/90 via-black/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
         </motion.div>
 
         <div className="absolute inset-0 flex items-center">
@@ -40,15 +40,15 @@ export default function Commercial() {
               <span className="eyebrow">
                 <span className="h-px w-6 bg-accent" /> Our core
               </span>
-              <h2 className="mt-4 text-3xl font-semibold leading-[1.1] text-ink sm:text-5xl">
+              <h2 className="mt-4 text-4xl font-light tracking-[1px] leading-[1.1] text-ink sm:text-5xl">
                 Commercial Interiors Are Our Core Expertise
               </h2>
-              <p className="mt-5 text-base leading-relaxed text-ink-muted sm:text-lg">
+              <p className="mt-5 text-base font-light leading-relaxed text-ink-secondary sm:text-lg">
                 We deliver office interiors, retail environments, showrooms, and turnkey commercial
                 spaces designed for performance and brand impact.
               </p>
-              <MagneticButton className="mt-8">
-                <Link href="/commercial-projects" className="btn-primary">
+              <MagneticButton className="mt-10">
+                <Link href="/commercial-projects" className="btn-accent">
                   Explore Commercial Projects
                 </Link>
               </MagneticButton>

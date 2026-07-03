@@ -54,25 +54,25 @@ export default function AboutPage() {
       />
 
       {/* ── Company Introduction ── */}
-      <section className="bg-background py-16 sm:py-24">
+      <section className="bg-background py-[120px]">
         <div className="container-px">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20 items-center">
             <Reveal>
               <span className="eyebrow">
                 <span className="h-px w-6 bg-accent" /> Our Story
               </span>
-              <h2 className="mt-4 text-3xl font-semibold leading-[1.2] text-ink sm:text-4xl md:text-4xl italic">
+              <h2 className="mt-4 text-3xl font-light tracking-[1px] leading-[1.2] text-ink sm:text-4xl md:text-4xl italic">
                 &quot;Good spaces aren&apos;t defined by how they look on day one. They&apos;re defined by how well they perform for years to come.&quot;
               </h2>
             </Reveal>
             <div className="space-y-5">
               <Reveal index={1}>
-                <p className="text-lg leading-relaxed text-ink-muted">
+                <p className="text-lg leading-relaxed text-ink-secondary font-light">
                   Built on the execution expertise of Brand Kettle Projects Pvt Ltd, Brand Kettle BuildSpaces brings together design, manufacturing and turnkey execution to create retail, commercial and residential spaces.
                 </p>
               </Reveal>
               <Reveal index={2}>
-                <p className="text-lg leading-relaxed text-ink-muted">
+                <p className="text-lg leading-relaxed text-ink-secondary font-light">
                   Every project is thoughtfully designed around our clients&apos; vision, functional needs and the way the space is meant to be experienced.
                 </p>
               </Reveal>
@@ -82,21 +82,21 @@ export default function AboutPage() {
       </section>
 
       {/* ── By the Numbers ── */}
-      <section className="bg-surface py-16 sm:py-20 border-y border-line">
+      <section className="bg-surface py-[120px] border-y border-line">
         <div className="container-px">
           <Reveal>
             <span className="eyebrow">
               <span className="h-px w-6 bg-accent" /> By the Numbers
             </span>
           </Reveal>
-          <div className="mt-10 grid grid-cols-2 gap-px lg:grid-cols-4 border border-line overflow-hidden">
+          <div className="mt-10 grid grid-cols-2 gap-px lg:grid-cols-4 border border-line overflow-hidden rounded-xl">
             {stats.map((s, i) => (
               <Reveal key={s.label} index={i}>
                 <div className="bg-card p-8 text-center group hover:bg-surface transition-colors duration-300">
-                  <p className="font-display text-4xl font-semibold text-accent sm:text-5xl">
+                  <p className="font-display text-4xl font-light text-accent sm:text-5xl">
                     {s.value}
                   </p>
-                  <p className="mt-3 text-sm leading-snug text-ink-muted">{s.label}</p>
+                  <p className="mt-3 text-sm font-light leading-snug text-ink-secondary">{s.label}</p>
                 </div>
               </Reveal>
             ))}
@@ -105,30 +105,30 @@ export default function AboutPage() {
       </section>
 
       {/* ── What We Build ── */}
-      <section className="bg-background py-16 sm:py-24">
+      <section className="bg-background py-[120px]">
         <div className="container-px">
           <Reveal>
             <span className="eyebrow">
               <span className="h-px w-6 bg-accent" /> What we build
             </span>
-            <h2 className="mt-4 text-3xl font-semibold leading-[1.1] text-ink sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-light tracking-[1px] leading-[1.1] text-ink sm:text-4xl">
               Three verticals. One team. Zero compromises.
             </h2>
           </Reveal>
-          <div className="mt-12 grid gap-px border border-line overflow-hidden sm:grid-cols-3">
+          <div className="mt-12 grid gap-px border border-line overflow-hidden sm:grid-cols-3 rounded-xl">
             {segments.map((seg, i) => (
               <Reveal key={seg.tag} index={i}>
                 <div className="group bg-card p-8 hover:bg-surface transition-colors duration-300 h-full">
                   <div className="flex items-start justify-between">
                     <span className="text-3xl text-accent">{seg.icon}</span>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent border border-accent/30 px-2 py-1">
+                    <span className="text-[10px] font-light uppercase tracking-[0.2em] text-accent border border-accent/30 px-2 py-1">
                       {seg.tag}
                     </span>
                   </div>
-                  <h3 className="mt-6 font-display text-xl font-semibold text-ink leading-snug">
+                  <h3 className="mt-6 font-display text-xl font-light tracking-[1px] text-ink leading-snug">
                     {seg.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-ink-muted">{seg.body}</p>
+                  <p className="mt-3 text-sm font-light leading-relaxed text-ink-secondary">{seg.body}</p>
                 </div>
               </Reveal>
             ))}
@@ -137,30 +137,30 @@ export default function AboutPage() {
       </section>
 
       {/* ── Our Integrated Platform ── */}
-      <section className="bg-surface py-16 sm:py-24 border-y border-line">
+      <section className="bg-surface py-[120px] border-y border-line">
         <div className="container-px">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 items-start">
             <Reveal>
               <span className="eyebrow">
                 <span className="h-px w-6 bg-accent" /> Our platform
               </span>
-              <h2 className="mt-4 text-3xl font-semibold leading-[1.1] text-ink sm:text-4xl">
+              <h2 className="mt-4 text-3xl font-light tracking-[1px] leading-[1.1] text-ink sm:text-4xl">
                 Three pillars that make us different
               </h2>
-              <p className="mt-5 text-base leading-relaxed text-ink-muted max-w-md">
+              <p className="mt-5 text-base font-light leading-relaxed text-ink-secondary max-w-md">
                 We don&apos;t just design — we manufacture, build and hand over. That end-to-end control is what sets us apart.
               </p>
             </Reveal>
-            <div className="divide-y divide-line border border-line">
+            <div className="divide-y divide-line border border-line rounded-xl overflow-hidden">
               {pillars.map((p, i) => (
                 <Reveal key={p.title} index={i + 1}>
                   <div className="group flex gap-6 p-6 bg-card hover:bg-background transition-colors duration-300">
-                    <span className="shrink-0 font-display text-3xl font-semibold text-accent/30 group-hover:text-accent transition-colors duration-300">
+                    <span className="shrink-0 font-display text-3xl font-light text-accent/30 group-hover:text-accent transition-colors duration-300">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <div>
-                      <h3 className="font-display text-lg font-semibold text-ink">{p.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-ink-muted">{p.body}</p>
+                      <h3 className="font-display text-lg font-light tracking-[1px] text-ink">{p.title}</h3>
+                      <p className="mt-2 text-sm font-light leading-relaxed text-ink-secondary">{p.body}</p>
                     </div>
                   </div>
                 </Reveal>
@@ -171,24 +171,24 @@ export default function AboutPage() {
       </section>
 
       {/* ── Vision & Mission ── */}
-      <section className="bg-background py-16 sm:py-24">
+      <section className="bg-background py-[120px]">
         <div className="container-px">
           <Reveal>
             <span className="eyebrow">
               <span className="h-px w-6 bg-accent" /> Purpose
             </span>
           </Reveal>
-          <div className="mt-10 grid gap-px border border-line overflow-hidden sm:grid-cols-2">
+          <div className="mt-10 grid gap-px border border-line overflow-hidden sm:grid-cols-2 rounded-xl">
             {/* Vision */}
             <Reveal index={0}>
               <div className="bg-card p-10 sm:p-12 h-full">
                 <div className="flex items-center gap-3 mb-6">
                   <span className="h-px w-8 bg-accent" />
-                  <span className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">
+                  <span className="text-xs font-light uppercase tracking-[0.25em] text-accent">
                     Our Vision
                   </span>
                 </div>
-                <p className="font-display text-2xl font-semibold leading-snug text-ink sm:text-3xl">
+                <p className="font-display text-2xl font-light tracking-[1px] leading-snug text-ink sm:text-3xl">
                   Great spaces don&apos;t just host experiences.
                   <span className="text-accent"> They shape them.</span>
                 </p>
@@ -199,14 +199,14 @@ export default function AboutPage() {
               <div className="bg-surface p-10 sm:p-12 h-full border-l border-line">
                 <div className="flex items-center gap-3 mb-6">
                   <span className="h-px w-8 bg-accent" />
-                  <span className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">
+                  <span className="text-xs font-light uppercase tracking-[0.25em] text-accent">
                     Our Mission
                   </span>
                 </div>
-                <p className="text-base leading-relaxed text-ink-muted">
+                <p className="text-base font-light leading-relaxed text-ink-secondary">
                   We combine design, manufacturing and execution to deliver exceptional retail, commercial and residential environments with <span className="text-ink font-medium">precision, craftsmanship and reliability</span>.
                 </p>
-                <p className="mt-4 text-base leading-relaxed text-ink-muted">
+                <p className="mt-4 text-base font-light leading-relaxed text-ink-secondary">
                   We strive to redefine how spaces are conceived and delivered by combining <span className="text-ink font-medium">creativity, technical expertise and attention to detail</span> in every project.
                 </p>
               </div>
@@ -216,15 +216,15 @@ export default function AboutPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="bg-surface py-16 sm:py-20 border-t border-line">
+      <section className="bg-surface py-[120px] border-t border-line">
         <div className="container-px">
           <Reveal>
             <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h2 className="text-2xl font-semibold text-ink sm:text-3xl">
+                <h2 className="text-2xl font-light tracking-[1px] text-ink sm:text-3xl">
                   Ready to build your next space?
                 </h2>
-                <p className="mt-2 text-sm text-ink-muted">
+                <p className="mt-2 text-sm font-light text-ink-secondary">
                   Let&apos;s start a conversation about your project.
                 </p>
               </div>

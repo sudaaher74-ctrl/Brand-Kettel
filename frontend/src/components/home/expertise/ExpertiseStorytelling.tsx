@@ -38,15 +38,15 @@ const EXPERTISE_DATA: ExpertiseData[] = [
 
 export default function ExpertiseStorytelling() {
   return (
-    <section className="relative w-full bg-background py-24 sm:py-32">
-      <div className="w-full px-4 sm:px-8 max-w-7xl mx-auto">
+    <section className="relative w-full bg-surface2 py-[120px]">
+      <div className="container-px">
         
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col items-center text-center mb-16 sm:mb-24"
         >
           <div className="flex items-center gap-4 mb-6">
@@ -54,32 +54,32 @@ export default function ExpertiseStorytelling() {
             <span className="text-sm font-mono uppercase tracking-widest text-accent">Our Expertise</span>
             <div className="w-12 h-px bg-accent/40" />
           </div>
-          <h2 className="font-display text-4xl md:text-5xl font-light text-ink">
+          <h2 className="font-display text-4xl md:text-5xl font-light text-ink tracking-[1px]">
             Spaces Designed for Purpose
           </h2>
         </motion.div>
 
         {/* 3-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {EXPERTISE_DATA.map((item, index) => (
             <motion.div
               key={item.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col group"
+              transition={{ duration: 1.2, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col group glass-card p-6"
             >
               {/* Image Container */}
-              <Link href={item.link} className="relative w-full aspect-[4/5] mb-8 overflow-hidden rounded-sm block">
+              <Link href={item.link} className="relative w-full aspect-[4/5] mb-8 overflow-hidden rounded-xl block">
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
-                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                  className="object-cover transition-transform duration-1000 group-hover:scale-[1.02]"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
+                <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500" />
               </Link>
 
               {/* Content */}
@@ -91,20 +91,20 @@ export default function ExpertiseStorytelling() {
                   <div className="h-px w-8 bg-line" />
                 </div>
                 
-                <h3 className="font-display text-2xl lg:text-3xl font-medium text-ink mb-4">
+                <h3 className="font-display text-2xl lg:text-3xl font-light tracking-[1px] text-ink mb-4">
                   <Link href={item.link} className="hover:text-accent transition-colors">
                     {item.title}
                   </Link>
                 </h3>
                 
-                <p className="text-ink-muted leading-relaxed mb-8 flex-grow">
+                <p className="text-ink-secondary leading-relaxed mb-8 flex-grow font-light">
                   {item.description}
                 </p>
 
-                <ul className="flex flex-wrap gap-x-4 gap-y-2 mb-8 text-sm text-ink-muted/80">
+                <ul className="flex flex-wrap gap-x-4 gap-y-2 mb-8 text-sm text-ink-secondary font-light">
                   {item.services.map((service, i) => (
                     <li key={i} className="flex items-center gap-2">
-                      <div className="w-1 h-1 rounded-full bg-accent/40" />
+                      <div className="w-1 h-1 rounded-none bg-accent/40" />
                       {service}
                     </li>
                   ))}

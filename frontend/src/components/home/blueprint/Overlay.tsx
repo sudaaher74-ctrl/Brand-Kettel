@@ -34,11 +34,11 @@ function StopText({
       style={{ opacity, y }} 
       className="absolute inset-0 flex flex-col items-center justify-center text-center"
     >
-      <h2 className="font-display text-4xl sm:text-6xl font-light tracking-tight text-[#111111] max-w-2xl text-balance drop-shadow-sm">
+      <h2 className="font-display text-4xl sm:text-6xl font-light tracking-[1px] text-ink max-w-2xl text-balance drop-shadow-sm">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-4 text-lg text-[#333333] uppercase tracking-[0.2em] font-medium">
+        <p className="mt-4 text-lg text-ink-secondary uppercase tracking-[0.2em] font-light">
           {subtitle}
         </p>
       )}
@@ -66,13 +66,13 @@ export default function Overlay({ scrollProgress }: { scrollProgress: MotionValu
     <div className="relative w-full h-full">
       {/* HUD Elements */}
       <div className="absolute top-8 left-8 sm:top-12 sm:left-12 flex flex-col gap-1">
-        <div className="w-12 h-px bg-[#222222] mb-2" />
-        <p className="text-[10px] font-mono uppercase tracking-widest text-[#222222]">Project: Blueprint</p>
-        <p className="text-[10px] font-mono uppercase tracking-widest text-[#666666]">Scale: 1:100</p>
+        <div className="w-12 h-px bg-ink-secondary mb-2" />
+        <p className="text-[10px] font-mono uppercase tracking-widest text-ink-secondary">Project: Blueprint</p>
+        <p className="text-[10px] font-mono uppercase tracking-widest text-ink-muted">Scale: 1:100</p>
       </div>
 
       <div className="absolute bottom-8 right-8 sm:bottom-12 sm:right-12">
-        <p className="text-[10px] font-mono uppercase tracking-widest text-[#222222]">
+        <p className="text-[10px] font-mono uppercase tracking-widest text-ink-secondary">
           Scroll to explore ↓
         </p>
       </div>
@@ -127,11 +127,11 @@ export default function Overlay({ scrollProgress }: { scrollProgress: MotionValu
         style={{ opacity: finalOpacity, y: finalY }}
         className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-auto"
       >
-        <h2 className="font-display text-5xl sm:text-7xl font-semibold tracking-tight text-[#111111]">
+        <h2 className="font-display text-5xl sm:text-7xl font-light tracking-[1px] text-ink">
           Let&apos;s Build Your Workspace
         </h2>
         <div className="mt-12">
-          <Link href="/contact" className="px-8 py-4 bg-[#111111] text-white rounded-full font-medium tracking-wide hover:bg-[#333333] transition-colors shadow-lg">
+          <Link href="/contact" className="btn-accent inline-block">
             Start a Project
           </Link>
         </div>
