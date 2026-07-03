@@ -57,7 +57,7 @@ export default function Welcome() {
           transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="text-base sm:text-lg md:text-xl text-ink/80 leading-relaxed max-w-3xl font-light"
         >
-          Everything's born from the love of design. The solid vision, worked with the craftsmanship of those who know how to turn a concept into a piece of artwork.
+          Everything&apos;s born from the love of design. The solid vision, worked with the craftsmanship of those who know how to turn a concept into a piece of artwork.
         </motion.p>
 
       </div>
