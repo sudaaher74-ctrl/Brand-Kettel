@@ -16,26 +16,7 @@ const stats = [
   { value: '3', label: 'Verticals: Retail · Commercial · Residential' },
 ];
 
-const segments = [
-  {
-    tag: 'Retail',
-    title: 'Luxury Jewellery Showrooms & Retail Environments',
-    body: 'Precision lighting, secure display systems and immersive retail experiences engineered for premium brands.',
-    icon: '◈',
-  },
-  {
-    tag: 'Commercial',
-    title: 'Corporate Workplaces & Turnkey Offices',
-    body: 'Performance-driven corporate interiors and end-to-end fit-outs built for productivity and brand identity.',
-    icon: '◉',
-  },
-  {
-    tag: 'Residential',
-    title: 'Bespoke Residential Interiors',
-    body: 'Refined private homes where comfort, craft and detail converge under a single accountable team.',
-    icon: '◎',
-  },
-];
+
 
 const pillars = [
   { title: 'Design Thinking', body: 'Every project begins with a deep understanding of your brand, brief and business goals.' },
@@ -104,37 +85,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── What We Build ── */}
-      <section className="bg-background py-[120px]">
-        <div className="container-px">
-          <Reveal>
-            <span className="eyebrow">
-              <span className="h-px w-6 bg-accent" /> What we build
-            </span>
-            <h2 className="mt-4 text-3xl font-light tracking-[1px] leading-[1.1] text-ink sm:text-4xl">
-              Three verticals. One team. Zero compromises.
-            </h2>
-          </Reveal>
-          <div className="mt-12 grid gap-px border border-line overflow-hidden sm:grid-cols-3 rounded-xl">
-            {segments.map((seg, i) => (
-              <Reveal key={seg.tag} index={i}>
-                <div className="group bg-card p-8 hover:bg-surface transition-colors duration-300 h-full">
-                  <div className="flex items-start justify-between">
-                    <span className="text-3xl text-accent">{seg.icon}</span>
-                    <span className="text-[10px] font-light uppercase tracking-[0.2em] text-accent border border-accent/30 px-2 py-1">
-                      {seg.tag}
-                    </span>
-                  </div>
-                  <h3 className="mt-6 font-display text-xl font-light tracking-[1px] text-ink leading-snug">
-                    {seg.title}
-                  </h3>
-                  <p className="mt-3 text-sm font-light leading-relaxed text-ink-secondary">{seg.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* ── Our Integrated Platform ── */}
       <section className="bg-surface py-[120px] border-y border-line">
