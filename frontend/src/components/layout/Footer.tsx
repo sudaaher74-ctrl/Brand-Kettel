@@ -64,13 +64,13 @@ export default function Footer() {
             <h3 className="font-display text-sm font-semibold text-accent uppercase tracking-[0.2em]">Get in touch</h3>
             <ul className="mt-4 space-y-2.5 text-sm font-light text-ink-secondary">
               <li>
-                <a href="mailto:hello@brandkettle.com" className="hover:text-accent transition-colors">
-                  hello@brandkettle.com
+                <a href="mailto:vini@brandkettle.in" className="hover:text-accent transition-colors">
+                  vini@brandkettle.in
                 </a>
               </li>
               <li>
-                <a href="tel:+910000000000" className="hover:text-accent transition-colors">
-                  +91 00000 00000
+                <a href="tel:+9189591737990" className="hover:text-accent transition-colors">
+                  +91 89591737990
                 </a>
               </li>
               <li>Bengaluru · Mumbai · Hyderabad</li>

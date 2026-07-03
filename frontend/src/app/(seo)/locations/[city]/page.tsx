@@ -41,7 +41,7 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
     '@type': 'LocalBusiness',
     name: 'Brand Kettle BuildSpaces',
     image: 'https://brandkettle.com/logo.png',
-    telephone: '+919999999999',
+    telephone: '+9189591737990',
     url: `https://brandkettle.com/locations/${location.slug}`,
     address: {
       '@type': 'PostalAddress',

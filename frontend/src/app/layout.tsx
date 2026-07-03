@@ -86,7 +86,7 @@ const localBusinessJsonLd = {
   '@type': 'LocalBusiness',
   name: 'Brand Kettle BuildSpaces',
   image: `${SITE_URL}/logo.png`,
-  telephone: '+919999999999',
+  telephone: '+9189591737990',
   url: SITE_URL,
   address: {
     '@type': 'PostalAddress',
