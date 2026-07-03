@@ -32,6 +32,9 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
+  // Adjust this value (in seconds) to skip the sketch part at the beginning
+  const SKIPPED_SECONDS = 3;
+
   // Handle switching from Video 1 (at 8 seconds) to Video 2
   const handleTimeUpdate1 = () => {
     if (activeVideo === 1 && video1Ref.current && video1Ref.current.currentTime >= 8) {
@@ -47,8 +50,15 @@ export default function Hero() {
   const handleVideo2Ended = () => {
     setActiveVideo(1);
     if (video1Ref.current) {
-      video1Ref.current.currentTime = 0;
+      video1Ref.current.currentTime = SKIPPED_SECONDS;
       video1Ref.current.play().catch(() => {});
+    }
+  };
+
+  // Set the start time when the video first loads
+  const handleVideo1Loaded = () => {
+    if (video1Ref.current) {
+      video1Ref.current.currentTime = SKIPPED_SECONDS;
     }
   };
 
@@ -66,6 +76,7 @@ export default function Hero() {
           autoPlay
           muted
           playsInline
+          onLoadedData={handleVideo1Loaded}
           onTimeUpdate={handleTimeUpdate1}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
             activeVideo === 1 ? 'opacity-100 z-20' : 'opacity-0 z-10'
