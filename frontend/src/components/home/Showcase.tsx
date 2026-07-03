@@ -53,11 +53,8 @@ export default function Showcase({ featured }: { featured: Project | null }) {
             <span className="eyebrow justify-center">
               <span className="h-px w-6 bg-accent" /> Immersive showcase
             </span>
-            <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-semibold leading-tight text-ink sm:text-5xl">
-              A turnkey commercial campus, delivered end-to-end
-            </h2>
             <div className="mt-8 flex justify-center pointer-events-auto">
-              <Link href={`/portfolio/${featured.slug}`} className="btn-accent">
+              <Link href={`/portfolio/${featured.slug}`} className="btn-accent !rounded-none">
                 View Project Details
               </Link>
             </div>
