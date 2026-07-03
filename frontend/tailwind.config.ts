@@ -31,8 +31,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-display)', 'Georgia', 'serif'],
+        sans: ['var(--font-sans)', 'Manrope', 'Neue Haas Grotesk', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        display: ['var(--font-display)', 'Cormorant Garamond', 'Canela', 'IvyPresto', 'Libre Baskerville', 'serif'],
       },
       maxWidth: {
         container: '1400px',

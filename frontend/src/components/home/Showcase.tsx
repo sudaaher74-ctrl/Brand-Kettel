@@ -64,7 +64,7 @@ export default function Showcase({ featured }: { featured: Project | null }) {
         {/* Progressive fact layers */}
         <motion.div style={{ y: fgY }} className="absolute inset-x-0 bottom-10 z-10">
           <div className="container-px">
-            <div className="glass mx-auto grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-xl shadow-soft sm:grid-cols-5">
+            <div className="glass mx-auto grid max-w-[1000px] grid-cols-2 gap-px overflow-hidden rounded-none sm:grid-cols-5">
               {facts.map((f, i) => (
                 <Fact key={f.label} progress={scrollYProgress} index={i} total={facts.length} {...f} />
               ))}
@@ -94,9 +94,9 @@ function Fact({
   const y = useTransform(progress, [start, start + 0.12], [16, 0]);
 
   return (
-    <motion.div style={{ opacity, y }} className="bg-white/90 p-4 text-center sm:text-left">
-      <p className="text-[11px] font-semibold uppercase tracking-widest text-accent">{label}</p>
-      <p className="mt-1 text-sm font-light text-ink">{value}</p>
+    <motion.div style={{ opacity, y }} className="bg-card p-6 text-center sm:text-left">
+      <p className="text-nav text-accent/80 text-[11px]">{label}</p>
+      <p className="mt-2 text-small text-ink">{value}</p>
     </motion.div>
   );
 }

@@ -40,10 +40,10 @@ export default function Commercial() {
               <span className="eyebrow">
                 <span className="h-px w-6 bg-accent" /> Our core
               </span>
-              <h2 className="mt-4 text-4xl font-light tracking-[1px] leading-[1.1] text-ink sm:text-5xl">
+              <h2 className="mt-4 text-section text-ink">
                 Commercial Interiors Are Our Core Expertise
               </h2>
-              <p className="mt-5 text-base font-light leading-relaxed text-ink-secondary sm:text-lg">
+              <p className="mt-6 text-body-main max-w-[600px]">
                 We deliver office interiors, retail environments, showrooms, and turnkey commercial
                 spaces designed for performance and brand impact.
               </p>

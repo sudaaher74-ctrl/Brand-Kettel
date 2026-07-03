@@ -31,13 +31,13 @@ export default function SectionHeading({
         </Reveal>
       )}
       <Reveal index={1}>
-        <h2 className="mt-4 text-3xl font-semibold leading-[1.1] text-ink sm:text-4xl md:text-5xl">
+        <h2 className="mt-4 text-section text-ink">
           {title}
         </h2>
       </Reveal>
       {subtitle && (
         <Reveal index={2}>
-          <p className="mt-4 text-base leading-relaxed text-ink-muted">{subtitle}</p>
+          <p className="mt-6 text-body-main max-w-[700px]">{subtitle}</p>
         </Reveal>
       )}
     </div>

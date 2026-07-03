@@ -34,11 +34,11 @@ function StopText({
       style={{ opacity, y }} 
       className="absolute inset-0 flex flex-col items-center justify-center text-center"
     >
-      <h2 className="font-display text-4xl sm:text-6xl font-light tracking-[1px] text-ink max-w-2xl text-balance drop-shadow-sm">
+      <h2 className="text-section-lg text-ink text-balance">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-4 text-lg text-ink-secondary uppercase tracking-[0.2em] font-light">
+        <p className="mt-6 text-subtitle uppercase tracking-[0.2em]">
           {subtitle}
         </p>
       )}
@@ -127,10 +127,10 @@ export default function Overlay({ scrollProgress }: { scrollProgress: MotionValu
         style={{ opacity: finalOpacity, y: finalY }}
         className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-auto"
       >
-        <h2 className="font-display text-5xl sm:text-7xl font-light tracking-[1px] text-ink">
+        <h2 className="text-section-lg text-ink">
           Let&apos;s Build Your Workspace
         </h2>
-        <div className="mt-12">
+        <div className="mt-14">
           <Link href="/contact" className="btn-accent inline-block">
             Start a Project
           </Link>

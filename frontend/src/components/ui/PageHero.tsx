@@ -31,8 +31,8 @@ export default function PageHero({
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-4 text-4xl font-semibold leading-[1.05] text-ink sm:text-5xl md:text-6xl"
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-6 text-section-lg text-ink"
             >
               {title}
             </motion.h1>
@@ -40,8 +40,8 @@ export default function PageHero({
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="mt-5 max-w-lg text-base leading-relaxed text-ink-muted sm:text-lg"
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="mt-6 text-body-main max-w-[700px]"
               >
                 {subtitle}
               </motion.p>
@@ -49,12 +49,12 @@ export default function PageHero({
           </div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.96, rotateY: -8 }}
-            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="scene"
           >
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] shadow-float" style={{ transformStyle: 'preserve-3d' }}>
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-none shadow-none">
               <Image
                 src={image}
                 alt={title}

@@ -1,19 +1,20 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Fraunces } from 'next/font/google';
+import { Manrope, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 import SiteShell from '@/components/layout/SiteShell';
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
+  weight: ['300', '400', '500'],
 });
 
-const fraunces = Fraunces({
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
-  weight: ['300', '400', '500', '600'],
+  weight: ['300', '400'],
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://brandkettle.com';
@@ -99,7 +100,7 @@ const localBusinessJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
+    <html lang="en" className={`${manrope.variable} ${cormorant.variable}`}>
       <body>
         <script
           type="application/ld+json"
