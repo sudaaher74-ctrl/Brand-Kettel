@@ -24,6 +24,13 @@ const pillars = [
   { title: 'Turnkey Execution', body: 'One accountable team from concept through construction — no gaps, no surprises.' },
 ];
 
+const reasons = [
+  { title: 'Purpose Before Design', body: 'Every project begins with understanding how the space needs to function—not just how it should look.' },
+  { title: 'Precision in Execution', body: 'Design is only as good as its execution. We believe the quality of every detail matters.' },
+  { title: 'Timelines You Can Count On', body: 'We value your time as much as our own. Every project is planned with clear milestones and delivered with accountability.' },
+  { title: 'Partnerships That Last', body: 'For us, a successful project isn\'t the end of a transaction, it\'s the beginning of a long-term relationship.' },
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -86,6 +93,36 @@ export default function AboutPage() {
       </section>
 
 
+      {/* ── Why Choose Us ── */}
+      <section className="bg-background py-[140px]">
+        <div className="container-px">
+          <Reveal>
+            <span className="eyebrow">
+              <span className="h-px w-6 bg-accent" /> Why Choose Us
+            </span>
+            <h2 className="mt-4 text-section text-ink">
+              An execution-focused partner you can trust
+            </h2>
+          </Reveal>
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {reasons.map((r, i) => (
+              <Reveal key={r.title} index={i}>
+                <div className="group border border-line bg-card p-10 h-full transition-colors duration-300 hover:border-accent/40">
+                  <div className="flex h-12 w-12 items-center justify-center border-[1.5px] border-accent/20 bg-surface font-medium text-accent mb-8">
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                  <h3 className="text-card-heading text-ink">
+                    {r.title}
+                  </h3>
+                  <p className="mt-4 text-small text-ink-secondary">
+                    {r.body}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── Our Integrated Platform ── */}
       <section className="bg-surface py-[120px] border-y border-line">
