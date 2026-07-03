@@ -121,3 +121,4 @@ Failed to proxy http://localhost:3001/api/admin/projects [Error: getaddrinfo ENO
   syscall: 'open',
   path: '/Users/milquu/Documents/project123/frontend/.next/routes-manifest.json'
 }
+[?25h
