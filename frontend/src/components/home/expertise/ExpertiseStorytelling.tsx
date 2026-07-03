@@ -1,52 +1,122 @@
 'use client';
 
-import { useRef } from 'react';
-import { useScroll } from 'framer-motion';
-import ExpertiseContent from './ExpertiseContent';
-import ExpertiseImages from './ExpertiseImages';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+
+type ExpertiseData = {
+  title: string;
+  description: string;
+  services: string[];
+  image: string;
+  link: string;
+};
+
+const EXPERTISE_DATA: ExpertiseData[] = [
+  {
+    title: 'Commercial Interiors',
+    description: 'Designing productive, elegant, and future-ready workspaces that reflect your brand and improve employee experience.',
+    services: ['Corporate Offices', 'IT Workspaces', 'Executive Cabins'],
+    image: '/imgs/experties2.png',
+    link: '/commercial-fit-outs'
+  },
+  {
+    title: 'Jewellery Showrooms',
+    description: 'Crafting luxurious retail environments that elevate customer experience and beautifully showcase every collection.',
+    services: ['Gold Showrooms', 'Diamond Boutiques', 'Display Planning'],
+    image: '/imgs/experties1.png',
+    link: '/jewellery-showrooms'
+  },
+  {
+    title: 'Residential Interiors',
+    description: 'Creating timeless homes that combine comfort, functionality, and refined aesthetics for modern living.',
+    services: ['Luxury Homes', 'Villas', 'Apartments'],
+    image: '/imgs/residential3.png',
+    link: '/residential-interiors'
+  }
+];
 
 export default function ExpertiseStorytelling() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  // Track scroll progress through this specific 300vh section
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
-
   return (
-    <section 
-      ref={containerRef} 
-      className="relative w-full bg-background" 
-      style={{ height: '300vh' }}
-    >
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col md:flex-row">
+    <section className="relative w-full bg-background py-24 sm:py-32">
+      <div className="w-full px-4 sm:px-8 max-w-7xl mx-auto">
         
-        {/* Left Side: Images Canvas (60%) */}
-        <div className="relative w-full md:w-[60%] h-[50vh] md:h-full bg-surface2">
-          {/* Subtle architectural grid background */}
-          <div 
-            className="absolute inset-0 pointer-events-none opacity-20 z-10"
-            style={{
-              backgroundImage: `linear-gradient(#222 1px, transparent 1px), linear-gradient(90deg, #222 1px, transparent 1px)`,
-              backgroundSize: '40px 40px'
-            }}
-          />
-          <div className="absolute inset-0 z-0">
-            <ExpertiseImages scrollProgress={scrollYProgress} />
-          </div>
-        </div>
-
-        {/* Right Side: Expertise Content (40%) */}
-        <div className="relative w-full md:w-[40%] h-[50vh] md:h-full bg-surface flex items-center shadow-[-20px_0_40px_rgba(0,0,0,0.5)] z-10 border-l border-line">
-          
-          {/* Section Eyebrow (Our Expertise) */}
-          <div className="absolute top-8 md:top-12 left-8 md:left-16 lg:left-24 flex items-center gap-4 z-50">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col items-center text-center mb-16 sm:mb-24"
+        >
+          <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-px bg-accent/40" />
             <span className="text-sm font-mono uppercase tracking-widest text-accent">Our Expertise</span>
+            <div className="w-12 h-px bg-accent/40" />
           </div>
+          <h2 className="font-display text-4xl md:text-5xl font-light text-ink">
+            Spaces Designed for Purpose
+          </h2>
+        </motion.div>
 
-          <ExpertiseContent scrollProgress={scrollYProgress} />
+        {/* 3-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+          {EXPERTISE_DATA.map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.8, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col group"
+            >
+              {/* Image Container */}
+              <Link href={item.link} className="relative w-full aspect-[4/5] mb-8 overflow-hidden rounded-sm block">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
+              </Link>
+
+              {/* Content */}
+              <div className="flex flex-col flex-grow">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-xs font-mono text-accent/60 tracking-widest">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div className="h-px w-8 bg-line" />
+                </div>
+                
+                <h3 className="font-display text-2xl lg:text-3xl font-medium text-ink mb-4">
+                  <Link href={item.link} className="hover:text-accent transition-colors">
+                    {item.title}
+                  </Link>
+                </h3>
+                
+                <p className="text-ink-muted leading-relaxed mb-8 flex-grow">
+                  {item.description}
+                </p>
+
+                <ul className="flex flex-wrap gap-x-4 gap-y-2 mb-8 text-sm text-ink-muted/80">
+                  {item.services.map((service, i) => (
+                    <li key={i} className="flex items-center gap-2">
+                      <div className="w-1 h-1 rounded-full bg-accent/40" />
+                      {service}
+                    </li>
+                  ))}
+                </ul>
+
+                <Link href={item.link} className="mt-auto inline-flex items-center gap-2 text-sm font-semibold tracking-wide uppercase text-accent hover:text-ink transition-colors group/link w-fit">
+                  View Projects
+                  <span className="transition-transform group-hover/link:translate-x-1">→</span>
+                </Link>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
       </div>
