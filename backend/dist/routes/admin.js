@@ -24,7 +24,8 @@ router.post('/blog', requireAuth_1.requireAuth, async (req, res) => {
         const result = await db.collection('blog_posts').insertOne(doc);
         res.status(201).json({ id: result.insertedId.toString() });
     }
-    catch (err) {
+    catch (error) {
+        const err = error;
         res.status(400).json({ error: 'Validation failed', details: err.errors });
     }
 });
@@ -51,7 +52,8 @@ router.put('/blog/:id', requireAuth_1.requireAuth, async (req, res) => {
         await db.collection('blog_posts').updateOne({ _id: new mongodb_2.ObjectId(req.params.id) }, { $set: { ...update, updatedAt: new Date() } });
         res.json({ ok: true });
     }
-    catch (err) {
+    catch (error) {
+        const err = error;
         res.status(400).json({ error: 'Validation failed', details: err.errors });
     }
 });
@@ -91,6 +93,23 @@ router.get('/leads', requireAuth_1.requireAuth, async (req, res) => {
         return res.json([]);
     const docs = await db.collection('leads').find({}).sort({ createdAt: -1 }).toArray();
     res.json(docs.map(d => ({ ...d, id: d._id.toString(), _id: undefined })));
+});
+router.put('/leads/:id/status', requireAuth_1.requireAuth, async (req, res) => {
+    const db = await (0, mongodb_1.getDb)();
+    if (!db)
+        return res.status(503).json({ error: 'Database not configured' });
+    try {
+        const { status } = req.body;
+        if (!['New', 'Contacted', 'Closed'].includes(status)) {
+            return res.status(400).json({ error: 'Invalid status' });
+        }
+        await db.collection('leads').updateOne({ _id: new mongodb_2.ObjectId(req.params.id) }, { $set: { status, updatedAt: new Date() } });
+        res.json({ ok: true });
+    }
+    catch (error) {
+        const err = error;
+        res.status(400).json({ error: 'Failed to update status', details: err.message });
+    }
 });
 router.delete('/leads/:id', requireAuth_1.requireAuth, async (req, res) => {
     const db = await (0, mongodb_1.getDb)();

@@ -22,7 +22,8 @@ router.post('/blog', requireAuth, async (req, res) => {
     const doc = { ...validatedData, publishedAt: validatedData.published ? new Date() : null, createdAt: new Date(), updatedAt: new Date() };
     const result = await db.collection('blog_posts').insertOne(doc);
     res.status(201).json({ id: result.insertedId.toString() });
-  } catch (err: any) {
+  } catch (error) {
+    const err = error as any;
     res.status(400).json({ error: 'Validation failed', details: err.errors });
   }
 });
@@ -46,7 +47,8 @@ router.put('/blog/:id', requireAuth, async (req, res) => {
     if (update.published && !update.publishedAt) update.publishedAt = new Date();
     await db.collection('blog_posts').updateOne({ _id: new ObjectId(req.params.id as string) }, { $set: { ...update, updatedAt: new Date() } });
     res.json({ ok: true });
-  } catch (err: any) {
+  } catch (error) {
+    const err = error as any;
     res.status(400).json({ error: 'Validation failed', details: err.errors });
   }
 });
@@ -99,7 +101,8 @@ router.put('/leads/:id/status', requireAuth, async (req, res) => {
       { $set: { status, updatedAt: new Date() } }
     );
     res.json({ ok: true });
-  } catch (err: any) {
+  } catch (error) {
+    const err = error as any;
     res.status(400).json({ error: 'Failed to update status', details: err.message });
   }
 });

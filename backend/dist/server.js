@@ -33,10 +33,23 @@ const projects_1 = __importDefault(require("./routes/projects"));
 const contact_1 = __importDefault(require("./routes/contact"));
 const auth_1 = __importDefault(require("./routes/auth"));
 const seo_1 = __importDefault(require("./routes/seo"));
+const services_1 = __importDefault(require("./routes/services"));
+const careers_1 = __importDefault(require("./routes/careers"));
+const testimonials_1 = __importDefault(require("./routes/testimonials"));
+const upload_1 = __importDefault(require("./routes/upload"));
+const settings_1 = __importDefault(require("./routes/settings"));
+const path_1 = __importDefault(require("path"));
 // Public auth routes
 app.use('/api/admin', auth_1.default);
+// Static uploads serving
+app.use('/uploads', express_1.default.static(path_1.default.join(__dirname, '../public/uploads')));
 // Admin API routes (auth handled individually per route)
 app.use('/api/admin/projects', projects_1.default);
+app.use('/api/admin/services', services_1.default);
+app.use('/api/admin/careers', careers_1.default);
+app.use('/api/admin/testimonials', testimonials_1.default);
+app.use('/api/admin/upload', upload_1.default);
+app.use('/api/admin/settings', settings_1.default);
 app.use('/api/admin', admin_1.default);
 // Public rate-limited routes
 app.use('/api/contact', contactLimiter, contact_1.default);

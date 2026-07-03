@@ -21,7 +21,8 @@ router.post('/', requireAuth, async (req, res) => {
     const doc = { ...validatedData, createdAt: new Date(), updatedAt: new Date() };
     const result = await db.collection('testimonials').insertOne(doc);
     res.status(201).json({ id: result.insertedId.toString() });
-  } catch (err: any) {
+  } catch (error) {
+    const err = error as any;
     res.status(400).json({ error: 'Validation failed', details: err.errors });
   }
 });
@@ -45,7 +46,8 @@ router.put('/:id', requireAuth, async (req, res) => {
       { $set: { ...update, updatedAt: new Date() } }
     );
     res.json({ ok: true });
-  } catch (err: any) {
+  } catch (error) {
+    const err = error as any;
     res.status(400).json({ error: 'Validation failed', details: err.errors });
   }
 });

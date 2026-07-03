@@ -22,7 +22,8 @@ router.post('/jobs', requireAuth, async (req, res) => {
     const doc = { ...validatedData, createdAt: new Date(), updatedAt: new Date() };
     const result = await db.collection('job_openings').insertOne(doc);
     res.status(201).json({ id: result.insertedId.toString() });
-  } catch (err: any) {
+  } catch (error) {
+    const err = error as any;
     res.status(400).json({ error: 'Validation failed', details: err.errors });
   }
 });
@@ -46,7 +47,8 @@ router.put('/jobs/:id', requireAuth, async (req, res) => {
       { $set: { ...update, updatedAt: new Date() } }
     );
     res.json({ ok: true });
-  } catch (err: any) {
+  } catch (error) {
+    const err = error as any;
     res.status(400).json({ error: 'Validation failed', details: err.errors });
   }
 });
@@ -76,7 +78,8 @@ router.post('/applications', async (req, res) => {
     const doc = { ...validatedData, createdAt: new Date() };
     const result = await db.collection('job_applications').insertOne(doc);
     res.status(201).json({ id: result.insertedId.toString() });
-  } catch (err: any) {
+  } catch (error) {
+    const err = error as any;
     res.status(400).json({ error: 'Validation failed', details: err.errors });
   }
 });

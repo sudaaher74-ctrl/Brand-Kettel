@@ -49,7 +49,8 @@ router.post('/', async (req, res) => {
     }
 
     res.json({ ok: true, message: 'Thank you — our team will contact you within one business day.' });
-  } catch (err: any) {
+  } catch (error) {
+    const err = error as any;
     console.error('[contact] failed to store lead:', err);
     if (err.errors) { // Zod error
       res.status(400).json({ error: 'Validation failed', details: err.errors });
