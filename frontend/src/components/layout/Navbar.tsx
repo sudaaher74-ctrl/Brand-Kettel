@@ -35,23 +35,22 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <div className={cn('transition-all duration-500 ease-smooth', scrolled ? 'py-2' : 'py-4')}>
-        <div className="container-px">
-          <nav
-            className={cn(
-              'flex items-center justify-between rounded-full px-4 py-2.5 transition-all duration-500 ease-smooth',
-              scrolled ? 'glass shadow-card border border-accent/10' : 'bg-transparent'
-            )}
-          >
-            {/* Logo */}
+    <header 
+      className={cn(
+        'fixed inset-x-0 top-0 z-[100] transition-all duration-500 ease-smooth border-b',
+        scrolled ? 'bg-background border-line py-2' : 'bg-background border-transparent py-4'
+      )}
+    >
+      <div className="container-px">
+        <nav className="flex items-center justify-between rounded-none px-4 py-2.5">
+          {/* Logo */}
             <Link href="/" className="group flex items-center gap-2.5" onClick={() => setOpen(false)}>
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-accent text-sm font-semibold text-[#0a0a0a]">
+              <span className="grid h-9 w-9 place-items-center rounded-none bg-accent text-sm font-semibold text-[#0a0a0a]">
                 BK
               </span>
               <span className="hidden flex-col leading-none sm:flex">
-                <span className="font-display text-sm font-semibold text-ink">Brand Kettle</span>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-ink-muted">BuildSpaces</span>
+                <span className="font-display text-lg font-light text-ink uppercase tracking-[0.28em]">Brand Kettle</span>
+                <span className="font-sans text-[10px] uppercase tracking-[0.55em] text-[#777777] font-light">Interiors</span>
               </span>
             </Link>
 
@@ -70,20 +69,20 @@ export default function Navbar() {
                       {/* Services trigger */}
                       <button
                         onClick={() => setServicesOpen((v) => !v)}
-                        className="flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-accent"
+                        className="flex items-center gap-1 rounded-none px-3 py-2 text-nav"
                         aria-expanded={servicesOpen}
                         aria-haspopup="true"
                       >
                         Services
                         <svg
                           className={cn(
-                            'h-3.5 w-3.5 transition-transform duration-200',
+                            'h-4 w-4 transition-transform duration-200',
                             servicesOpen && 'rotate-180'
                           )}
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
-                          strokeWidth={2}
+                          strokeWidth={1.5}
                         >
                           <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                         </svg>
@@ -97,7 +96,7 @@ export default function Navbar() {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 6, scale: 0.97 }}
                             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                            className="absolute left-1/2 top-full mt-2 w-64 -translate-x-1/2 overflow-hidden border border-accent/15 shadow-float rounded-xl"
+                            className="absolute left-1/2 top-full mt-2 w-64 -translate-x-1/2 overflow-hidden border border-accent/15 rounded-none"
                             style={{ background: 'rgba(250, 248, 245, 0.96)', backdropFilter: 'blur(20px)' }}
                           >
                             {/* View all services link */}
@@ -117,7 +116,7 @@ export default function Navbar() {
                                 href={item.href}
                                 onClick={() => setServicesOpen(false)}
                                 className={cn(
-                                  'group flex items-start gap-3 px-4 py-4 transition-colors hover:bg-white',
+                                  'group flex items-start gap-3 px-4 py-4 transition-colors hover:bg-white dropdown-menu',
                                   i < servicesDropdown.length - 1 && 'border-b border-line'
                                 )}
                               >
@@ -125,7 +124,7 @@ export default function Navbar() {
                                   {item.icon}
                                 </span>
                                 <span>
-                                  <span className="block text-sm font-semibold text-ink group-hover:text-accent transition-colors">
+                                  <span className="block font-sans text-[16px] font-light text-[#444] group-hover:text-black transition-colors">
                                     {item.label}
                                   </span>
                                   <span className="mt-0.5 block text-xs text-ink-muted">
@@ -145,7 +144,7 @@ export default function Navbar() {
                   <Link
                     key={l.href}
                     href={l.href}
-                    className="rounded-full px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-accent"
+                    className="rounded-none px-3 py-2 text-nav"
                   >
                     {l.label}
                   </Link>
@@ -153,16 +152,15 @@ export default function Navbar() {
               })}
             </div>
 
-            {/* Right side */}
             <div className="flex items-center gap-2">
-              <Link href="/contact" className="btn-accent hidden sm:inline-flex">
+              <Link href="/contact" className="btn hidden sm:inline-flex">
                 Get in Touch
               </Link>
               <button
                 aria-label="Toggle menu"
                 aria-expanded={open}
                 onClick={() => setOpen((v) => !v)}
-                className="grid h-10 w-10 place-items-center rounded-full border border-line bg-surface lg:hidden"
+                className="grid h-10 w-10 place-items-center rounded-none border border-line bg-surface lg:hidden"
               >
                 <span className="relative block h-3 w-5">
                   <span
@@ -182,7 +180,6 @@ export default function Navbar() {
             </div>
           </nav>
         </div>
-      </div>
 
       {/* Mobile menu */}
       <AnimatePresence>
@@ -194,7 +191,7 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="container-px lg:hidden"
           >
-            <div className="glass-card mt-2 border border-accent/15 p-4 shadow-card">
+            <div className="glass mt-2 border border-accent/15 p-4 rounded-none">
               <div className="grid gap-1">
                 {navLinks.map((l, i) => {
                   if (l.label === 'Services') {
@@ -246,7 +243,7 @@ export default function Navbar() {
                       <Link
                         href={l.href}
                         onClick={() => setOpen(false)}
-                        className="block px-4 py-3 text-base font-medium text-ink hover:text-accent transition-colors"
+                        className="block px-4 py-3 text-nav"
                       >
                         {l.label}
                       </Link>
