@@ -43,11 +43,11 @@ const config: Config = {
         '3xl': '1.25rem', // 20px
       },
       boxShadow: {
-        soft: '0 20px 60px rgba(0, 0, 0, 0.05)',
-        card: '0 20px 60px rgba(0, 0, 0, 0.05)',
-        float: '0 30px 60px rgba(0, 0, 0, 0.08)',
-        accent: '0 18px 40px -16px rgba(141, 116, 88, 0.35)',
-        'glow-gold': '0 0 40px rgba(200, 169, 126, 0.15)',
+        soft: 'none',
+        card: 'none',
+        float: 'none',
+        accent: 'none',
+        'glow-gold': 'none',
       },
       transitionTimingFunction: {
         smooth: 'cubic-bezier(0.22, 1, 0.36, 1)',
