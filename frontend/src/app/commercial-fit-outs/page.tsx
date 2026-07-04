@@ -35,7 +35,29 @@ async function getCommercialProjects() {
 }
 
 export default async function CommercialProjectsPage() {
-  const commercial = await getCommercialProjects();
+  let commercial = await getCommercialProjects();
+
+  const orderedSlugs = [
+    'gucci',
+    'malabar-gold',
+    'png',
+    'giva',
+    'havana-lounge-bareilly',
+    'pret-a-manger-delhi',
+    'ramada-encore-bareilly',
+    'nanokirti-pvt',
+    'and-work-faridabad',
+  ];
+
+  commercial.sort((a: any, b: any) => {
+    const indexA = orderedSlugs.indexOf(a.slug);
+    const indexB = orderedSlugs.indexOf(b.slug);
+    
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    return 0;
+  });
 
   const serviceSchema = {
     '@context': 'https://schema.org',

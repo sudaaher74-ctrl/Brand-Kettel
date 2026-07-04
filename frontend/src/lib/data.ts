@@ -311,9 +311,33 @@ export const servicesDropdown = [
     icon: '◉',
   },
   {
+    href: '/retail-fit-outs',
+    label: 'Retail Fit-Outs',
+    description: 'Store interiors & retail environments',
+    icon: '🛍️',
+  },
+  {
+    href: '/jewellery-showrooms',
+    label: 'Jewellery Showrooms',
+    description: 'High-end secure jewellery displays',
+    icon: '💎',
+  },
+  {
     href: '/residential-interiors',
     label: 'Residential Interiors',
     description: 'Bespoke homes & private interiors',
     icon: '◎',
+  },
+  {
+    href: '/custom-furniture',
+    label: 'Custom Furniture',
+    description: 'Bespoke & modular furniture manufacturing',
+    icon: '🛋️',
+  },
+  {
+    href: '/library-institutional-furniture',
+    label: 'Library & Institutional',
+    description: 'Educational & institutional furniture',
+    icon: '📚',
   },
 ];
