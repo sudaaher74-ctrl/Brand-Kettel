@@ -1,20 +1,20 @@
 import type { Metadata, Viewport } from 'next';
-import { Manrope, Cormorant_Garamond } from 'next/font/google';
+import { Montserrat, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 import SiteShell from '@/components/layout/SiteShell';
 
-const manrope = Manrope({
+const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
-  weight: ['300', '400', '500'],
+  weight: ['300'], // Minimal luxury aesthetic uses 300
 });
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
-  weight: ['300', '400'],
+  weight: ['300'], // Enforcing 300 weight for luxury display font
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://brandkettle.com';
@@ -100,7 +100,7 @@ const localBusinessJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${manrope.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${montserrat.variable} ${cormorant.variable}`}>
       <body>
         <script
           type="application/ld+json"

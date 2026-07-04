@@ -8,7 +8,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#F3F0EB', // Primary Background
+        background: '#F7F5F2', // Primary Background
         surface: '#FAF8F5',    // Secondary Background
         surface2: '#ECE6DE',   // Section Alternate Background
         card: '#FFFFFF',       // Card Background
@@ -18,29 +18,37 @@ const config: Config = {
           luxury: '#C8A97E',    // Luxury Gold
           wood: '#B58E67',      // Natural Wood
           olive: '#717458',     // Olive Accent
-          hover: '#3A352F',     // Button Hover
+          hover: '#000000',     // Button Hover
         },
         ink: {
-          DEFAULT: '#2B2B2B',  // Primary Text
-          secondary: '#5E5952', // Secondary Text
+          DEFAULT: '#1D1D1D',  // Primary Text
+          secondary: '#6E6E6E', // Secondary Text
           muted: '#8B857D',     // Muted Text
         },
         line: {
-          DEFAULT: '#D8D1C8',  // Border Color
+          DEFAULT: '#D8D8D8',  // Border Color
           divider: '#E7E1D9',  // Divider
         },
+        button: {
+          border: '#2D2D2D',
+          hover: '#000000',
+        }
       },
       fontFamily: {
-        sans: ['var(--font-sans)', 'Manrope', 'Neue Haas Grotesk', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
-        display: ['var(--font-display)', 'Cormorant Garamond', 'Canela', 'IvyPresto', 'Libre Baskerville', 'serif'],
+        sans: ['var(--font-sans)', 'Montserrat', 'sans-serif'],
+        display: ['Canela Light', 'Canela', 'var(--font-display)', 'Cormorant Garamond', 'serif'],
       },
       maxWidth: {
         container: '1400px',
       },
       borderRadius: {
-        xl: '0.75rem', // 12px
-        '2xl': '1rem', // 16px
-        '3xl': '1.25rem', // 20px
+        DEFAULT: '0px',
+        sm: '0px',
+        md: '0px',
+        lg: '0px',
+        xl: '0px',
+        '2xl': '0px',
+        '3xl': '0px',
       },
       boxShadow: {
         soft: 'none',

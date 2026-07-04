@@ -24,11 +24,11 @@
   }
 
   body {
-    @apply bg-background text-ink font-sans antialiased;
+    @apply bg-background text-ink font-sans antialiased font-light;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
-    background-color: #F3F0EB;
-    color: #5E5952;
+    background-color: var(--bg);
+    color: #646464;
   }
 
   /* Lenis */
@@ -49,43 +49,46 @@
   }
 
   h1, h2, h3 {
-    @apply font-display tracking-[1px] font-light;
+    @apply font-display tracking-[0.02em] font-light;
     text-wrap: balance;
-    color: #2B2B2B;
+    color: #202020;
   }
 }
 
 @layer components {
   /* Typography Scale */
   .text-hero {
-    @apply font-display text-[54px] md:text-[92px] font-light tracking-[2px] leading-none;
+    @apply font-display text-[48px] md:text-[70px] lg:text-[90px] font-light tracking-[0.03em] leading-none text-white;
   }
   .text-subtitle {
-    @apply font-sans text-[18px] md:text-[20px] font-light tracking-[0.5px] leading-[1.7] text-ink-secondary;
+    @apply font-sans text-[18px] font-light tracking-[0.02em] leading-[1.9] text-ink-secondary;
   }
   .text-section {
-    @apply font-display text-[40px] md:text-[64px] font-light tracking-[1.5px] leading-[1.1];
+    @apply font-display text-[40px] md:text-[58px] font-light tracking-[0.02em] leading-[1.1] text-[#202020];
   }
   .text-section-lg {
-    @apply font-display text-[48px] md:text-[72px] font-light tracking-[1.5px] leading-[1.1];
+    @apply font-display text-[48px] md:text-[72px] font-light tracking-[0.02em] leading-[1.1] text-[#202020];
   }
   .text-card-heading {
-    @apply font-display text-[26px] md:text-[32px] font-normal tracking-[1px];
+    @apply font-display text-[26px] md:text-[32px] font-light tracking-[0.02em] text-[#202020];
   }
   .text-service-title {
-    @apply font-display text-[24px] md:text-[30px] font-normal;
+    @apply font-display text-[24px] md:text-[30px] font-light tracking-[0.02em];
   }
   .text-portfolio-title {
-    @apply font-display text-[26px] md:text-[34px] font-light;
+    @apply font-display text-[26px] md:text-[34px] font-light tracking-[0.02em];
   }
   .text-body-main {
-    @apply font-sans text-[16px] md:text-[18px] font-normal leading-[1.8] text-ink-secondary;
+    @apply font-sans text-[16px] md:text-[18px] font-light leading-[1.9] text-[#646464];
   }
   .text-small {
-    @apply font-sans text-[14px] md:text-[16px] font-normal leading-[1.7];
+    @apply font-sans text-[14px] md:text-[16px] font-light leading-[1.9] text-[#646464];
   }
   .text-nav {
-    @apply font-sans text-[13px] md:text-[14px] font-medium tracking-[2px] uppercase;
+    @apply font-sans text-[20px] md:text-[26px] lg:text-[31px] font-light tracking-[0.02em] uppercase leading-[1.7] text-[#232323] transition-opacity duration-300 hover:text-black;
+  }
+  .dropdown-menu {
+    @apply font-sans text-[16px] font-light tracking-[0.03em] text-[#444444] transition-colors duration-300 hover:text-black;
   }
 
   .container-px {
@@ -93,24 +96,22 @@
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent;
+    @apply inline-flex items-center gap-2 text-[13px] font-light uppercase tracking-[0.30em] text-accent;
   }
 
   /* Premium Buttons */
   .btn {
-    @apply inline-flex items-center justify-center font-sans text-[13px] md:text-[14px] font-medium tracking-[2px] uppercase whitespace-nowrap transition-all duration-[350ms] ease-out;
-    height: 54px;
-    padding: 16px 40px;
-    border-radius: 0;
+    @apply inline-flex items-center justify-center font-sans text-[18px] font-light tracking-[0.14em] uppercase whitespace-nowrap transition-all duration-300 ease-out border border-[#2D2D2D] bg-transparent text-[#232323] hover:bg-black hover:text-white rounded-none;
+    padding: 18px 45px;
   }
   .btn-primary {
-    @apply btn bg-transparent text-ink border-[1.5px] border-ink hover:bg-ink hover:text-background;
+    @apply btn;
   }
   .btn-accent {
-    @apply btn bg-transparent text-ink border-[1.5px] border-ink hover:bg-ink hover:text-background;
+    @apply btn;
   }
   .btn-ghost {
-    @apply btn border-[1.5px] border-line bg-transparent text-ink hover:border-ink hover:text-ink;
+    @apply btn;
   }
 
   /* Shared 3D perspective context */
