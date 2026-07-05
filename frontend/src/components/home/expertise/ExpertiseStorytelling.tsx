@@ -12,7 +12,7 @@ type ExpertiseData = {
   link: string;
 };
 
-const EXPERTISE_DATA: ExpertiseData[] = [
+const FALLBACK_DATA: ExpertiseData[] = [
   {
     title: 'Commercial Interiors',
     description: 'Designing productive, elegant, and future-ready workspaces that reflect your brand and improve employee experience.',
@@ -36,7 +36,25 @@ const EXPERTISE_DATA: ExpertiseData[] = [
   }
 ];
 
-export default function ExpertiseStorytelling() {
+/** Map an API service object to our display shape */
+function mapApiServices(apiServices: any[]): ExpertiseData[] {
+  return apiServices.slice(0, 6).map(s => ({
+    title: s.title || s.name || 'Service',
+    description: s.description || '',
+    services: s.subServices || s.tags || [],
+    image: s.image || '/imgs/experties2.png',
+    link: s.link || s.href || '#',
+  }));
+}
+
+type Props = {
+  services?: any[];
+};
+
+export default function ExpertiseStorytelling({ services }: Props) {
+  const data: ExpertiseData[] =
+    services && services.length > 0 ? mapApiServices(services) : FALLBACK_DATA;
+
   return (
     <section className="relative w-full bg-surface2 py-[140px]">
       <div className="container-px">
@@ -61,7 +79,7 @@ export default function ExpertiseStorytelling() {
 
         {/* 3-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {EXPERTISE_DATA.map((item, index) => (
+          {data.map((item, index) => (
             <motion.div
               key={item.title}
               initial={{ opacity: 0, y: 30 }}
@@ -101,14 +119,16 @@ export default function ExpertiseStorytelling() {
                   {item.description}
                 </p>
 
-                <ul className="flex flex-wrap gap-x-4 gap-y-2 mb-8 text-small text-ink-secondary">
-                  {item.services.map((service, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                      <div className="w-1 h-1 rounded-none bg-accent/40" />
-                      {service}
-                    </li>
-                  ))}
-                </ul>
+                {item.services.length > 0 && (
+                  <ul className="flex flex-wrap gap-x-4 gap-y-2 mb-8 text-small text-ink-secondary">
+                    {item.services.map((service, i) => (
+                      <li key={i} className="flex items-center gap-2">
+                        <div className="w-1 h-1 rounded-none bg-accent/40" />
+                        {service}
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
                 <Link href={item.link} className="mt-auto inline-flex items-center gap-2 text-nav text-accent hover:text-ink transition-colors group/link w-fit">
                   View Projects
@@ -123,3 +143,4 @@ export default function ExpertiseStorytelling() {
     </section>
   );
 }
+
