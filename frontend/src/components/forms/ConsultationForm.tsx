@@ -30,11 +30,17 @@ export default function ConsultationForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json.error || 'Something went wrong');
-      setStatus('success');
-      setMessage(json.message || 'Thank you — we will be in touch shortly.');
-      form.reset();
+      
+      const contentType = res.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        const json = await res.json();
+        if (!res.ok) throw new Error(json.error || 'Something went wrong');
+        setStatus('success');
+        setMessage(json.message || 'Thank you — we will be in touch shortly.');
+        form.reset();
+      } else {
+        throw new Error('Could not connect to the backend server. If you are on the live site, the backend may not be deployed yet.');
+      }
     } catch (err) {
       setStatus('error');
       setMessage(err instanceof Error ? err.message : 'Something went wrong');
