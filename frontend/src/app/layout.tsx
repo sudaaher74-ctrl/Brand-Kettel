@@ -58,7 +58,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#F3F0EB',
+  themeColor: '#0B0B0D',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -86,7 +86,7 @@ const localBusinessJsonLd = {
   '@type': 'LocalBusiness',
   name: 'Brand Kettle BuildSpaces',
   image: `${SITE_URL}/logo.png`,
-  telephone: '+9189591737990',
+  telephone: '+918959173799',
   url: SITE_URL,
   address: {
     '@type': 'PostalAddress',

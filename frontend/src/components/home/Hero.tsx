@@ -10,6 +10,7 @@ export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoWrapperRef = useRef<HTMLDivElement>(null);
   
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const video1Ref = useRef<HTMLVideoElement>(null);
   const video2Ref = useRef<HTMLVideoElement>(null);
   const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
@@ -28,6 +29,16 @@ export default function Hero() {
         },
       });
     }, containerRef);
+
+    // Initial play logic to save bandwidth
+    const playCorrectVideo = () => {
+      if (window.innerWidth < 768) {
+        if (mobileVideoRef.current) mobileVideoRef.current.play().catch(() => {});
+      } else {
+        if (video1Ref.current) video1Ref.current.play().catch(() => {});
+      }
+    };
+    playCorrectVideo();
 
     return () => ctx.revert();
   }, []);
@@ -74,7 +85,8 @@ export default function Hero() {
         
         {/* Mobile Video (Hidden on Desktop) */}
         <video
-          autoPlay
+          ref={mobileVideoRef}
+          preload="none"
           loop
           muted
           playsInline
@@ -86,7 +98,7 @@ export default function Hero() {
         {/* Desktop Video 1 (Hidden on Mobile) */}
         <video
           ref={video1Ref}
-          autoPlay
+          preload="none"
           muted
           playsInline
           onLoadedData={handleVideo1Loaded}
@@ -101,6 +113,7 @@ export default function Hero() {
         {/* Desktop Video 2 (Hidden on Mobile) */}
         <video
           ref={video2Ref}
+          preload="none"
           muted
           playsInline
           onEnded={handleVideo2Ended}
