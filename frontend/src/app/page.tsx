@@ -37,7 +37,7 @@ export default async function HomePage() {
     <>
       <Hero />
       <Welcome />
-      <ExpertiseStorytelling services={services} />
+      <ExpertiseStorytelling services={services.slice(0, 3)} />
       <Showcase featured={featured} />
       <Testimonials testimonials={testimonials} />
       <ConsultationCTA />
