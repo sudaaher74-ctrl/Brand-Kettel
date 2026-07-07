@@ -20,8 +20,8 @@ router.get('/', async (req, res) => {
         res.json(settings);
     }
     catch (error) {
-        const err = error;
-        res.status(500).json({ error: err.message });
+        console.error('[settings] failed to load settings:', error);
+        res.status(500).json({ error: 'Failed to load settings' });
     }
 });
 // Update settings
@@ -38,7 +38,8 @@ router.put('/', requireAuth_1.requireAuth, async (req, res) => {
         const err = error;
         if (err.errors)
             return res.status(400).json({ error: err.errors[0].message });
-        res.status(500).json({ error: err.message });
+        console.error('[settings] failed to update settings:', error);
+        res.status(500).json({ error: 'Failed to update settings' });
     }
 });
 exports.default = router;

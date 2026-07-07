@@ -11,6 +11,11 @@ const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3001;
+// Fail fast if admin auth is misconfigured — never run with insecure defaults.
+if (!process.env.ADMIN_PASSWORD || !process.env.APP_SECRET) {
+    console.error('FATAL: ADMIN_PASSWORD and APP_SECRET must both be set to strong secret values.');
+    process.exit(1);
+}
 app.use((0, cors_1.default)({
     origin: 'http://localhost:3000',
     credentials: true
@@ -28,6 +33,14 @@ const contactLimiter = (0, express_rate_limit_1.default)({
     standardHeaders: true,
     legacyHeaders: false,
 });
+// Strict limiter to slow brute-force of the admin password.
+const loginLimiter = (0, express_rate_limit_1.default)({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 5,
+    message: { error: 'Too many login attempts, please try again later.' },
+    standardHeaders: true,
+    legacyHeaders: false,
+});
 const admin_1 = __importDefault(require("./routes/admin"));
 const projects_1 = __importDefault(require("./routes/projects"));
 const contact_1 = __importDefault(require("./routes/contact"));
@@ -39,7 +52,8 @@ const testimonials_1 = __importDefault(require("./routes/testimonials"));
 const upload_1 = __importDefault(require("./routes/upload"));
 const settings_1 = __importDefault(require("./routes/settings"));
 const path_1 = __importDefault(require("path"));
-// Public auth routes
+// Public auth routes (login is rate-limited to resist brute force)
+app.use('/api/admin/login', loginLimiter);
 app.use('/api/admin', auth_1.default);
 // Static uploads serving
 app.use('/uploads', express_1.default.static(path_1.default.join(__dirname, '../public/uploads')));

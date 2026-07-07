@@ -45,11 +45,14 @@ router.put('/blog/:id', requireAuth_1.requireAuth, async (req, res) => {
     if (!db)
         return res.status(503).json({ error: 'Database not configured' });
     try {
+        const _id = (0, mongodb_1.toObjectId)(req.params.id);
+        if (!_id)
+            return res.status(400).json({ error: 'Invalid id' });
         const validatedData = schemas_1.BlogPostSchema.partial().parse(req.body);
         const update = Object.fromEntries(Object.entries(validatedData).filter(([k]) => k !== '_id' && k !== 'id'));
         if (update.published && !update.publishedAt)
             update.publishedAt = new Date();
-        await db.collection('blog_posts').updateOne({ _id: new mongodb_2.ObjectId(req.params.id) }, { $set: { ...update, updatedAt: new Date() } });
+        await db.collection('blog_posts').updateOne({ _id }, { $set: { ...update, updatedAt: new Date() } });
         res.json({ ok: true });
     }
     catch (error) {
@@ -61,7 +64,10 @@ router.delete('/blog/:id', requireAuth_1.requireAuth, async (req, res) => {
     const db = await (0, mongodb_1.getDb)();
     if (!db)
         return res.status(503).json({ error: 'Database not configured' });
-    await db.collection('blog_posts').deleteOne({ _id: new mongodb_2.ObjectId(req.params.id) });
+    const _id = (0, mongodb_1.toObjectId)(req.params.id);
+    if (!_id)
+        return res.status(400).json({ error: 'Invalid id' });
+    await db.collection('blog_posts').deleteOne({ _id });
     res.json({ ok: true });
 });
 // --- Content ---
@@ -83,6 +89,8 @@ router.put('/content', requireAuth_1.requireAuth, async (req, res) => {
     if (!db)
         return res.status(503).json({ error: 'Database not configured' });
     const { items } = req.body;
+    if (!Array.isArray(items))
+        return res.status(400).json({ error: 'items must be an array' });
     await db.collection('site_content').updateOne({ type }, { $set: { type, items, updatedAt: new Date() } }, { upsert: true });
     res.json({ ok: true });
 });
@@ -103,19 +111,24 @@ router.put('/leads/:id/status', requireAuth_1.requireAuth, async (req, res) => {
         if (!['New', 'Contacted', 'Closed'].includes(status)) {
             return res.status(400).json({ error: 'Invalid status' });
         }
-        await db.collection('leads').updateOne({ _id: new mongodb_2.ObjectId(req.params.id) }, { $set: { status, updatedAt: new Date() } });
+        const _id = (0, mongodb_1.toObjectId)(req.params.id);
+        if (!_id)
+            return res.status(400).json({ error: 'Invalid id' });
+        await db.collection('leads').updateOne({ _id }, { $set: { status, updatedAt: new Date() } });
         res.json({ ok: true });
     }
     catch (error) {
-        const err = error;
-        res.status(400).json({ error: 'Failed to update status', details: err.message });
+        res.status(400).json({ error: 'Failed to update status' });
     }
 });
 router.delete('/leads/:id', requireAuth_1.requireAuth, async (req, res) => {
     const db = await (0, mongodb_1.getDb)();
     if (!db)
         return res.status(503).json({ error: 'Database not configured' });
-    await db.collection('leads').deleteOne({ _id: new mongodb_2.ObjectId(req.params.id) });
+    const _id = (0, mongodb_1.toObjectId)(req.params.id);
+    if (!_id)
+        return res.status(400).json({ error: 'Invalid id' });
+    await db.collection('leads').deleteOne({ _id });
     res.json({ ok: true });
 });
 exports.default = router;
