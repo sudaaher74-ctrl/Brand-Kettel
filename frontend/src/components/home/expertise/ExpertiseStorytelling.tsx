@@ -56,7 +56,7 @@ export default function ExpertiseStorytelling({ services }: Props) {
     services && services.length > 0 ? mapApiServices(services) : FALLBACK_DATA;
 
   return (
-    <section className="relative w-full bg-surface2 py-[140px]">
+    <section className="relative w-full bg-background py-[140px]">
       <div className="container-px">
         
         {/* Header */}
@@ -65,7 +65,7 @@ export default function ExpertiseStorytelling({ services }: Props) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col items-center text-center mb-16 sm:mb-24"
+          className="flex flex-col items-center text-center mb-16 sm:mb-32"
         >
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-px bg-accent/40" />
@@ -77,66 +77,87 @@ export default function ExpertiseStorytelling({ services }: Props) {
           </h2>
         </motion.div>
 
-        {/* 3-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {data.map((item, index) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col group glass-card p-10"
-            >
-              {/* Image Container */}
-              <Link href={item.link} className="relative w-full aspect-[4/5] mb-8 overflow-hidden rounded-none block">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover transition-transform duration-[1000ms] group-hover:scale-[1.03]"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-[800ms]" />
-              </Link>
+        {/* Asymmetric Editorial Runway */}
+        <div className="flex flex-col gap-32 md:gap-48">
+          {data.map((item, index) => {
+            const isEven = index % 2 !== 0; // index 1 is even (02) visually
+            const numStr = String(index + 1).padStart(2, '0');
+            
+            const titleParts = item.title.split(' ');
+            const firstWord = titleParts[0] || '';
+            const restWords = titleParts.slice(1).join(' ') || '';
 
-              {/* Content */}
-              <div className="flex flex-col flex-grow">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="text-nav text-accent/60 tracking-widest">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <div className="h-px w-8 bg-line" />
-                </div>
-                
-                <h3 className="text-card-heading text-ink mb-4">
-                  <Link href={item.link} className="hover:text-accent transition-colors">
-                    {item.title}
+            return (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                className={`flex flex-col md:flex-row items-center gap-12 md:gap-24 ${
+                  isEven ? 'md:flex-row-reverse' : ''
+                }`}
+              >
+                {/* Image Container */}
+                <div className="w-full md:w-5/12 lg:w-4/12">
+                  <Link href={item.link} className="relative w-full aspect-[4/5] block overflow-hidden group">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover transition-transform duration-[1000ms] group-hover:scale-[1.03]"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-[800ms]" />
                   </Link>
-                </h3>
-                
-                <p className="text-body-main mb-8 flex-grow">
-                  {item.description}
-                </p>
+                </div>
 
-                {item.services.length > 0 && (
-                  <ul className="flex flex-wrap gap-x-4 gap-y-2 mb-8 text-small text-ink-secondary">
-                    {item.services.map((service, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        <div className="w-1 h-1 rounded-none bg-accent/40" />
-                        {service}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                {/* Content Container */}
+                <div className="w-full md:w-7/12 lg:w-8/12 flex flex-col justify-center">
+                  <div className={`flex flex-col w-full max-w-lg mx-auto md:mx-0 ${isEven ? 'md:ml-auto md:mr-12' : 'md:mr-auto md:ml-12'}`}>
+                    
+                    {/* Large Background Number */}
+                    <span className={`text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none font-display text-accent/20 mb-8 ${isEven ? 'self-start' : 'self-end'}`}>
+                      {numStr}
+                    </span>
 
-                <Link href={item.link} className="mt-auto inline-flex items-center gap-2 text-nav text-accent hover:text-ink transition-colors group/link w-fit">
-                  View Projects
-                  <span className="transition-transform group-hover/link:translate-x-1">→</span>
-                </Link>
-              </div>
-            </motion.div>
-          ))}
+                    {/* Title */}
+                    <div className="flex flex-col mb-8">
+                      <h3 className="text-4xl md:text-5xl lg:text-6xl font-display text-ink tracking-wide">
+                        {restWords ? (
+                          <>
+                            <span className="block mb-2 md:mb-4">{firstWord}</span>
+                            <div className="flex items-center gap-6">
+                              {!isEven && <span className="text-xl font-sans text-accent/60 tracking-widest hidden md:block">{numStr}</span>}
+                              <span className="text-accent">{restWords}</span>
+                              {isEven && <span className="text-xl font-sans text-accent/60 tracking-widest hidden md:block">{numStr}</span>}
+                            </div>
+                          </>
+                        ) : (
+                          <div className="flex items-center gap-6">
+                            {!isEven && <span className="text-xl font-sans text-accent/60 tracking-widest hidden md:block">{numStr}</span>}
+                            <span className="text-accent">{firstWord}</span>
+                            {isEven && <span className="text-xl font-sans text-accent/60 tracking-widest hidden md:block">{numStr}</span>}
+                          </div>
+                        )}
+                      </h3>
+                    </div>
+                    
+                    {/* Description */}
+                    <p className="text-body-main text-ink/70 mb-10 md:max-w-md">
+                      {item.description}
+                    </p>
+
+                    {/* Link */}
+                    <Link href={item.link} className="inline-flex items-center gap-3 text-nav text-ink hover:text-accent transition-colors group/link w-fit">
+                      Explore {item.title}
+                      <span className="transition-transform group-hover/link:translate-x-2 text-accent">→</span>
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
       </div>
