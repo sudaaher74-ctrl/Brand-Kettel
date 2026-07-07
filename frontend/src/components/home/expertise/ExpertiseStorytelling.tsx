@@ -78,15 +78,11 @@ export default function ExpertiseStorytelling({ services }: Props) {
         </motion.div>
 
         {/* Asymmetric Editorial Runway */}
-        <div className="flex flex-col gap-32 md:gap-48">
+        <div className="flex flex-col gap-24 md:gap-40">
           {data.map((item, index) => {
             const isEven = index % 2 !== 0; // index 1 is even (02) visually
             const numStr = String(index + 1).padStart(2, '0');
             
-            const titleParts = item.title.split(' ');
-            const firstWord = titleParts[0] || '';
-            const restWords = titleParts.slice(1).join(' ') || '';
-
             return (
               <motion.div
                 key={item.title}
@@ -94,57 +90,42 @@ export default function ExpertiseStorytelling({ services }: Props) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                className={`flex flex-col md:flex-row items-center gap-12 md:gap-24 ${
+                className={`flex flex-col md:flex-row gap-12 md:gap-20 ${
                   isEven ? 'md:flex-row-reverse' : ''
                 }`}
               >
                 {/* Image Container */}
-                <div className="w-full md:w-5/12 lg:w-4/12">
-                  <Link href={item.link} className="relative w-full aspect-[4/5] block overflow-hidden group">
+                <div className="w-full md:w-1/2">
+                  <Link href={item.link} className="relative w-full aspect-[4/3] md:aspect-[4/5] block overflow-hidden group">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
                       className="object-cover transition-transform duration-[1000ms] group-hover:scale-[1.03]"
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-[800ms]" />
                   </Link>
                 </div>
 
                 {/* Content Container */}
-                <div className="w-full md:w-7/12 lg:w-8/12 flex flex-col justify-center">
-                  <div className={`flex flex-col w-full max-w-lg mx-auto md:mx-0 ${isEven ? 'md:ml-auto md:mr-12' : 'md:mr-auto md:ml-12'}`}>
+                <div className="w-full md:w-1/2 flex flex-col justify-center py-4 md:py-16">
+                  <div className={`w-full max-w-lg mx-auto md:mx-0 ${isEven ? 'md:ml-auto md:pr-12' : 'md:mr-auto md:pl-12'}`}>
                     
-                    {/* Large Background Number */}
-                    <span className={`text-[6rem] md:text-[8rem] lg:text-[10rem] leading-none font-display text-accent/20 mb-8 ${isEven ? 'self-start' : 'self-end'}`}>
-                      {numStr}
-                    </span>
-
-                    {/* Title */}
-                    <div className="flex flex-col mb-8">
+                    {/* Number and Title */}
+                    <div className="mb-8">
+                      <span className="block text-2xl md:text-3xl font-display text-accent mb-4">
+                        {numStr}
+                      </span>
                       <h3 className="text-4xl md:text-5xl lg:text-6xl font-display text-ink tracking-wide">
-                        {restWords ? (
-                          <>
-                            <span className="block mb-2 md:mb-4">{firstWord}</span>
-                            <div className="flex items-center gap-6">
-                              {!isEven && <span className="text-xl font-sans text-accent/60 tracking-widest hidden md:block">{numStr}</span>}
-                              <span className="text-accent">{restWords}</span>
-                              {isEven && <span className="text-xl font-sans text-accent/60 tracking-widest hidden md:block">{numStr}</span>}
-                            </div>
-                          </>
-                        ) : (
-                          <div className="flex items-center gap-6">
-                            {!isEven && <span className="text-xl font-sans text-accent/60 tracking-widest hidden md:block">{numStr}</span>}
-                            <span className="text-accent">{firstWord}</span>
-                            {isEven && <span className="text-xl font-sans text-accent/60 tracking-widest hidden md:block">{numStr}</span>}
-                          </div>
-                        )}
+                        {item.title.split(' ').map((word, i) => (
+                           <span key={i} className="block">{word}</span>
+                        ))}
                       </h3>
                     </div>
                     
                     {/* Description */}
-                    <p className="text-body-main text-ink/70 mb-10 md:max-w-md">
+                    <p className="text-body-main text-ink/70 mb-10">
                       {item.description}
                     </p>
 
