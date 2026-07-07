@@ -8,10 +8,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#F7F5F2', // Primary Background
-        surface: '#FAF8F5',    // Secondary Background
-        surface2: '#ECE6DE',   // Section Alternate Background
-        card: '#FFFFFF',       // Card Background
+        background: '#0B0B0D', // Primary Background
+        surface: '#0F0F12',    // Secondary Background
+        surface2: '#131317',   // Section Alternate Background
+        card: '#131317',       // Card Background
         accent: {
           DEFAULT: '#8D7458',  // Primary Accent
           secondary: '#B79B78', // Secondary Accent
@@ -21,13 +21,13 @@ const config: Config = {
           hover: '#000000',     // Button Hover
         },
         ink: {
-          DEFAULT: '#1D1D1D',  // Primary Text
-          secondary: '#6E6E6E', // Secondary Text
-          muted: '#8B857D',     // Muted Text
+          DEFAULT: '#F4F4F5',  // Primary Text
+          secondary: '#8A8A93', // Secondary Text
+          muted: '#63636B',     // Muted Text
         },
         line: {
-          DEFAULT: '#D8D8D8',  // Border Color
-          divider: '#E7E1D9',  // Divider
+          DEFAULT: 'rgba(255, 255, 255, 0.09)',  // Border Color
+          divider: 'rgba(255, 255, 255, 0.05)',  // Divider
         },
         button: {
           border: '#2D2D2D',

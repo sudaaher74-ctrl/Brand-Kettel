@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --bg: #F3F0EB;
-  --surface: #FAF8F5;
-  --surface-2: #ECE6DE;
+  --bg: #0B0B0D;
+  --surface: #0F0F12;
+  --surface-2: #131317;
   --accent: #8D7458;
   --accent-soft: #B79B78;
-  --ink: #2B2B2B;
-  --ink-muted: #8B857D;
-  --line: #D8D1C8;
+  --ink: #F4F4F5;
+  --ink-muted: #8A8A93;
+  --line: rgba(255, 255, 255, 0.09);
 }
 
 @layer base {
@@ -28,7 +28,7 @@
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
     background-color: var(--bg);
-    color: #646464;
+    color: var(--ink-muted);
   }
 
   /* Lenis */
@@ -45,13 +45,13 @@
 
   ::selection {
     background: rgba(141, 116, 88, 0.20);
-    color: #2B2B2B;
+    color: var(--ink);
   }
 
   h1, h2, h3 {
     @apply font-display tracking-[0.02em] font-light;
     text-wrap: balance;
-    color: #202020;
+    color: var(--ink);
   }
 }
 
@@ -64,13 +64,13 @@
     @apply font-sans text-[18px] font-light tracking-[0.02em] leading-[1.9] text-ink-secondary;
   }
   .text-section {
-    @apply font-display text-[40px] md:text-[58px] font-light tracking-[0.02em] leading-[1.1] text-[#202020];
+    @apply font-display text-[40px] md:text-[58px] font-light tracking-[0.02em] leading-[1.1] text-ink;
   }
   .text-section-lg {
-    @apply font-display text-[48px] md:text-[72px] font-light tracking-[0.02em] leading-[1.1] text-[#202020];
+    @apply font-display text-[48px] md:text-[72px] font-light tracking-[0.02em] leading-[1.1] text-ink;
   }
   .text-card-heading {
-    @apply font-display text-[26px] md:text-[32px] font-light tracking-[0.02em] text-[#202020];
+    @apply font-display text-[26px] md:text-[32px] font-light tracking-[0.02em] text-ink;
   }
   .text-service-title {
     @apply font-display text-[24px] md:text-[30px] font-light tracking-[0.02em];
@@ -79,16 +79,16 @@
     @apply font-display text-[26px] md:text-[34px] font-light tracking-[0.02em];
   }
   .text-body-main {
-    @apply font-sans text-[16px] md:text-[18px] font-light leading-[1.9] text-[#646464];
+    @apply font-sans text-[16px] md:text-[18px] font-light leading-[1.9] text-ink-muted;
   }
   .text-small {
-    @apply font-sans text-[14px] md:text-[16px] font-light leading-[1.9] text-[#646464];
+    @apply font-sans text-[14px] md:text-[16px] font-light leading-[1.9] text-ink-muted;
   }
   .text-nav {
-    @apply font-sans text-[20px] md:text-[26px] lg:text-[31px] font-light tracking-[0.02em] uppercase leading-[1.7] text-[#232323] transition-opacity duration-300 hover:text-black;
+    @apply font-sans text-[20px] md:text-[26px] lg:text-[31px] font-light tracking-[0.02em] uppercase leading-[1.7] text-ink transition-opacity duration-300 hover:text-white;
   }
   .dropdown-menu {
-    @apply font-sans text-[16px] font-light tracking-[0.03em] text-[#444444] transition-colors duration-300 hover:text-black;
+    @apply font-sans text-[16px] font-light tracking-[0.03em] text-ink-secondary transition-colors duration-300 hover:text-white;
   }
 
   .container-px {
@@ -101,7 +101,7 @@
 
   /* Premium Buttons */
   .btn {
-    @apply inline-flex items-center justify-center font-sans text-[18px] font-light tracking-[0.14em] uppercase whitespace-nowrap transition-all duration-300 ease-out border border-[#2D2D2D] bg-transparent text-[#232323] hover:bg-black hover:text-white rounded-none;
+    @apply inline-flex items-center justify-center font-sans text-[18px] font-light tracking-[0.14em] uppercase whitespace-nowrap transition-all duration-300 ease-out border border-line bg-transparent text-ink hover:bg-white hover:text-black rounded-none;
     padding: 18px 45px;
   }
   .btn-primary {
@@ -125,14 +125,14 @@
 
   /* Removed Glassmorphism -> Solid Editorial Backgrounds */
   .glass {
-    background: #FFFFFF;
+    background: var(--surface);
     border: 1px solid var(--line);
     border-radius: 0;
   }
 
   .glass-card {
-    background: #FFFFFF;
-    border: 1px solid rgba(216, 209, 200, 0.4);
+    background: var(--surface);
+    border: 1px solid var(--line);
     border-radius: 0;
     transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
@@ -144,8 +144,8 @@
   .field {
     @apply w-full rounded-none border border-line px-4 py-3 text-sm text-ink outline-none transition
       placeholder:text-ink-muted/60 focus:border-accent focus:ring-1 focus:ring-accent;
-    background-color: #FFFFFF;
-    color: #2B2B2B;
+    background-color: var(--surface);
+    color: var(--ink);
   }
 
   .grain-soft {
