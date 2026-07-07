@@ -8,8 +8,9 @@
   --surface-2: #131317;
   --accent: #8D7458;
   --accent-soft: #B79B78;
-  --ink: #F4F4F5;
-  --ink-muted: #8A8A93;
+  --ink: #FFFFFF;
+  --ink-secondary: #D4D4D8;
+  --ink-muted: #A1A1AA;
   --line: rgba(255, 255, 255, 0.09);
 }
 
@@ -28,7 +29,7 @@
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
     background-color: var(--bg);
-    color: var(--ink-muted);
+    color: var(--ink-secondary);
   }
 
   /* Lenis */
