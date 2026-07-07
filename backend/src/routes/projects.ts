@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getDb } from '../lib/mongodb';
+import { getDb, toObjectId } from '../lib/mongodb';
 import { ObjectId } from 'mongodb';
 import { projects as staticProjects } from '../lib/data';
 import { ProjectSchema } from '../lib/schemas';
@@ -51,9 +51,11 @@ router.put('/:id', requireAuth, async (req, res) => {
   const db = await getDb();
   if (!db) return res.status(503).json({ error: 'Database not configured' });
   try {
+    const _id = toObjectId(req.params.id as string);
+    if (!_id) return res.status(400).json({ error: 'Invalid id' });
     const validatedData = ProjectSchema.partial().parse(req.body);
     const update: Record<string, any> = Object.fromEntries(Object.entries(validatedData).filter(([k]) => k !== '_id' && k !== 'id'));
-    await db.collection('projects').updateOne({ _id: new ObjectId(req.params.id as string) }, { $set: { ...update, updatedAt: new Date() } });
+    await db.collection('projects').updateOne({ _id }, { $set: { ...update, updatedAt: new Date() } });
     res.json({ ok: true });
   } catch (error) {
     const err = error as any;
@@ -64,7 +66,9 @@ router.put('/:id', requireAuth, async (req, res) => {
 router.delete('/:id', requireAuth, async (req, res) => {
   const db = await getDb();
   if (!db) return res.status(503).json({ error: 'Database not configured' });
-  await db.collection('projects').deleteOne({ _id: new ObjectId(req.params.id as string) });
+  const _id = toObjectId(req.params.id as string);
+  if (!_id) return res.status(400).json({ error: 'Invalid id' });
+  await db.collection('projects').deleteOne({ _id });
   res.json({ ok: true });
 });
 

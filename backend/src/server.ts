@@ -10,6 +10,12 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Fail fast if admin auth is misconfigured — never run with insecure defaults.
+if (!process.env.ADMIN_PASSWORD || !process.env.APP_SECRET) {
+  console.error('FATAL: ADMIN_PASSWORD and APP_SECRET must both be set to strong secret values.');
+  process.exit(1);
+}
+
 app.use(cors({
   origin: 'http://localhost:3000',
   credentials: true
@@ -30,6 +36,15 @@ const contactLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+// Strict limiter to slow brute-force of the admin password.
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5,
+  message: { error: 'Too many login attempts, please try again later.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 import adminRoutes from './routes/admin';
 import projectsRoutes from './routes/projects';
 import contactRoutes from './routes/contact';
@@ -42,7 +57,8 @@ import uploadRoutes from './routes/upload';
 import settingsRoutes from './routes/settings';
 import path from 'path';
 
-// Public auth routes
+// Public auth routes (login is rate-limited to resist brute force)
+app.use('/api/admin/login', loginLimiter);
 app.use('/api/admin', authRoutes);
 
 // Static uploads serving

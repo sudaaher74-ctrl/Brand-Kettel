@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import DOMPurify from 'isomorphic-dompurify';
 
 type BlogPost = {
   id: string;
@@ -110,7 +111,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             prose-strong:text-ink prose-strong:font-medium
             prose-blockquote:border-accent prose-blockquote:text-ink-secondary
             prose-img:rounded-none"
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
         />
 
         {/* CTA */}

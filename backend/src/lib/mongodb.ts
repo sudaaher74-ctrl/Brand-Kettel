@@ -1,4 +1,9 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
+
+/** Returns a valid ObjectId or null if the id is not a 24-char hex string. */
+export function toObjectId(id: string): ObjectId | null {
+  return /^[0-9a-fA-F]{24}$/.test(id) ? new ObjectId(id) : null;
+}
 
 /**
  * Cached MongoDB Atlas connection (safe for Next.js hot-reload + serverless).
