@@ -9,7 +9,6 @@ type ExpertiseData = {
   services: string[];
   focus: string;
   link: string;
-  icon: React.ReactNode;
 };
 
 const FALLBACK_DATA: ExpertiseData[] = [
@@ -18,49 +17,21 @@ const FALLBACK_DATA: ExpertiseData[] = [
     description: 'Designing productive, elegant, and future-ready workspaces that reflect brand identity and improve the overall employee experience.',
     services: ['Corporate Offices', 'IT Workspaces', 'Executive Cabins'],
     focus: 'Workplaces, headquarters, and corporate environments designed for performance. Delivery of fast, precise fit-outs from bare shell to final handover.',
-    link: '/commercial-fit-outs',
-    icon: (
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="text-accent">
-        <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
-        <path d="M9 22v-4h6v4"></path>
-        <path d="M8 6h.01"></path>
-        <path d="M16 6h.01"></path>
-        <path d="M12 6h.01"></path>
-        <path d="M12 10h.01"></path>
-        <path d="M12 14h.01"></path>
-        <path d="M16 10h.01"></path>
-        <path d="M16 14h.01"></path>
-        <path d="M8 10h.01"></path>
-        <path d="M8 14h.01"></path>
-      </svg>
-    )
+    link: '/commercial-fit-outs'
   },
   {
     title: 'Jewellery Showrooms & Retail Fit-Outs',
     description: 'Crafting luxurious retail environments that elevate the customer experience and beautifully showcase every collection.',
     services: ['Gold Showrooms', 'Diamond Boutiques', 'Display Planning'],
     focus: 'Secure, luminous showroom design crafted for high-value displays. Conversion-focused retail experiences that elevate the brand at every customer touchpoint.',
-    link: '/jewellery-showrooms',
-    icon: (
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="text-accent">
-        <path d="M6 3h12l4 6-10 13L2 9z"></path>
-        <path d="M11 3 8 9l4 13 4-13-3-6"></path>
-        <path d="M2 9h20"></path>
-      </svg>
-    )
+    link: '/jewellery-showrooms'
   },
   {
     title: 'Residential Interiors',
     description: 'Creating timeless homes that combine comfort, functionality, and refined aesthetics for modern living.',
     services: ['Luxury Homes', 'Villas', 'Apartments'],
     focus: 'Bespoke homes where comfort, craft, and detail meet. Creating private interiors that redefine contemporary living.',
-    link: '/residential-interiors',
-    icon: (
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="text-accent">
-        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-      </svg>
-    )
+    link: '/residential-interiors'
   }
 ];
 
@@ -114,11 +85,8 @@ export default function ExpertiseStorytelling({ services }: { services?: any[] }
                 {/* Card */}
                 <div className="flex-1 flex flex-col border-[1.5px] border-accent/20 rounded-[24px] rounded-tl-[64px] p-6 md:p-8 pt-12 bg-surface hover:border-accent/40 transition-colors duration-500 shadow-card">
                   
-                  {/* Icon & Title */}
+                  {/* Title */}
                   <div className="flex flex-col gap-4 mb-6 mt-1">
-                    <div className="shrink-0 opacity-90">
-                      {item.icon}
-                    </div>
                     <h3 className="text-xl md:text-2xl font-display text-ink leading-tight pr-2">
                       {item.title}
                     </h3>
