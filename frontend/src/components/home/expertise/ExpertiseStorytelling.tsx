@@ -68,7 +68,7 @@ export default function ExpertiseStorytelling({ services }: { services?: any[] }
   const data = FALLBACK_DATA; 
 
   return (
-    <section className="relative w-full bg-background py-[140px]">
+    <section className="relative w-full bg-background py-16 md:py-24">
       <div className="container-px">
         
         {/* Header */}
@@ -77,14 +77,14 @@ export default function ExpertiseStorytelling({ services }: { services?: any[] }
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col items-center text-center mb-16 sm:mb-24"
+          className="flex flex-col items-center text-center mb-12 lg:mb-16"
         >
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-px bg-accent/40" />
             <span className="text-nav text-accent tracking-[0.2em] uppercase">Our Expertise</span>
             <div className="w-12 h-px bg-accent/40" />
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display text-ink tracking-wide">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display text-ink tracking-wide">
             Our Core Interior <span className="text-accent italic font-light">Solutions</span>
           </h2>
           <p className="mt-6 text-ink-secondary max-w-2xl text-lg font-light">
@@ -107,36 +107,36 @@ export default function ExpertiseStorytelling({ services }: { services?: any[] }
                 className="relative flex flex-col pt-8"
               >
                 {/* Overlapping Number */}
-                <div className="absolute top-0 left-10 w-[72px] h-[72px] rounded-full bg-background border-[1.5px] border-accent/40 flex items-center justify-center z-10 font-display text-2xl md:text-3xl text-accent shadow-[0_0_15px_rgba(var(--accent),0.1)]">
+                <div className="absolute top-0 left-8 w-[60px] h-[60px] rounded-full bg-background border-[1.5px] border-accent/40 flex items-center justify-center z-10 font-display text-xl md:text-2xl text-accent shadow-[0_0_15px_rgba(var(--accent),0.1)]">
                   {numStr}
                 </div>
 
                 {/* Card */}
-                <div className="flex-1 flex flex-col border-[1.5px] border-accent/20 rounded-[32px] rounded-tl-[80px] p-8 md:p-10 pt-16 bg-surface hover:border-accent/40 transition-colors duration-500 shadow-card">
+                <div className="flex-1 flex flex-col border-[1.5px] border-accent/20 rounded-[24px] rounded-tl-[64px] p-6 md:p-8 pt-12 bg-surface hover:border-accent/40 transition-colors duration-500 shadow-card">
                   
                   {/* Icon & Title */}
-                  <div className="flex flex-col gap-6 mb-8 mt-2">
+                  <div className="flex flex-col gap-4 mb-6 mt-1">
                     <div className="shrink-0 opacity-90">
                       {item.icon}
                     </div>
-                    <h3 className="text-2xl font-display text-ink leading-tight pr-4">
+                    <h3 className="text-xl md:text-2xl font-display text-ink leading-tight pr-2">
                       {item.title}
                     </h3>
                   </div>
 
                   {/* Description */}
-                  <p className="text-ink-secondary text-[15px] leading-relaxed mb-10 min-h-[90px]">
+                  <p className="text-ink-secondary text-sm md:text-[15px] leading-relaxed mb-6 min-h-[70px]">
                     {item.description}
                   </p>
 
                   {/* Sub Services */}
-                  <div className="mb-10">
-                    <h4 className="text-xs font-semibold tracking-[0.2em] text-accent uppercase mb-5">
+                  <div className="mb-6">
+                    <h4 className="text-[10px] md:text-xs font-semibold tracking-[0.2em] text-accent uppercase mb-3">
                       Key Sub-Services
                     </h4>
-                    <ul className="space-y-3.5">
+                    <ul className="space-y-2.5">
                       {item.services.map(service => (
-                        <li key={service} className="flex items-center gap-3 text-[15px] text-ink-secondary">
+                        <li key={service} className="flex items-center gap-3 text-sm md:text-[15px] text-ink-secondary">
                           <span className="w-1.5 h-1.5 rounded-full bg-accent/50 shrink-0" />
                           {service}
                         </li>
@@ -145,22 +145,22 @@ export default function ExpertiseStorytelling({ services }: { services?: any[] }
                   </div>
 
                   {/* Divider */}
-                  <div className="w-full h-px bg-accent/10 mb-8" />
+                  <div className="w-full h-px bg-accent/10 mb-6" />
 
                   {/* Focus */}
-                  <div className="mb-12 flex-1">
-                    <h4 className="text-xs font-semibold tracking-[0.2em] text-accent uppercase mb-5">
+                  <div className="mb-8 flex-1">
+                    <h4 className="text-[10px] md:text-xs font-semibold tracking-[0.2em] text-accent uppercase mb-3">
                       Focus
                     </h4>
-                    <p className="text-[15px] text-ink-secondary leading-relaxed">
+                    <p className="text-sm md:text-[15px] text-ink-secondary leading-relaxed">
                       {item.focus}
                     </p>
                   </div>
 
                   {/* Explore More */}
-                  <Link href={item.link} className="group flex items-center gap-4 text-xs font-bold tracking-[0.2em] text-ink hover:text-accent transition-colors uppercase w-fit mt-auto">
+                  <Link href={item.link} className="group flex items-center gap-3 text-[10px] md:text-xs font-bold tracking-[0.2em] text-ink hover:text-accent transition-colors uppercase w-fit mt-auto">
                     Explore More
-                    <span className="flex items-center justify-center w-10 h-10 rounded-full border border-line group-hover:border-accent transition-colors text-accent shrink-0">
+                    <span className="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full border border-line group-hover:border-accent transition-colors text-accent shrink-0">
                       →
                     </span>
                   </Link>
