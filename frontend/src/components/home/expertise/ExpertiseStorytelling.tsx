@@ -94,18 +94,43 @@ export default function ExpertiseStorytelling({ services }: Props) {
                   isEven ? 'md:flex-row-reverse' : ''
                 }`}
               >
-                {/* Image Container */}
-                <div className="w-full md:w-1/2">
-                  <Link href={item.link} className="relative w-full aspect-[4/3] md:aspect-[4/5] block overflow-hidden group">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover transition-transform duration-[1000ms] group-hover:scale-[1.03]"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-[800ms]" />
-                  </Link>
+                {/* Text Animation Container (Replacing Image) */}
+                <div className="w-full md:w-1/2 flex items-center p-8 md:p-12 relative overflow-hidden bg-ink/[0.02] border border-ink/[0.05]">
+                  <motion.div 
+                    variants={{
+                      hidden: {},
+                      visible: {
+                        transition: { staggerChildren: 0.15, delayChildren: 0.2 }
+                      }
+                    }}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="flex flex-col w-full h-full justify-center gap-6 md:gap-8"
+                  >
+                    {item.services.map((service, i) => (
+                      <motion.div
+                        key={service}
+                        variants={{
+                          hidden: { opacity: 0, x: isEven ? 40 : -40, filter: 'blur(4px)' },
+                          visible: { 
+                            opacity: 1, 
+                            x: 0, 
+                            filter: 'blur(0px)',
+                            transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
+                          }
+                        }}
+                        className="group/service flex items-end gap-4 border-b border-ink/10 pb-4 cursor-default"
+                      >
+                        <span className="text-xs md:text-sm font-mono text-accent/50 mb-1">
+                          {(i + 1).toString().padStart(2, '0')}
+                        </span>
+                        <span className="text-2xl md:text-4xl lg:text-5xl font-display text-ink/40 group-hover/service:text-accent group-hover/service:translate-x-4 transition-all duration-500">
+                          {service}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </motion.div>
                 </div>
 
                 {/* Content Container */}
