@@ -95,11 +95,11 @@ export default function AboutPage() {
 
 
       {/* ── Why Choose Us ── */}
-      <section className="bg-background py-[140px]">
+      <section className="bg-background py-16 md:py-24">
         <div className="container-px">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-stretch">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-stretch max-h-none lg:max-h-[85vh]">
             {/* Left Column: Large Image */}
-            <div className="w-full lg:w-1/2 relative min-h-[500px] lg:min-h-[auto] rounded-sm overflow-hidden">
+            <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-[auto] rounded-sm overflow-hidden">
               <Image 
                 src="/imgs/commercial/work co workspace.jpg" 
                 alt="Why Choose Us" 
@@ -110,27 +110,27 @@ export default function AboutPage() {
             </div>
 
             {/* Right Column: Content and Grid */}
-            <div className="w-full lg:w-1/2 flex flex-col justify-center py-4 lg:py-8">
+            <div className="w-full lg:w-1/2 flex flex-col justify-center py-2 lg:py-4">
               <Reveal>
                 <span className="eyebrow">
                   <span className="h-px w-6 bg-accent" /> Why Choose Us
                 </span>
-                <h2 className="mt-4 text-3xl font-light tracking-[1px] leading-[1.2] text-ink sm:text-4xl md:text-5xl mb-12">
+                <h2 className="mt-3 text-3xl font-light tracking-[1px] leading-[1.2] text-ink sm:text-4xl mb-8">
                   An execution-focused partner you can trust
                 </h2>
               </Reveal>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {reasons.map((r, i) => (
                   <Reveal key={r.title} index={i}>
-                    <div className="group border border-line bg-card p-8 h-full transition-colors duration-300 hover:border-accent/40 flex flex-col">
-                      <div className="flex h-12 w-12 items-center justify-center border-[1.5px] border-accent/20 bg-surface font-medium text-accent mb-6">
+                    <div className="group border border-line bg-card p-5 lg:p-6 h-full transition-colors duration-300 hover:border-accent/40 flex flex-col">
+                      <div className="flex h-10 w-10 items-center justify-center border-[1.5px] border-accent/20 bg-surface font-medium text-accent mb-4 text-sm">
                         {String(i + 1).padStart(2, '0')}
                       </div>
-                      <h3 className="text-card-heading text-ink mb-3">
+                      <h3 className="text-lg font-medium text-ink mb-2">
                         {r.title}
                       </h3>
-                      <p className="text-small text-ink-secondary leading-relaxed">
+                      <p className="text-sm text-ink-secondary leading-relaxed">
                         {r.body}
                       </p>
                     </div>
