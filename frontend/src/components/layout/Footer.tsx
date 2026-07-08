@@ -75,9 +75,6 @@ export default function Footer() {
               </li>
               <li>Bengaluru · Mumbai · Hyderabad</li>
             </ul>
-            <Link href="/contact" className="btn-accent mt-5 inline-block">
-              Schedule Consultation
-            </Link>
           </div>
         </div>
 
