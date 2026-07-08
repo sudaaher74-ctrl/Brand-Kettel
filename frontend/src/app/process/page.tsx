@@ -34,7 +34,7 @@ export default async function ProcessPage() {
         eyebrow="Process"
         title="Built for certainty"
         subtitle="We believe a disciplined process is the foundation of a successful project. Here is how we get from first conversation to final handover."
-        image="/imgs/commercial/gucci.png"
+        image="/imgs/ourprosess.mp4"
       />
       <Process steps={processData} />
     </>

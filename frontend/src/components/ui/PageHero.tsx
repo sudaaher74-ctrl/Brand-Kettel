@@ -55,14 +55,25 @@ export default function PageHero({
             className="scene"
           >
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-none shadow-none">
-              <Image
-                src={image}
-                alt={title}
-                className="object-cover"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+              {image.endsWith('.mp4') ? (
+                <video
+                  src={image}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <Image
+                  src={image}
+                  alt={title}
+                  className="object-cover"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              )}
             </div>
           </motion.div>
         </div>
