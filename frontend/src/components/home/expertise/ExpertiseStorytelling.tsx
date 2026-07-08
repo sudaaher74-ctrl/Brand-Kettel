@@ -1,59 +1,71 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 
 type ExpertiseData = {
   title: string;
   description: string;
   services: string[];
-  image: string;
+  focus: string;
   link: string;
+  icon: JSX.Element;
 };
 
 const FALLBACK_DATA: ExpertiseData[] = [
   {
-    title: 'Commercial Interiors',
-    description: 'Designing productive, elegant, and future-ready workspaces that reflect your brand and improve employee experience.',
+    title: 'Commercial & Corporate Interiors',
+    description: 'Designing productive, elegant, and future-ready workspaces that reflect brand identity and improve the overall employee experience.',
     services: ['Corporate Offices', 'IT Workspaces', 'Executive Cabins'],
-    image: '/imgs/experties2.png',
-    link: '/commercial-fit-outs'
+    focus: 'Workplaces, headquarters, and corporate environments designed for performance. Delivery of fast, precise fit-outs from bare shell to final handover.',
+    link: '/commercial-fit-outs',
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="text-accent">
+        <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+        <path d="M9 22v-4h6v4"></path>
+        <path d="M8 6h.01"></path>
+        <path d="M16 6h.01"></path>
+        <path d="M12 6h.01"></path>
+        <path d="M12 10h.01"></path>
+        <path d="M12 14h.01"></path>
+        <path d="M16 10h.01"></path>
+        <path d="M16 14h.01"></path>
+        <path d="M8 10h.01"></path>
+        <path d="M8 14h.01"></path>
+      </svg>
+    )
   },
   {
-    title: 'Jewellery Showrooms',
-    description: 'Crafting luxurious retail environments that elevate customer experience and beautifully showcase every collection.',
+    title: 'Jewellery Showrooms & Retail Fit-Outs',
+    description: 'Crafting luxurious retail environments that elevate the customer experience and beautifully showcase every collection.',
     services: ['Gold Showrooms', 'Diamond Boutiques', 'Display Planning'],
-    image: '/imgs/experties1.png',
-    link: '/jewellery-showrooms'
+    focus: 'Secure, luminous showroom design crafted for high-value displays. Conversion-focused retail experiences that elevate the brand at every customer touchpoint.',
+    link: '/jewellery-showrooms',
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="text-accent">
+        <path d="M6 3h12l4 6-10 13L2 9z"></path>
+        <path d="M11 3 8 9l4 13 4-13-3-6"></path>
+        <path d="M2 9h20"></path>
+      </svg>
+    )
   },
   {
     title: 'Residential Interiors',
     description: 'Creating timeless homes that combine comfort, functionality, and refined aesthetics for modern living.',
     services: ['Luxury Homes', 'Villas', 'Apartments'],
-    image: '/imgs/residential3.png',
-    link: '/residential-interiors'
+    focus: 'Bespoke homes where comfort, craft, and detail meet. Creating private interiors that redefine contemporary living.',
+    link: '/residential-interiors',
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="text-accent">
+        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+    )
   }
 ];
 
-/** Map an API service object to our display shape */
-function mapApiServices(apiServices: any[]): ExpertiseData[] {
-  return apiServices.slice(0, 6).map(s => ({
-    title: s.title || s.name || 'Service',
-    description: s.description || '',
-    services: s.subServices || s.tags || [],
-    image: s.image || '/imgs/experties2.png',
-    link: s.link || s.href || '#',
-  }));
-}
-
-type Props = {
-  services?: any[];
-};
-
-export default function ExpertiseStorytelling({ services }: Props) {
-  const data: ExpertiseData[] =
-    services && services.length > 0 ? mapApiServices(services) : FALLBACK_DATA;
+export default function ExpertiseStorytelling({ services }: { services?: any[] }) {
+  const data = FALLBACK_DATA; 
 
   return (
     <section className="relative w-full bg-background py-[140px]">
@@ -65,101 +77,94 @@ export default function ExpertiseStorytelling({ services }: Props) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col items-center text-center mb-16 sm:mb-32"
+          className="flex flex-col items-center text-center mb-16 sm:mb-24"
         >
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-px bg-accent/40" />
-            <span className="text-nav text-accent">Our Expertise</span>
+            <span className="text-nav text-accent tracking-[0.2em] uppercase">Our Expertise</span>
             <div className="w-12 h-px bg-accent/40" />
           </div>
-          <h2 className="text-section text-ink">
-            Spaces Designed for Purpose
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display text-ink tracking-wide">
+            Our Core Interior <span className="text-accent italic font-light">Solutions</span>
           </h2>
+          <p className="mt-6 text-ink-secondary max-w-2xl text-lg font-light">
+            End-to-end interior solutions tailored to your space, your brand, and your lifestyle.
+          </p>
         </motion.div>
 
-        {/* Asymmetric Editorial Runway */}
-        <div className="flex flex-col gap-24 md:gap-40">
+        {/* 3 Column Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8 xl:gap-10">
           {data.map((item, index) => {
-            const isEven = index % 2 !== 0; // index 1 is even (02) visually
             const numStr = String(index + 1).padStart(2, '0');
             
             return (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                className={`flex flex-col md:flex-row gap-12 md:gap-20 ${
-                  isEven ? 'md:flex-row-reverse' : ''
-                }`}
+                transition={{ duration: 0.8, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                className="relative flex flex-col pt-8"
               >
-                {/* Text Animation Container (Replacing Image) */}
-                <div className="w-full md:w-1/2 flex items-center p-8 md:p-12 relative overflow-hidden bg-ink/[0.02] border border-ink/[0.05]">
-                  <motion.div 
-                    variants={{
-                      hidden: {},
-                      visible: {
-                        transition: { staggerChildren: 0.15, delayChildren: 0.2 }
-                      }
-                    }}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="flex flex-col w-full h-full justify-center gap-6 md:gap-8"
-                  >
-                    {item.services.map((service, i) => (
-                      <motion.div
-                        key={service}
-                        variants={{
-                          hidden: { opacity: 0, x: isEven ? 40 : -40, filter: 'blur(4px)' },
-                          visible: { 
-                            opacity: 1, 
-                            x: 0, 
-                            filter: 'blur(0px)',
-                            transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
-                          }
-                        }}
-                        className="group/service flex items-end gap-4 border-b border-ink/10 pb-4 cursor-default"
-                      >
-                        <span className="text-xs md:text-sm font-mono text-accent/50 mb-1">
-                          {(i + 1).toString().padStart(2, '0')}
-                        </span>
-                        <span className="text-2xl md:text-4xl lg:text-5xl font-display text-ink/40 group-hover/service:text-accent group-hover/service:translate-x-4 transition-all duration-500">
-                          {service}
-                        </span>
-                      </motion.div>
-                    ))}
-                  </motion.div>
+                {/* Overlapping Number */}
+                <div className="absolute top-0 left-10 w-[72px] h-[72px] rounded-full bg-background border-[1.5px] border-accent/40 flex items-center justify-center z-10 font-display text-2xl md:text-3xl text-accent shadow-[0_0_15px_rgba(var(--accent),0.1)]">
+                  {numStr}
                 </div>
 
-                {/* Content Container */}
-                <div className="w-full md:w-1/2 flex flex-col justify-center py-4 md:py-16">
-                  <div className={`w-full max-w-lg mx-auto md:mx-0 ${isEven ? 'md:ml-auto md:pr-12' : 'md:mr-auto md:pl-12'}`}>
-                    
-                    {/* Number and Title */}
-                    <div className="mb-8">
-                      <span className="block text-2xl md:text-3xl font-display text-accent mb-4">
-                        {numStr}
-                      </span>
-                      <h3 className="text-4xl md:text-5xl lg:text-6xl font-display text-ink tracking-wide">
-                        {item.title.split(' ').map((word, i) => (
-                           <span key={i} className="block">{word}</span>
-                        ))}
-                      </h3>
+                {/* Card */}
+                <div className="flex-1 flex flex-col border-[1.5px] border-accent/20 rounded-[32px] rounded-tl-[80px] p-8 md:p-10 pt-16 bg-surface hover:border-accent/40 transition-colors duration-500 shadow-card">
+                  
+                  {/* Icon & Title */}
+                  <div className="flex flex-col gap-6 mb-8 mt-2">
+                    <div className="shrink-0 opacity-90">
+                      {item.icon}
                     </div>
-                    
-                    {/* Description */}
-                    <p className="text-body-main text-ink/70 mb-10">
-                      {item.description}
-                    </p>
-
-                    {/* Link */}
-                    <Link href={item.link} className="inline-flex items-center gap-3 text-nav text-ink hover:text-accent transition-colors group/link w-fit">
-                      Explore {item.title}
-                      <span className="transition-transform group-hover/link:translate-x-2 text-accent">→</span>
-                    </Link>
+                    <h3 className="text-2xl font-display text-ink leading-tight pr-4">
+                      {item.title}
+                    </h3>
                   </div>
+
+                  {/* Description */}
+                  <p className="text-ink-secondary text-[15px] leading-relaxed mb-10 min-h-[90px]">
+                    {item.description}
+                  </p>
+
+                  {/* Sub Services */}
+                  <div className="mb-10">
+                    <h4 className="text-xs font-semibold tracking-[0.2em] text-accent uppercase mb-5">
+                      Key Sub-Services
+                    </h4>
+                    <ul className="space-y-3.5">
+                      {item.services.map(service => (
+                        <li key={service} className="flex items-center gap-3 text-[15px] text-ink-secondary">
+                          <span className="w-1.5 h-1.5 rounded-full bg-accent/50 shrink-0" />
+                          {service}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="w-full h-px bg-accent/10 mb-8" />
+
+                  {/* Focus */}
+                  <div className="mb-12 flex-1">
+                    <h4 className="text-xs font-semibold tracking-[0.2em] text-accent uppercase mb-5">
+                      Focus
+                    </h4>
+                    <p className="text-[15px] text-ink-secondary leading-relaxed">
+                      {item.focus}
+                    </p>
+                  </div>
+
+                  {/* Explore More */}
+                  <Link href={item.link} className="group flex items-center gap-4 text-xs font-bold tracking-[0.2em] text-ink hover:text-accent transition-colors uppercase w-fit mt-auto">
+                    Explore More
+                    <span className="flex items-center justify-center w-10 h-10 rounded-full border border-line group-hover:border-accent transition-colors text-accent shrink-0">
+                      →
+                    </span>
+                  </Link>
+
                 </div>
               </motion.div>
             );
@@ -170,4 +175,3 @@ export default function ExpertiseStorytelling({ services }: Props) {
     </section>
   );
 }
-
