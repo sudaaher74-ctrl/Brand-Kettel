@@ -155,7 +155,7 @@ export default function Navbar() {
 
             {/* Right side */}
             <div className="flex items-center gap-2">
-              <Link href="/contact" className="btn-accent hidden sm:inline-flex !py-2.5 !px-5 !text-sm">
+              <Link href="/contact" className="hidden sm:inline-flex rounded-full px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-white">
                 Get in Touch
               </Link>
               <button
