@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import PageHero from '@/components/ui/PageHero';
 import Reveal from '@/components/ui/Reveal';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'About Us — Brand Kettle BuildSpaces',
@@ -96,30 +97,47 @@ export default function AboutPage() {
       {/* ── Why Choose Us ── */}
       <section className="bg-background py-[140px]">
         <div className="container-px">
-          <Reveal>
-            <span className="eyebrow">
-              <span className="h-px w-6 bg-accent" /> Why Choose Us
-            </span>
-            <h2 className="mt-4 text-section text-ink">
-              An execution-focused partner you can trust
-            </h2>
-          </Reveal>
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {reasons.map((r, i) => (
-              <Reveal key={r.title} index={i}>
-                <div className="group border border-line bg-card p-10 h-full transition-colors duration-300 hover:border-accent/40">
-                  <div className="flex h-12 w-12 items-center justify-center border-[1.5px] border-accent/20 bg-surface font-medium text-accent mb-8">
-                    {String(i + 1).padStart(2, '0')}
-                  </div>
-                  <h3 className="text-card-heading text-ink">
-                    {r.title}
-                  </h3>
-                  <p className="mt-4 text-small text-ink-secondary">
-                    {r.body}
-                  </p>
-                </div>
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-stretch">
+            {/* Left Column: Large Image */}
+            <div className="w-full lg:w-1/2 relative min-h-[500px] lg:min-h-[auto] rounded-sm overflow-hidden">
+              <Image 
+                src="/imgs/commercial/work co workspace.jpg" 
+                alt="Why Choose Us" 
+                fill 
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+
+            {/* Right Column: Content and Grid */}
+            <div className="w-full lg:w-1/2 flex flex-col justify-center py-4 lg:py-8">
+              <Reveal>
+                <span className="eyebrow">
+                  <span className="h-px w-6 bg-accent" /> Why Choose Us
+                </span>
+                <h2 className="mt-4 text-3xl font-light tracking-[1px] leading-[1.2] text-ink sm:text-4xl md:text-5xl mb-12">
+                  An execution-focused partner you can trust
+                </h2>
               </Reveal>
-            ))}
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {reasons.map((r, i) => (
+                  <Reveal key={r.title} index={i}>
+                    <div className="group border border-line bg-card p-8 h-full transition-colors duration-300 hover:border-accent/40 flex flex-col">
+                      <div className="flex h-12 w-12 items-center justify-center border-[1.5px] border-accent/20 bg-surface font-medium text-accent mb-6">
+                        {String(i + 1).padStart(2, '0')}
+                      </div>
+                      <h3 className="text-card-heading text-ink mb-3">
+                        {r.title}
+                      </h3>
+                      <p className="text-small text-ink-secondary leading-relaxed">
+                        {r.body}
+                      </p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
