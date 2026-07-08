@@ -189,31 +189,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="bg-surface py-[120px] border-t border-line">
-        <div className="container-px">
-          <Reveal>
-            <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <h2 className="text-2xl font-light tracking-[1px] text-ink sm:text-3xl">
-                  Ready to build your next space?
-                </h2>
-                <p className="mt-2 text-sm font-light text-ink-secondary">
-                  Let&apos;s start a conversation about your project.
-                </p>
-              </div>
-              <div className="flex gap-3 shrink-0">
-                <Link href="/portfolio" className="btn-ghost">
-                  View Projects
-                </Link>
-                <Link href="/contact" className="btn-accent">
-                  Get in Touch
-                </Link>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+
     </>
   );
 }
