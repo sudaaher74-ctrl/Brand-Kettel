@@ -142,39 +142,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Our Integrated Platform ── */}
-      <section className="bg-surface py-[120px] border-y border-line">
-        <div className="container-px">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 items-start">
-            <Reveal>
-              <span className="eyebrow">
-                <span className="h-px w-6 bg-accent" /> Our platform
-              </span>
-              <h2 className="mt-4 text-3xl font-light tracking-[1px] leading-[1.1] text-ink sm:text-4xl">
-                Three pillars that make us different
-              </h2>
-              <p className="mt-5 text-base font-light leading-relaxed text-ink-secondary max-w-md">
-                We don&apos;t just design — we manufacture, build and hand over. That end-to-end control is what sets us apart.
-              </p>
-            </Reveal>
-            <div className="divide-y divide-line border border-line rounded-xl overflow-hidden">
-              {pillars.map((p, i) => (
-                <Reveal key={p.title} index={i + 1}>
-                  <div className="group flex gap-6 p-6 bg-card hover:bg-background transition-colors duration-300">
-                    <span className="shrink-0 font-display text-3xl font-light text-accent/30 group-hover:text-accent transition-colors duration-300">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <div>
-                      <h3 className="font-display text-lg font-light tracking-[1px] text-ink">{p.title}</h3>
-                      <p className="mt-2 text-sm font-light leading-relaxed text-ink-secondary">{p.body}</p>
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* ── Vision & Mission ── */}
       <section className="bg-background py-[120px]">
