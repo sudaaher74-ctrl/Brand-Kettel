@@ -54,17 +54,19 @@ export default function PageHero({
             transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="scene"
           >
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-none shadow-none">
-              {image.endsWith('.mp4') ? (
+            {image.endsWith('.mp4') ? (
+              <div className="relative w-full overflow-hidden rounded-none shadow-none">
                 <video
                   src={image}
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="h-full w-full object-cover"
+                  className="w-full h-auto"
                 />
-              ) : (
+              </div>
+            ) : (
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-none shadow-none">
                 <Image
                   src={image}
                   alt={title}
@@ -73,8 +75,8 @@ export default function PageHero({
                   priority
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-              )}
-            </div>
+              </div>
+            )}
           </motion.div>
         </div>
       </div>
