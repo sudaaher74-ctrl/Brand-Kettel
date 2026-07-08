@@ -9,7 +9,7 @@ type ExpertiseData = {
   services: string[];
   focus: string;
   link: string;
-  icon: JSX.Element;
+  icon: React.ReactNode;
 };
 
 const FALLBACK_DATA: ExpertiseData[] = [
