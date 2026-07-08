@@ -16,7 +16,6 @@ export default function Testimonials({ testimonials }: { testimonials: Testimoni
         <SectionHeading
           eyebrow="Client stories"
           title="Trusted by the people who build"
-          subtitle="Developers, business owners and brand teams on working with Brand Kettle."
         />
       </div>
 
