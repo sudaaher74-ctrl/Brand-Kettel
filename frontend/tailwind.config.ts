@@ -35,8 +35,8 @@ const config: Config = {
         }
       },
       fontFamily: {
-        sans: ['var(--font-sans)', 'Montserrat', 'sans-serif'],
-        display: ['Canela Light', 'Canela', 'var(--font-display)', 'Cormorant Garamond', 'serif'],
+        sans: ['var(--font-poppins)', 'Poppins', 'sans-serif'],
+        display: ['var(--font-poppins)', 'Poppins', 'sans-serif'],
       },
       maxWidth: {
         container: '1400px',

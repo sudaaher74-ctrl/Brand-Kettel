@@ -1,20 +1,13 @@
 import type { Metadata, Viewport } from 'next';
-import { Montserrat, Cormorant_Garamond } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import './globals.css';
 import SiteShell from '@/components/layout/SiteShell';
 
-const montserrat = Montserrat({
+const poppins = Poppins({
   subsets: ['latin'],
-  variable: '--font-sans',
+  variable: '--font-poppins',
   display: 'swap',
-  weight: ['300'], // Minimal luxury aesthetic uses 300
-});
-
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  variable: '--font-display',
-  display: 'swap',
-  weight: ['300'], // Enforcing 300 weight for luxury display font
+  weight: ['300', '400', '500', '600', '700'],
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://brandkettle.com';
@@ -100,7 +93,7 @@ const localBusinessJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${poppins.variable}`}>
       <body>
         <script
           type="application/ld+json"
