@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 const stats = [
   { value: '10+', label: 'Years of Industry Expertise' },
   { value: '500+', label: 'Projects Delivered' },
-  { value: 'Pan India', label: 'Execution Network' },
   { value: '3', label: 'Verticals: Retail · Commercial · Residential' },
+  { value: 'Pan India', label: 'Execution Network' },
 ];
 
 
