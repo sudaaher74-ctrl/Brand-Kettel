@@ -1,6 +1,6 @@
 import Hero from '@/components/home/Hero';
 import Welcome from '@/components/home/Welcome';
-import ExpertiseStorytelling from '@/components/home/expertise/ExpertiseStorytelling';
+import Expertise from '@/components/home/Expertise';
 import Showcase from '@/components/home/Showcase';
 import Testimonials from '@/components/home/Testimonials';
 import ConsultationCTA from '@/components/home/ConsultationCTA';
@@ -37,7 +37,7 @@ export default async function HomePage() {
     <>
       <Hero />
       <Welcome />
-      <ExpertiseStorytelling services={services.slice(0, 3)} />
+      <Expertise services={services.slice(0, 4)} />
       <Showcase featured={featured} />
       <Testimonials testimonials={testimonials} />
       <ConsultationCTA />
