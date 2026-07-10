@@ -122,27 +122,5 @@ export const caseStudies: CaseStudy[] = [
       '/imgs/commercial/work co workspace1.jpg',
       '/imgs/commercial/work co work space2.jpg',
     ],
-  },
-  {
-    slug: 'malabar-gold',
-    title: 'Malabar Gold & Diamonds',
-    category: 'Jewellery Showroom',
-    description: "BrandKettle's collaboration with Malabar marked a breakthrough in luxury retail — elevating Malabar's presence and reinforcing BrandKettle's reputation as a trusted high-end retail partner.",
-    images: [
-      '/imgs/commercial/malabarcoverimg.png',
-      '/imgs/commercial/malbargold1.jpg',
-      '/imgs/commercial/malbargold2.jpg',
-      '/imgs/commercial/malbargold3.jpg',
-      '/imgs/commercial/malbargold4.jpg',
-    ],
-  },
-  {
-    slug: 'radisson',
-    title: 'Radisson',
-    category: 'Hospitality',
-    description: 'Radisson hotel project by BrandKettle.',
-    images: [
-      '/imgs/commercial/radisson-placeholder.jpg',
-    ],
   }
 ];
