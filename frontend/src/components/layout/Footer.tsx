@@ -64,8 +64,8 @@ export default function Footer() {
             <h3 className="font-display text-sm font-semibold text-accent uppercase tracking-[0.2em]">Get in touch</h3>
             <ul className="mt-4 space-y-2.5 text-sm font-light text-ink-secondary">
               <li>
-                <a href="mailto:vipin@brandkettle.in" className="hover:text-accent transition-colors">
-                  vipin@brandkettle.in
+                <a href="mailto:vini@brandkettle.in" className="hover:text-accent transition-colors">
+                  vini@brandkettle.in
                 </a>
               </li>
               <li>

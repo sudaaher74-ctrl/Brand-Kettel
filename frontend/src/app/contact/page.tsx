@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const points = [
-  { label: 'Email', value: 'vipin@brandkettle.in', href: 'mailto:vipin@brandkettle.in' },
+  { label: 'Email', value: 'vini@brandkettle.in', href: 'mailto:vini@brandkettle.in' },
   { label: 'Phone', value: '+91 8959173790', href: 'tel:+918959173790' },
   { label: 'Studios', value: 'Bengaluru · Mumbai · Hyderabad · Indore' },
 ];
