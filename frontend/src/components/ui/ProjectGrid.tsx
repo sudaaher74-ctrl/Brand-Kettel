@@ -8,14 +8,20 @@ export default function ProjectGrid({ items }: { items: Project[] | null }) {
 
   return (
     <div className="grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-2">
-      {items.map((p, i) => (
-        <Reveal key={p.slug} index={i % 2} as="div">
-          <Link href={`/portfolio/${p.slug}`} className="group block h-full">
-            <article className="flex h-full flex-col">
+      {items.map((p, i) => {
+        let displayImage = p.image;
+        if (p.slug === 'gucci') displayImage = '/imgs/commercial/guccicoverimg.png';
+        if (p.slug === 'malabar-gold') displayImage = '/imgs/commercial/malabarcoverimg.png';
+        if (p.slug === 'png') displayImage = '/imgs/commercial/pnjcoverimg.png';
+
+        return (
+          <Reveal key={p.slug} index={i % 2} as="div">
+            <Link href={`/portfolio/${p.slug}`} className="group block h-full">
+              <article className="flex h-full flex-col">
               {/* Large Portrait Image Container */}
               <div className="relative aspect-[4/5] w-full overflow-hidden bg-surface">
                 <Image
-                  src={p.image}
+                  src={displayImage}
                   alt={p.alt || `${p.name} — ${p.category}`}
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   fill
@@ -32,10 +38,11 @@ export default function ProjectGrid({ items }: { items: Project[] | null }) {
                   {p.category}
                 </p>
               </div>
-            </article>
-          </Link>
-        </Reveal>
-      ))}
+              </article>
+            </Link>
+          </Reveal>
+        );
+      })}
     </div>
   );
 }

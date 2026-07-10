@@ -6,7 +6,11 @@ import Link from 'next/link';
 
 export default function CaseStudyCard({ project, index }: { project: CaseStudy; index: number }) {
   const imagesArray = project.images || (project as any).gallery || [(project as any).image].filter(Boolean) || [];
-  const mainImage = imagesArray[0] || '';
+  let mainImage = imagesArray[0] || '';
+
+  if (project.slug === 'gucci') mainImage = '/imgs/commercial/guccicoverimg.png';
+  if (project.slug === 'malabar-gold') mainImage = '/imgs/commercial/malabarcoverimg.png';
+  if (project.slug === 'png') mainImage = '/imgs/commercial/pnjcoverimg.png';
 
   return (
     <Link href={`/portfolio/${project.slug}`} className="group block h-full w-full overflow-hidden relative">
