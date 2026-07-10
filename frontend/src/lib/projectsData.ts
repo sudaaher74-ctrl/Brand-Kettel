@@ -16,8 +16,33 @@ export const caseStudies: CaseStudy[] = [
     description: "BrandKettle's first high-end luxury project. Every detail, from custom finishes to ambient lighting, reflects the iconic elegance of the Gucci brand.",
     keyStat: 'First Luxury Project',
     images: [
+      '/imgs/commercial/guccicoverimg.png',
       '/imgs/commercial/gucci.png',
       '/imgs/commercial/gucci1.png',
+    ],
+  },
+  {
+    slug: 'malabar-gold',
+    title: 'Malabar Gold & Diamonds',
+    category: 'Jewellery Showroom',
+    description: "BrandKettle's collaboration with Malabar marked a breakthrough in luxury retail — elevating Malabar's presence and reinforcing BrandKettle's reputation as a trusted high-end retail partner.",
+    images: [
+      '/imgs/commercial/malabarcoverimg.png',
+      '/imgs/commercial/malbargold1.jpg',
+      '/imgs/commercial/malbargold2.jpg',
+      '/imgs/commercial/malbargold3.jpg',
+      '/imgs/commercial/malbargold4.jpg',
+    ],
+  },
+  {
+    slug: 'png',
+    title: 'PNG Jewellers',
+    category: 'Jewellery Showroom',
+    description: "BrandKettle transformed a 3,400 sq ft space in Goregaon into a luxurious retail destination in just 27 days. A turnkey project blending elegance and efficiency, bringing the brand's vision to life with precision and speed.",
+    images: [
+      '/imgs/commercial/pnjcoverimg.png',
+      '/imgs/commercial/png2.jpg',
+      '/imgs/commercial/png3.jpg',
     ],
   },
   {
