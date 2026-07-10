@@ -7,7 +7,7 @@ type Service = {
   tag: string;
   title: string;
   description: string;
-  image: string; 
+  image: string;
 };
 
 export default function Expertise({ services }: { services: Service[] | null }) {
@@ -18,11 +18,11 @@ export default function Expertise({ services }: { services: Service[] | null }) 
   return (
     <section className="relative bg-background py-[100px] lg:py-[140px] overflow-hidden">
       <div className="container-px mx-auto relative z-10">
-        
+
         {/* Section Heading */}
         <div className="text-center mb-16 md:mb-24">
           <span className="uppercase tracking-[0.3em] text-accent text-xs font-semibold">
-            O u r &nbsp; S e r v i c e s
+            O u r &nbsp; E x p e r t i e s
           </span>
         </div>
 
@@ -40,20 +40,19 @@ export default function Expertise({ services }: { services: Service[] | null }) 
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className={`group flex flex-col px-6 lg:px-8 py-10 lg:py-0 border-t lg:border-t-0 border-l border-line hover:bg-white/[0.02] transition-colors duration-500 ${
-                  isPushedDown ? "lg:pt-24" : "lg:pb-24"
-                }`}
+                className={`group flex flex-col px-6 lg:px-8 py-10 lg:py-0 border-t lg:border-t-0 border-l border-line hover:bg-white/[0.02] transition-colors duration-500 ${isPushedDown ? "lg:pt-24" : "lg:pb-24"
+                  }`}
               >
                 {/* Icon (Gold Accent) */}
                 <div className="mb-6 mt-4 lg:mt-0">
                   <Icon className="w-6 h-6 text-accent" strokeWidth={1.5} />
                 </div>
-                
+
                 {/* Title */}
                 <h3 className="text-xl lg:text-2xl text-ink mb-8 leading-tight font-display font-light tracking-wide transition-colors duration-300 pr-4">
                   {s.title}
                 </h3>
-                
+
                 {/* Image */}
                 <div className="relative w-full aspect-[4/3] overflow-hidden mb-8 bg-surface rounded-2xl border border-line">
                   <img
@@ -62,9 +61,9 @@ export default function Expertise({ services }: { services: Service[] | null }) 
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                 </div>
-                
+
                 {/* Description */}
-                <div 
+                <div
                   className="text-sm text-ink-secondary leading-relaxed mb-12 flex-grow prose prose-sm prose-p:text-ink-secondary prose-li:text-ink-secondary"
                   dangerouslySetInnerHTML={{ __html: s.description }}
                 />
