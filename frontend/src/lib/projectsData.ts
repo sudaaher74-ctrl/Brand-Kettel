@@ -1,8 +1,7 @@
 export type CaseStudy = {
   slug: string;
   title: string;
-  location?: string;
-  category: 'Retail' | 'Hospitality' | 'Workspace' | 'Government' | 'Residential' | 'Commercial Spaces' | 'Luxury Retail' | 'Jewellery Showroom' | 'Office';
+  category: string;
   description: string;
   keyStat?: string;
   images: string[];
@@ -22,16 +21,15 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'malabar-gold',
-    title: 'Malabar Gold & Diamonds',
-    category: 'Jewellery Showroom',
-    description: "BrandKettle's collaboration with Malabar marked a breakthrough in luxury retail — elevating Malabar's presence and reinforcing BrandKettle's reputation as a trusted high-end retail partner.",
+    slug: 'taksha-hyderabad',
+    title: 'Taksha',
+    category: 'Commercial Spaces',
+    description: 'A 475 sq. yd. premium builder floor by Studio AKAAI, blending comfort, functionality and exclusivity with a modern façade and luxury design.',
     images: [
-      '/imgs/commercial/malabarcoverimg.png',
-      '/imgs/commercial/malbargold1.jpg',
-      '/imgs/commercial/malbargold2.jpg',
-      '/imgs/commercial/malbargold3.jpg',
-      '/imgs/commercial/malbargold4.jpg',
+      '/imgs/commercial/taksha coverimg.png',
+      '/imgs/commercial/taksha.png',
+      '/imgs/commercial/taksha1.png',
+      '/imgs/commercial/taksha3.png',
     ],
   },
   {
@@ -49,7 +47,8 @@ export const caseStudies: CaseStudy[] = [
     slug: 'giva',
     title: 'Giva',
     category: 'Retail',
-    description: 'Giva store by BrandKettle.',
+    description: "A secure, luminous environment created specifically for Giva's premium jewelry collections.",
+    keyStat: 'Fast-Track Fit-Out',
     images: [
       '/imgs/commercial/giaa.png',
       '/imgs/commercial/jwellary.png',
@@ -57,24 +56,19 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'ramada-encore-bareilly',
-    title: 'Ramada Encore Hotel',
-    location: 'Bareilly',
-    category: 'Hospitality',
-    description: 'BrandKettle\'s first collaboration with a luxury hotel — centrally located in the medical hub. A new chapter where brand identity meets functionality.',
-    keyStat: 'First collaboration with a luxury hotel',
+    slug: 'indriya',
+    title: 'Indriya',
+    category: 'Jewellery Showroom',
+    description: 'Indriya jewellery showroom project by BrandKettle.',
     images: [
-      '/imgs/commercial/ramda encre hotel1.jpg',
-      '/imgs/commercial/ramda encore hotel2.jpg',
-      '/imgs/commercial/ramda encore hotel3.jpg',
+      '/imgs/commercial/indriya-placeholder.jpg',
     ],
   },
   {
-    slug: 'havana-lounge',
+    slug: 'havana-lounge-bareilly',
     title: 'Havana Lounge',
-    location: 'Bareilly',
     category: 'Hospitality',
-    description: 'A standout rooftop project at the Ramada hotel, highlighting expertise in design thinking, detailing and craftsmanship.',
+    description: 'A standout rooftop lounge at the Ramada Hotel, combining lush aesthetics with durable commercial materials.',
     images: [
       '/imgs/commercial/Havana lounge1.jpg',
       '/imgs/commercial/havana lounge2.jpg',
@@ -84,46 +78,33 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'taksha-hyderabad',
-    title: 'Taksha',
-    location: 'Hyderabad',
-    category: 'Commercial Spaces',
-    description: 'A premium builder floor blending comfort, functionality and exclusivity with a modern façade and luxury design — redefining contemporary urban living.',
-    keyStat: '475 sq yd',
-    images: [
-      '/imgs/commercial/taksha.png',
-      '/imgs/commercial/taksha1.png',
-      '/imgs/commercial/taksha3.png',
-      '/imgs/commercial/taksha4.png',
-    ],
-  },
-  {
-    slug: 'and-work',
-    title: '&Work',
-    location: 'Faridabad',
-    category: 'Workspace',
-    description: 'A fun and creative co-working space delivered in Faridabad.',
-    images: [
-      '/imgs/commercial/work co workspace.jpg',
-      '/imgs/commercial/work co workspace1.jpg',
-      '/imgs/commercial/work co work space2.jpg',
-    ],
-  },
-  {
-    slug: 'pret-a-manger',
+    slug: 'pret-a-manger-delhi',
     title: 'Pret A Manger',
-    location: 'Select City Walk, Delhi',
-    category: 'Hospitality',
-    description: 'Creating a vibrant and inviting space that brings the renowned brand to the heart of Delhi.',
+    category: 'Retail',
+    description: 'A high-traffic cafe fit-out ensuring fast service flow and brand consistency.',
     images: [
       '/imgs/commercial/p080_111.jpg',
     ],
   },
   {
-    slug: 'iit-ropar',
-    title: 'IIT Ropar Project',
-    category: 'Government',
-    description: 'Government and Institutional Project.',
+    slug: 'ramada-encore-bareilly',
+    title: 'Ramada Encore',
+    category: 'Hospitality',
+    description: 'Complete interior package for this prestigious hotel, from the lobby to guest rooms.',
+    keyStat: '25,000 sq ft',
+    images: [
+      '/imgs/commercial/ramda encre hotel1.jpg',
+      '/imgs/commercial/ramda encore hotel2.jpg',
+      '/imgs/commercial/ramda encore hotel3.jpg',
+      '/imgs/commercial/p064_079.jpg',
+      '/imgs/commercial/p066_087.jpg',
+    ],
+  },
+  {
+    slug: 'nanokirti-pvt',
+    title: 'Nanokirti Pvt',
+    category: 'Office',
+    description: 'A modernized corporate workspace tailored to reflect a forward-thinking culture.',
     images: [
       '/imgs/commercial/nanokirti pvt1.jpg',
       '/imgs/commercial/nanokirti pvt2.jpg',
@@ -131,38 +112,37 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: 'lic',
-    title: 'LIC Project',
-    category: 'Government',
-    description: 'Government and Institutional Project.',
+    slug: 'and-work-faridabad',
+    title: '&Work',
+    category: 'Office',
+    description: 'A collaborative, vibrant co-working hub designed to inspire productivity and connection.',
+    keyStat: '15,000 sq ft',
     images: [
-      '/imgs/commercial/lic1.jpg',
-      '/imgs/commercial/lic2.jpg',
-      '/imgs/commercial/lic3.jpg',
-      '/imgs/commercial/lic4.jpg',
+      '/imgs/commercial/work co workspace.jpg',
+      '/imgs/commercial/work co workspace1.jpg',
+      '/imgs/commercial/work co work space2.jpg',
     ],
   },
   {
-    slug: 'ieml',
-    title: 'IEML Project',
-    category: 'Government',
-    description: 'Government and Institutional Project.',
+    slug: 'malabar-gold',
+    title: 'Malabar Gold & Diamonds',
+    category: 'Jewellery Showroom',
+    description: "BrandKettle's collaboration with Malabar marked a breakthrough in luxury retail — elevating Malabar's presence and reinforcing BrandKettle's reputation as a trusted high-end retail partner.",
     images: [
-      '/imgs/commercial/p098_129.jpg',
-      '/imgs/commercial/p099_130.jpg',
-      '/imgs/commercial/p099_131.jpg',
+      '/imgs/commercial/malabarcoverimg.png',
+      '/imgs/commercial/malbargold1.jpg',
+      '/imgs/commercial/malbargold2.jpg',
+      '/imgs/commercial/malbargold3.jpg',
+      '/imgs/commercial/malbargold4.jpg',
     ],
   },
   {
-    slug: 'gem-jeevan-tara',
-    title: 'GEM Jeevan Tara Project',
-    category: 'Government',
-    description: 'Government and Institutional Project.',
+    slug: 'radisson',
+    title: 'Radisson',
+    category: 'Hospitality',
+    description: 'Radisson hotel project by BrandKettle.',
     images: [
-      '/imgs/commercial/GEM jeevan tara.jpg',
-      '/imgs/commercial/gevantara2.jpg',
-      '/imgs/commercial/geven tara 3.jpg',
+      '/imgs/commercial/radisson-placeholder.jpg',
     ],
-  },
+  }
 ];
-
