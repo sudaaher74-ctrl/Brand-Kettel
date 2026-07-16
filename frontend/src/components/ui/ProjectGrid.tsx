@@ -10,7 +10,7 @@ export default function ProjectGrid({ items }: { items: Project[] | null }) {
     <div className="grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-2">
       {items.map((p, i) => {
         let displayImage = p.image;
-        if (p.slug === 'gucci') displayImage = '/imgs/commercial/guccicoverimg.png';
+        if (p.slug === 'gucci') displayImage = '/imgs/commercial/guccicoverimg1.png';
         if (p.slug === 'malabar-gold') displayImage = '/imgs/commercial/malabarcoverimg.png';
         if (p.slug === 'png') displayImage = '/imgs/commercial/pnjcoverimg.png';
 

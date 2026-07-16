@@ -8,7 +8,7 @@ export default function CaseStudyCard({ project, index }: { project: CaseStudy; 
   const imagesArray = project.images || (project as any).gallery || [(project as any).image].filter(Boolean) || [];
   let mainImage = imagesArray[0] || '';
 
-  if (project.slug === 'gucci') mainImage = '/imgs/commercial/guccicoverimg.png';
+  if (project.slug === 'gucci') mainImage = '/imgs/commercial/guccicoverimg1.png';
   if (project.slug === 'malabar-gold') mainImage = '/imgs/commercial/malabarcoverimg.png';
   if (project.slug === 'png') mainImage = '/imgs/commercial/pnjcoverimg.png';
 

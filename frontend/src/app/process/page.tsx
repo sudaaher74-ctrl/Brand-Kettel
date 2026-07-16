@@ -36,8 +36,14 @@ export default async function ProcessPage() {
         subtitle="We believe a disciplined process is the foundation of a successful project. Here is how we get from first conversation to final handover."
         image="/imgs/ourprosess.mp4"
         fullScreen={true}
+        hideText={true}
       />
-      <Process steps={processData} />
+      <Process
+        steps={processData}
+        eyebrow="Process"
+        title="Built for certainty"
+        subtitle="We believe a disciplined process is the foundation of a successful project. Here is how we get from first conversation to final handover."
+      />
     </>
   );
 }

@@ -10,7 +10,17 @@ type ProcessStep = {
   body: string;
 };
 
-export default function Process({ steps }: { steps: ProcessStep[] }) {
+export default function Process({
+  steps,
+  eyebrow = "How we work",
+  title = "A process built for certainty",
+  subtitle = "Six disciplined stages — from first conversation to final handover.",
+}: {
+  steps: ProcessStep[];
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -22,9 +32,9 @@ export default function Process({ steps }: { steps: ProcessStep[] }) {
     <section className="relative bg-surface py-[140px]">
       <div className="container-px">
         <SectionHeading
-          eyebrow="How we work"
-          title="A process built for certainty"
-          subtitle="Six disciplined stages — from first conversation to final handover."
+          eyebrow={eyebrow}
+          title={title}
+          subtitle={subtitle}
         />
 
         <div ref={ref} className="relative mt-16 sm:mt-24">

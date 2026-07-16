@@ -9,12 +9,14 @@ export default function PageHero({
   subtitle,
   image,
   fullScreen = false,
+  hideText = false,
 }: {
   eyebrow: string;
   title: string;
   subtitle?: string;
   image: string;
   fullScreen?: boolean;
+  hideText?: boolean;
 }) {
   if (fullScreen) {
     return (
@@ -31,7 +33,7 @@ export default function PageHero({
               className="h-full w-full object-cover"
             />
           ) : (
-            <Image
+             <Image
               src={image}
               alt={title}
               className="object-cover"
@@ -41,40 +43,42 @@ export default function PageHero({
             />
           )}
           {/* Overlay to ensure text is readable */}
-          <div className="absolute inset-0 bg-black/50" />
+          {!hideText && <div className="absolute inset-0 bg-black/50" />}
         </div>
 
         {/* Content */}
-        <div className="container-px relative z-10 text-center text-white mt-16 sm:mt-0">
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="flex items-center justify-center gap-3"
-          >
-            <span className="h-px w-6 bg-accent" />
-            <span className="eyebrow text-white/90">{eyebrow}</span>
-            <span className="h-px w-6 bg-accent" />
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 text-section-lg text-white"
-          >
-            {title}
-          </motion.h1>
-          {subtitle && (
-            <motion.p
+        {!hideText && (
+          <div className="container-px relative z-10 text-center text-white mt-16 sm:mt-0">
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center justify-center gap-3"
+            >
+              <span className="h-px w-6 bg-accent" />
+              <span className="eyebrow text-white/90">{eyebrow}</span>
+              <span className="h-px w-6 bg-accent" />
+            </motion.div>
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-6 text-body-main max-w-[700px] mx-auto text-white/90"
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-6 text-section-lg text-white"
             >
-              {subtitle}
-            </motion.p>
-          )}
-        </div>
+              {title}
+            </motion.h1>
+            {subtitle && (
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="mt-6 text-body-main max-w-[700px] mx-auto text-white/90"
+              >
+                {subtitle}
+              </motion.p>
+            )}
+          </div>
+        )}
       </section>
     );
   }
