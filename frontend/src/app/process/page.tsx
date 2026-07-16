@@ -35,6 +35,7 @@ export default async function ProcessPage() {
         title="Built for certainty"
         subtitle="We believe a disciplined process is the foundation of a successful project. Here is how we get from first conversation to final handover."
         image="/imgs/ourprosess.mp4"
+        fullScreen={true}
       />
       <Process steps={processData} />
     </>
