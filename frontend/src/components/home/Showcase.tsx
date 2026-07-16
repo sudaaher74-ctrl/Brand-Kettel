@@ -35,7 +35,7 @@ export default function Showcase({ featured }: { featured: Project | null }) {
         {/* Background image layer */}
         <motion.div style={{ scale: imgScale, y: imgY }} className="absolute inset-0 will-change-transform">
           <Image
-            src={featured.image}
+            src={featured.slug === 'gucci' ? '/imgs/commercial/gucci-green.png' : featured.image}
             alt={`${featured.name} — ${featured.category}`}
             className="object-cover"
             fill
