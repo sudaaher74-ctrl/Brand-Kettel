@@ -15,11 +15,13 @@ export default function Process({
   eyebrow = "How we work",
   title = "A process built for certainty",
   subtitle = "Six disciplined stages — from first conversation to final handover.",
+  align = "left",
 }: {
   steps: ProcessStep[];
   eyebrow?: string;
   title?: string;
   subtitle?: string;
+  align?: "left" | "center";
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -35,6 +37,7 @@ export default function Process({
           eyebrow={eyebrow}
           title={title}
           subtitle={subtitle}
+          align={align}
         />
 
         <div ref={ref} className="relative mt-16 sm:mt-24">
