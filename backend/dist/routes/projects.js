@@ -10,11 +10,11 @@ const router = (0, express_1.Router)();
 router.get('/', async (req, res) => {
     const db = await (0, mongodb_1.getDb)();
     if (!db) {
-        return res.json(data_1.projects.map((p, i) => ({ ...p, id: `static-${i}` })));
+        return res.json(data_1.staticProjects.map((p, i) => ({ ...p, id: `static-${i}` })));
     }
     const docs = await db.collection('projects').find({}).sort({ order: 1, createdAt: 1 }).toArray();
     if (docs.length === 0) {
-        const seed = data_1.projects.map((p, i) => ({ ...p, order: i, createdAt: new Date(), updatedAt: new Date() }));
+        const seed = data_1.staticProjects.map((p, i) => ({ ...p, order: i, createdAt: new Date(), updatedAt: new Date() }));
         await db.collection('projects').insertMany(seed);
         const fresh = await db.collection('projects').find({}).sort({ order: 1 }).toArray();
         return res.json(fresh.map(d => ({ ...d, id: d._id.toString(), _id: undefined })));

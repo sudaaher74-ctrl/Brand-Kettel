@@ -1,11 +1,7 @@
 "use strict";
-/**
- * Central content source for Brand Kettle BuildSpaces.
- * Swap `image` URLs for Cloudinary delivery URLs in production.
- */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.servicesDropdown = exports.navLinks = exports.expertiseCategories = exports.testimonials = exports.processSteps = exports.whyCards = exports.services = exports.projects = void 0;
-exports.projects = [
+exports.staticProjects = void 0;
+exports.staticProjects = [
     {
         slug: 'gucci',
         name: 'Gucci',
@@ -13,24 +9,24 @@ exports.projects = [
         category: 'Luxury Retail',
         area: '3,500 sq ft',
         year: '2023',
-        image: '/imgs/commercial/gucci.png',
-        gallery: ['/imgs/commercial/gucci.png', '/imgs/commercial/gucci1.png'],
+        image: '/imgs/commercial/guccicoverimg1.png',
+        gallery: ['/imgs/commercial/guccicoverimg1.png', '/imgs/commercial/gucci.png', '/imgs/commercial/gucci1.png'],
         blurb: "BrandKettle's first high-end luxury project. After the successful execution of Gucci's premium showroom, the owners personally appreciated the craftsmanship and attention to detail. Every detail — from custom finishes to ambient lighting — reflects the iconic elegance of the Gucci brand.",
         segment: 'commercial',
         alt: 'Retail Interior Contractors - Gucci Luxury Retail Store',
     },
     {
-        slug: 'malabar-gold',
-        name: 'Malabar Gold & Diamonds',
-        location: 'India',
-        category: 'Jewellery Showroom',
-        area: '8,000 sq ft',
-        year: '2024',
-        image: '/imgs/commercial/malbargold1.jpg',
-        gallery: ['/imgs/commercial/malbargold1.jpg', '/imgs/commercial/malbargold2.jpg', '/imgs/commercial/malbargold3.jpg', '/imgs/commercial/malbargold4.jpg'],
-        blurb: "BrandKettle's collaboration with Malabar marked a breakthrough in luxury retail — elevating Malabar's presence and reinforcing BrandKettle's reputation as a trusted high-end retail partner, blending creativity and precision. Includes the iconic meeting between Veekkas k Jha and M.P. Ahammed, Chairman of the Malabar Group.\n\n\"If you're looking for a fit-out team that truly understands the power of brand identity… BRANDKETTLE is the one-stop solution… Highly recommended!\" — Malabar Gold & Diamonds",
+        slug: 'taksha-hyderabad',
+        name: 'Taksha',
+        location: 'Hyderabad',
+        category: 'Commercial Spaces',
+        area: '475 sq yd',
+        year: '2023',
+        image: '/imgs/commercial/taksha coverimg.png',
+        gallery: ['/imgs/commercial/taksha coverimg.png', '/imgs/commercial/taksha.png', '/imgs/commercial/taksha1.png', '/imgs/commercial/taksha3.png'],
+        blurb: 'A 475 sq. yd. premium builder floor by Studio AKAAI, blending comfort, functionality and exclusivity with a modern façade and luxury design. Crafted for refined lifestyles, it redefines contemporary urban living.',
         segment: 'commercial',
-        alt: 'Jewellery Showroom Interior Designers - Malabar Gold & Diamonds',
+        alt: 'Commercial Interior Company in Indore - Taksha Hyderabad Builder Floor',
     },
     {
         slug: 'png',
@@ -39,8 +35,8 @@ exports.projects = [
         category: 'Jewellery Showroom',
         area: '3,400 sq ft',
         year: '27 days',
-        image: '/imgs/commercial/png1.jpg',
-        gallery: ['/imgs/commercial/png1.jpg', '/imgs/commercial/png2.jpg', '/imgs/commercial/png3.jpg'],
+        image: '/imgs/commercial/pnjcoverimg.png',
+        gallery: ['/imgs/commercial/pnjcoverimg.png', '/imgs/commercial/png2.jpg', '/imgs/commercial/png3.jpg'],
         blurb: "BrandKettle transformed a 3,400 sq ft space in Goregaon into a luxurious retail destination in just 27 days. A turnkey project blending elegance and efficiency, bringing the brand's vision to life with precision and speed.",
         segment: 'commercial',
         alt: 'Jewellery Showroom Fit-Out - PNG Jewellers Goregaon',
@@ -57,6 +53,19 @@ exports.projects = [
         blurb: 'Giva store by BrandKettle.',
         segment: 'commercial',
         alt: 'Jewellery Store Interior Design - Giva',
+    },
+    {
+        slug: 'indriya',
+        name: 'Indriya',
+        location: 'India',
+        category: 'Jewellery Showroom',
+        area: 'TBD',
+        year: '2024',
+        image: '/imgs/commercial/indriya-placeholder.jpg',
+        gallery: ['/imgs/commercial/indriya-placeholder.jpg'],
+        blurb: 'Indriya jewellery showroom project by BrandKettle.',
+        segment: 'commercial',
+        alt: 'Jewellery Store Interior Design - Indriya',
     },
     {
         slug: 'havana-lounge-bareilly',
@@ -122,167 +131,5 @@ exports.projects = [
         blurb: "One of BrandKettle's cherished projects — a fun and creative co-working space delivered in Faridabad.",
         segment: 'commercial',
         alt: 'Corporate Interior Solutions - &Work Co-working Space Faridabad',
-    },
-    {
-        slug: 'taksha-hyderabad',
-        name: 'Taksha',
-        location: 'Hyderabad',
-        category: 'Commercial Spaces',
-        area: '475 sq yd',
-        year: '2023',
-        image: '/imgs/commercial/taksha.png',
-        gallery: ['/imgs/commercial/taksha.png', '/imgs/commercial/taksha1.png', '/imgs/commercial/taksha3.png', '/imgs/commercial/taksha4.png'],
-        blurb: 'A 475 sq. yd. premium builder floor by Studio AKAAI, blending comfort, functionality and exclusivity with a modern façade and luxury design. Crafted for refined lifestyles, it redefines contemporary urban living.',
-        segment: 'commercial',
-        alt: 'Commercial Interior Company in Indore - Taksha Hyderabad Builder Floor',
-    },
-    {
-        slug: 'gem-jeevan-tara',
-        name: 'GEM Jeevan Tara',
-        location: 'India',
-        category: 'Government',
-        area: '30,000 sq ft',
-        year: '2021',
-        image: '/imgs/commercial/GEM jeevan tara.jpg',
-        gallery: ['/imgs/commercial/GEM jeevan tara.jpg'],
-        blurb: 'Government & Institutional Project. A turnkey interior fit-out that modernized heritage spaces while preserving architectural integrity, incorporating smart office technologies and contemporary finishes.',
-        segment: 'commercial',
-        alt: 'Institutional Furniture - GEM Jeevan Tara Turnkey Fit-Out',
-    },
-    {
-        slug: 'brandkettle',
-        name: 'BrandKettle',
-        location: 'Vatika Mindscapes, Faridabad',
-        category: 'Corporate Office',
-        area: '10,000 sq ft',
-        year: '2024',
-        image: '/imgs/commercial/brandkettle1.jpg',
-        gallery: ['/imgs/commercial/brandkettle1.jpg', '/imgs/commercial/brandkettle2.jpg', '/imgs/commercial/brandkettle3.jpg', '/imgs/commercial/brandkettle4.jpg'],
-        blurb: "BrandKettle's own office in the prestigious Vatika Mindscapes, Faridabad. Nestled within a lush, green landscape and designed to exude ultra-luxury, this state-of-the-art complex reflects BrandKettle's commitment to a sophisticated, inspiring workspace. It represents both a strategic expansion and a setting that mirrors the company's brand values and dedication to excellence.",
-        segment: 'commercial',
-        alt: 'Custom Furniture Manufacturer - BrandKettle Office Vatika Mindscapes',
-    },
-    {
-        slug: 'lic',
-        name: 'LIC',
-        location: 'India',
-        category: 'Government',
-        area: '45,000 sq ft',
-        year: '2019',
-        image: '/imgs/commercial/lic1.jpg',
-        gallery: ['/imgs/commercial/lic1.jpg', '/imgs/commercial/lic2.jpg', '/imgs/commercial/lic3.jpg', '/imgs/commercial/lic4.jpg'],
-        blurb: 'Government & Institutional Project. A comprehensive interior overhaul focusing on ergonomic workspaces, efficient file management systems, and a modernized public-facing customer service area.',
-        segment: 'commercial',
-        alt: 'Office Furniture Manufacturer - LIC Government Interior Overhaul',
-    },
-    {
-        slug: 'ieml',
-        name: 'IEML',
-        location: 'India',
-        category: 'Government',
-        area: '200,000 sq ft',
-        year: '2022',
-        image: '/imgs/commercial/p098_129.jpg',
-        gallery: ['/imgs/commercial/p098_129.jpg', '/imgs/commercial/p099_130.jpg', '/imgs/commercial/p099_131.jpg'],
-        blurb: 'Government & Institutional Project. Designed and executed massive exhibition halls and convention spaces, requiring highly specialized lighting rigs, modular partitioning systems, and high-traffic flooring solutions.',
-        segment: 'commercial',
-        alt: 'Turnkey Interior Solutions - IEML Exhibition Halls',
     }
-];
-exports.services = [
-    {
-        title: 'Commercial Interiors',
-        tag: 'Core',
-        description: 'Workplaces, headquarters and corporate environments designed for performance.',
-        image: '/imgs/commercial/work co workspace.jpg',
-    },
-    {
-        title: 'Retail Stores',
-        tag: 'Core',
-        description: 'Conversion-focused retail experiences that elevate your brand at every touchpoint.',
-        image: '/imgs/commercial/p080_111.jpg',
-    },
-    {
-        title: 'Jewellery Showrooms',
-        tag: 'Core',
-        description: 'Secure, luminous showroom design crafted for high-value display.',
-        image: '/imgs/commercial/jwellary.png',
-    },
-    {
-        title: 'Office Fit-Outs',
-        tag: 'Core',
-        description: 'Fast, precise fit-outs delivered turnkey, from bare shell to handover.',
-        image: '/imgs/commercial/work co work space2.jpg',
-    },
-    {
-        title: 'Residential Interiors',
-        tag: 'Premium',
-        description: 'Bespoke homes where comfort, craft and detail meet.',
-        image: '/imgs/residential/p076_107.jpg',
-    },
-    {
-        title: 'Custom Furniture',
-        tag: 'Craft',
-        description: 'In-house manufacturing of made-to-measure furniture and joinery.',
-        image: '/imgs/commercial/Havana lounge1.jpg',
-    }
-];
-exports.whyCards = [
-    { title: 'Purpose Before Design', body: 'Every project begins with understanding how the space needs to function—not just how it should look.' },
-    { title: 'Precision in Execution', body: 'Design is only as good as its execution. We believe the quality of every detail matters.' },
-    { title: 'Timelines You Can Count On', body: 'We value your time as much as our own. Every project is planned with clear milestones and delivered with accountability.' },
-    { title: 'Partnerships That Last', body: "For us, a successful project isn't the end of a transaction, it's the beginning of a long-term relationship." },
-];
-exports.processSteps = [
-    { no: '01', title: 'Discovery', body: 'We map your brand, brief, budget and timeline.' },
-    { no: '02', title: 'Design', body: 'Concept, 3D visualisation and material direction.' },
-    { no: '03', title: 'Planning', body: 'Detailed drawings, BOQ and execution schedule.' },
-    { no: '04', title: 'Execution', body: 'On-site build managed by a dedicated team.' },
-    { no: '05', title: 'Quality Check', body: 'Multi-stage inspection and snag resolution.' },
-    { no: '06', title: 'Handover', body: 'A move-in-ready space, delivered on time.' },
-];
-exports.testimonials = [
-    {
-        quote: 'Brand Kettle delivered our 40,000 sq.ft headquarters ahead of schedule. The execution discipline was exceptional.',
-        name: 'Rohan Mehta',
-        role: 'COO, Axis Group',
-    },
-    {
-        quote: 'Our flagship store footfall rose noticeably after the fit-out. They understood retail, not just design.',
-        name: 'Priya Nair',
-        role: 'Retail Head, Lumen',
-    },
-    {
-        quote: 'A genuinely transparent process. We always knew the cost, the stage and the next milestone.',
-        name: 'Karan Shah',
-        role: 'Director, Meridian Developers',
-    },
-];
-exports.expertiseCategories = [
-    'Office Interiors',
-    'Retail Fit-Outs',
-    'Jewellery Showrooms',
-    'Commercial Spaces',
-    'Residential Interiors',
-];
-exports.navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/services', label: 'Services' },
-    { href: '/portfolio', label: 'Portfolio' },
-    { href: '/process', label: 'Process' },
-];
-exports.servicesDropdown = [
-    {
-        href: '/commercial-fit-outs',
-        label: 'Commercial Fit-Outs',
-        description: 'Offices, retail fit-outs & showrooms',
-        icon: '◉',
-    },
-    {
-        href: '/residential-interiors',
-        label: 'Residential Interiors',
-        description: 'Bespoke homes & private interiors',
-        icon: '◎',
-    },
 ];

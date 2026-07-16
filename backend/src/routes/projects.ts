@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { getDb, toObjectId } from '../lib/mongodb';
 import { ObjectId } from 'mongodb';
-import { projects as staticProjects } from '../lib/data';
+import { staticProjects } from '../lib/data';
 import { ProjectSchema } from '../lib/schemas';
 import { requireAuth } from '../middlewares/requireAuth';
 
