@@ -32,9 +32,7 @@ export default function CaseStudyCard({ project, index }: { project: CaseStudy; 
         
         {/* Text Content (slides up and fades in on hover) */}
         <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center opacity-0 translate-y-8 transition-all duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:opacity-100 group-hover:translate-y-0">
-          <p className="text-xs sm:text-sm font-medium tracking-[0.2em] text-white/80 uppercase mb-3">
-            {project.category}
-          </p>
+
           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-wide text-white">
             {project.title || (project as any).name}
           </h3>
