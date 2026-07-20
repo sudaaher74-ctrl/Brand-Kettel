@@ -28,6 +28,16 @@ async function getProjects() {
 export default async function PortfolioPage() {
   const projects = await getProjects();
 
+  const orderedSlugs = ['gucci', 'taksha-hyderabad'];
+  projects.sort((a: any, b: any) => {
+    const indexA = orderedSlugs.indexOf(a.slug);
+    const indexB = orderedSlugs.indexOf(b.slug);
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    return 0;
+  });
+
   return (
     <section className="bg-background py-8 sm:py-12">
       <div className="container-px">

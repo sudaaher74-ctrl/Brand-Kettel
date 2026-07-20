@@ -39,6 +39,7 @@ export default async function CommercialProjectsPage() {
 
   const orderedSlugs = [
     'gucci',
+    'taksha-hyderabad',
     'malabar-gold',
     'png',
     'giva',
