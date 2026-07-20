@@ -101,7 +101,7 @@ export default function AboutPage() {
             {/* Left Column: Large Image */}
             <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-[auto] rounded-sm overflow-hidden">
               <Image 
-                src="/imgs/commercial/work co workspace.jpg" 
+                src="/imgs/commercial/taksha coverimg.png" 
                 alt="Why Choose Us" 
                 fill 
                 className="object-cover object-center"
