@@ -63,10 +63,10 @@ export default function Expertise({ services }: { services: Service[] | null }) 
 
         {/* Split content */}
         <div className="flex-1 flex items-center justify-center">
-          {/* Constrained width — centred with equal space on both sides */}
-          <div className="w-full max-w-5xl px-8 md:px-12">
-            {/* 55 / 45 split — text gets more room, image is smaller */}
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.75fr] gap-10 lg:gap-16 items-center">
+          {/* Constrained width — wider container to allow a larger image */}
+          <div className="w-full max-w-6xl px-8 md:px-12">
+            {/* 50 / 50 split — gives the image more room to expand */}
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-center">
 
               {/* Left: text stack */}
               <div className="relative h-[280px] sm:h-[240px] lg:h-[320px] order-2 lg:order-1">
@@ -88,7 +88,7 @@ export default function Expertise({ services }: { services: Service[] | null }) 
               </div>
 
               {/* Right: card-in-card layout */}
-              <div className="relative aspect-[4/3] w-full max-w-[500px] self-center justify-self-end order-1 lg:order-2">
+              <div className="relative aspect-[4/3] w-full max-w-[600px] self-center justify-self-end order-1 lg:order-2">
                 {items.map((s, i) => (
                   <ImagePanel key={s.title} service={s} index={i} total={total} progress={scrollYProgress} />
                 ))}
