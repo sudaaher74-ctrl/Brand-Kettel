@@ -62,8 +62,9 @@ export default function Expertise({ services }: { services: Service[] | null }) 
         </div>
 
         {/* Split content */}
-        <div className="flex-1 flex items-center">
-          <div className="container-px w-full">
+        <div className="flex-1 flex items-center justify-center">
+          {/* Constrained width — centred with equal space on both sides */}
+          <div className="w-full max-w-5xl px-8 md:px-12">
             {/* 55 / 45 split — text gets more room, image is smaller */}
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.75fr] gap-10 lg:gap-16 items-center">
 
@@ -94,8 +95,8 @@ export default function Expertise({ services }: { services: Service[] | null }) 
               </div>
             </div>
 
-            {/* Progress dots */}
-            <div className="mt-10 lg:mt-16 flex items-center justify-center lg:justify-start gap-3">
+            {/* Progress dots — centred under the grid */}
+            <div className="mt-10 lg:mt-12 flex items-center justify-center gap-3">
               {items.map((_, i) => (
                 <span
                   key={i}
