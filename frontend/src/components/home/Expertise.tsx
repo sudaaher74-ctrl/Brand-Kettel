@@ -86,8 +86,8 @@ export default function Expertise({ services }: { services: Service[] | null }) 
                 })}
               </div>
 
-              {/* Right: image stack — capped at 380 px wide and a portrait aspect ratio */}
-              <div className="relative aspect-[3/4] w-full max-w-[380px] justify-self-end rounded-2xl overflow-hidden border border-line bg-surface order-1 lg:order-2">
+              {/* Right: image stack — landscape ratio keeps it level with the text panel */}
+              <div className="relative aspect-[4/3] w-full max-w-[420px] self-center justify-self-end rounded-2xl overflow-hidden border border-line bg-surface order-1 lg:order-2">
                 {items.map((s, i) => (
                   <ImagePanel key={s.title} service={s} index={i} total={total} progress={scrollYProgress} />
                 ))}
