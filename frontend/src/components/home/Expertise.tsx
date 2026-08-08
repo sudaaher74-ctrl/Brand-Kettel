@@ -87,8 +87,8 @@ export default function Expertise({ services }: { services: Service[] | null }) 
                 })}
               </div>
 
-              {/* Right: image stack — landscape ratio keeps it level with the text panel */}
-              <div className="relative aspect-[4/3] w-full max-w-[420px] self-center justify-self-end rounded-2xl overflow-hidden border border-line bg-surface order-1 lg:order-2">
+              {/* Right: card-in-card layout */}
+              <div className="relative aspect-[4/3] w-full max-w-[500px] self-center justify-self-end order-1 lg:order-2">
                 {items.map((s, i) => (
                   <ImagePanel key={s.title} service={s} index={i} total={total} progress={scrollYProgress} />
                 ))}
@@ -157,34 +157,33 @@ function TextPanel({
       style={{ opacity, y, pointerEvents: isActive ? 'auto' : 'none' }}
       className="absolute inset-0 flex flex-col justify-center"
     >
-      <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-surface border border-line">
-        <Icon className="w-5 h-5 text-accent" strokeWidth={1.5} />
+      {/* Icon: dark box matching reference */}
+      <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-surface-elevated shadow-lg">
+        <Icon className="w-6 h-6 text-ink" strokeWidth={1.5} />
       </div>
 
-      <span className="font-display text-xs text-ink-muted tracking-widest mb-3">
-        STEP {String(index + 1).padStart(2, '0')}
+      <span className="font-display text-sm text-ink-muted tracking-widest mb-4 uppercase">
+        STEP {index + 1}
       </span>
 
-      <h3 className="text-3xl md:text-4xl text-ink mb-5 leading-tight font-display font-light tracking-wide">
+      <h3 className="text-3xl md:text-5xl text-ink mb-6 leading-tight font-display font-light">
         {service.title}
       </h3>
 
       <div
-        className="text-sm md:text-base text-ink-secondary leading-relaxed max-w-md mb-6 prose prose-sm prose-p:text-ink-secondary prose-li:text-ink-secondary"
+        className="text-base md:text-lg text-ink-secondary leading-relaxed max-w-lg mb-8 prose prose-p:text-ink-secondary prose-li:text-ink-secondary"
         dangerouslySetInnerHTML={{ __html: service.description }}
       />
-
-      {/* Arrow button → navigates to the relevant service page */}
-      <Link
-        href={link}
-        aria-label={`Learn more about ${service.title}`}
-        className="flex items-center justify-center w-12 h-12 rounded-full border border-line text-ink-muted hover:text-ink hover:border-ink transition-all duration-300"
-      >
-        <ArrowUpRight className="w-5 h-5" strokeWidth={1.5} />
-      </Link>
     </motion.div>
   );
 }
+
+// Map backgrounds to indices so each step has a distinct card background
+const CARD_BGS = [
+  'bg-gradient-to-br from-surface to-surface-elevated',
+  'bg-gradient-to-br from-surface-elevated to-surface',
+  'bg-gradient-to-tr from-surface to-surface-elevated'
+];
 
 function ImagePanel({
   service,
@@ -201,11 +200,20 @@ function ImagePanel({
   const segment = 1 / total;
   const start = index * segment;
   const end = start + segment;
-  const scale = useTransform(progress, [start, end], [1.08, 1]);
+  const scale = useTransform(progress, [start, end], [1.05, 1]);
+  
+  const bgClass = CARD_BGS[index % CARD_BGS.length];
 
   return (
-    <motion.div style={{ opacity }} className="absolute inset-0">
-      <motion.div style={{ scale }} className="relative h-full w-full will-change-transform">
+    <motion.div style={{ opacity }} className="absolute inset-0 p-6 md:p-10">
+      {/* Outer Card Background */}
+      <div className={`absolute inset-0 rounded-3xl ${bgClass} opacity-80 border border-line shadow-2xl`}></div>
+      
+      {/* Inner Image Container (Floating) */}
+      <motion.div 
+        style={{ scale }} 
+        className="relative h-full w-full rounded-2xl overflow-hidden shadow-xl will-change-transform border border-line/50"
+      >
         <Image
           src={service.image || `https://placehold.co/1200x1200/131317/8D7458?text=${service.title.split(' ').join('+')}`}
           alt={service.title}
