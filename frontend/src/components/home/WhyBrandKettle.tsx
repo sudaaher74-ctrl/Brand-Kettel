@@ -6,7 +6,7 @@ import SectionHeading from '@/components/ui/SectionHeading';
 
 export default function WhyBrandKettle() {
   return (
-    <section className="relative overflow-hidden bg-[#111111] py-20 md:py-28 lg:py-[140px] flex items-center min-h-svh lg:min-h-0">
+    <section className="relative overflow-hidden bg-background py-20 md:py-28 lg:py-[140px] flex items-center min-h-svh lg:min-h-0">
       {/* soft architectural backdrop */}
       <div className="pointer-events-none absolute inset-0 grain-soft opacity-60" aria-hidden />
 
