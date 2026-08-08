@@ -4,6 +4,8 @@ import Expertise from '@/components/home/Expertise';
 import Showcase from '@/components/home/Showcase';
 import Testimonials from '@/components/home/Testimonials';
 import ConsultationCTA from '@/components/home/ConsultationCTA';
+import WhyBrandKettle from '@/components/home/WhyBrandKettle';
+import { fetchJson } from '@/lib/api';
 import { 
   projects as fallbackProjects,
   services as fallbackServices,
@@ -11,18 +13,6 @@ import {
 } from '@/lib/data';
 
 export const revalidate = 60;
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-
-async function fetchJson(path: string, fallback: any) {
-  try {
-    const res = await fetch(`${API_URL}${path}`, { next: { revalidate: 60 } });
-    if (!res.ok) return fallback;
-    const data = await res.json();
-    return Array.isArray(data) && data.length > 0 ? data : fallback;
-  } catch {
-    return fallback;
-  }
-}
 
 export default async function HomePage() {
   const [projects, services, testimonials] = await Promise.all([
@@ -31,7 +21,9 @@ export default async function HomePage() {
     fetchJson('/api/admin/testimonials', fallbackTestimonials),
   ]);
 
-  const featured = projects.length > 0 ? (projects.find((p: any) => p.slug === 'meridian-turnkey-campus') ?? projects[0]) : null;
+  // Use the first project marked as featured, or fall back to the first project
+  const featured: any =
+    projects.find((p: any) => p.featured) ?? (projects.length > 0 ? projects[0] : null);
 
   return (
     <>
@@ -39,6 +31,7 @@ export default async function HomePage() {
       <Welcome />
       <Expertise services={services.slice(0, 3)} />
       <Showcase featured={featured} />
+      <WhyBrandKettle />
       <Testimonials testimonials={testimonials} />
       <ConsultationCTA />
     </>

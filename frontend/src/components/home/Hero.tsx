@@ -3,12 +3,14 @@
 import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoWrapperRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLDivElement>(null);
   
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const video1Ref = useRef<HTMLVideoElement>(null);
@@ -25,6 +27,19 @@ export default function Hero() {
           trigger: containerRef.current,
           start: 'top top',
           end: 'bottom top',
+          scrub: true,
+        },
+      });
+
+      // Fade out headline as user scrolls away
+      gsap.to(headlineRef.current, {
+        opacity: 0,
+        y: -30,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: '30% top',
           scrub: true,
         },
       });
@@ -126,9 +141,43 @@ export default function Hero() {
         
       </div>
 
-      {/* Subtle Overlay to blend with the next section */}
+      {/* Overlays */}
       <div className="absolute inset-0 bg-background/10 z-10 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10 pointer-events-none" />
+      {/* Stronger centre vignette to ensure text legibility */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-transparent z-10 pointer-events-none" />
+
+      {/* Hero Headline + CTA — z-20 so it sits above overlays */}
+      <div
+        ref={headlineRef}
+        className="absolute inset-x-0 top-0 z-20 flex h-full flex-col items-center justify-center px-5 text-center"
+      >
+        <span className="eyebrow justify-center text-white/80 mb-6">
+          <span className="h-px w-6 bg-accent" />
+          Commercial Fit-Out &amp; Interior Design
+        </span>
+
+        <h1 className="text-hero max-w-4xl">
+          Spaces That{' '}
+          <span className="text-accent font-light italic">Inspire</span>{' '}
+          Growth
+        </h1>
+
+        <p className="text-subtitle mt-6 max-w-xl">
+          Premium design, build &amp; furnish solutions for offices, retail stores,
+          jewellery showrooms and hospitality across India.
+        </p>
+
+        <div className="mt-10 flex flex-wrap gap-4 justify-center">
+          <Link href="/portfolio" className="btn">
+            View Our Work
+          </Link>
+          <Link href="/contact" className="btn">
+            Start a Project
+          </Link>
+        </div>
+      </div>
     </section>
   );
 }
+

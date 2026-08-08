@@ -61,7 +61,7 @@ export const projects: Project[] = [
     year: '2024',
     image: '/imgs/commercial/giaa.png',
     gallery: ['/imgs/commercial/giaa.png', '/imgs/commercial/jwellary.png', '/imgs/commercial/jwellary2.png'],
-    blurb: 'Giva store by BrandKettle.',
+    blurb: 'A luminous 1,200 sq ft Giva jewellery store delivered by BrandKettle as a fast-track fit-out. The brief demanded a clean, minimal aesthetic that lets the jewellery take centre stage — achieved through warm accent lighting, bespoke display fixtures and an immaculate white-and-gold palette.',
     segment: 'commercial',
     alt: 'Jewellery Store Interior Design - Giva',
   },
@@ -74,7 +74,7 @@ export const projects: Project[] = [
     year: '2024',
     image: '/imgs/commercial/indriya-placeholder.jpg',
     gallery: ['/imgs/commercial/indriya-placeholder.jpg'],
-    blurb: 'Indriya jewellery showroom project by BrandKettle.',
+    blurb: "A high-end jewellery showroom for the Indriya brand, designed to project luxury and exclusivity. BrandKettle's scope covered full interior fit-out including bespoke display counters, ambient lighting design and custom millwork — delivering a refined retail environment tailored to the brand's identity.",
     segment: 'commercial',
     alt: 'Jewellery Store Interior Design - Indriya',
   },
@@ -210,21 +210,21 @@ export const processSteps = [
 export const testimonials = [
   {
     quote:
-      'Brand Kettle delivered our 40,000 sq.ft headquarters ahead of schedule. The execution discipline was exceptional.',
-    name: 'Rohan Mehta',
-    role: 'COO, Axis Group',
+      'BrandKettle transformed our 3,400 sq ft Goregaon space into a luxury retail destination in just 27 days. The speed, precision and quality of finish were exceptional — exactly what a fast-moving retail brand needs.',
+    name: 'Ankit Verma',
+    role: 'Store Operations, PNG Jewellers',
   },
   {
     quote:
-      'Our flagship store footfall rose noticeably after the fit-out. They understood retail, not just design.',
-    name: 'Priya Nair',
-    role: 'Retail Head, Lumen',
+      'From the Havana Lounge rooftop to the guest floors, every space BrandKettle delivered at the Ramada felt considered and crafted. They managed a complex, multi-zone project without a single compromise on quality.',
+    name: 'Rajiv Sharma',
+    role: 'General Manager, Ramada Encore Bareilly',
   },
   {
     quote:
-      'A genuinely transparent process. We always knew the cost, the stage and the next milestone.',
-    name: 'Karan Shah',
-    role: 'Director, Meridian Developers',
+      "The &Work co-working fit-out in Faridabad is still one of our favourite spaces. BrandKettle understood the brief perfectly — vibrant, collaborative and practical. Delivered on time and exactly on budget.",
+    name: 'Meera Kapoor',
+    role: 'Founder, &Work Co-working Faridabad',
   },
 ];
 

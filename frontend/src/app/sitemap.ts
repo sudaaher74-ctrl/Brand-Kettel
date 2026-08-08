@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://brandkettle.com';
+// Use the same API URL the rest of the app uses — already configured in .env.local
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes = [
@@ -24,7 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   try {
     // Fetch dynamic services
-    const servicesRes = await fetch('http://localhost:3001/api/seo/services').then(res => res.json());
+    const servicesRes = await fetch(`${API_URL}/api/seo/services`).then(res => res.json());
     servicesRes.forEach((service: { slug: string }) => {
       sitemap.push({
         url: `${SITE_URL}/services/${service.slug}`,
@@ -35,7 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
 
     // Fetch dynamic locations
-    const locationsRes = await fetch('http://localhost:3001/api/seo/locations').then(res => res.json());
+    const locationsRes = await fetch(`${API_URL}/api/seo/locations`).then(res => res.json());
     locationsRes.forEach((loc: { slug: string }) => {
       sitemap.push({
         url: `${SITE_URL}/locations/${loc.slug}`,
@@ -46,7 +48,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
 
     // Fetch dynamic projects
-    const projectsRes = await fetch('http://localhost:3001/api/admin/projects').then(res => res.json());
+    const projectsRes = await fetch(`${API_URL}/api/admin/projects`).then(res => res.json());
     projectsRes.forEach((proj: { slug: string }) => {
       if(proj.slug) {
         sitemap.push({
@@ -59,7 +61,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
 
     // Fetch dynamic blogs
-    const blogsRes = await fetch('http://localhost:3001/api/admin/blog').then(res => res.json());
+    const blogsRes = await fetch(`${API_URL}/api/admin/blog`).then(res => res.json());
     blogsRes.forEach((blog: { slug: string }) => {
       if(blog.slug) {
         sitemap.push({
@@ -76,3 +78,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return sitemap;
 }
+

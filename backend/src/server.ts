@@ -17,8 +17,10 @@ if (!process.env.ADMIN_PASSWORD || !process.env.APP_SECRET) {
 }
 
 app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true
+  // FRONTEND_URL must be set in production (e.g. https://brandkettle.com).
+  // Falls back to localhost only for local development.
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  credentials: true,
 }));
 app.use(express.json());
 app.use(cookieParser());

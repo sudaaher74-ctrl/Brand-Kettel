@@ -59,7 +59,7 @@ export const caseStudies: CaseStudy[] = [
     slug: 'indriya',
     title: 'Indriya',
     category: 'Jewellery Showroom',
-    description: 'Indriya jewellery showroom project by BrandKettle.',
+    description: "A high-end jewellery showroom for the Indriya brand, designed to project luxury and exclusivity. BrandKettle's scope covered full interior fit-out including bespoke display counters, ambient lighting design and custom millwork.",
     images: [
       '/imgs/commercial/indriya-placeholder.jpg',
     ],

@@ -9,6 +9,15 @@ import {
   type MotionValue,
 } from 'framer-motion';
 import { HardHat, Network, RefreshCw, ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+
+// Link each service to its page in order of appearance
+const SERVICE_LINKS = [
+  '/commercial-fit-outs',
+  '/jewellery-showrooms',
+  '/residential-interiors',
+];
 
 type Service = {
   tag: string;
@@ -44,7 +53,7 @@ export default function Expertise({ services }: { services: Service[] | null }) 
         <div className="pt-12 md:pt-16 shrink-0">
           <div className="container-px flex items-center justify-between">
             <span className="uppercase tracking-[0.3em] text-accent text-xs font-semibold">
-              O u r &nbsp; E x p e r t i e s
+              O u r &nbsp; E x p e r t i s e
             </span>
             <span className="font-display text-sm text-ink-muted tracking-widest tabular-nums">
               {String(active + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
@@ -70,6 +79,7 @@ export default function Expertise({ services }: { services: Service[] | null }) 
                       total={total}
                       progress={scrollYProgress}
                       isActive={i === active}
+                      link={SERVICE_LINKS[i] ?? '/services'}
                     />
                   );
                 })}
@@ -127,6 +137,7 @@ function TextPanel({
   total,
   progress,
   isActive,
+  link,
 }: {
   service: Service;
   icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
@@ -134,6 +145,7 @@ function TextPanel({
   total: number;
   progress: MotionValue<number>;
   isActive: boolean;
+  link: string;
 }) {
   const { opacity, input } = useCrossfade(progress, index, total);
   const y = useTransform(progress, input, [24, 0, 0, -24]);
@@ -160,9 +172,14 @@ function TextPanel({
         dangerouslySetInnerHTML={{ __html: service.description }}
       />
 
-      <button className="flex items-center justify-center w-12 h-12 rounded-full border border-line text-ink-muted hover:text-ink hover:border-ink transition-all duration-300">
+      {/* Arrow button → navigates to the relevant service page */}
+      <Link
+        href={link}
+        aria-label={`Learn more about ${service.title}`}
+        className="flex items-center justify-center w-12 h-12 rounded-full border border-line text-ink-muted hover:text-ink hover:border-ink transition-all duration-300"
+      >
         <ArrowUpRight className="w-5 h-5" strokeWidth={1.5} />
-      </button>
+      </Link>
     </motion.div>
   );
 }
@@ -186,12 +203,16 @@ function ImagePanel({
 
   return (
     <motion.div style={{ opacity }} className="absolute inset-0">
-      <motion.img
-        style={{ scale }}
-        src={service.image || `https://placehold.co/1200x1200/131317/8D7458?text=${service.title.split(' ').join('+')}`}
-        alt={service.title}
-        className="h-full w-full object-cover will-change-transform"
-      />
+      <motion.div style={{ scale }} className="relative h-full w-full will-change-transform">
+        <Image
+          src={service.image || `https://placehold.co/1200x1200/131317/8D7458?text=${service.title.split(' ').join('+')}`}
+          alt={service.title}
+          fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className="object-cover"
+          priority={false}
+        />
+      </motion.div>
     </motion.div>
   );
 }
