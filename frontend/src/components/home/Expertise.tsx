@@ -16,6 +16,7 @@ type Service = {
 
 export default function Expertise({ services }: { services: Service[] | null }) {
   const sectionRef = useRef<HTMLElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Array<HTMLElement | null>>([]);
 
@@ -23,49 +24,53 @@ export default function Expertise({ services }: { services: Service[] | null }) 
     if (!services || services.length === 0) return;
 
     const ctx = gsap.context(() => {
-      // Progress line filling as the section scrolls through view
-      gsap.fromTo(
-        trackRef.current,
-        { scaleX: 0 },
-        {
-          scaleX: 1,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 70%',
-            end: 'bottom 60%',
-            scrub: true,
-          },
-        }
-      );
+      const cards = cardRefs.current.filter(Boolean) as HTMLElement[];
 
-      cardRefs.current.forEach((card) => {
-        if (!card) return;
+      // One timeline for the whole grid, scrubbed to scroll: cards reveal one after another
+      // as the user scrolls, instead of all firing at once.
+      const master = gsap.timeline({
+        scrollTrigger: {
+          trigger: gridRef.current,
+          start: 'top 80%',
+          end: 'bottom 40%',
+          scrub: 0.8,
+        },
+      });
+
+      // Progress line runs across the same scroll range
+      master.fromTo(trackRef.current, { scaleX: 0 }, { scaleX: 1, ease: 'none' }, 0);
+
+      const step = 1 / cards.length;
+
+      cards.forEach((card, i) => {
         const icon = card.querySelector('[data-el="icon"]');
         const image = card.querySelector('[data-el="image"]');
         const title = card.querySelector('[data-el="title"]');
         const index = card.querySelector('[data-el="index"]');
+        const start = i * step;
 
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 88%',
-            end: 'top 55%',
-            scrub: 0.6,
-          },
-        });
-
-        tl.fromTo(card, { opacity: 0, y: 70 }, { opacity: 1, y: 0, ease: 'power3.out' }, 0)
-          .fromTo(index, { opacity: 0, x: -12 }, { opacity: 1, x: 0, ease: 'power2.out' }, 0)
+        master
+          .fromTo(card, { opacity: 0, y: 70 }, { opacity: 1, y: 0, ease: 'power3.out', duration: step }, start)
+          .fromTo(
+            index,
+            { opacity: 0, x: -12 },
+            { opacity: 1, x: 0, ease: 'power2.out', duration: step },
+            start
+          )
           .fromTo(
             icon,
             { opacity: 0, scale: 0.4, rotate: -30 },
-            { opacity: 1, scale: 1, rotate: 0, ease: 'back.out(2)' },
-            0.05
+            { opacity: 1, scale: 1, rotate: 0, ease: 'back.out(2)', duration: step },
+            start + step * 0.15
           )
-          .fromTo(title, { opacity: 0, y: 24 }, { opacity: 1, y: 0, ease: 'power3.out' }, 0.1);
+          .fromTo(
+            title,
+            { opacity: 0, y: 24 },
+            { opacity: 1, y: 0, ease: 'power3.out', duration: step },
+            start + step * 0.25
+          );
 
-        // Continuous parallax drift on the image, independent of the reveal
+        // Continuous parallax drift on the image, independent of the sequential reveal
         if (image) {
           gsap.fromTo(
             image,
@@ -109,7 +114,7 @@ export default function Expertise({ services }: { services: Service[] | null }) 
         </div>
 
         {/* Grid Layout matching the design */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {services.map((s, i) => {
             const isPushedDown = i % 2 !== 0;
             const Icon = icons[i % icons.length];
