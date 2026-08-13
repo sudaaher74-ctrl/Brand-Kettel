@@ -11,10 +11,10 @@ export default function WhyBrandKettle() {
       <div className="pointer-events-none absolute inset-0 grain-soft opacity-60" aria-hidden />
 
       <div className="container-px relative w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20 items-center">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20 lg:items-stretch">
+
           {/* Left: Heading */}
-          <div>
+          <div className="flex lg:h-full lg:flex-col lg:justify-center">
             <SectionHeading
               eyebrow="Why Brand Kettle"
               title="An execution-focused partner you can trust"
