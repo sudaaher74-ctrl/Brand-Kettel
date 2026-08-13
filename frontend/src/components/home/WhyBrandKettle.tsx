@@ -1,43 +1,85 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { ChevronRight, Compass, BadgeCheck, Wallet, Users } from 'lucide-react';
 import { whyCards } from '@/lib/data';
-import SectionHeading from '@/components/ui/SectionHeading';
+
+const ICONS = [Compass, BadgeCheck, Wallet, Users];
 
 export default function WhyBrandKettle() {
   return (
-    <section className="relative overflow-hidden bg-background py-20 md:py-28 lg:py-[140px] flex items-center min-h-svh lg:min-h-0">
-      {/* soft architectural backdrop */}
-      <div className="pointer-events-none absolute inset-0 grain-soft opacity-60" aria-hidden />
-
+    <section className="relative overflow-hidden bg-[#FAF7F2] py-20 md:py-28">
       <div className="container-px relative w-full">
-        {/* Heading — centered */}
-        <SectionHeading
-          eyebrow="Why Brand Kettle"
-          title="An execution-focused partner you can trust"
-          align="center"
-          className="mb-12 lg:mb-16"
-        />
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-14 lg:gap-20 items-start">
 
-        {/* 4 Boxes */}
-        <div className="scene grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {whyCards.map((c, i) => (
-            <motion.div
-              key={c.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="rounded-2xl border border-line bg-surface/50 p-8 md:p-10 shadow-lg backdrop-blur-sm"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-accent/20 bg-surface-elevated font-medium text-accent shadow-sm">
-                {String(i + 1).padStart(2, '0')}
+          {/* Left: heading + copy + CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="block text-sm font-medium text-[#8a8378]">/ Why Brand Kettle?</span>
+
+            <h2 className="mt-4 font-display text-[44px] sm:text-[52px] font-bold leading-[1.05] text-[#1a1410]">
+              The Brand Kettle
+              <br />
+              Difference
+            </h2>
+
+            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-[#6b6459]">
+              For over a decade, we&apos;ve been a proud design &amp; build partner, earning and
+              maintaining the trust of developers, business owners and architects across India.
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-8">
+              <a
+                href="tel:+918959173799"
+                className="group inline-flex items-center gap-1.5 text-sm font-semibold text-[#8D7458]"
+              >
+                <span className="underline decoration-[#8D7458]/40 underline-offset-4">Call Now</span>
+                <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </a>
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-1.5 text-sm font-semibold text-[#8D7458]"
+              >
+                <span className="underline decoration-[#8D7458]/40 underline-offset-4">Book Free Estimate</span>
+                <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Right: 2x2 icon list with dividers */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 sm:divide-x sm:divide-[#e5e0d8]">
+            {[0, 1].map((col) => (
+              <div key={col} className="divide-y divide-[#e5e0d8] sm:px-10 first:pl-0">
+                {[whyCards[col * 2], whyCards[col * 2 + 1]].map((c, row) => {
+                  if (!c) return null;
+                  const Icon = ICONS[col * 2 + row];
+                  return (
+                    <motion.div
+                      key={c.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: '-60px' }}
+                      transition={{ duration: 0.7, delay: (col * 2 + row) * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                      className="flex gap-5 py-7 first:pt-0 last:pb-0"
+                    >
+                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#8D7458]/10">
+                        <Icon className="h-5 w-5 text-[#8D7458]" strokeWidth={1.75} />
+                      </div>
+                      <div>
+                        <h3 className="text-[17px] font-bold text-[#1a1410]">{c.title}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-[#6b6459]">{c.body}</p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
-              <h3 className="mt-8 text-2xl font-display text-ink leading-tight">{c.title}</h3>
-              <p className="mt-4 text-base text-ink-secondary leading-relaxed">{c.body}</p>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
