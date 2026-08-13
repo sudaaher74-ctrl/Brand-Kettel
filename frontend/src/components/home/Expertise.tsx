@@ -9,7 +9,6 @@ import {
   useMotionTemplate,
   type MotionValue,
 } from 'framer-motion';
-import { HardHat, Network, RefreshCw, ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -26,8 +25,6 @@ type Service = {
   description: string;
   image: string;
 };
-
-const ICONS = [HardHat, Network, RefreshCw];
 
 export default function Expertise({ services }: { services: Service[] | null }) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -71,21 +68,17 @@ export default function Expertise({ services }: { services: Service[] | null }) 
 
               {/* Left: text stack */}
               <div className="relative h-[280px] sm:h-[240px] lg:h-[320px] order-2 lg:order-1">
-                {items.map((s, i) => {
-                  const Icon = ICONS[i % ICONS.length];
-                  return (
-                    <TextPanel
-                      key={s.title}
-                      service={s}
-                      icon={Icon}
-                      index={i}
-                      total={total}
-                      progress={scrollYProgress}
-                      isActive={i === active}
-                      link={SERVICE_LINKS[i] ?? '/services'}
-                    />
-                  );
-                })}
+                {items.map((s, i) => (
+                  <TextPanel
+                    key={s.title}
+                    service={s}
+                    index={i}
+                    total={total}
+                    progress={scrollYProgress}
+                    isActive={i === active}
+                    link={SERVICE_LINKS[i] ?? '/services'}
+                  />
+                ))}
               </div>
 
               {/* Right: image — compact */}
@@ -138,7 +131,6 @@ function useCrossfade(progress: MotionValue<number>, index: number, total: numbe
 
 function TextPanel({
   service,
-  icon: Icon,
   index,
   total,
   progress,
@@ -146,7 +138,6 @@ function TextPanel({
   link,
 }: {
   service: Service;
-  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
   index: number;
   total: number;
   progress: MotionValue<number>;
@@ -161,15 +152,6 @@ function TextPanel({
       style={{ opacity, y, pointerEvents: isActive ? 'auto' : 'none' }}
       className="absolute inset-0 flex flex-col justify-center"
     >
-      {/* Icon: dark box matching reference */}
-      <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-surface-elevated shadow-lg">
-        <Icon className="w-6 h-6 text-ink" strokeWidth={1.5} />
-      </div>
-
-      <span className="font-display text-sm text-ink-muted tracking-widest mb-4 uppercase">
-        STEP {index + 1}
-      </span>
-
       <h3 className="text-3xl md:text-5xl text-ink mb-6 leading-tight font-display font-light">
         {service.title}
       </h3>
