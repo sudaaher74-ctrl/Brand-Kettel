@@ -56,28 +56,28 @@ export default function ConsultationForm({ theme = 'dark' }: { theme?: 'dark' | 
         animate={{ opacity: 1, scale: 1 }}
         className={
           isGold
-            ? 'grid place-items-center rounded-[28px] bg-black/10 p-10 text-center'
+            ? 'grid place-items-center rounded-[28px] bg-white/5 p-10 text-center'
             : 'grid place-items-center rounded-3xl bg-surface p-10 text-center border border-line'
         }
       >
         <div
           className={
             isGold
-              ? 'grid h-14 w-14 place-items-center rounded-full bg-black/20 text-2xl text-black'
+              ? 'grid h-14 w-14 place-items-center rounded-full bg-accent/20 text-2xl text-accent'
               : 'grid h-14 w-14 place-items-center rounded-full bg-accent/15 text-2xl text-accent'
           }
         >
           ✓
         </div>
-        <h3 className={isGold ? 'mt-5 font-display text-2xl font-semibold text-black' : 'mt-5 font-display text-2xl font-semibold text-ink'}>
+        <h3 className={isGold ? 'mt-5 font-display text-2xl font-semibold text-white' : 'mt-5 font-display text-2xl font-semibold text-ink'}>
           Request received
         </h3>
-        <p className={isGold ? 'mt-2 max-w-sm text-sm text-black/70' : 'mt-2 max-w-sm text-sm text-ink-muted'}>{message}</p>
+        <p className={isGold ? 'mt-2 max-w-sm text-sm text-white/60' : 'mt-2 max-w-sm text-sm text-ink-muted'}>{message}</p>
         <button
           onClick={() => setStatus('idle')}
           className={
             isGold
-              ? 'mt-6 inline-flex items-center gap-2 rounded-full bg-black px-6 py-3 text-sm font-semibold text-white'
+              ? 'mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-[#15120f]'
               : 'btn-ghost mt-6'
           }
         >
@@ -88,10 +88,10 @@ export default function ConsultationForm({ theme = 'dark' }: { theme?: 'dark' | 
   }
 
   const labelCls = isGold
-    ? 'text-sm font-medium text-black/70'
+    ? 'text-sm font-medium text-white/70'
     : 'text-xs font-semibold uppercase tracking-wider text-ink-muted';
   const fieldCls = isGold
-    ? 'rounded-2xl bg-black/10 px-5 py-4 text-[15px] text-black placeholder:text-black/45 outline-none transition focus:bg-black/15'
+    ? 'rounded-2xl bg-white/10 px-5 py-4 text-[15px] text-white placeholder:text-white/40 outline-none transition focus:bg-white/15'
     : 'field';
 
   return (
@@ -138,7 +138,7 @@ export default function ConsultationForm({ theme = 'dark' }: { theme?: 'dark' | 
       )}
 
       {status === 'error' && (
-        <p className={isGold ? 'text-sm text-red-700' : 'text-sm text-red-500'}>{message}</p>
+        <p className={isGold ? 'text-sm text-red-400' : 'text-sm text-red-500'}>{message}</p>
       )}
 
       <button
@@ -146,7 +146,7 @@ export default function ConsultationForm({ theme = 'dark' }: { theme?: 'dark' | 
         disabled={status === 'loading'}
         className={
           isGold
-            ? 'mt-1 inline-flex w-fit items-center gap-2 rounded-full bg-black px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-black/85 disabled:opacity-60'
+            ? 'mt-1 inline-flex w-fit items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-[#15120f] transition hover:bg-accent-secondary disabled:opacity-60'
             : 'btn-accent mt-1 w-full sm:w-auto'
         }
       >

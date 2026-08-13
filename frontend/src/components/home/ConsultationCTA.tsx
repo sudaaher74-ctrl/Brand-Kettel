@@ -52,8 +52,8 @@ export default function ConsultationCTA() {
                 </a>
               </div>
 
-              {/* Right: form on accent panel */}
-              <div className="rounded-[28px] bg-accent p-6 sm:p-8">
+              {/* Right: form on dark panel */}
+              <div className="rounded-[28px] bg-[#15120f] p-6 sm:p-8">
                 <ConsultationForm theme="gold" />
               </div>
             </div>
