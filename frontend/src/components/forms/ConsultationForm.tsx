@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Send } from 'lucide-react';
 
 const projectTypes = [
   'Office Interiors',
@@ -14,9 +15,10 @@ const projectTypes = [
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
-export default function ConsultationForm() {
+export default function ConsultationForm({ theme = 'dark' }: { theme?: 'dark' | 'gold' }) {
   const [status, setStatus] = useState<Status>('idle');
   const [message, setMessage] = useState('');
+  const isGold = theme === 'gold';
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -52,69 +54,104 @@ export default function ConsultationForm() {
       <motion.div
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="grid place-items-center rounded-3xl bg-surface p-10 text-center border border-line"
+        className={
+          isGold
+            ? 'grid place-items-center rounded-[28px] bg-black/10 p-10 text-center'
+            : 'grid place-items-center rounded-3xl bg-surface p-10 text-center border border-line'
+        }
       >
-        <div className="grid h-14 w-14 place-items-center rounded-full bg-accent/15 text-2xl text-accent">
+        <div
+          className={
+            isGold
+              ? 'grid h-14 w-14 place-items-center rounded-full bg-black/20 text-2xl text-black'
+              : 'grid h-14 w-14 place-items-center rounded-full bg-accent/15 text-2xl text-accent'
+          }
+        >
           ✓
         </div>
-        <h3 className="mt-5 font-display text-2xl font-semibold text-ink">Request received</h3>
-        <p className="mt-2 max-w-sm text-sm text-ink-muted">{message}</p>
-        <button onClick={() => setStatus('idle')} className="btn-ghost mt-6">
+        <h3 className={isGold ? 'mt-5 font-display text-2xl font-semibold text-black' : 'mt-5 font-display text-2xl font-semibold text-ink'}>
+          Request received
+        </h3>
+        <p className={isGold ? 'mt-2 max-w-sm text-sm text-black/70' : 'mt-2 max-w-sm text-sm text-ink-muted'}>{message}</p>
+        <button
+          onClick={() => setStatus('idle')}
+          className={
+            isGold
+              ? 'mt-6 inline-flex items-center gap-2 rounded-full bg-black px-6 py-3 text-sm font-semibold text-white'
+              : 'btn-ghost mt-6'
+          }
+        >
           Send another
         </button>
       </motion.div>
     );
   }
 
+  const labelCls = isGold
+    ? 'text-sm font-medium text-black/70'
+    : 'text-xs font-semibold uppercase tracking-wider text-ink-muted';
+  const fieldCls = isGold
+    ? 'rounded-2xl bg-black/10 px-5 py-4 text-[15px] text-black placeholder:text-black/45 outline-none transition focus:bg-black/15'
+    : 'field';
+
   return (
     <form onSubmit={onSubmit} className="grid gap-4">
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="grid gap-1.5">
-          <span className="text-xs font-semibold uppercase tracking-wider text-ink-muted">Name</span>
-          <input name="name" required placeholder="Your full name" className="field" />
-        </label>
-        <label className="grid gap-1.5">
-          <span className="text-xs font-semibold uppercase tracking-wider text-ink-muted">Phone</span>
-          <input name="phone" required type="tel" placeholder="+91 00000 00000" className="field" />
-        </label>
-      </div>
-
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="grid gap-1.5">
-          <span className="text-xs font-semibold uppercase tracking-wider text-ink-muted">Email</span>
-          <input name="email" required type="email" placeholder="you@company.com" className="field" />
-        </label>
-        <label className="grid gap-1.5">
-          <span className="text-xs font-semibold uppercase tracking-wider text-ink-muted">
-            Project Type
-          </span>
-          <select name="projectType" required defaultValue="" className="field">
-            <option value="" disabled>
-              Select a project type
-            </option>
-            {projectTypes.map((t) => (
-              <option key={t} value={t}>
-                {t}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-
       <label className="grid gap-1.5">
-        <span className="text-xs font-semibold uppercase tracking-wider text-ink-muted">Message</span>
-        <textarea
-          name="message"
-          rows={4}
-          placeholder="Tell us about your space, location and timeline…"
-          className="field resize-none"
-        />
+        <span className={labelCls}>{isGold ? 'Your name' : 'Name'}</span>
+        <input name="name" required placeholder="Name" className={fieldCls} />
       </label>
 
-      {status === 'error' && <p className="text-sm text-red-500">{message}</p>}
+      <label className="grid gap-1.5">
+        <span className={labelCls}>{isGold ? 'Your Phone' : 'Phone'}</span>
+        <input name="phone" required type="tel" placeholder="+91 00000 00000" className={fieldCls} />
+      </label>
 
-      <button type="submit" disabled={status === 'loading'} className="btn-accent mt-1 w-full sm:w-auto">
-        {status === 'loading' ? 'Sending…' : 'Schedule Consultation'}
+      <label className="grid gap-1.5">
+        <span className={labelCls}>Email</span>
+        <input name="email" required type="email" placeholder="you@company.com" className={fieldCls} />
+      </label>
+
+      <label className="grid gap-1.5">
+        <span className={labelCls}>{isGold ? 'Services' : 'Project Type'}</span>
+        <select name="projectType" required defaultValue="" className={fieldCls}>
+          <option value="" disabled>
+            {isGold ? 'Select a service' : 'Select a project type'}
+          </option>
+          {projectTypes.map((t) => (
+            <option key={t} value={t}>
+              {t}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      {!isGold && (
+        <label className="grid gap-1.5">
+          <span className={labelCls}>Message</span>
+          <textarea
+            name="message"
+            rows={4}
+            placeholder="Tell us about your space, location and timeline…"
+            className="field resize-none"
+          />
+        </label>
+      )}
+
+      {status === 'error' && (
+        <p className={isGold ? 'text-sm text-red-700' : 'text-sm text-red-500'}>{message}</p>
+      )}
+
+      <button
+        type="submit"
+        disabled={status === 'loading'}
+        className={
+          isGold
+            ? 'mt-1 inline-flex w-fit items-center gap-2 rounded-full bg-black px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-black/85 disabled:opacity-60'
+            : 'btn-accent mt-1 w-full sm:w-auto'
+        }
+      >
+        {isGold && <Send className="h-4 w-4" />}
+        {status === 'loading' ? 'Sending…' : isGold ? 'Submit' : 'Schedule Consultation'}
       </button>
     </form>
   );
