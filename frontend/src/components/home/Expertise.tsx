@@ -6,6 +6,7 @@ import {
   useScroll,
   useTransform,
   useMotionValueEvent,
+  useMotionTemplate,
   type MotionValue,
 } from 'framer-motion';
 import { HardHat, Network, RefreshCw, ArrowUpRight } from 'lucide-react';
@@ -129,7 +130,10 @@ function useCrossfade(progress: MotionValue<number>, index: number, total: numbe
     isLast ? 1 : end + overlap,
   ];
   const opacity = useTransform(progress, input, [isFirst ? 1 : 0, 1, 1, isLast ? 1 : 0]);
-  return { opacity, input };
+  // Vertical drift: each panel rises up from below into place, then exits upward.
+  const y = useTransform(progress, input, [isFirst ? 0 : 70, 0, 0, isLast ? 0 : -70]);
+  const blur = useTransform(progress, input, [isFirst ? 0 : 12, 0, 0, isLast ? 0 : 12]);
+  return { opacity, y, blur, input };
 }
 
 function TextPanel({
@@ -189,15 +193,16 @@ function ImagePanel({
   total: number;
   progress: MotionValue<number>;
 }) {
-  const { opacity } = useCrossfade(progress, index, total);
+  const { opacity, y, blur } = useCrossfade(progress, index, total);
   const segment = 1 / total;
   const start = index * segment;
   const end = start + segment;
   const scale = useTransform(progress, [start, end], [1.05, 1]);
+  const filter = useMotionTemplate`blur(${blur}px)`;
 
   return (
     <motion.div
-      style={{ opacity, scale }}
+      style={{ opacity, y, scale, filter }}
       className="absolute inset-0 overflow-hidden rounded-2xl shadow-xl will-change-transform"
     >
       <Image
