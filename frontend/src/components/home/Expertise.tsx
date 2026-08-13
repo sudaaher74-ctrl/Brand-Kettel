@@ -65,8 +65,8 @@ export default function Expertise({ services }: { services: Service[] | null }) 
         <div className="flex-1 flex items-center justify-center">
           {/* Constrained width */}
           <div className="w-full max-w-6xl px-8 md:px-12">
-            {/* Left-weighted split — keeps the image small */}
-            <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-center">
+            {/* Left-weighted split — keeps the image compact */}
+            <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-center">
 
               {/* Left: text stack */}
               <div className="relative h-[280px] sm:h-[240px] lg:h-[320px] order-2 lg:order-1">
@@ -87,8 +87,8 @@ export default function Expertise({ services }: { services: Service[] | null }) 
                 })}
               </div>
 
-              {/* Right: image — kept small */}
-              <div className="relative aspect-[4/3] w-full max-w-[280px] self-center justify-self-end order-1 lg:order-2">
+              {/* Right: image — compact */}
+              <div className="relative aspect-[4/3] w-full max-w-[420px] self-center justify-self-end order-1 lg:order-2">
                 {items.map((s, i) => (
                   <ImagePanel key={s.title} service={s} index={i} total={total} progress={scrollYProgress} />
                 ))}
