@@ -21,28 +21,28 @@ type Service = {
 
 const CARD_THEMES = [
   {
-    card: 'bg-white border border-[#e7e2d8]',
-    icon: 'text-[#1a1410]',
-    iconWrap: 'bg-[#f3efe6]',
-    title: 'text-[#1a1410]',
-    body: 'text-[#6b6459]',
-    pill: 'bg-white text-[#1a1410] border border-[#e7e2d8]',
+    card: 'bg-[#161310] border border-white/10',
+    icon: 'text-accent',
+    iconWrap: 'bg-white/8',
+    title: 'text-white',
+    body: 'text-white/55',
+    pill: 'bg-white text-[#141310]',
   },
   {
-    card: 'bg-[#8D7458]',
+    card: 'bg-accent',
     icon: 'text-[#1a1410]',
     iconWrap: 'bg-white/25',
     title: 'text-[#1a1410]',
     body: 'text-[#1a1410]/70',
-    pill: 'bg-[#8D7458] text-[#1a1410] border border-[#1a1410]/15',
+    pill: 'bg-[#1a1410] text-white',
   },
   {
-    card: 'bg-[#15120f]',
+    card: 'bg-[#1f1a14] border border-accent/20',
     icon: 'text-accent',
-    iconWrap: 'bg-white/10',
+    iconWrap: 'bg-white/8',
     title: 'text-white',
-    body: 'text-white/60',
-    pill: 'bg-[#15120f] text-white border border-white/15',
+    body: 'text-white/55',
+    pill: 'bg-white text-[#141310]',
   },
 ];
 
@@ -51,21 +51,21 @@ export default function Expertise({ services }: { services: Service[] | null }) 
   if (items.length === 0) return null;
 
   return (
-    <section className="relative overflow-hidden bg-[#F7F5EF] py-20 md:py-28">
+    <section className="relative overflow-hidden bg-background py-20 md:py-28">
       <div className="container-px">
         {/* Header */}
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-16 items-end">
           <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#dcd6c8] bg-white px-4 py-1.5 text-sm font-medium text-[#6b6459]">
-              <Asterisk className="h-4 w-4 text-[#8D7458]" />
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/5 px-4 py-1.5 text-sm font-medium text-white/70">
+              <Asterisk className="h-4 w-4 text-accent" />
               Our Expertise
             </span>
-            <h2 className="mt-5 font-display text-[34px] sm:text-[44px] font-bold leading-[1.1] text-[#1a1410]">
+            <h2 className="mt-5 font-display text-[34px] sm:text-[44px] font-bold leading-[1.1] text-white">
               Essential expertise for
               <br className="hidden sm:block" /> modern commercial spaces
             </h2>
           </div>
-          <p className="text-[15px] leading-relaxed text-[#6b6459] lg:pb-2">
+          <p className="text-[15px] leading-relaxed text-white/55 lg:pb-2">
             Explore our integrated design &amp; build approach — improving spaces, increasing
             footfall, and supporting long-term brand growth across every project we deliver.
           </p>
