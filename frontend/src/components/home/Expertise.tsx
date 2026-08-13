@@ -64,9 +64,9 @@ export default function Expertise({ services }: { services: Service[] | null }) 
         {/* Split content */}
         <div className="flex-1 flex items-center justify-center">
           {/* Constrained width — wider container to allow a larger image */}
-          <div className="w-full max-w-6xl px-8 md:px-12">
-            {/* 50 / 50 split — gives the image more room to expand */}
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-center">
+          <div className="w-full max-w-7xl px-8 md:px-12">
+            {/* Right-weighted split — gives the image more room to expand */}
+            <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-10 lg:gap-16 items-center">
 
               {/* Left: text stack */}
               <div className="relative h-[280px] sm:h-[240px] lg:h-[320px] order-2 lg:order-1">
@@ -87,8 +87,8 @@ export default function Expertise({ services }: { services: Service[] | null }) 
                 })}
               </div>
 
-              {/* Right: card-in-card layout */}
-              <div className="relative aspect-[4/3] w-full max-w-[600px] self-center justify-self-end order-1 lg:order-2">
+              {/* Right: image */}
+              <div className="relative aspect-[4/3] w-full self-center justify-self-end order-1 lg:order-2">
                 {items.map((s, i) => (
                   <ImagePanel key={s.title} service={s} index={i} total={total} progress={scrollYProgress} />
                 ))}
@@ -178,13 +178,6 @@ function TextPanel({
   );
 }
 
-// Map backgrounds to indices so each step has a distinct card background
-const CARD_BGS = [
-  'bg-gradient-to-br from-surface to-surface-elevated',
-  'bg-gradient-to-br from-surface-elevated to-surface',
-  'bg-gradient-to-tr from-surface to-surface-elevated'
-];
-
 function ImagePanel({
   service,
   index,
@@ -201,28 +194,20 @@ function ImagePanel({
   const start = index * segment;
   const end = start + segment;
   const scale = useTransform(progress, [start, end], [1.05, 1]);
-  
-  const bgClass = CARD_BGS[index % CARD_BGS.length];
 
   return (
-    <motion.div style={{ opacity }} className="absolute inset-0 p-6 md:p-10">
-      {/* Outer Card Background */}
-      <div className={`absolute inset-0 rounded-3xl ${bgClass} opacity-80 border border-line shadow-2xl`}></div>
-      
-      {/* Inner Image Container (Floating) */}
-      <motion.div 
-        style={{ scale }} 
-        className="relative h-full w-full rounded-2xl overflow-hidden shadow-xl will-change-transform border border-line/50"
-      >
-        <Image
-          src={service.image || `https://placehold.co/1200x1200/131317/8D7458?text=${service.title.split(' ').join('+')}`}
-          alt={service.title}
-          fill
-          sizes="(max-width: 1024px) 100vw, 50vw"
-          className="object-cover"
-          priority={false}
-        />
-      </motion.div>
+    <motion.div
+      style={{ opacity, scale }}
+      className="absolute inset-0 overflow-hidden rounded-2xl shadow-xl will-change-transform"
+    >
+      <Image
+        src={service.image || `https://placehold.co/1200x1200/131317/8D7458?text=${service.title.split(' ').join('+')}`}
+        alt={service.title}
+        fill
+        sizes="(max-width: 1024px) 100vw, 60vw"
+        className="object-cover"
+        priority={false}
+      />
     </motion.div>
   );
 }
