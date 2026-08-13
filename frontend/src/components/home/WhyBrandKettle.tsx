@@ -1,8 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { ChevronRight, Compass, BadgeCheck, Wallet, Users } from 'lucide-react';
+import { Compass, BadgeCheck, Wallet, Users } from 'lucide-react';
 import { whyCards } from '@/lib/data';
 
 const ICONS = [Compass, BadgeCheck, Wallet, Users];
@@ -27,28 +26,6 @@ export default function WhyBrandKettle() {
               <br />
               Difference
             </h2>
-
-            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-[#6b6459]">
-              For over a decade, we&apos;ve been a proud design &amp; build partner, earning and
-              maintaining the trust of developers, business owners and architects across India.
-            </p>
-
-            <div className="mt-8 flex flex-wrap items-center gap-8">
-              <a
-                href="tel:+918959173799"
-                className="group inline-flex items-center gap-1.5 text-sm font-semibold text-[#8D7458]"
-              >
-                <span className="underline decoration-[#8D7458]/40 underline-offset-4">Call Now</span>
-                <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </a>
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-1.5 text-sm font-semibold text-[#8D7458]"
-              >
-                <span className="underline decoration-[#8D7458]/40 underline-offset-4">Book Free Estimate</span>
-                <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </Link>
-            </div>
           </motion.div>
 
           {/* Right: 2x2 icon list with dividers */}
