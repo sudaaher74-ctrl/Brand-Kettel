@@ -54,21 +54,14 @@ export default function Expertise({ services }: { services: Service[] | null }) 
     <section className="relative overflow-hidden bg-background py-20 md:py-28">
       <div className="container-px">
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-16 items-end">
-          <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/5 px-4 py-1.5 text-sm font-medium text-white/70">
-              <Asterisk className="h-4 w-4 text-accent" />
-              Our Expertise
-            </span>
-            <h2 className="mt-5 font-display text-[34px] sm:text-[44px] font-bold leading-[1.1] text-white">
-              Essential expertise for
-              <br className="hidden sm:block" /> modern commercial spaces
-            </h2>
-          </div>
-          <p className="text-[15px] leading-relaxed text-white/55 lg:pb-2">
-            Explore our integrated design &amp; build approach — improving spaces, increasing
-            footfall, and supporting long-term brand growth across every project we deliver.
-          </p>
+        <div className="flex flex-col items-center text-center">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/5 px-4 py-1.5 text-sm font-medium text-white/70">
+            <Asterisk className="h-4 w-4 text-accent" />
+            Our Expertise
+          </span>
+          <h2 className="mt-5 max-w-2xl font-display text-[34px] sm:text-[44px] font-bold leading-[1.1] text-white">
+            Essential expertise for modern commercial spaces
+          </h2>
         </div>
 
         {/* Cards */}
