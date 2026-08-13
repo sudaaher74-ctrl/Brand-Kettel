@@ -1,23 +1,16 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useMotionValueEvent,
-  useMotionTemplate,
-  type MotionValue,
-} from 'framer-motion';
-import Image from 'next/image';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { Asterisk, Briefcase, TrendingUp, Handshake, ArrowUpRight } from 'lucide-react';
 
-// Link each service to its page in order of appearance
 const SERVICE_LINKS = [
   '/commercial-fit-outs',
   '/jewellery-showrooms',
   '/residential-interiors',
 ];
+
+const ICONS = [Briefcase, TrendingUp, Handshake];
 
 type Service = {
   tag: string;
@@ -26,175 +19,93 @@ type Service = {
   image: string;
 };
 
+const CARD_THEMES = [
+  {
+    card: 'bg-white border border-[#e7e2d8]',
+    icon: 'text-[#1a1410]',
+    iconWrap: 'bg-[#f3efe6]',
+    title: 'text-[#1a1410]',
+    body: 'text-[#6b6459]',
+    pill: 'bg-white text-[#1a1410] border border-[#e7e2d8]',
+  },
+  {
+    card: 'bg-[#8D7458]',
+    icon: 'text-[#1a1410]',
+    iconWrap: 'bg-white/25',
+    title: 'text-[#1a1410]',
+    body: 'text-[#1a1410]/70',
+    pill: 'bg-[#8D7458] text-[#1a1410] border border-[#1a1410]/15',
+  },
+  {
+    card: 'bg-[#15120f]',
+    icon: 'text-accent',
+    iconWrap: 'bg-white/10',
+    title: 'text-white',
+    body: 'text-white/60',
+    pill: 'bg-[#15120f] text-white border border-white/15',
+  },
+];
+
 export default function Expertise({ services }: { services: Service[] | null }) {
-  const sectionRef = useRef<HTMLElement>(null);
   const items = (services ?? []).slice(0, 3);
-  const total = items.length;
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end end'],
-  });
-
-  const [active, setActive] = useState(0);
-  useMotionValueEvent(scrollYProgress, 'change', (v) => {
-    setActive(Math.min(total - 1, Math.max(0, Math.floor(v * total))));
-  });
-
-  if (total === 0) return null;
+  if (items.length === 0) return null;
 
   return (
-    <section ref={sectionRef} className="relative bg-background" style={{ height: `${total * 100}vh` }}>
-      <div className="sticky top-0 h-svh w-full flex flex-col overflow-hidden">
-
+    <section className="relative overflow-hidden bg-[#F7F5EF] py-20 md:py-28">
+      <div className="container-px">
         {/* Header */}
-        <div className="pt-12 md:pt-16 shrink-0">
-          <div className="container-px flex items-center justify-between">
-            <span className="uppercase tracking-[0.3em] text-accent text-xs font-semibold">
-              O u r &nbsp; E x p e r t i s e
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-16 items-end">
+          <div>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#dcd6c8] bg-white px-4 py-1.5 text-sm font-medium text-[#6b6459]">
+              <Asterisk className="h-4 w-4 text-[#8D7458]" />
+              Our Expertise
             </span>
-            <span className="font-display text-sm text-ink-muted tracking-widest tabular-nums">
-              {String(active + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-            </span>
+            <h2 className="mt-5 font-display text-[34px] sm:text-[44px] font-bold leading-[1.1] text-[#1a1410]">
+              Essential expertise for
+              <br className="hidden sm:block" /> modern commercial spaces
+            </h2>
           </div>
+          <p className="text-[15px] leading-relaxed text-[#6b6459] lg:pb-2">
+            Explore our integrated design &amp; build approach — improving spaces, increasing
+            footfall, and supporting long-term brand growth across every project we deliver.
+          </p>
         </div>
 
-        {/* Split content */}
-        <div className="flex-1 flex items-center justify-center">
-          {/* Constrained width */}
-          <div className="w-full max-w-6xl px-8 md:px-12">
-            {/* Left-weighted split — keeps the image compact */}
-            <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-center">
+        {/* Cards */}
+        <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+          {items.map((s, i) => {
+            const Icon = ICONS[i % ICONS.length];
+            const theme = CARD_THEMES[i % CARD_THEMES.length];
+            return (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.06, y: -10 }}
+                className={`group relative z-0 hover:z-10 rounded-[28px] p-8 shadow-sm transition-shadow duration-300 hover:shadow-2xl ${theme.card}`}
+                style={{ transformOrigin: 'center bottom' }}
+              >
+                <div className={`grid h-14 w-14 place-items-center rounded-2xl ${theme.iconWrap}`}>
+                  <Icon className={`h-6 w-6 ${theme.icon}`} strokeWidth={1.75} />
+                </div>
 
-              {/* Left: text stack */}
-              <div className="relative h-[280px] sm:h-[240px] lg:h-[320px] order-2 lg:order-1">
-                {items.map((s, i) => (
-                  <TextPanel
-                    key={s.title}
-                    service={s}
-                    index={i}
-                    total={total}
-                    progress={scrollYProgress}
-                    isActive={i === active}
-                    link={SERVICE_LINKS[i] ?? '/services'}
-                  />
-                ))}
-              </div>
+                <h3 className={`mt-8 text-xl font-bold leading-snug ${theme.title}`}>{s.title}</h3>
+                <p className={`mt-3 text-sm leading-relaxed ${theme.body}`}>{s.description}</p>
 
-              {/* Right: image — compact */}
-              <div className="relative aspect-[4/3] w-full max-w-[420px] self-center justify-self-end order-1 lg:order-2">
-                {items.map((s, i) => (
-                  <ImagePanel key={s.title} service={s} index={i} total={total} progress={scrollYProgress} />
-                ))}
-              </div>
-            </div>
-
-            {/* Progress dots — centred under the grid */}
-            <div className="mt-10 lg:mt-12 flex items-center justify-center gap-3">
-              {items.map((_, i) => (
-                <span
-                  key={i}
-                  className={`block rounded-full transition-all duration-500 ${
-                    i === active ? 'h-1.5 w-8 bg-accent' : 'h-1.5 w-1.5 bg-ink-muted/40'
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
+                <Link
+                  href={SERVICE_LINKS[i] ?? '/services'}
+                  className={`relative z-10 mt-8 inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-semibold shadow-md transition-transform group-hover:translate-y-0.5 ${theme.pill}`}
+                >
+                  Explore More
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
-  );
-}
-
-function useCrossfade(progress: MotionValue<number>, index: number, total: number) {
-  const segment = 1 / total;
-  const start = index * segment;
-  const end = start + segment;
-  const overlap = segment * 0.15;
-
-  const isFirst = index === 0;
-  const isLast = index === total - 1;
-
-  const input = [
-    isFirst ? 0 : start - overlap,
-    isFirst ? start : start + overlap,
-    isLast ? end : end - overlap,
-    isLast ? 1 : end + overlap,
-  ];
-  const opacity = useTransform(progress, input, [isFirst ? 1 : 0, 1, 1, isLast ? 1 : 0]);
-  // Vertical drift: each panel rises up from below into place, then exits upward.
-  const y = useTransform(progress, input, [isFirst ? 0 : 70, 0, 0, isLast ? 0 : -70]);
-  const blur = useTransform(progress, input, [isFirst ? 0 : 12, 0, 0, isLast ? 0 : 12]);
-  return { opacity, y, blur, input };
-}
-
-function TextPanel({
-  service,
-  index,
-  total,
-  progress,
-  isActive,
-  link,
-}: {
-  service: Service;
-  index: number;
-  total: number;
-  progress: MotionValue<number>;
-  isActive: boolean;
-  link: string;
-}) {
-  const { opacity, input } = useCrossfade(progress, index, total);
-  const y = useTransform(progress, input, [24, 0, 0, -24]);
-
-  return (
-    <motion.div
-      style={{ opacity, y, pointerEvents: isActive ? 'auto' : 'none' }}
-      className="absolute inset-0 flex flex-col justify-center"
-    >
-      <h3 className="text-3xl md:text-5xl text-ink mb-6 leading-tight font-display font-light">
-        {service.title}
-      </h3>
-
-      <div
-        className="text-base md:text-lg text-ink-secondary leading-relaxed max-w-lg mb-8 prose prose-p:text-ink-secondary prose-li:text-ink-secondary"
-        dangerouslySetInnerHTML={{ __html: service.description }}
-      />
-    </motion.div>
-  );
-}
-
-function ImagePanel({
-  service,
-  index,
-  total,
-  progress,
-}: {
-  service: Service;
-  index: number;
-  total: number;
-  progress: MotionValue<number>;
-}) {
-  const { opacity, y, blur } = useCrossfade(progress, index, total);
-  const segment = 1 / total;
-  const start = index * segment;
-  const end = start + segment;
-  const scale = useTransform(progress, [start, end], [1.05, 1]);
-  const filter = useMotionTemplate`blur(${blur}px)`;
-
-  return (
-    <motion.div
-      style={{ opacity, y, scale, filter }}
-      className="absolute inset-0 overflow-hidden rounded-2xl shadow-xl will-change-transform"
-    >
-      <Image
-        src={service.image || `https://placehold.co/1200x1200/131317/8D7458?text=${service.title.split(' ').join('+')}`}
-        alt={service.title}
-        fill
-        sizes="(max-width: 1024px) 100vw, 60vw"
-        className="object-cover"
-        priority={false}
-      />
-    </motion.div>
   );
 }
