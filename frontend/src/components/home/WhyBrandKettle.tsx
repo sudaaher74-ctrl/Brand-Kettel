@@ -15,7 +15,6 @@ export default function WhyBrandKettle() {
         <SectionHeading
           eyebrow="Why Brand Kettle"
           title="An execution-focused partner you can trust"
-          subtitle="Four reasons developers, business owners and architects choose us for their commercial spaces."
           align="center"
           className="mb-12 lg:mb-16"
         />
