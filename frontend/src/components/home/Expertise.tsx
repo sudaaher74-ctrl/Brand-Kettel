@@ -23,20 +23,20 @@ export default function Expertise({ services }: { services: Service[] | null }) 
   if (items.length === 0) return null;
 
   return (
-    <section className="relative overflow-hidden bg-white py-20 md:py-28">
+    <section className="relative overflow-hidden bg-background py-20 md:py-28">
       <div className="container-px">
         {/* Header */}
         <div className="flex items-start justify-between">
-          <span className="max-w-[140px] text-[11px] font-semibold uppercase leading-relaxed tracking-wide text-[#8a8378]">
+          <span className="max-w-[140px] text-[11px] font-semibold uppercase leading-relaxed tracking-wide text-white/45">
             Doing our job from the bottom of our hearts
           </span>
-          <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-[#8a8378]">
+          <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-white/45">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
             Brand Kettle
           </span>
         </div>
 
-        <h2 className="-mt-2 font-display leading-[0.9] text-[#1a1410]">
+        <h2 className="-mt-2 font-display leading-[0.9] text-white">
           <span className="block text-[15vw] sm:text-[9vw] lg:text-[6.5vw] font-light tracking-tight">OUR</span>
           <span className="-mt-2 sm:-mt-4 block text-[15vw] sm:text-[9vw] lg:text-[6.5vw] font-extrabold tracking-tight">
             EXPERTISE
@@ -83,12 +83,12 @@ function Row({ service, index, link }: { service: Service; index: number; link: 
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="flex items-center gap-3">
-          <h3 className="text-2xl font-bold uppercase tracking-wide text-[#1a1410]">
+          <h3 className="text-2xl font-bold uppercase tracking-wide text-white">
             {service.title}
           </h3>
-          <span className="h-px flex-1 max-w-[60px] bg-[#e5e0d8]" />
+          <span className="h-px flex-1 max-w-[60px] bg-white/15" />
         </div>
-        <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-[#6b6459]">
+        <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-white/55">
           {service.description}
         </p>
         <Link
