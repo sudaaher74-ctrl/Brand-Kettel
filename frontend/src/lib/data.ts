@@ -157,13 +157,13 @@ export const services: Service[] = [
     title: 'Commercial Interiors',
     tag: 'Core',
     description: 'Workplaces, headquarters and corporate environments designed for performance.',
-    image: '/imgs/commercial/work co workspace.jpg',
+    image: '/imgs/commercial/experties1.jpeg',
   },
   {
     title: 'Retail Stores',
     tag: 'Core',
     description: 'Conversion-focused retail experiences that elevate your brand at every touchpoint.',
-    image: '/imgs/commercial/p080_111.jpg',
+    image: '/imgs/commercial/experties2.jpeg',
   },
   {
     title: 'Jewellery Showrooms',
