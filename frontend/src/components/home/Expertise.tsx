@@ -1,16 +1,15 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
-import { Asterisk, Briefcase, TrendingUp, Handshake, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 const SERVICE_LINKS = [
   '/commercial-fit-outs',
   '/jewellery-showrooms',
   '/residential-interiors',
 ];
-
-const ICONS = [Briefcase, TrendingUp, Handshake];
 
 type Service = {
   tag: string;
@@ -19,86 +18,113 @@ type Service = {
   image: string;
 };
 
-const CARD_THEMES = [
-  {
-    card: 'bg-[#161310] border border-white/10',
-    icon: 'text-accent',
-    iconWrap: 'bg-white/8',
-    title: 'text-white',
-    body: 'text-white/55',
-    pill: 'bg-white text-[#141310]',
-  },
-  {
-    card: 'bg-accent',
-    icon: 'text-[#1a1410]',
-    iconWrap: 'bg-white/25',
-    title: 'text-[#1a1410]',
-    body: 'text-[#1a1410]/70',
-    pill: 'bg-[#1a1410] text-white',
-  },
-  {
-    card: 'bg-[#1f1a14] border border-accent/20',
-    icon: 'text-accent',
-    iconWrap: 'bg-white/8',
-    title: 'text-white',
-    body: 'text-white/55',
-    pill: 'bg-white text-[#141310]',
-  },
-];
-
 export default function Expertise({ services }: { services: Service[] | null }) {
   const items = (services ?? []).slice(0, 3);
   if (items.length === 0) return null;
 
   return (
-    <section className="relative overflow-hidden bg-background py-20 md:py-28">
+    <section className="relative overflow-hidden bg-white py-20 md:py-28">
       <div className="container-px">
         {/* Header */}
-        <div className="flex flex-col items-center text-center">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/5 px-4 py-1.5 text-sm font-medium text-white/70">
-            <Asterisk className="h-4 w-4 text-accent" />
-            Our Expertise
+        <div className="flex items-start justify-between">
+          <span className="max-w-[140px] text-[11px] font-semibold uppercase leading-relaxed tracking-wide text-[#8a8378]">
+            Doing our job from the bottom of our hearts
           </span>
-          <h2 className="mt-5 max-w-2xl font-display text-[34px] sm:text-[44px] font-bold leading-[1.1] text-white">
-            Essential expertise for modern commercial spaces
-          </h2>
+          <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-[#8a8378]">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            Brand Kettle
+          </span>
         </div>
 
-        {/* Cards */}
-        <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-          {items.map((s, i) => {
-            const Icon = ICONS[i % ICONS.length];
-            const theme = CARD_THEMES[i % CARD_THEMES.length];
-            return (
-              <motion.div
-                key={s.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ scale: 1.06, y: -10 }}
-                className={`group relative z-0 hover:z-10 rounded-[28px] p-8 shadow-sm transition-shadow duration-300 hover:shadow-2xl ${theme.card}`}
-                style={{ transformOrigin: 'center bottom' }}
-              >
-                <div className={`grid h-14 w-14 place-items-center rounded-2xl ${theme.iconWrap}`}>
-                  <Icon className={`h-6 w-6 ${theme.icon}`} strokeWidth={1.75} />
-                </div>
+        <h2 className="-mt-2 font-display leading-[0.9] text-[#1a1410]">
+          <span className="block text-[15vw] sm:text-[9vw] lg:text-[6.5vw] font-light tracking-tight">OUR</span>
+          <span className="-mt-2 sm:-mt-4 block text-[15vw] sm:text-[9vw] lg:text-[6.5vw] font-extrabold tracking-tight">
+            EXPERTISE
+          </span>
+        </h2>
 
-                <h3 className={`mt-8 text-xl font-bold leading-snug ${theme.title}`}>{s.title}</h3>
-                <p className={`mt-3 text-sm leading-relaxed ${theme.body}`}>{s.description}</p>
+        {/* Zig-zag rows */}
+        <div className="mt-16 space-y-16 sm:mt-20 sm:space-y-20">
+          {items.map((s, i) => (
+            <Row key={s.title} service={s} index={i} link={SERVICE_LINKS[i] ?? '/services'} />
+          ))}
+        </div>
 
-                <Link
-                  href={SERVICE_LINKS[i] ?? '/services'}
-                  className={`relative z-10 mt-8 inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-semibold shadow-md transition-transform group-hover:translate-y-0.5 ${theme.pill}`}
-                >
-                  Explore More
-                  <ArrowUpRight className="h-4 w-4" />
-                </Link>
-              </motion.div>
-            );
-          })}
+        {/* CTA */}
+        <div className="mt-16 sm:mt-20">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-4 text-sm font-semibold uppercase tracking-wide text-[#1a1410] transition-transform hover:-translate-y-0.5"
+          >
+            Get a Free Estimate
+            <ArrowUpRight className="h-4 w-4" />
+          </Link>
         </div>
       </div>
     </section>
+  );
+}
+
+function Row({ service, index, link }: { service: Service; index: number; link: string }) {
+  const reversed = index % 2 === 1;
+  const num = String(index + 1).padStart(2, '0');
+
+  return (
+    <div
+      className={`grid grid-cols-1 items-center gap-8 sm:gap-12 md:grid-cols-2 ${
+        reversed ? 'md:[&>*:first-child]:order-2' : ''
+      }`}
+    >
+      {/* Text */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="flex items-center gap-3">
+          <h3 className="text-2xl font-bold uppercase tracking-wide text-[#1a1410]">
+            {service.title}
+          </h3>
+          <span className="h-px flex-1 max-w-[60px] bg-[#e5e0d8]" />
+        </div>
+        <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-[#6b6459]">
+          {service.description}
+        </p>
+        <Link
+          href={link}
+          className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[#8D7458] underline decoration-[#8D7458]/40 underline-offset-4"
+        >
+          Learn more
+          <ArrowUpRight className="h-4 w-4" />
+        </Link>
+      </motion.div>
+
+      {/* Image */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        className="relative"
+      >
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+          <Image
+            src={service.image}
+            alt={service.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+          />
+        </div>
+        <span
+          className={`absolute ${
+            reversed ? 'left-4 top-4' : 'right-4 top-4'
+          } font-display text-3xl font-light text-white drop-shadow-md sm:text-4xl`}
+        >
+          {num}
+        </span>
+      </motion.div>
+    </div>
   );
 }
