@@ -4,63 +4,69 @@ import { motion } from 'framer-motion';
 
 export default function Welcome() {
   return (
-    <section className="relative overflow-hidden bg-surface py-[140px] flex flex-col items-center">
-      
-      {/* Down Arrow */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="mb-12 sm:mb-16"
-      >
-        <svg 
-          className="w-6 h-6 text-ink-muted" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24" 
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </motion.div>
+    <section className="relative overflow-hidden bg-surface py-24 md:py-36">
 
-      <div className="container-px text-center flex flex-col items-center">
-        
-        {/* Main Heading */}
-        <motion.h2 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-section text-ink mb-10"
-        >
-          Welcome to Brand Kettle
-        </motion.h2>
+      {/* Top gold line */}
+      <div className="container-px mb-16 md:mb-24">
+        <div className="gold-line" />
+      </div>
 
-        {/* First Paragraph */}
-        <motion.p 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="text-body-main max-w-[700px] mb-8"
-        >
-          At Brand Kettle BuildSpaces, we bring together design, manufacturing and execution to create spaces that are built with intent. From retail stores and jewellery showrooms to workplaces and residences, we work closely with our clients to turn ideas into spaces that feel effortless, function beautifully and are made to last.
-        </motion.p>
+      <div className="container-px">
 
-        {/* Second Paragraph */}
-        <motion.p 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="text-body-main max-w-[700px]"
-        >
-          Everything&apos;s born from the love of design. The solid vision, worked with the craftsmanship of those who know how to turn a concept into a piece of artwork.
-        </motion.p>
+        {/* Manifesto grid */}
+        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr_auto] gap-8 md:gap-16 items-start">
+
+          {/* Left: Index label */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="hidden md:flex flex-col items-start gap-3 pt-3"
+          >
+            <span className="font-display text-[72px] font-light leading-none text-accent/20 select-none">01</span>
+            <span className="text-[10px] uppercase tracking-[0.3em] text-ink-muted font-light mt-2">Studio</span>
+          </motion.div>
+
+          {/* Centre: Big statement headline */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center md:text-left"
+          >
+            <h2 className="font-display font-light text-white leading-[1.0] tracking-[0.02em] text-[44px] md:text-[64px] lg:text-[80px]">
+              Design.<br />
+              Build.<br />
+              <span className="text-accent italic">Deliver.</span>
+            </h2>
+          </motion.div>
+
+          {/* Right: Body copy */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="md:max-w-[320px] pt-3"
+          >
+            <p className="text-body-main mb-6">
+              At Brand Kettle BuildSpaces, we bring together design, manufacturing and execution to create spaces built with intent — from retail stores and jewellery showrooms to workplaces and residences.
+            </p>
+            <p className="text-small text-ink-muted">
+              Everything is born from the love of design. The solid vision, worked with the craftsmanship of those who know how to turn a concept into a piece of artwork.
+            </p>
+          </motion.div>
+        </div>
 
       </div>
+
+      {/* Bottom gold line */}
+      <div className="container-px mt-16 md:mt-24">
+        <div className="gold-line" />
+      </div>
+
     </section>
   );
 }

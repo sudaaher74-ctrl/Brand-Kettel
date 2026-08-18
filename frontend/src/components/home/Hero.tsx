@@ -147,34 +147,62 @@ export default function Hero() {
       {/* Stronger centre vignette to ensure text legibility */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-transparent z-10 pointer-events-none" />
 
+      {/* Vertical SCROLL DOWN — left */}
+      <div className="absolute left-5 md:left-8 top-1/2 -translate-y-1/2 z-20 hidden md:flex flex-col items-center gap-3 pointer-events-none">
+        <span
+          style={{ writingMode: 'vertical-rl', letterSpacing: '0.25em' }}
+          className="text-[10px] uppercase font-light text-white/40 tracking-[0.3em] rotate-180 select-none"
+        >
+          Scroll Down
+        </span>
+        <span className="h-16 w-px bg-gradient-to-b from-white/0 to-white/30" />
+      </div>
+
+      {/* Vertical SCROLL DOWN — right */}
+      <div className="absolute right-5 md:right-8 top-1/2 -translate-y-1/2 z-20 hidden md:flex flex-col items-center gap-3 pointer-events-none">
+        <span className="h-16 w-px bg-gradient-to-b from-white/0 to-white/30" />
+        <span
+          style={{ writingMode: 'vertical-rl', letterSpacing: '0.25em' }}
+          className="text-[10px] uppercase font-light text-white/40 tracking-[0.3em] select-none"
+        >
+          Scroll Down
+        </span>
+      </div>
+
       {/* Hero Headline + CTA — z-20 so it sits above overlays */}
       <div
         ref={headlineRef}
         className="absolute inset-x-0 top-0 z-20 flex h-full flex-col items-center justify-center px-5 text-center"
       >
-        <span className="eyebrow justify-center text-white/80 mb-6">
+        <span className="eyebrow justify-center text-white/70 mb-8">
           <span className="h-px w-6 bg-accent" />
           Commercial Fit-Out &amp; Interior Design
         </span>
 
-        <h1 className="text-hero max-w-4xl">
-          Spaces That{' '}
-          <span className="text-accent font-light italic">Inspire</span>{' '}
-          Growth
+        <h1 className="font-display font-light tracking-[0.03em] leading-[1.05] text-white text-[40px] md:text-[58px] lg:text-[72px] max-w-4xl">
+          Spaces That Feel
+          <br />
+          <span className="text-accent italic font-light">Like Dreams.</span>
         </h1>
 
-        <p className="text-subtitle mt-6 max-w-xl">
+        <p className="text-subtitle mt-8 max-w-xl text-white/60">
           Premium design, build &amp; furnish solutions for offices, retail stores,
           jewellery showrooms and hospitality across India.
         </p>
 
-        <div className="mt-10 flex flex-wrap gap-4 justify-center">
+        <div className="mt-12 flex flex-wrap gap-4 justify-center">
           <Link href="/portfolio" className="btn">
             View Our Work
           </Link>
           <Link href="/contact" className="btn">
             Start a Project
           </Link>
+        </div>
+
+        {/* Bottom scroll cue */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none">
+          <span className="text-[10px] uppercase tracking-[0.3em] text-white/30 font-light">Scroll</span>
+          <span className="w-px h-10 bg-gradient-to-b from-white/30 to-transparent" />
         </div>
       </div>
     </section>
