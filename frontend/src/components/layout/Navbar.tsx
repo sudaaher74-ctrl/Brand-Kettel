@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { navLinks, servicesDropdown } from '@/lib/data';
@@ -45,14 +46,16 @@ export default function Navbar() {
             )}
           >
             {/* Logo */}
-            <Link href="/" className="group flex items-center gap-2.5" onClick={() => setOpen(false)}>
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-accent text-sm font-semibold text-[#0a0a0a]">
-                BK
-              </span>
-              <span className="hidden flex-col leading-none sm:flex">
-                <span className="font-display text-lg font-light text-ink uppercase tracking-[0.28em]">Brand Kettle</span>
-                <span className="font-sans text-[10px] uppercase tracking-[0.55em] text-ink-muted font-light">Interiors</span>
-              </span>
+            <Link href="/" className="group flex items-center" onClick={() => setOpen(false)}>
+              <Image
+                src="/logo.png"
+                alt="Brand Kettle BuildSpaces"
+                width={160}
+                height={52}
+                className="h-10 w-auto object-contain"
+                style={{ filter: 'invert(1) brightness(1)' }}
+                priority
+              />
             </Link>
 
             {/* Desktop nav */}
