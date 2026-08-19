@@ -43,50 +43,39 @@ const PROJECTS = [
 
 export default function ProjectScrollReveal() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const stackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const panels = gsap.utils.toArray<HTMLElement>('.psrv-panel');
+      const panels = gsap.utils.toArray<HTMLElement>('.stacked-panel');
+      const totalPanels = panels.length;
 
-      panels.forEach((panel) => {
-        const textEl = panel.querySelector<HTMLElement>('.psrv-text');
-        const imgEl = panel.querySelector<HTMLElement>('.psrv-img');
-        const eyebrow = panel.querySelector<HTMLElement>('.psrv-eyebrow');
-        const heading = panel.querySelector<HTMLElement>('.psrv-heading');
-        const desc = panel.querySelector<HTMLElement>('.psrv-desc');
-        const btns = panel.querySelector<HTMLElement>('.psrv-btns');
+      // Pin the stack container for (n-1) full viewport heights
+      ScrollTrigger.create({
+        trigger: stackRef.current,
+        start: 'top top',
+        end: () => `+=${(totalPanels - 1) * window.innerHeight}`,
+        pin: true,
+        anticipatePin: 1,
+        pinSpacing: true,
+      });
 
-        const tl = gsap.timeline({
+      // Each panel (except the first) starts below viewport and slides up
+      panels.forEach((panel, i) => {
+        if (i === 0) return;
+
+        gsap.set(panel, { yPercent: 100 });
+
+        gsap.to(panel, {
+          yPercent: 0,
+          ease: 'none',
           scrollTrigger: {
-            trigger: panel,
-            start: 'top top',
-            end: '+=200%',
-            pin: true,
+            trigger: stackRef.current,
+            start: () => `top+=${(i - 1) * window.innerHeight} top`,
+            end: () => `top+=${i * window.innerHeight} top`,
             scrub: 1,
-            anticipatePin: 1,
           },
         });
-
-        // Image wipe in from right
-        tl.fromTo(
-          imgEl,
-          { clipPath: 'inset(0 100% 0 0)' },
-          { clipPath: 'inset(0 0% 0 0)', duration: 1, ease: 'power2.inOut' },
-          0
-        );
-
-        // Stagger text elements in
-        if (eyebrow) tl.fromTo(eyebrow, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, 0.2);
-        if (heading) tl.fromTo(heading, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6 }, 0.35);
-        if (desc) tl.fromTo(desc, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5 }, 0.5);
-        if (btns) tl.fromTo(btns, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 0.65);
-
-        // Linger phase (panel holds at full opacity)
-        tl.to({}, { duration: 0.6 });
-
-        // Exit: fade out text, clip image back out to the right
-        if (textEl) tl.to(textEl, { opacity: 0, y: -30, duration: 0.4 }, '+=0');
-        tl.to(imgEl, { clipPath: 'inset(0 0% 0 100%)', duration: 0.6, ease: 'power2.inOut' }, '<0.1');
       });
     }, sectionRef);
 
@@ -95,8 +84,8 @@ export default function ProjectScrollReveal() {
 
   return (
     <div ref={sectionRef} className="relative bg-background">
-      {/* Section header — visible above the pinned panels */}
-      <div className="container-px py-24 md:py-32">
+      {/* Section header */}
+      <div className="container-px py-24 md:py-28">
         <span className="eyebrow">
           <span className="h-px w-6 bg-accent" />
           Our Expertise
@@ -107,83 +96,96 @@ export default function ProjectScrollReveal() {
         </h2>
       </div>
 
-      {/* Pinned project panels */}
-      {PROJECTS.map((project) => (
-        <div
-          key={project.num}
-          className="psrv-panel relative h-screen w-full bg-background overflow-hidden"
-        >
-          {/* Left: Text content */}
-          <div className="psrv-text absolute inset-y-0 left-0 z-10 flex flex-col justify-center px-8 md:px-16 lg:px-24 w-full md:w-[45%]">
-            <p className="psrv-eyebrow eyebrow opacity-0">
-              <span className="h-px w-6 bg-accent" />
-              {project.category}
-            </p>
-
-            <h2
-              className="psrv-heading mt-6 font-display font-light text-white leading-[1.05] tracking-[0.02em] text-[36px] md:text-[44px] lg:text-[56px] opacity-0"
-              style={{ whiteSpace: 'pre-line' }}
-            >
-              {project.name}
-            </h2>
-
-            <p className="psrv-desc mt-6 text-body-main max-w-[380px] opacity-0">
-              {project.description}
-            </p>
-
-            <div className="psrv-btns mt-10 flex flex-wrap gap-3 opacity-0">
-              <Link
-                href={project.exploreHref}
-                className="inline-flex items-center gap-2 border border-white/20 px-6 py-3 text-[11px] uppercase tracking-[0.2em] font-light text-white hover:bg-white hover:text-black transition-all duration-300"
-              >
-                Explore Solutions
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M17 7H7M17 7v10" />
-                </svg>
-              </Link>
-              <Link
-                href={project.contactHref}
-                className="inline-flex items-center gap-2 border border-white/10 px-6 py-3 text-[11px] uppercase tracking-[0.2em] font-light text-white/60 hover:text-white hover:border-white/30 transition-all duration-300"
-              >
-                Contact
-              </Link>
-            </div>
-          </div>
-
-          {/* Right: Image panel with clip-path wipe */}
+      {/* Stack container — overflow-hidden clips sliding panels */}
+      <div
+        ref={stackRef}
+        className="relative w-full overflow-hidden"
+        style={{ height: '100vh' }}
+      >
+        {PROJECTS.map((project, i) => (
           <div
-            className="psrv-img absolute inset-y-0 right-0 w-full md:w-[60%]"
-            style={{ clipPath: 'inset(0 100% 0 0)' }}
+            key={project.num}
+            className="stacked-panel absolute inset-0 w-full h-full"
+            style={{ zIndex: i + 1 }}
           >
-            <Image
-              src={project.image}
-              alt={project.category}
-              fill
-              sizes="(max-width: 768px) 100vw, 60vw"
-              className="object-cover"
-              priority={project.num === '01'}
-            />
-            {/* Left fade so image bleeds into the text area gracefully */}
-            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/20 to-transparent" />
-            {/* Large project number watermark */}
-            <div className="absolute bottom-8 right-8 font-display text-[100px] md:text-[140px] font-light text-white/5 leading-none select-none pointer-events-none">
+            {/* Full-bleed background image */}
+            <div className="absolute inset-0">
+              <Image
+                src={project.image}
+                alt={project.category}
+                fill
+                sizes="100vw"
+                className="object-cover"
+                priority={i === 0}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-background/20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+            </div>
+
+            {/* Text content */}
+            <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-16 lg:px-24 max-w-2xl">
+              <p className="eyebrow">
+                <span className="h-px w-6 bg-accent" />
+                {project.category}
+              </p>
+
+              <h2
+                className="mt-6 font-display font-light text-white leading-[1.05] tracking-[0.02em] text-[36px] md:text-[48px] lg:text-[60px]"
+                style={{ whiteSpace: 'pre-line' }}
+              >
+                {project.name}
+              </h2>
+
+              <p className="mt-6 text-body-main max-w-[400px]">
+                {project.description}
+              </p>
+
+              <div className="mt-10 flex flex-wrap gap-3">
+                <Link
+                  href={project.exploreHref}
+                  className="inline-flex items-center gap-2 border border-white/20 px-6 py-3 text-[11px] uppercase tracking-[0.2em] font-light text-white hover:bg-white hover:text-black transition-all duration-300"
+                >
+                  Explore Solutions
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </Link>
+                <Link
+                  href={project.contactHref}
+                  className="inline-flex items-center gap-2 border border-white/10 px-6 py-3 text-[11px] uppercase tracking-[0.2em] font-light text-white/60 hover:text-white hover:border-white/30 transition-all duration-300"
+                >
+                  Contact
+                </Link>
+              </div>
+            </div>
+
+            {/* Large number watermark */}
+            <div className="absolute bottom-8 right-8 font-display text-[120px] md:text-[160px] font-light text-white/5 leading-none select-none pointer-events-none">
               {project.num}
             </div>
-          </div>
 
-          {/* Mobile: subtle background image (no clip on mobile) */}
-          <div className="absolute inset-0 md:hidden -z-0">
-            <Image
-              src={project.image}
-              alt={project.category}
-              fill
-              sizes="100vw"
-              className="object-cover opacity-15"
-            />
-            <div className="absolute inset-0 bg-background/80" />
+            {/* Next panel preview hint */}
+            {i < PROJECTS.length - 1 && (
+              <div className="absolute bottom-0 left-0 right-0 h-16 flex items-center px-8 md:px-16">
+                <p className="text-[10px] uppercase tracking-[0.35em] font-light text-white/25">
+                  Next: {PROJECTS[i + 1].category}
+                </p>
+              </div>
+            )}
+
+            {/* Vertical scroll indicator — right edge */}
+            <div className="absolute right-6 top-1/2 -translate-y-1/2 hidden md:flex flex-col items-center gap-3 pointer-events-none">
+              <span
+                style={{ writingMode: 'vertical-rl', letterSpacing: '0.25em' }}
+                className="text-[10px] uppercase font-light text-white/25 tracking-[0.3em] select-none"
+              >
+                Scroll Down
+              </span>
+              <span className="h-12 w-px bg-gradient-to-b from-white/20 to-transparent" />
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
