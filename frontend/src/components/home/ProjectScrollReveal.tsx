@@ -42,7 +42,6 @@ const PROJECTS = [
 ];
 
 export default function ProjectScrollReveal() {
-  const sectionRef = useRef<HTMLDivElement>(null);
   const stackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -77,25 +76,29 @@ export default function ProjectScrollReveal() {
           },
         });
       });
-    }, sectionRef);
+
+      // Fade out the "Our Expertise" overlay as the second panel slides in
+      const expertiseOverlay = document.querySelector('.psrv-expertise-overlay');
+      if (expertiseOverlay) {
+        gsap.to(expertiseOverlay, {
+          opacity: 0,
+          y: -30,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: stackRef.current,
+            start: 'top top',
+            end: () => `+=${window.innerHeight * 0.4}`,
+            scrub: 1,
+          },
+        });
+      }
+    });
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <div ref={sectionRef} className="relative bg-background">
-      {/* Section header */}
-      <div className="container-px py-24 md:py-28">
-        <span className="eyebrow">
-          <span className="h-px w-6 bg-accent" />
-          Our Expertise
-        </span>
-        <h2 className="mt-6 text-section-lg max-w-2xl">
-          Spaces designed for{' '}
-          <span className="text-accent italic font-light">every vision.</span>
-        </h2>
-      </div>
-
+    <div className="relative bg-background">
       {/* Stack container — overflow-hidden clips sliding panels */}
       <div
         ref={stackRef}
@@ -121,6 +124,19 @@ export default function ProjectScrollReveal() {
               <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-background/20" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </div>
+
+            {/* "Our Expertise" header — only on first panel, fades out on scroll */}
+            {i === 0 && (
+              <div className="psrv-expertise-overlay absolute top-10 left-8 md:left-16 lg:left-24 z-20">
+                <span className="eyebrow">
+                  <span className="h-px w-6 bg-accent" />
+                  Our Expertise
+                </span>
+                <p className="mt-2 text-[11px] uppercase tracking-[0.25em] font-light text-white/30">
+                  Spaces designed for <span className="text-accent/70">every vision</span>
+                </p>
+              </div>
+            )}
 
             {/* Text content */}
             <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-16 lg:px-24 max-w-2xl">

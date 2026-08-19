@@ -143,8 +143,9 @@ export default function Hero() {
 
       {/* Overlays */}
       <div className="absolute inset-0 bg-background/10 z-10 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10 pointer-events-none" />
-      {/* Stronger centre vignette to ensure text legibility */}
+      {/* Strong bottom fade — blends hero into the next section */}
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent z-10 pointer-events-none" style={{ background: 'linear-gradient(to top, var(--bg) 0%, var(--bg) 5%, color-mix(in srgb, var(--bg) 60%, transparent) 25%, transparent 55%)' }} />
+      {/* Top vignette for text legibility */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-transparent z-10 pointer-events-none" />
 
       {/* Vertical SCROLL DOWN — left */}
