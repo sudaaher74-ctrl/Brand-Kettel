@@ -82,9 +82,9 @@ export default function ProjectScrollReveal() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: `+=${total * 300}vh`, // Increased distance to slow down scrolling speed
+          end: `+=${total * 500}vh`, // Greatly increased distance for much slower scrolling
           pin: true,
-          scrub: 2, // Added more inertia for smoother scroll
+          scrub: 3, // Higher inertia for an even smoother, drifting feel
           onUpdate: (self) => {
             // Calculate progress and update the roman numeral
             // The timeline spans from 0 to 1
