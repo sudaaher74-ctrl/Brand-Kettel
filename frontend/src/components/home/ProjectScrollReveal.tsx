@@ -35,43 +35,9 @@ const PROJECTS = [
     name: 'RESIDENTIAL\nINTERIORS',
     description:
       'Living spaces crafted with warmth, flow, and your lifestyle at the centre — where every room is a reflection of who you are.',
-    image: '/imgs/commercial/home1.png',
-    exploreHref: '/residential-interiors',
-    contactHref: '/contact',
-  },
-  {
-    num: '04',
-    category: 'Hospitality Spaces',
-    name: 'HOSPITALITY\nSPACES',
-    description:
-      'Immersive environments that captivate guests and elevate their experience through meticulous design and atmospheric lighting.',
-    image: '/imgs/commercial/gucci-green.png',
-    exploreHref: '#',
-    contactHref: '/contact',
-  },
-  {
-    num: '05',
-    category: 'Corporate Offices',
-    name: 'CORPORATE\nOFFICES',
-    description:
-      'Innovative workspaces tailored to foster collaboration, productivity, and wellbeing, reflecting the core values of your company.',
-    image: '/imgs/commercial/jwellary.png',
-    exploreHref: '#',
-    contactHref: '/contact',
-  },
-  {
-    num: '06',
-    category: 'Boutique Retail',
-    name: 'BOUTIQUE\nRETAIL',
-    description:
-      'Intimate and bespoke retail spaces that tell a story, engaging customers and enhancing the product presentation.',
-    image: '/imgs/commercial/home1.png',
-    exploreHref: '#',
-    contactHref: '/contact',
-  }
 ];
 
-const ROMAN_NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI'];
+const ROMAN_NUMERALS = ['I', 'II', 'III'];
 
 export default function ProjectScrollReveal() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -112,9 +78,9 @@ export default function ProjectScrollReveal() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: `+=${total * 150}vh`,
+          end: `+=${total * 300}vh`, // Increased distance to slow down scrolling speed
           pin: true,
-          scrub: 1,
+          scrub: 2, // Added more inertia for smoother scroll
           onUpdate: (self) => {
             // Calculate progress and update the roman numeral
             // The timeline spans from 0 to 1
@@ -255,7 +221,7 @@ export default function ProjectScrollReveal() {
         </span>
         <span className="w-16 md:w-24 h-[1px] bg-white/40"></span>
         <span className="font-display text-xl md:text-2xl font-light text-white/40 w-8 text-center">
-          VI
+          III
         </span>
       </div>
       
