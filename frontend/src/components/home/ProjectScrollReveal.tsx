@@ -35,6 +35,10 @@ const PROJECTS = [
     name: 'RESIDENTIAL\nINTERIORS',
     description:
       'Living spaces crafted with warmth, flow, and your lifestyle at the centre — where every room is a reflection of who you are.',
+    image: '/imgs/commercial/home1.png',
+    exploreHref: '/residential-interiors',
+    contactHref: '/contact',
+  }
 ];
 
 const ROMAN_NUMERALS = ['I', 'II', 'III'];
