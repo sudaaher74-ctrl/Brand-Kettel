@@ -12,7 +12,7 @@ const PROJECTS = [
   {
     num: '01',
     category: 'Commercial Fit-Outs',
-    name: 'Commercial\nFit-Outs',
+    name: 'COMMERCIAL\nFIT-OUTS',
     description:
       'Precision-designed commercial environments that drive performance, reinforce brand identity, and create lasting impressions for every visitor.',
     image: '/imgs/commercial/gucci-green.png',
@@ -22,7 +22,7 @@ const PROJECTS = [
   {
     num: '02',
     category: 'Jewellery Showrooms',
-    name: 'Jewellery\nShowrooms',
+    name: 'JEWELLERY\nSHOWROOMS',
     description:
       'Luxury retail environments built to showcase your collection with drama and precision — spaces that make every piece feel like the centrepiece.',
     image: '/imgs/commercial/jwellary.png',
@@ -32,176 +32,233 @@ const PROJECTS = [
   {
     num: '03',
     category: 'Residential Interiors',
-    name: 'Residential\nInteriors',
+    name: 'RESIDENTIAL\nINTERIORS',
     description:
       'Living spaces crafted with warmth, flow, and your lifestyle at the centre — where every room is a reflection of who you are.',
     image: '/imgs/commercial/home1.png',
     exploreHref: '/residential-interiors',
     contactHref: '/contact',
   },
+  {
+    num: '04',
+    category: 'Hospitality Spaces',
+    name: 'HOSPITALITY\nSPACES',
+    description:
+      'Immersive environments that captivate guests and elevate their experience through meticulous design and atmospheric lighting.',
+    image: '/imgs/commercial/gucci-green.png',
+    exploreHref: '#',
+    contactHref: '/contact',
+  },
+  {
+    num: '05',
+    category: 'Corporate Offices',
+    name: 'CORPORATE\nOFFICES',
+    description:
+      'Innovative workspaces tailored to foster collaboration, productivity, and wellbeing, reflecting the core values of your company.',
+    image: '/imgs/commercial/jwellary.png',
+    exploreHref: '#',
+    contactHref: '/contact',
+  },
+  {
+    num: '06',
+    category: 'Boutique Retail',
+    name: 'BOUTIQUE\nRETAIL',
+    description:
+      'Intimate and bespoke retail spaces that tell a story, engaging customers and enhancing the product presentation.',
+    image: '/imgs/commercial/home1.png',
+    exploreHref: '#',
+    contactHref: '/contact',
+  }
 ];
 
+const ROMAN_NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI'];
+
 export default function ProjectScrollReveal() {
-  const stackRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const panels = gsap.utils.toArray<HTMLElement>('.stacked-panel');
-      const totalPanels = panels.length;
+      const cards = gsap.utils.toArray<HTMLElement>('.psrv-card');
+      const textContainers = gsap.utils.toArray<HTMLElement>('.psrv-text');
+      
+      const total = cards.length;
+      if (total === 0) return;
 
-      // Pin the stack container for (n-1) full viewport heights
-      ScrollTrigger.create({
-        trigger: stackRef.current,
-        start: 'top top',
-        end: () => `+=${(totalPanels - 1) * window.innerHeight}`,
-        pin: true,
-        anticipatePin: 1,
-        pinSpacing: true,
+      // Configuration
+      const cardWidthVW = 30; // 30vw width for carousel items
+      const cardSpacingVW = 40; // 40vw distance between card centers
+      
+      // Initial Setup
+      gsap.set(cards, {
+        width: `${cardWidthVW}vw`,
+        height: '60vh',
+        xPercent: -50,
+        yPercent: -50,
+        top: '50%',
+        left: '50%',
+        x: (i) => `${i * cardSpacingVW}vw`,
+        zIndex: 1
       });
 
-      // Each panel (except the first) starts below viewport and slides up
-      panels.forEach((panel, i) => {
-        if (i === 0) return;
-
-        gsap.set(panel, { yPercent: 100 });
-
-        gsap.to(panel, {
-          yPercent: 0,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: stackRef.current,
-            start: () => `top+=${(i - 1) * window.innerHeight} top`,
-            end: () => `top+=${i * window.innerHeight} top`,
-            scrub: 1,
-          },
-        });
+      gsap.set(textContainers, {
+        opacity: 0,
+        y: 30
       });
 
-      // Fade out the "Our Expertise" overlay as the second panel slides in
-      const expertiseOverlay = document.querySelector('.psrv-expertise-overlay');
-      if (expertiseOverlay) {
-        gsap.to(expertiseOverlay, {
-          opacity: 0,
-          y: -30,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: stackRef.current,
-            start: 'top top',
-            end: () => `+=${window.innerHeight * 0.4}`,
-            scrub: 1,
-          },
+      // Create main timeline
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: `+=${total * 150}vh`,
+          pin: true,
+          scrub: 1,
+          onUpdate: (self) => {
+            // Calculate progress and update the roman numeral
+            // The timeline spans from 0 to 1
+            const currentIndex = Math.min(
+              Math.floor(self.progress * total),
+              total - 1
+            );
+            if (progressRef.current) {
+              progressRef.current.innerText = ROMAN_NUMERALS[currentIndex] || `${currentIndex + 1}`;
+            }
+          }
+        }
+      });
+
+      // Animation sequence
+      for (let i = 0; i < total; i++) {
+        
+        // 1. Slide track if not first item
+        if (i > 0) {
+          tl.to(cards, {
+            x: (index) => `${(index - i) * cardSpacingVW}vw`,
+            duration: 1,
+            ease: "power2.inOut"
+          }, "+=0.2");
+        }
+
+        // 2. Expand current item to fullscreen
+        tl.add(() => {
+          // Adjust z-indexes when moving forwards
+          cards.forEach(c => gsap.set(c, { zIndex: 1 }));
+          gsap.set(cards[i], { zIndex: 10 });
+        }, "-=0.1"); // Set zIndex right before expansion
+
+        tl.to(cards[i], {
+          width: '100vw',
+          height: '100vh',
+          duration: 1,
+          ease: "power2.inOut"
         });
+
+        // 3. Show text content
+        tl.to(textContainers[i], {
+          opacity: 1,
+          y: 0,
+          duration: 0.5
+        }, "-=0.5");
+
+        // 4. Hold
+        tl.to({}, { duration: 1.5 });
+
+        // 5. If not last item, hide text and shrink back down
+        if (i < total - 1) {
+          tl.to(textContainers[i], {
+            opacity: 0,
+            y: -30,
+            duration: 0.5
+          });
+
+          tl.to(cards[i], {
+            width: `${cardWidthVW}vw`,
+            height: '60vh',
+            duration: 1,
+            ease: "power2.inOut"
+          }, "-=0.2");
+        }
       }
-    });
+    }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <div className="relative bg-background">
-      {/* Stack container — overflow-hidden clips sliding panels */}
-      <div
-        ref={stackRef}
-        className="relative w-full overflow-hidden"
-        style={{ height: '100vh' }}
-      >
+    <div ref={containerRef} className="relative bg-black w-full h-screen overflow-hidden">
+      
+      <div ref={trackRef} className="absolute inset-0">
         {PROJECTS.map((project, i) => (
           <div
             key={project.num}
-            className="stacked-panel absolute inset-0 w-full h-full"
-            style={{ zIndex: i + 1 }}
+            className="psrv-card absolute overflow-hidden bg-zinc-900"
           >
-            {/* Full-bleed background image */}
-            <div className="absolute inset-0">
-              <Image
-                src={project.image}
-                alt={project.category}
-                fill
-                sizes="100vw"
-                className="object-cover"
-                priority={i === 0}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-background/20" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
-            </div>
+            <Image
+              src={project.image}
+              alt={project.category}
+              fill
+              sizes="(max-width: 768px) 100vw, 100vw"
+              className="object-cover"
+              priority={i === 0}
+            />
+            {/* Gradient overlay to ensure text legibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
-            {/* "Our Expertise" header — only on first panel, fades out on scroll */}
-            {i === 0 && (
-              <div className="psrv-expertise-overlay absolute top-10 left-8 md:left-16 lg:left-24 z-20">
-                <span className="eyebrow">
-                  <span className="h-px w-6 bg-accent" />
-                  Our Expertise
+            <div className="psrv-text absolute inset-0 flex flex-col justify-center px-6 md:px-16 lg:px-24 pointer-events-none">
+              <div className="w-full">
+                
+                <span className="text-[12px] md:text-[14px] uppercase tracking-[0.3em] font-light text-white/70 mb-4 block">
+                  {project.category}
                 </span>
-                <p className="mt-2 text-[11px] uppercase tracking-[0.25em] font-light text-white/30">
-                  Spaces designed for <span className="text-accent/70">every vision</span>
-                </p>
-              </div>
-            )}
 
-            {/* Text content */}
-            <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-16 lg:px-24 max-w-2xl">
-              <p className="eyebrow">
-                <span className="h-px w-6 bg-accent" />
-                {project.category}
-              </p>
-
-              <h2
-                className="mt-6 font-display font-light text-white leading-[1.05] tracking-[0.02em] text-[36px] md:text-[48px] lg:text-[60px]"
-                style={{ whiteSpace: 'pre-line' }}
-              >
-                {project.name}
-              </h2>
-
-              <p className="mt-6 text-body-main max-w-[400px]">
-                {project.description}
-              </p>
-
-              <div className="mt-10 flex flex-wrap gap-3">
-                <Link
-                  href={project.exploreHref}
-                  className="inline-flex items-center gap-2 border border-white/20 px-6 py-3 text-[11px] uppercase tracking-[0.2em] font-light text-white hover:bg-white hover:text-black transition-all duration-300"
+                <h2
+                  className="font-display font-light text-white leading-[1.1] tracking-[0.02em] text-[40px] md:text-[70px] lg:text-[100px]"
+                  style={{ whiteSpace: 'pre-line' }}
                 >
-                  Explore Solutions
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M17 7H7M17 7v10" />
-                  </svg>
-                </Link>
-                <Link
-                  href={project.contactHref}
-                  className="inline-flex items-center gap-2 border border-white/10 px-6 py-3 text-[11px] uppercase tracking-[0.2em] font-light text-white/60 hover:text-white hover:border-white/30 transition-all duration-300"
-                >
-                  Contact
-                </Link>
+                  {project.name}
+                </h2>
+
+                <div className="mt-8 md:mt-12 flex flex-col md:flex-row gap-8 items-start justify-between border-t border-white/20 pt-8 max-w-3xl">
+                  <div className="max-w-md">
+                    <h3 className="text-[12px] uppercase tracking-[0.2em] font-medium text-white mb-3">
+                      Overview
+                    </h3>
+                    <p className="text-sm md:text-base font-light text-white/70 leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+                  
+                  <div className="pointer-events-auto shrink-0">
+                    <Link
+                      href={project.exploreHref}
+                      className="inline-flex items-center gap-2 border border-white/20 px-6 py-3 text-[11px] uppercase tracking-[0.2em] font-light text-white hover:bg-white hover:text-black transition-all duration-300"
+                    >
+                      Explore
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M17 7H7M17 7v10" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
               </div>
-            </div>
-
-            {/* Large number watermark */}
-            <div className="absolute bottom-8 right-8 font-display text-[120px] md:text-[160px] font-light text-white/5 leading-none select-none pointer-events-none">
-              {project.num}
-            </div>
-
-            {/* Next panel preview hint */}
-            {i < PROJECTS.length - 1 && (
-              <div className="absolute bottom-0 left-0 right-0 h-16 flex items-center px-8 md:px-16">
-                <p className="text-[10px] uppercase tracking-[0.35em] font-light text-white/25">
-                  Next: {PROJECTS[i + 1].category}
-                </p>
-              </div>
-            )}
-
-            {/* Vertical scroll indicator — right edge */}
-            <div className="absolute right-6 top-1/2 -translate-y-1/2 hidden md:flex flex-col items-center gap-3 pointer-events-none">
-              <span
-                style={{ writingMode: 'vertical-rl', letterSpacing: '0.25em' }}
-                className="text-[10px] uppercase font-light text-white/25 tracking-[0.3em] select-none"
-              >
-                Scroll Down
-              </span>
-              <span className="h-12 w-px bg-gradient-to-b from-white/20 to-transparent" />
             </div>
           </div>
         ))}
       </div>
+
+      {/* Progress Indicator */}
+      <div className="absolute bottom-8 left-0 right-0 flex justify-center items-center gap-6 z-50 pointer-events-none">
+        <span ref={progressRef} className="font-display text-xl md:text-2xl font-light text-white w-8 text-center">
+          I
+        </span>
+        <span className="w-16 md:w-24 h-[1px] bg-white/40"></span>
+        <span className="font-display text-xl md:text-2xl font-light text-white/40 w-8 text-center">
+          VI
+        </span>
+      </div>
+      
     </div>
   );
 }
