@@ -125,12 +125,12 @@ export default function ProjectScrollReveal() {
           ease: "power2.inOut"
         });
 
-        // 3. Show text content
+        // 3. Show text content - text comes in AFTER image is fully open
         tl.to(textContainers[i], {
           opacity: 1,
           y: 0,
           duration: 0.5
-        }, "-=0.5");
+        }, "+=0.1"); // small pause after image expansion before text appears
 
         // 4. Hold
         tl.to({}, { duration: 1.5 });
@@ -141,14 +141,14 @@ export default function ProjectScrollReveal() {
             opacity: 0,
             y: -30,
             duration: 0.5
-          });
+          }); // text hides completely first
 
           tl.to(cards[i], {
             width: `${cardWidthVW}vw`,
             height: '60vh',
             duration: 1,
             ease: "power2.inOut"
-          }, "-=0.2");
+          }, "+=0.1"); // then image shrinks
         }
       }
     }, containerRef);
