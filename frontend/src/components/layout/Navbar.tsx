@@ -41,8 +41,10 @@ export default function Navbar() {
         <div className="container-px mx-auto">
           <nav
             className={cn(
-              'flex items-center justify-between !rounded-full px-4 py-2.5 transition-all duration-500 ease-smooth',
-              scrolled ? 'glass shadow-card border border-line' : 'bg-transparent border border-transparent'
+              'flex items-center justify-between rounded-full px-5 py-2.5 transition-all duration-500 ease-smooth',
+              scrolled
+                ? 'bg-[#0A0A0B]/90 backdrop-blur-md shadow-2xl border border-white/15 text-white'
+                : 'bg-[#0A0A0B]/85 backdrop-blur-md shadow-xl border border-white/15 text-white'
             )}
           >
             {/* Logo */}
@@ -52,8 +54,8 @@ export default function Navbar() {
                 alt="Brand Kettle BuildSpaces"
                 width={160}
                 height={52}
-                className="h-10 w-auto object-contain"
-                style={{ filter: 'invert(1) brightness(1)' }}
+                className="h-9 w-auto object-contain"
+                style={{ filter: 'invert(1) brightness(1.2)' }}
                 priority
               />
             </Link>
@@ -73,7 +75,7 @@ export default function Navbar() {
                       {/* Services trigger */}
                       <button
                         onClick={() => setServicesOpen((v) => !v)}
-                        className="flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-white"
+                        className="flex items-center gap-1 rounded-full px-3.5 py-2 text-xs uppercase tracking-[0.14em] font-medium text-white/80 transition-colors hover:text-white"
                         aria-expanded={servicesOpen}
                         aria-haspopup="true"
                       >
@@ -100,15 +102,15 @@ export default function Navbar() {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 6, scale: 0.97 }}
                             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                            className="absolute left-1/2 top-full mt-2 w-64 -translate-x-1/2 overflow-hidden border border-line shadow-float rounded-xl"
-                            style={{ background: 'rgba(15, 15, 18, 0.96)', backdropFilter: 'blur(20px)' }}
+                            className="absolute left-1/2 top-full mt-2 w-64 -translate-x-1/2 overflow-hidden border border-white/10 shadow-2xl rounded-2xl"
+                            style={{ background: 'rgba(12, 12, 16, 0.98)', backdropFilter: 'blur(20px)' }}
                           >
                             {/* View all services link */}
-                            <div className="border-b border-line px-4 py-2.5">
+                            <div className="border-b border-white/10 px-4 py-2.5">
                               <Link
-                                href="/services"
+                                href="/commercial-fit-outs"
                                 onClick={() => setServicesOpen(false)}
-                                className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent hover:text-white transition-colors"
+                                className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C5A880] hover:text-white transition-colors"
                               >
                                 All Services →
                               </Link>
@@ -148,7 +150,7 @@ export default function Navbar() {
                   <Link
                     key={l.href}
                     href={l.href}
-                    className="rounded-full px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-white"
+                    className="rounded-full px-3.5 py-2 text-xs uppercase tracking-[0.14em] font-medium text-white/80 transition-colors hover:text-white"
                   >
                     {l.label}
                   </Link>
@@ -158,8 +160,11 @@ export default function Navbar() {
 
             {/* Right side */}
             <div className="flex items-center gap-2">
-              <Link href="/contact" className="hidden sm:inline-flex rounded-full px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-white">
-                Get in Touch
+              <Link
+                href="/contact"
+                className="hidden sm:inline-flex rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] bg-white text-black hover:bg-[#C5A880] transition-all duration-300 shadow-md"
+              >
+                Start a Project
               </Link>
               <button
                 aria-label="Toggle menu"

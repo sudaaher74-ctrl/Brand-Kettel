@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Poppins } from 'next/font/google';
+import { Poppins, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 import SiteShell from '@/components/layout/SiteShell';
 
@@ -8,6 +8,14 @@ const poppins = Poppins({
   variable: '--font-poppins',
   display: 'swap',
   weight: ['300', '400', '500', '600', '700'],
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  variable: '--font-cormorant',
+  display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://brandkettle.com';
@@ -93,7 +101,7 @@ const localBusinessJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${poppins.variable}`}>
+    <html lang="en" className={`${poppins.variable} ${cormorant.variable}`}>
       <body>
         <script
           type="application/ld+json"

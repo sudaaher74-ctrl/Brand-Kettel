@@ -1,21 +1,21 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function Footer() {
+export default function RonnFooter() {
   return (
-    <footer className="relative bg-[#050505] text-white pt-16 pb-12 px-5 sm:px-8 border-t border-white/10">
+    <footer className="relative bg-[#231800] text-[#FFEAD4] pt-20 pb-12 px-5 sm:px-8 border-t border-white/10">
       <div className="max-w-[1400px] mx-auto">
         
         {/* Top Studio Presence Strip */}
-        <div className="rounded-[24px] bg-[#0E0E12] border border-white/10 p-8 sm:p-10 mb-14 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="rounded-[24px] bg-[#2D2002] border border-white/10 p-8 sm:p-12 mb-16 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <span className="text-xs uppercase tracking-[0.3em] font-medium text-[#C5A880] block mb-2">
-              Pan-India Turnkey Reach
+            <span className="text-xs uppercase tracking-[0.3em] font-medium text-[#DBB6FC] block mb-2">
+              Pan-India Presence
             </span>
             <h3 className="font-display font-light text-2xl sm:text-3xl text-white uppercase">
-              Headquartered in Indore · Execution in 10+ Metros
+              Headquartered in Indore · Active in 10+ Metros
             </h3>
-            <p className="text-sm text-[#A1A1AA] font-light mt-2">
+            <p className="text-sm text-[#FFEAD4]/60 font-light mt-2">
               Mumbai · Delhi NCR · Hyderabad · Bengaluru · Bareilly · Indore
             </p>
           </div>
@@ -23,7 +23,7 @@ export default function Footer() {
           <div className="flex flex-wrap items-center gap-4 shrink-0">
             <a
               href="mailto:vini@brandkettle.in"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black hover:bg-[#C5A880] text-xs uppercase tracking-[0.14em] font-medium transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FFEAD4] text-[#231800] hover:bg-white text-xs uppercase tracking-[0.14em] font-medium transition-colors"
             >
               vini@brandkettle.in
             </a>
@@ -36,30 +36,30 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Multi-Column Navigation */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 pb-14 border-b border-white/10">
+        {/* 4 Multi-Column Navigation */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 pb-16 border-b border-white/10">
           
           {/* Col 1: Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-block mb-5">
+            <Link href="/" className="inline-block mb-6">
               <Image
                 src="/logo.png"
                 alt="Brand Kettle BuildSpaces"
-                width={160}
-                height={52}
+                width={170}
+                height={56}
                 className="h-9 w-auto object-contain"
                 style={{ filter: 'invert(1) brightness(1.2)' }}
               />
             </Link>
-            <p className="text-sm font-light text-[#A1A1AA] leading-relaxed max-w-sm mb-6">
-              A premier Design, Build &amp; Furnish company delivering turnkey corporate interiors, luxury retail stores, jewellery showrooms, and custom millwork across India.
+            <p className="text-sm font-light text-[#FFEAD4]/70 leading-relaxed max-w-sm mb-6">
+              A premier Design, Build &amp; Furnish company delivering turnkey corporate interiors, flagship luxury retail stores, jewellery showrooms, and custom millwork nationwide.
             </p>
             <div className="flex items-center gap-3">
               <a
                 href="https://www.instagram.com/brandkettle_buildspaces"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-[#C5A880] hover:border-[#C5A880] transition-colors"
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-[#DBB6FC] hover:border-[#DBB6FC] transition-colors"
                 aria-label="Instagram"
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -70,7 +70,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/brand-kettle-buildspaces"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-[#C5A880] hover:border-[#C5A880] transition-colors"
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-[#DBB6FC] hover:border-[#DBB6FC] transition-colors"
                 aria-label="LinkedIn"
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -82,10 +82,10 @@ export default function Footer() {
 
           {/* Col 2: Expertises */}
           <div>
-            <h4 className="text-xs uppercase tracking-[0.25em] font-semibold text-[#C5A880] mb-4">
+            <h4 className="text-xs uppercase tracking-[0.25em] font-semibold text-[#DBB6FC] mb-5">
               Expertises
             </h4>
-            <ul className="space-y-2.5 text-sm font-light text-[#A1A1AA]">
+            <ul className="space-y-3 text-sm font-light text-[#FFEAD4]/75">
               <li>
                 <Link href="/commercial-fit-outs" className="hover:text-white transition-colors">Commercial Fit-Outs</Link>
               </li>
@@ -106,10 +106,10 @@ export default function Footer() {
 
           {/* Col 3: Realizations */}
           <div>
-            <h4 className="text-xs uppercase tracking-[0.25em] font-semibold text-[#C5A880] mb-4">
+            <h4 className="text-xs uppercase tracking-[0.25em] font-semibold text-[#DBB6FC] mb-5">
               Realizations
             </h4>
-            <ul className="space-y-2.5 text-sm font-light text-[#A1A1AA]">
+            <ul className="space-y-3 text-sm font-light text-[#FFEAD4]/75">
               <li>
                 <Link href="/portfolio/gucci" className="hover:text-white transition-colors">Gucci Showroom</Link>
               </li>
@@ -123,17 +123,17 @@ export default function Footer() {
                 <Link href="/portfolio/havana-lounge-bareilly" className="hover:text-white transition-colors">Havana Lounge</Link>
               </li>
               <li>
-                <Link href="/portfolio" className="text-[#C5A880] hover:underline">All Realizations →</Link>
+                <Link href="/portfolio" className="text-[#DBB6FC] hover:underline">All Realizations →</Link>
               </li>
             </ul>
           </div>
 
           {/* Col 4: Studio & Company */}
           <div>
-            <h4 className="text-xs uppercase tracking-[0.25em] font-semibold text-[#C5A880] mb-4">
+            <h4 className="text-xs uppercase tracking-[0.25em] font-semibold text-[#DBB6FC] mb-5">
               Company
             </h4>
-            <ul className="space-y-2.5 text-sm font-light text-[#A1A1AA]">
+            <ul className="space-y-3 text-sm font-light text-[#FFEAD4]/75">
               <li>
                 <Link href="/about" className="hover:text-white transition-colors">About Us</Link>
               </li>
@@ -155,9 +155,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-white/40">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-[#FFEAD4]/50">
           <p>© {new Date().getFullYear()} Brand Kettle BuildSpaces Pvt. Ltd. All rights reserved.</p>
-          <p className="font-serif italic text-sm text-[#C5A880]">Investir l&apos;espace · Design · Build · Furnish</p>
+          <p className="font-serif italic text-sm text-[#FFEAD4]/70">Investir l&apos;espace · Design · Build · Furnish</p>
         </div>
 
       </div>

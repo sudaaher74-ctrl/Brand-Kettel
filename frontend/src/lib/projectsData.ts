@@ -38,7 +38,7 @@ export const caseStudies: CaseStudy[] = [
     category: 'Jewellery Showroom',
     description: "BrandKettle transformed a 3,400 sq ft space in Goregaon into a luxurious retail destination in just 27 days. A turnkey project blending elegance and efficiency, bringing the brand's vision to life with precision and speed.",
     images: [
-      '/imgs/commercial/pnjcoverimg.png',
+      '/imgs/commercial/png1.jpg',
       '/imgs/commercial/png2.jpg',
       '/imgs/commercial/png3.jpg',
     ],
@@ -50,7 +50,7 @@ export const caseStudies: CaseStudy[] = [
     description: "A secure, luminous environment created specifically for Giva's premium jewelry collections.",
     keyStat: 'Fast-Track Fit-Out',
     images: [
-      '/imgs/commercial/giaa.png',
+      '/imgs/commercial/giva.png',
       '/imgs/commercial/jwellary.png',
       '/imgs/commercial/jwellary2.png',
     ],
@@ -61,7 +61,8 @@ export const caseStudies: CaseStudy[] = [
     category: 'Jewellery Showroom',
     description: "A high-end jewellery showroom for the Indriya brand, designed to project luxury and exclusivity. BrandKettle's scope covered full interior fit-out including bespoke display counters, ambient lighting design and custom millwork.",
     images: [
-      '/imgs/commercial/indriya-placeholder.jpg',
+      '/imgs/commercial/jwellary.png',
+      '/imgs/commercial/jwellary2.png',
     ],
   },
   {

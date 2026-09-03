@@ -12,6 +12,20 @@ const config: Config = {
         surface: '#0F0F12',    // Secondary Background
         surface2: '#131317',   // Section Alternate Background
         card: '#131317',       // Card Background
+        ronn: {
+          obsidian: '#0A0A0B',  // Deep black canvas
+          surface: '#121216',   // Dark card surface
+          elevated: '#181820',  // Elevated dark surface
+          gold: '#C5A880',      // Champagne gold accent
+          goldLight: '#E2C799', // Light champagne
+          border: 'rgba(255, 255, 255, 0.10)',
+          maron: '#0A0A0B',     // Unified black
+          sable: '#121216',     // Unified dark surface
+          parme: '#C5A880',     // Unified gold accent
+          cream: '#181820',     // Unified elevated dark
+          beige: '#0E0E12',
+          darkText: '#FFFFFF',
+        },
         accent: {
           DEFAULT: '#8D7458',  // Primary Accent
           secondary: '#B79B78', // Secondary Accent
@@ -37,6 +51,7 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-poppins)', 'Poppins', 'sans-serif'],
         display: ['var(--font-poppins)', 'Poppins', 'sans-serif'],
+        serif: ['var(--font-cormorant)', 'Georgia', 'serif'],
       },
       maxWidth: {
         container: '1400px',
