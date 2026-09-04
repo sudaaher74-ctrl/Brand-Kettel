@@ -1,4 +1,3 @@
-import RonnTopBar from '@/components/home/ronn/RonnTopBar';
 import RonnHero from '@/components/home/ronn/RonnHero';
 import RonnRunningLine from '@/components/home/ronn/RonnRunningLine';
 import RonnManifestoQuote from '@/components/home/ronn/RonnManifestoQuote';
@@ -13,10 +12,7 @@ export const revalidate = 60;
 export default function HomePage() {
   return (
     <div className="w-full bg-[#0A0A0B] selection:bg-[#C5A880] selection:text-[#0A0A0B]">
-      {/* 1. Top Announcement Bar */}
-      <RonnTopBar />
-
-      {/* 2. Hero Section (First Page) */}
+      {/* 1. Hero Section (First Page) */}
       <RonnHero />
 
       {/* 3. 2nd Scroll: Signature Manifesto Quote ("Our Signature") */}
