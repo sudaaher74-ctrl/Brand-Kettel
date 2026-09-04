@@ -67,6 +67,8 @@ export default function RonnHero() {
           muted={isMuted}
           playsInline
           autoPlay
+          preload="auto"
+          poster="/imgs/commercial/gucci-green.png"
           className="h-full w-full object-cover md:hidden"
         >
           <source src="/imgs/commercial/mobileview.MP4" type="video/mp4" />
@@ -78,6 +80,7 @@ export default function RonnHero() {
           autoPlay
           muted={isMuted}
           playsInline
+          preload="auto"
           onLoadedData={handleVideo1Loaded}
           onTimeUpdate={handleTimeUpdate1}
           poster="/imgs/commercial/gucci-green.png"
@@ -93,6 +96,7 @@ export default function RonnHero() {
           ref={video2Ref}
           muted={isMuted}
           playsInline
+          preload="metadata"
           onEnded={handleVideo2Ended}
           className={`hidden md:block absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
             activeVideo === 2 ? 'opacity-100 z-10' : 'opacity-0 z-0'
