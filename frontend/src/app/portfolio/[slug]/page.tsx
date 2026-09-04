@@ -4,6 +4,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { projects as fallbackProjects } from '@/lib/data';
 import ConsultationForm from '@/components/forms/ConsultationForm';
+import ProjectDetailMedia from '@/components/ui/ProjectDetailMedia';
 
 type Project = {
   id: string;
@@ -84,93 +85,57 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </Link>
         </div>
 
-        {/* Top Split: Project Info + Main Showcase */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-20">
-          
-          {/* Left: Project Story & Specs */}
-          <div className="lg:col-span-6 flex flex-col">
-            <header className="mb-8">
-              <span className="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-medium block mb-2">
-                {project.category || 'Turnkey Commercial'}
-              </span>
-              <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-6xl text-white uppercase tracking-tight mb-8">
-                {project.name}
-              </h1>
+        {/* Interactive Media Section (Story, Specs, Sticky Hero, and Gallery Grid with Lightbox) */}
+        <ProjectDetailMedia
+          projectName={project.name}
+          heroImage={project.image}
+          gallery={project.gallery || []}
+        >
+          <header className="mb-8">
+            <span className="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-medium block mb-2">
+              {project.category || 'Turnkey Commercial'}
+            </span>
+            <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-6xl text-white uppercase tracking-tight mb-8">
+              {project.name}
+            </h1>
 
-              {/* Specs Grid */}
-              <div className="grid grid-cols-2 gap-4 p-6 rounded-2xl bg-[#121216] border border-white/10">
-                {project.location && (
-                  <div>
-                    <span className="text-[10px] uppercase tracking-wider text-[#A1A1AA] block mb-1">Location</span>
-                    <span className="text-sm font-medium text-white">{project.location}</span>
-                  </div>
-                )}
-                {project.category && (
-                  <div>
-                    <span className="text-[10px] uppercase tracking-wider text-[#A1A1AA] block mb-1">Sector</span>
-                    <span className="text-sm font-medium text-white">{project.category}</span>
-                  </div>
-                )}
-                {project.area && (
-                  <div>
-                    <span className="text-[10px] uppercase tracking-wider text-[#A1A1AA] block mb-1">Scale</span>
-                    <span className="text-sm font-medium text-white">{project.area} sq ft</span>
-                  </div>
-                )}
-                {project.year && (
-                  <div>
-                    <span className="text-[10px] uppercase tracking-wider text-[#A1A1AA] block mb-1">Completion</span>
-                    <span className="text-sm font-medium text-white">{project.year}</span>
-                  </div>
-                )}
-              </div>
-            </header>
-
-            {project.blurb && (
-              <div className="text-base sm:text-lg text-[#D4D4D8] font-light leading-relaxed space-y-4">
-                {project.blurb.split('\n').map((para, i) => (
-                  <p key={i}>{para}</p>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Right: Sticky Hero Photo Frame */}
-          {project.image && (
-            <div className="lg:col-span-6 rounded-[24px] overflow-hidden aspect-[4/3] lg:aspect-[4/5] relative w-full border border-white/15 shadow-2xl lg:sticky lg:top-32 bg-[#121216]">
-              <Image
-                src={project.image}
-                alt={project.name}
-                className="object-cover"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
-              />
-            </div>
-          )}
-        </div>
-
-        {/* Gallery Grid */}
-        {project.gallery && project.gallery.length > 0 && (
-          <div className="mb-24">
-            <h3 className="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-medium mb-6">
-              Project Gallery
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {project.gallery.map((img, i) => (
-                <div key={i} className="rounded-[20px] overflow-hidden aspect-[4/3] relative border border-white/10 bg-[#121216] group">
-                  <Image
-                    src={img}
-                    alt={`${project.name} detail view ${i + 1}`}
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
+            {/* Specs Grid */}
+            <div className="grid grid-cols-2 gap-4 p-6 rounded-2xl bg-[#121216] border border-white/10">
+              {project.location && (
+                <div>
+                  <span className="text-[10px] uppercase tracking-wider text-[#A1A1AA] block mb-1">Location</span>
+                  <span className="text-sm font-medium text-white">{project.location}</span>
                 </div>
+              )}
+              {project.category && (
+                <div>
+                  <span className="text-[10px] uppercase tracking-wider text-[#A1A1AA] block mb-1">Sector</span>
+                  <span className="text-sm font-medium text-white">{project.category}</span>
+                </div>
+              )}
+              {project.area && (
+                <div>
+                  <span className="text-[10px] uppercase tracking-wider text-[#A1A1AA] block mb-1">Scale</span>
+                  <span className="text-sm font-medium text-white">{project.area} sq ft</span>
+                </div>
+              )}
+              {project.year && (
+                <div>
+                  <span className="text-[10px] uppercase tracking-wider text-[#A1A1AA] block mb-1">Completion</span>
+                  <span className="text-sm font-medium text-white">{project.year}</span>
+                </div>
+              )}
+            </div>
+          </header>
+
+          {project.blurb && (
+            <div className="text-base sm:text-lg text-[#D4D4D8] font-light leading-relaxed space-y-4">
+              {project.blurb.split('\n').map((para, i) => (
+                <p key={i}>{para}</p>
               ))}
             </div>
-          </div>
-        )}
+          )}
+        </ProjectDetailMedia>
 
         {/* Consultation CTA Card in Dark Obsidian */}
         <div className="max-w-4xl mx-auto bg-[#121216] rounded-[28px] p-8 md:p-14 border border-white/15 shadow-2xl">
