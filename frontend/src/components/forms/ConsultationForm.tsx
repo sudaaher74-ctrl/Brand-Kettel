@@ -88,34 +88,36 @@ export default function ConsultationForm({ theme = 'dark' }: { theme?: 'dark' | 
   }
 
   const labelCls = isGold
-    ? 'text-sm font-medium text-white/70'
+    ? 'text-xs uppercase tracking-wider font-medium text-white/70'
     : 'text-xs font-semibold uppercase tracking-wider text-ink-muted';
   const fieldCls = isGold
-    ? 'rounded-2xl bg-white/10 px-5 py-4 text-[15px] text-white placeholder:text-white/40 outline-none transition focus:bg-white/15'
+    ? 'rounded-2xl bg-white/5 border border-white/10 px-5 py-3.5 text-[15px] text-white placeholder:text-white/30 outline-none transition focus:border-[#C5A880] focus:bg-white/10 [&>option]:bg-[#121216] [&>option]:text-white'
     : 'field';
 
   return (
     <form onSubmit={onSubmit} className="grid gap-4">
       <label className="grid gap-1.5">
-        <span className={labelCls}>{isGold ? 'Your name' : 'Name'}</span>
-        <input name="name" required placeholder="Name" className={fieldCls} />
+        <span className={labelCls}>Name</span>
+        <input name="name" required placeholder="Your full name or company" className={fieldCls} />
       </label>
 
-      <label className="grid gap-1.5">
-        <span className={labelCls}>{isGold ? 'Your Phone' : 'Phone'}</span>
-        <input name="phone" required type="tel" placeholder="+91 00000 00000" className={fieldCls} />
-      </label>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <label className="grid gap-1.5">
+          <span className={labelCls}>Phone Number</span>
+          <input name="phone" required type="tel" placeholder="+91 00000 00000" className={fieldCls} />
+        </label>
+
+        <label className="grid gap-1.5">
+          <span className={labelCls}>Email Address</span>
+          <input name="email" required type="email" placeholder="you@company.com" className={fieldCls} />
+        </label>
+      </div>
 
       <label className="grid gap-1.5">
-        <span className={labelCls}>Email</span>
-        <input name="email" required type="email" placeholder="you@company.com" className={fieldCls} />
-      </label>
-
-      <label className="grid gap-1.5">
-        <span className={labelCls}>{isGold ? 'Services' : 'Project Type'}</span>
+        <span className={labelCls}>Project Category</span>
         <select name="projectType" required defaultValue="" className={fieldCls}>
           <option value="" disabled>
-            {isGold ? 'Select a service' : 'Select a project type'}
+            Select project category (e.g. Office, Retail, Showroom)
           </option>
           {projectTypes.map((t) => (
             <option key={t} value={t}>
@@ -125,17 +127,15 @@ export default function ConsultationForm({ theme = 'dark' }: { theme?: 'dark' | 
         </select>
       </label>
 
-      {!isGold && (
-        <label className="grid gap-1.5">
-          <span className={labelCls}>Message</span>
-          <textarea
-            name="message"
-            rows={4}
-            placeholder="Tell us about your space, location and timeline…"
-            className="field resize-none"
-          />
-        </label>
-      )}
+      <label className="grid gap-1.5">
+        <span className={labelCls}>Space Details &amp; Timeline</span>
+        <textarea
+          name="message"
+          rows={3}
+          placeholder="Estimated area (sq ft), city location, and target delivery date…"
+          className={`${fieldCls} resize-none`}
+        />
+      </label>
 
       {status === 'error' && (
         <p className={isGold ? 'text-sm text-red-400' : 'text-sm text-red-500'}>{message}</p>
@@ -146,12 +146,12 @@ export default function ConsultationForm({ theme = 'dark' }: { theme?: 'dark' | 
         disabled={status === 'loading'}
         className={
           isGold
-            ? 'mt-1 inline-flex w-fit items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-[#15120f] transition hover:bg-accent-secondary disabled:opacity-60'
+            ? 'mt-2 inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#C5A880] hover:bg-white text-[#0A0A0B] px-8 py-4 text-xs uppercase tracking-[0.14em] font-semibold transition-all duration-300 shadow-xl disabled:opacity-60 cursor-pointer'
             : 'btn-accent mt-1 w-full sm:w-auto'
         }
       >
         {isGold && <Send className="h-4 w-4" />}
-        {status === 'loading' ? 'Sending…' : isGold ? 'Submit' : 'Schedule Consultation'}
+        {status === 'loading' ? 'Sending…' : isGold ? 'Submit Project Inquiry' : 'Schedule Consultation'}
       </button>
     </form>
   );

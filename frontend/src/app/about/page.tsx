@@ -1,195 +1,221 @@
 import type { Metadata } from 'next';
-import PageHero from '@/components/ui/PageHero';
-import Reveal from '@/components/ui/Reveal';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'About Us — Brand Kettle BuildSpaces',
   description:
-    'Brand Kettle BuildSpaces is a turnkey interior design, fit-out and furniture solutions company creating retail, commercial and residential environments across India.',
+    'Brand Kettle BuildSpaces is a turnkey interior design, commercial fit-out and custom furniture company delivering spaces across India.',
 };
 
-const stats = [
-  { value: '10+', label: 'Years of Industry Expertise' },
-  { value: '500+', label: 'Projects Delivered' },
-  { value: '3', label: 'Verticals: Retail · Commercial · Residential' },
-  { value: 'Pan India', label: 'Execution Network' },
+const STATS = [
+  { value: '120+', label: 'Projects Delivered', sub: 'Offices, showrooms, and retail fit-outs completed turnkey.' },
+  { value: '8+', label: 'Years of Craft', sub: 'Proven track record in architecture, joinery & execution.' },
+  { value: '50+', label: 'Brands Served', sub: 'Trusted by global luxury houses, jewellers & enterprises.' },
+  { value: 'Pan-India', label: 'Execution Reach', sub: 'Active hubs in Mumbai, Delhi, Hyderabad, Bengaluru, Indore.' },
 ];
 
-
-
-const pillars = [
-  { title: 'Design Thinking', body: 'Every project begins with a deep understanding of your brand, brief and business goals.' },
-  { title: 'Manufacturing Capability', body: 'In-house fabrication and joinery gives us unmatched quality control and cost efficiency.' },
-  { title: 'Turnkey Execution', body: 'One accountable team from concept through construction — no gaps, no surprises.' },
-];
-
-const reasons = [
-  { title: 'Purpose Before Design', body: 'Every project begins with understanding how the space needs to function—not just how it should look.' },
-  { title: 'Precision in Execution', body: 'Design is only as good as its execution. We believe the quality of every detail matters.' },
-  { title: 'Timelines You Can Count On', body: 'We value your time as much as our own. Every project is planned with clear milestones and delivered with accountability.' },
-  { title: 'Partnerships That Last', body: 'For us, a successful project isn\'t the end of a transaction, it\'s the beginning of a long-term relationship.' },
+const REASONS = [
+  {
+    num: '01',
+    title: 'Purpose Before Design',
+    body: 'Every project begins with understanding how the space needs to function, flow, and drive business value—not just how it looks on day one.',
+  },
+  {
+    num: '02',
+    title: 'In-House Manufacturing',
+    body: 'Direct joinery and metal fabrication facilities give us unmatched control over precision tolerances, finishes, and costs.',
+  },
+  {
+    num: '03',
+    title: 'Timelines You Can Count On',
+    body: 'Like delivering 3,400 sq ft for PNG Jewellers in 27 days, we commit to strict milestone accountability without compromise.',
+  },
+  {
+    num: '04',
+    title: 'Turnkey Accountability',
+    body: 'One single team from conceptual layout to engineering, MEP, procurement, and final handover. No handoff gaps, zero surprises.',
+  },
 ];
 
 export default function AboutPage() {
   return (
-    <>
-      <PageHero
-        eyebrow="About us"
-        title="Crafted, Built and Experienced"
-        subtitle="We combine design thinking, manufacturing capability and turnkey execution to deliver spaces that are functional, immersive and built to last."
-        image="/imgs/commercial/home1.png"
-      />
+    <div className="w-full bg-[#0A0A0B] text-white min-h-screen pt-28 sm:pt-36 pb-24">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
+        
+        {/* ── Page Hero ── */}
+        <div className="text-center max-w-3xl mx-auto mb-20 md:mb-28">
+          <div className="inline-flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.3em] font-medium text-[#C5A880] mb-5">
+            <span>✦</span>
+            <span>About Brand Kettle BuildSpaces</span>
+            <span>✦</span>
+          </div>
+          <h1 className="font-display font-light text-[40px] sm:text-[56px] md:text-[70px] leading-[1.05] tracking-tight uppercase text-white">
+            Crafted, Built &amp; <br />
+            <span className="font-serif italic font-normal text-[#C5A880]">Delivered Turnkey</span>
+          </h1>
+          <p className="mt-6 text-sm sm:text-base text-[#A1A1AA] font-light leading-relaxed max-w-2xl mx-auto">
+            We combine design thinking, in-house joinery manufacturing, and on-site execution discipline to deliver commercial environments that perform for years.
+          </p>
+        </div>
 
-      {/* ── Company Introduction ── */}
-      <section className="bg-background py-[120px]">
-        <div className="container-px">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20 items-center">
-            <Reveal>
-              <span className="eyebrow">
-                <span className="h-px w-6 bg-accent" /> Our Story
-              </span>
-              <h2 className="mt-4 text-3xl font-light tracking-[1px] leading-[1.2] text-ink sm:text-4xl md:text-4xl italic">
-                &quot;Good spaces aren&apos;t defined by how they look on day one. They&apos;re defined by how well they perform for years to come.&quot;
-              </h2>
-            </Reveal>
-            <div className="space-y-5">
-              <Reveal index={1}>
-                <p className="text-lg leading-relaxed text-ink-secondary font-light">
-                  Built on the execution expertise of Brand Kettle Projects Pvt Ltd, Brand Kettle BuildSpaces brings together design, manufacturing and turnkey execution to create retail, commercial and residential spaces.
+        {/* ── Company Story & Philosophy ── */}
+        <section className="mb-24 md:mb-32">
+          <div className="rounded-[28px] bg-[#121216] border border-white/10 p-8 sm:p-14 lg:p-20 shadow-2xl">
+            <div className="grid gap-12 lg:grid-cols-12 items-center">
+              <div className="lg:col-span-7">
+                <span className="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-medium block mb-4">
+                  Our Philosophy
+                </span>
+                <blockquote className="font-serif italic text-2xl sm:text-3xl md:text-4xl text-white font-light leading-[1.3] mb-6">
+                  &ldquo;Good commercial spaces aren&apos;t defined by how they look on handover day. They&apos;re defined by how flawlessly they function, endure, and elevate the brand identity.&rdquo;
+                </blockquote>
+                <p className="text-sm sm:text-base text-[#A1A1AA] font-light leading-relaxed">
+                  Built on the rigorous execution foundation of Brand Kettle Projects Pvt Ltd, Brand Kettle BuildSpaces unites architecture, interior contracting, and modular furniture production into a seamless, unified lifecycle.
                 </p>
-              </Reveal>
-              <Reveal index={2}>
-                <p className="text-lg leading-relaxed text-ink-secondary font-light">
-                  Every project is thoughtfully designed around our clients&apos; vision, functional needs and the way the space is meant to be experienced.
-                </p>
-              </Reveal>
+              </div>
+
+              <div className="lg:col-span-5 relative aspect-square rounded-2xl overflow-hidden border border-white/15 bg-black">
+                <Image
+                  src="/imgs/commercial/home1.png"
+                  alt="Brand Kettle Flagship Space"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── By the Numbers ── */}
-      <section className="bg-surface py-[120px] border-y border-line">
-        <div className="container-px">
-          <Reveal>
-            <span className="eyebrow">
-              <span className="h-px w-6 bg-accent" /> By the Numbers
-            </span>
-          </Reveal>
-          <div className="mt-10 grid grid-cols-2 gap-px lg:grid-cols-4 border border-line overflow-hidden rounded-xl">
-            {stats.map((s, i) => (
-              <Reveal key={s.label} index={i}>
-                <div className="bg-card p-8 text-center group hover:bg-surface transition-colors duration-300">
-                  <p className="font-display text-4xl font-light text-accent sm:text-5xl">
-                    {s.value}
-                  </p>
-                  <p className="mt-3 text-sm font-light leading-snug text-ink-secondary">{s.label}</p>
+        {/* ── By the Numbers (Synchronized with Homepage) ── */}
+        <section className="mb-24 md:mb-32">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#C5A880] block mb-2">
+                Proven Track Record
+              </span>
+              <h2 className="font-display font-light text-3xl sm:text-4xl lg:text-5xl text-white uppercase tracking-tight">
+                Brand Kettle <span className="font-serif italic font-normal text-[#C5A880]">in figures</span>
+              </h2>
+            </div>
+            <p className="text-sm text-[#A1A1AA] font-light max-w-md">
+              Metrics grounded in verified project handovers across luxury retail, high-footfall jewellery showrooms, and enterprise workspaces.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {STATS.map((stat) => (
+              <div
+                key={stat.label}
+                className="rounded-[20px] bg-[#121216] p-8 border border-white/10 hover:border-[#C5A880]/50 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <span className="font-display font-light text-[46px] sm:text-[56px] text-white block mb-2 leading-none">
+                    {stat.value}
+                  </span>
+                  <h3 className="font-display font-medium text-base text-[#C5A880] uppercase tracking-wide">
+                    {stat.label}
+                  </h3>
                 </div>
-              </Reveal>
+                <p className="mt-6 text-xs text-[#A1A1AA] font-light leading-relaxed">
+                  {stat.sub}
+                </p>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-
-      {/* ── Why Choose Us ── */}
-      <section className="bg-background py-16 md:py-24">
-        <div className="container-px">
-          <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-stretch max-h-none lg:max-h-[85vh]">
-            {/* Left Column: Large Image */}
-            <div className="w-full lg:w-1/2 relative min-h-[350px] lg:min-h-[auto] rounded-sm overflow-hidden">
-              <Image 
-                src="/imgs/commercial/taksha coverimg.png" 
-                alt="Why Choose Us" 
-                fill 
-                className="object-cover object-center"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+        {/* ── Why Choose Us ── */}
+        <section className="mb-24 md:mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            
+            {/* Left Photo Showcase */}
+            <div className="lg:col-span-5 relative aspect-[4/5] rounded-[24px] overflow-hidden border border-white/15 shadow-2xl bg-[#121216]">
+              <Image
+                src="/imgs/commercial/taksha coverimg.png"
+                alt="Brand Kettle execution standards"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 45vw"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-black/70 backdrop-blur-md border border-white/10">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-[#C5A880] block mb-0.5">Execution Rigor</span>
+                <p className="text-xs font-light text-white">475 sq yd Builder Floor · Studio AKAAI collaboration</p>
+              </div>
             </div>
 
-            {/* Right Column: Content and Grid */}
-            <div className="w-full lg:w-1/2 flex flex-col justify-center py-2 lg:py-4">
-              <Reveal>
-                <span className="eyebrow">
-                  <span className="h-px w-6 bg-accent" /> Why Choose Us
-                </span>
-                <h2 className="mt-3 text-3xl font-light tracking-[1px] leading-[1.2] text-ink sm:text-4xl mb-8">
-                  An execution-focused partner you can trust
-                </h2>
-              </Reveal>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {reasons.map((r, i) => (
-                  <Reveal key={r.title} index={i}>
-                    <div className="group border border-line bg-card p-5 lg:p-6 h-full transition-colors duration-300 hover:border-accent/40 flex flex-col">
-                      <div className="flex h-10 w-10 items-center justify-center border-[1.5px] border-accent/20 bg-surface font-medium text-accent mb-4 text-sm">
-                        {String(i + 1).padStart(2, '0')}
-                      </div>
-                      <h3 className="text-lg font-medium text-ink mb-2">
+            {/* Right: 4 Execution Pillars */}
+            <div className="lg:col-span-7 flex flex-col justify-center">
+              <span className="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-medium block mb-3">
+                Execution-Focused Partner
+              </span>
+              <h2 className="font-display font-light text-3xl sm:text-4xl text-white uppercase tracking-tight mb-8">
+                Why Industry Leaders Choose Us
+              </h2>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {REASONS.map((r) => (
+                  <div
+                    key={r.title}
+                    className="p-6 rounded-2xl bg-[#121216] border border-white/10 hover:border-[#C5A880]/50 transition-all duration-300 flex flex-col justify-between"
+                  >
+                    <div>
+                      <span className="text-xs font-serif italic text-[#C5A880] mb-2 block">{r.num}</span>
+                      <h3 className="text-base font-medium text-white mb-2 uppercase tracking-wide">
                         {r.title}
                       </h3>
-                      <p className="text-sm text-ink-secondary leading-relaxed">
-                        {r.body}
-                      </p>
                     </div>
-                  </Reveal>
+                    <p className="text-xs sm:text-sm text-[#A1A1AA] font-light leading-relaxed mt-2">
+                      {r.body}
+                    </p>
+                  </div>
                 ))}
               </div>
             </div>
+
           </div>
-        </div>
-      </section>
+        </section>
 
-
-
-      {/* ── Vision & Mission ── */}
-      <section className="bg-background py-[120px]">
-        <div className="container-px">
-          <Reveal>
-            <span className="eyebrow">
-              <span className="h-px w-6 bg-accent" /> Purpose
-            </span>
-          </Reveal>
-          <div className="mt-10 grid gap-px border border-line overflow-hidden sm:grid-cols-2 rounded-xl">
-            {/* Vision */}
-            <Reveal index={0}>
-              <div className="bg-card p-10 sm:p-12 h-full">
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="h-px w-8 bg-accent" />
-                  <span className="text-xs font-light uppercase tracking-[0.25em] text-accent">
-                    Our Vision
-                  </span>
-                </div>
-                <p className="font-display text-2xl font-light tracking-[1px] leading-snug text-ink sm:text-3xl">
-                  Great spaces don&apos;t just host experiences.
-                  <span className="text-accent"> They shape them.</span>
-                </p>
+        {/* ── Vision & Mission Split ── */}
+        <section className="mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-8 sm:p-12 rounded-[24px] bg-[#121216] border border-white/10">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="h-px w-8 bg-[#C5A880]" />
+                <span className="text-xs font-medium uppercase tracking-[0.25em] text-[#C5A880]">
+                  Our Vision
+                </span>
               </div>
-            </Reveal>
-            {/* Mission */}
-            <Reveal index={1}>
-              <div className="bg-surface p-10 sm:p-12 h-full border-l border-line">
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="h-px w-8 bg-accent" />
-                  <span className="text-xs font-light uppercase tracking-[0.25em] text-accent">
-                    Our Mission
-                  </span>
-                </div>
-                <p className="text-base font-light leading-relaxed text-ink-secondary">
-                  We combine design, manufacturing and execution to deliver exceptional retail, commercial and residential environments with <span className="text-ink font-medium">precision, craftsmanship and reliability</span>.
-                </p>
-                <p className="mt-4 text-base font-light leading-relaxed text-ink-secondary">
-                  We strive to redefine how spaces are conceived and delivered by combining <span className="text-ink font-medium">creativity, technical expertise and attention to detail</span> in every project.
-                </p>
+              <p className="font-serif italic text-2xl sm:text-3xl font-light text-white leading-snug">
+                Great spaces don&apos;t merely host human activity. <span className="text-[#C5A880]">They shape how people think, collaborate, and thrive.</span>
+              </p>
+            </div>
+
+            <div className="p-8 sm:p-12 rounded-[24px] bg-[#121216] border border-white/10">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="h-px w-8 bg-[#C5A880]" />
+                <span className="text-xs font-medium uppercase tracking-[0.25em] text-[#C5A880]">
+                  Our Mission
+                </span>
               </div>
-            </Reveal>
+              <p className="text-sm sm:text-base text-[#A1A1AA] font-light leading-relaxed mb-4">
+                We combine architectural design, manufacturing precision, and turnkey execution to deliver commercial environments with unyielding craftsmanship, speed, and integrity.
+              </p>
+              <div className="mt-8">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-medium text-[#C5A880] hover:text-white transition-colors"
+                >
+                  Schedule an architectural consultation →
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-
-    </>
+      </div>
+    </div>
   );
 }
