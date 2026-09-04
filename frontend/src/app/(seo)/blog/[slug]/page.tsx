@@ -67,65 +67,69 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   };
 
   return (
-    <article className="pt-28 sm:pt-36 pb-24">
+    <article className="w-full bg-[#0A0A0B] text-white min-h-screen pt-28 sm:pt-36 pb-24">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <div className="container mx-auto px-6 max-w-4xl">
+      <div className="max-w-4xl mx-auto px-5 sm:px-8">
         {/* Back link */}
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-2 text-nav text-accent hover:text-ink transition-colors mb-8"
-        >
-          <span className="transition-transform hover:-translate-x-1">←</span>
-          Back to Blog
-        </Link>
+        <div className="mb-8">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-medium text-[#C5A880] hover:text-white transition-colors"
+          >
+            ← Back to Insights
+          </Link>
+        </div>
 
         {/* Header */}
         <header className="mb-12">
           {post.publishedAt && (
-            <time className="text-[11px] font-light uppercase tracking-[0.2em] text-accent">
+            <time className="text-xs font-light uppercase tracking-[0.25em] text-[#C5A880] block mb-3">
               {new Date(post.publishedAt).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
             </time>
           )}
-          <h1 className="mt-4 font-display text-4xl md:text-5xl text-ink leading-[1.1]">
+          <h1 className="font-display font-light text-3xl sm:text-5xl lg:text-6xl text-white uppercase tracking-tight leading-[1.08]">
             {post.title}
           </h1>
           {post.excerpt && (
-            <p className="mt-6 text-lg font-light leading-relaxed text-ink-secondary max-w-2xl">
+            <p className="mt-6 text-base sm:text-lg font-light leading-relaxed text-[#A1A1AA] max-w-2xl">
               {post.excerpt}
             </p>
           )}
         </header>
 
         {post.image && (
-          <div className="mb-12 overflow-hidden aspect-[21/9] relative">
+          <div className="mb-14 rounded-[24px] overflow-hidden aspect-[21/9] relative border border-white/10 bg-[#121216]">
             <Image src={post.image} alt={post.imageAlt || post.title} className="object-cover" fill sizes="100vw" priority />
           </div>
         )}
 
-        {/* Content — supports HTML from the TipTap editor */}
+        {/* Content — supports HTML from the editor */}
         <div
-          className="prose prose-lg max-w-none
-            prose-headings:font-display prose-headings:font-light prose-headings:tracking-[0.5px] prose-headings:text-ink
-            prose-p:text-ink-secondary prose-p:font-light prose-p:leading-relaxed
-            prose-a:text-accent prose-a:no-underline hover:prose-a:underline
-            prose-strong:text-ink prose-strong:font-medium
-            prose-blockquote:border-accent prose-blockquote:text-ink-secondary
-            prose-img:rounded-none"
+          className="prose prose-invert prose-lg max-w-none
+            prose-headings:font-display prose-headings:font-light prose-headings:text-white prose-headings:uppercase
+            prose-p:text-[#D4D4D8] prose-p:font-light prose-p:leading-relaxed
+            prose-a:text-[#C5A880] prose-a:no-underline hover:prose-a:underline
+            prose-strong:text-white prose-strong:font-medium
+            prose-blockquote:border-[#C5A880] prose-blockquote:text-[#D4D4D8] prose-blockquote:font-serif prose-blockquote:italic
+            prose-img:rounded-2xl prose-img:border prose-img:border-white/10"
           dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
         />
 
-        {/* CTA */}
-        <div className="mt-16 border-t border-line pt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        {/* Bottom Consultation Banner */}
+        <div className="mt-20 rounded-[24px] bg-[#121216] border border-white/10 p-8 sm:p-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-2xl">
           <div>
-            <h3 className="font-display text-xl text-ink">Inspired by what you read?</h3>
-            <p className="mt-1 text-sm text-ink-secondary">Let&apos;s discuss your project.</p>
+            <span className="text-[10px] uppercase tracking-widest text-[#C5A880] block mb-1">Turnkey Consultation</span>
+            <h3 className="font-display font-light text-2xl text-white uppercase">Inspired by this article?</h3>
+            <p className="mt-1 text-sm text-[#A1A1AA] font-light">Discuss your upcoming commercial, retail, or showroom project.</p>
           </div>
-          <Link href="/contact" className="btn-accent">
-            Get in Touch
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#C5A880] text-[#0A0A0B] hover:bg-white text-xs uppercase tracking-[0.14em] font-semibold transition-all duration-300 shadow-xl shrink-0"
+          >
+            Get in Touch →
           </Link>
         </div>
       </div>
     </article>
   );
 }
-

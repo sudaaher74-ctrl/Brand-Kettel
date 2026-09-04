@@ -8,12 +8,12 @@ export default function StickyContact() {
         href="https://wa.me/918959173790?text=Hello%20Brand%20Kettle%2C%20I%20would%20like%20to%20inquire%20about%20a%20commercial%20fit-out%20project."
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative flex h-13 w-13 items-center justify-center rounded-full bg-[#231800] text-[#DBB6FC] border border-white/20 shadow-2xl transition-all duration-300 hover:scale-110 hover:bg-[#322301] hover:text-white"
+        className="group relative flex h-12 w-12 sm:h-13 sm:w-13 items-center justify-center rounded-full bg-[#121216] text-[#25D366] border border-white/20 hover:border-[#25D366] shadow-[0_4px_25px_rgba(0,0,0,0.8)] transition-all duration-300 hover:scale-110 hover:shadow-[0_0_25px_rgba(37,211,102,0.4)]"
         aria-label="Chat with us on WhatsApp"
       >
         <span className="sr-only">Chat with us on WhatsApp</span>
         {/* Tooltip */}
-        <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-full bg-[#231800] px-3.5 py-1.5 text-[11px] uppercase tracking-wider font-medium text-[#FFEAD4] opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100 border border-white/10">
+        <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-full bg-[#0A0A0B] px-3.5 py-1.5 text-[11px] uppercase tracking-wider font-medium text-[#25D366] opacity-0 shadow-xl transition-opacity duration-200 group-hover:opacity-100 border border-white/15">
           WhatsApp Us
         </span>
         <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
@@ -24,12 +24,12 @@ export default function StickyContact() {
       {/* Call Direct Action */}
       <a
         href="tel:+918959173790"
-        className="group relative hidden sm:flex h-13 w-13 items-center justify-center rounded-full bg-[#FAF5EE] text-[#231800] border border-[#231800]/15 shadow-2xl transition-all duration-300 hover:scale-110 hover:bg-[#FFEAD4]"
+        className="group relative hidden sm:flex h-12 w-12 sm:h-13 sm:w-13 items-center justify-center rounded-full bg-[#121216] text-[#C5A880] border border-white/20 hover:border-[#C5A880] shadow-[0_4px_25px_rgba(0,0,0,0.8)] transition-all duration-300 hover:scale-110 hover:shadow-[0_0_25px_rgba(197,168,128,0.4)]"
         aria-label="Call Brand Kettle BuildSpaces"
       >
         <span className="sr-only">Call Brand Kettle BuildSpaces</span>
         {/* Tooltip */}
-        <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-full bg-[#231800] px-3.5 py-1.5 text-[11px] uppercase tracking-wider font-medium text-[#FFEAD4] opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100 border border-white/10">
+        <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-full bg-[#0A0A0B] px-3.5 py-1.5 text-[11px] uppercase tracking-wider font-medium text-[#C5A880] opacity-0 shadow-xl transition-opacity duration-200 group-hover:opacity-100 border border-white/15">
           +91 89591 73790
         </span>
         <svg fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" className="h-5 w-5">

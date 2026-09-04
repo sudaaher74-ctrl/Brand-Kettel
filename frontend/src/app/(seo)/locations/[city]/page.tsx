@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 type Location = {
   id: string;
@@ -14,7 +15,7 @@ async function getLocation(slug: string): Promise<Location | null> {
     const res = await fetch(`http://localhost:3001/api/seo/locations/${slug}`, { next: { revalidate: 60 } });
     if (!res.ok) return null;
     return res.json();
-  } catch (e) {
+  } catch {
     return null;
   }
 }
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   if (!location) return {};
   
   return {
-    title: `${location.title} | Brand Kettle`,
+    title: `${location.title} | Brand Kettle BuildSpaces`,
     description: location.description,
   };
 }
@@ -41,7 +42,7 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
     '@type': 'LocalBusiness',
     name: 'Brand Kettle BuildSpaces',
     image: 'https://brandkettle.com/logo.png',
-    telephone: '+9189591737990',
+    telephone: '+918959173790',
     url: `https://brandkettle.com/locations/${location.slug}`,
     address: {
       '@type': 'PostalAddress',
@@ -51,53 +52,85 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
   };
 
   return (
-    <article className="pt-32 pb-24">
+    <article className="w-full bg-[#0A0A0B] text-white min-h-screen pt-28 sm:pt-36 pb-24">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
-      <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <span className="text-slate-500 font-medium tracking-widest uppercase mb-4 block">Service Area</span>
-          <h1 className="font-display text-4xl md:text-6xl text-slate-900 mb-6">{location.title}</h1>
-          <p className="text-xl text-slate-600 leading-relaxed">
-            {location.description} We bring our premium turnkey interior solutions directly to your doorstep in {location.city}.
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
+        
+        {/* Header */}
+        <div className="max-w-4xl mx-auto text-center mb-16 md:mb-20">
+          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] font-medium text-[#C5A880] mb-4">
+            <span>✦</span>
+            <span>Service Region · {location.city}</span>
+            <span>✦</span>
+          </div>
+          <h1 className="font-display font-light text-4xl sm:text-5xl md:text-6xl text-white uppercase tracking-tight mb-6">
+            {location.title}
+          </h1>
+          <p className="text-base sm:text-lg text-[#A1A1AA] font-light leading-relaxed max-w-2xl mx-auto">
+            {location.description} We bring our end-to-end turnkey architectural design, joinery manufacturing, and fit-out capabilities directly to {location.city}.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-16">
-          <div className="space-y-8">
-            <h2 className="text-3xl font-bold text-slate-900">Why choose us in {location.city}?</h2>
-            <p className="text-lg text-slate-700 leading-relaxed">
-              Brand Kettle is widely recognized as the leading commercial interior fit-out company serving the <strong>{location.city}</strong> region. 
-              Our deep understanding of local compliance, vendor networks, and architectural nuances allows us to deliver projects on time and within budget.
+        {/* 2-Column Grid */}
+        <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className="rounded-[28px] bg-[#121216] border border-white/10 p-8 sm:p-12 shadow-2xl space-y-6">
+            <span className="text-xs uppercase tracking-[0.2em] text-[#C5A880] font-medium block">
+              Regional Expertise
+            </span>
+            <h2 className="font-display font-light text-3xl text-white uppercase tracking-tight">
+              Why Partner With Us in {location.city}?
+            </h2>
+            <p className="text-sm sm:text-base text-[#A1A1AA] font-light leading-relaxed">
+              Brand Kettle BuildSpaces is recognized as the leading turnkey commercial interior contractor serving the <strong className="text-white font-medium">{location.city}</strong> business ecosystem. Our milestone discipline, in-house joinery, and direct MEP engineering ensure handovers on time and on budget.
             </p>
-            <ul className="space-y-4">
-              <li className="flex items-center gap-4 text-slate-700 font-medium">
-                <svg className="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                Turnkey Project Execution
+            
+            <ul className="space-y-3.5 pt-2">
+              <li className="flex items-center gap-3 text-sm text-[#D4D4D8] font-light">
+                <span className="w-6 h-6 rounded-full bg-[#C5A880]/15 text-[#C5A880] flex items-center justify-center font-bold text-xs shrink-0">✓</span>
+                Full Turnkey Project Execution &amp; Civil Fit-Out
               </li>
-              <li className="flex items-center gap-4 text-slate-700 font-medium">
-                <svg className="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                Local Vendor Network
+              <li className="flex items-center gap-3 text-sm text-[#D4D4D8] font-light">
+                <span className="w-6 h-6 rounded-full bg-[#C5A880]/15 text-[#C5A880] flex items-center justify-center font-bold text-xs shrink-0">✓</span>
+                In-House Joinery &amp; Bespoke Millwork Fabrication
               </li>
-              <li className="flex items-center gap-4 text-slate-700 font-medium">
-                <svg className="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                Premium Material Selection
+              <li className="flex items-center gap-3 text-sm text-[#D4D4D8] font-light">
+                <span className="w-6 h-6 rounded-full bg-[#C5A880]/15 text-[#C5A880] flex items-center justify-center font-bold text-xs shrink-0">✓</span>
+                Strict Milestone Accountability &amp; Zero Handoff Gaps
               </li>
             </ul>
-            <a href="/contact" className="inline-block mt-4 px-8 py-4 bg-slate-900 text-white rounded-full font-medium hover:bg-slate-800 transition-colors">
-              Start Your Project in {location.city}
-            </a>
-          </div>
-          
-          <div className="bg-slate-100 rounded-3xl p-8 flex items-center justify-center min-h-[400px]">
-            <div className="text-center">
-              <svg className="w-16 h-16 mx-auto text-slate-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <p className="text-slate-500 font-medium">Serving {location.city} & surrounding areas</p>
+
+            <div className="pt-4">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#C5A880] text-[#0A0A0B] hover:bg-white text-xs uppercase tracking-[0.14em] font-semibold transition-all duration-300 shadow-xl"
+              >
+                Start Your Project in {location.city} →
+              </Link>
             </div>
           </div>
+          
+          <div className="rounded-[28px] bg-[#121216] border border-white/10 p-10 sm:p-14 flex flex-col items-center justify-center min-h-[380px] text-center shadow-2xl">
+            <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#C5A880] mb-5">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <h3 className="font-display font-light text-2xl text-white uppercase mb-2">
+              Pan-India Execution Hub
+            </h3>
+            <p className="text-sm text-[#A1A1AA] font-light max-w-sm mb-6">
+              Active projects and delivery capabilities across {location.city} and neighboring commercial corridors.
+            </p>
+            <a
+              href="tel:+918959173790"
+              className="text-xs uppercase tracking-[0.2em] text-[#C5A880] font-medium hover:text-white transition-colors"
+            >
+              Direct Studio Line: +91 89591 73790 →
+            </a>
+          </div>
         </div>
+
       </div>
     </article>
   );
