@@ -185,7 +185,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               Discuss your commercial, retail, or workspace requirements with our turnkey interior specialists.
             </p>
           </div>
-          <ConsultationForm />
+          <ConsultationForm theme="gold" />
         </div>
       </div>
     </article>

@@ -52,8 +52,10 @@ router.post('/', async (req, res) => {
   } catch (error) {
     const err = error as any;
     console.error('[contact] failed to store lead:', err);
-    if (err.errors) { // Zod error
-      res.status(400).json({ error: 'Validation failed', details: err.errors });
+    if (err.errors || err.issues) { // Zod error
+      const firstIssue = err.errors?.[0] || err.issues?.[0];
+      const message = firstIssue?.message || 'Validation failed. Please verify your contact details.';
+      res.status(400).json({ error: message, details: err.errors || err.issues });
     } else {
       res.status(500).json({ error: 'We could not submit your request. Please try again or call us directly.' });
     }

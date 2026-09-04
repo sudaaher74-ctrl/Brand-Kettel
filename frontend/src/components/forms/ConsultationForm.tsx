@@ -15,7 +15,7 @@ const projectTypes = [
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
-export default function ConsultationForm({ theme = 'dark' }: { theme?: 'dark' | 'gold' }) {
+export default function ConsultationForm({ theme = 'gold' }: { theme?: 'dark' | 'gold' }) {
   const [status, setStatus] = useState<Status>('idle');
   const [message, setMessage] = useState('');
   const isGold = theme === 'gold';

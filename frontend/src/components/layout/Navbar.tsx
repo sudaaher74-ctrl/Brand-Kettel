@@ -170,18 +170,18 @@ export default function Navbar() {
                 aria-label="Toggle menu"
                 aria-expanded={open}
                 onClick={() => setOpen((v) => !v)}
-                className="grid h-10 w-10 place-items-center rounded-full border border-line bg-surface lg:hidden"
+                className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 hover:bg-white/10 lg:hidden transition-colors"
               >
                 <span className="relative block h-3 w-5">
                   <span
                     className={cn(
-                      'absolute left-0 top-0 h-0.5 w-5 bg-ink transition-all duration-300',
+                      'absolute left-0 top-0 h-0.5 w-5 bg-white transition-all duration-300',
                       open && 'top-1.5 rotate-45'
                     )}
                   />
                   <span
                     className={cn(
-                      'absolute left-0 top-2.5 h-0.5 w-5 bg-ink transition-all duration-300',
+                      'absolute left-0 top-2.5 h-0.5 w-5 bg-white transition-all duration-300',
                       open && 'top-1.5 -rotate-45'
                     )}
                   />
@@ -202,7 +202,7 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="container-px lg:hidden"
           >
-            <div className="glass mt-2 border border-line p-4 shadow-card rounded-xl">
+            <div className="mt-2 rounded-2xl bg-[#0A0A0B]/95 backdrop-blur-xl border border-white/15 p-5 shadow-2xl">
               <div className="grid gap-1">
                 {navLinks.map((l, i) => {
                   if (l.label === 'Services') {
@@ -214,28 +214,28 @@ export default function Navbar() {
                         transition={{ delay: 0.04 * i }}
                       >
                         {/* Services label */}
-                        <div className="px-4 pt-3 pb-1">
-                          <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">
+                        <div className="px-3 pt-2.5 pb-1">
+                          <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C5A880]">
                             Services
                           </span>
                         </div>
                         {/* Sub links */}
-                        <div className="ml-4 border-l border-line pl-4">
+                        <div className="ml-2 border-l border-white/10 pl-3 space-y-0.5">
                           <Link
                             href="/services"
                             onClick={() => setOpen(false)}
-                            className="block py-2 text-sm font-medium text-ink-muted hover:text-white transition-colors"
+                            className="block px-3 py-2 text-xs uppercase tracking-[0.12em] font-medium text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                           >
-                            All Services
+                            All Services Overview →
                           </Link>
                           {servicesDropdown.map((item) => (
                             <Link
                               key={item.href}
                               href={item.href}
                               onClick={() => setOpen(false)}
-                              className="flex items-center gap-2 py-2 text-sm font-medium text-ink-muted hover:text-white transition-colors"
+                              className="flex items-center gap-2.5 px-3 py-2 text-xs uppercase tracking-[0.12em] font-medium text-white/70 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                             >
-                              <span className="text-accent/50 text-base">{item.icon}</span>
+                              <span className="text-[#C5A880] text-sm">{item.icon}</span>
                               {item.label}
                             </Link>
                           ))}
@@ -254,7 +254,7 @@ export default function Navbar() {
                       <Link
                         href={l.href}
                         onClick={() => setOpen(false)}
-                        className="block px-4 py-3 text-base font-medium text-ink hover:text-white transition-colors"
+                        className="block px-3 py-2.5 text-xs uppercase tracking-[0.14em] font-medium text-white/80 hover:text-white hover:bg-white/5 rounded-xl transition-colors"
                       >
                         {l.label}
                       </Link>
@@ -262,8 +262,12 @@ export default function Navbar() {
                   );
                 })}
               </div>
-              <Link href="/contact" onClick={() => setOpen(false)} className="btn-accent mt-3 w-full">
-                Get in Touch
+              <Link
+                href="/contact"
+                onClick={() => setOpen(false)}
+                className="mt-4 flex items-center justify-center rounded-full bg-[#C5A880] hover:bg-white text-[#0A0A0B] py-3.5 px-6 text-xs uppercase tracking-[0.14em] font-semibold transition-all duration-300 shadow-xl"
+              >
+                Start a Project
               </Link>
             </div>
           </motion.div>
