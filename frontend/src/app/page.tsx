@@ -16,17 +16,17 @@ export default function HomePage() {
       {/* 1. Top Announcement Bar */}
       <RonnTopBar />
 
-      {/* 2. Hero Section */}
+      {/* 2. Hero Section (First Page) */}
       <RonnHero />
 
-      {/* 3. Running Line Marquee Ticker ("ON THE GROUND / DELIVERED") */}
-      <RonnRunningLine />
-
-      {/* 4. Signature Manifesto Quote */}
+      {/* 3. 2nd Scroll: Signature Manifesto Quote ("Our Signature") */}
       <RonnManifestoQuote />
 
-      {/* 5. Numbers / Theses ("Brand Kettle in figures") */}
+      {/* 4. Next: By the Numbers ("Brand Kettle in figures") */}
       <RonnTheses />
+
+      {/* 5. Running Line Marquee Ticker ("ON THE GROUND / DELIVERED") */}
+      <RonnRunningLine />
 
       {/* 6. Services Stacking Totem ("Our End-to-End Accompaniment") */}
       <RonnServicesTotem />
