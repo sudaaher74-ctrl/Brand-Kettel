@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import FilterableProjectGallery from '@/components/ui/FilterableProjectGallery';
 import { caseStudies as fallbackProjects } from '@/lib/projectsData';
+import { sanitizeProject } from '@/lib/imageUtils';
 
 export const metadata: Metadata = {
   title: 'Portfolio — Turnkey Architectural Realizations',
@@ -24,7 +25,8 @@ async function getProjects() {
 }
 
 export default async function PortfolioPage() {
-  const projects = await getProjects();
+  const rawProjects = await getProjects();
+  const projects = rawProjects.map((p: any) => sanitizeProject(p));
 
   const orderedSlugs = ['gucci', 'taksha-hyderabad', 'png', 'giva', 'ramada-encore-bareilly'];
   projects.sort((a: any, b: any) => {

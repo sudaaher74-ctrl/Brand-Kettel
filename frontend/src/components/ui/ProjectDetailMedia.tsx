@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import { cleanImagePath } from '@/lib/imageUtils';
 
 interface ProjectDetailMediaProps {
   projectName: string;
@@ -18,9 +19,16 @@ export default function ProjectDetailMedia({
   gallery = [],
   children,
 }: ProjectDetailMediaProps) {
+  const cleanedHero = cleanImagePath(heroImage);
+  const cleanedGallery = React.useMemo(() => {
+    return (gallery || [])
+      .map(cleanImagePath)
+      .filter((img, idx, arr) => img && arr.indexOf(img) === idx && img !== cleanedHero);
+  }, [gallery, cleanedHero]);
+
   const allImages = React.useMemo(() => {
-    return [heroImage, ...gallery].filter(Boolean) as string[];
-  }, [heroImage, gallery]);
+    return [cleanedHero, ...cleanedGallery].filter(Boolean) as string[];
+  }, [cleanedHero, cleanedGallery]);
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const touchStartX = useRef<number | null>(null);
@@ -91,14 +99,14 @@ export default function ProjectDetailMedia({
         <div className="lg:col-span-6 flex flex-col">{children}</div>
 
         {/* Right Column: Sticky Hero Photo Frame with Fullscreen Trigger */}
-        {heroImage && (
+        {cleanedHero && (
           <div className="lg:col-span-6 lg:sticky lg:top-32">
             <div
               onClick={() => openLightbox(0)}
               className="group relative rounded-[24px] overflow-hidden aspect-[4/3] lg:aspect-[4/5] w-full border border-white/15 bg-[#121216] shadow-2xl cursor-pointer"
             >
               <Image
-                src={heroImage}
+                src={cleanedHero}
                 alt={projectName}
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 fill
@@ -118,7 +126,7 @@ export default function ProjectDetailMedia({
       </div>
 
       {/* Gallery Grid */}
-      {gallery && gallery.length > 0 && (
+      {cleanedGallery && cleanedGallery.length > 0 && (
         <div className="mb-24">
           <div className="flex items-center justify-between mb-8">
             <div>
@@ -130,13 +138,13 @@ export default function ProjectDetailMedia({
               </h3>
             </div>
             <span className="text-xs text-[#A1A1AA] uppercase tracking-wider">
-              {gallery.length} {gallery.length === 1 ? 'View' : 'Views'} • Click to Zoom
+              {cleanedGallery.length} {cleanedGallery.length === 1 ? 'View' : 'Views'} • Click to Zoom
             </span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {gallery.map((img, i) => {
-              const itemIndex = heroImage ? i + 1 : i;
+            {cleanedGallery.map((img, i) => {
+              const itemIndex = cleanedHero ? i + 1 : i;
               return (
                 <div
                   key={i}

@@ -163,7 +163,7 @@ export default function ProjectForm({ initial = {} }: { initial?: ProjectData })
 
       <div>
         <label style={label}>Cover Image URL</label>
-        <input style={input} value={form.image} onChange={e => set('image', e.target.value)} placeholder="/imgs/commercial/photo.jpg" />
+        <input style={input} value={form.image} onChange={e => set('image', e.target.value)} placeholder="/imgs/commercial/brandkettle1.jpg" />
         {form.image && (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={form.image} alt="" className="mt-2 rounded-lg object-cover" style={{ height: 80, width: 140 }} />
@@ -176,7 +176,7 @@ export default function ProjectForm({ initial = {} }: { initial?: ProjectData })
           style={{ ...input, minHeight: 90, resize: 'vertical' }}
           value={form.gallery}
           onChange={e => set('gallery', e.target.value)}
-          placeholder="/imgs/commercial/photo1.jpg&#10;/imgs/commercial/photo2.jpg"
+          placeholder="/imgs/commercial/png2.jpg"
         />
       </div>
 

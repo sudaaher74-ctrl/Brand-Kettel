@@ -67,7 +67,7 @@ export default function ServiceForm({ initial = {} }: { initial?: ServiceData })
 
       <div>
         <label style={label}>Image URL</label>
-        <input style={input} value={form.image} onChange={e => set('image', e.target.value)} placeholder="/imgs/service.jpg" />
+        <input style={input} value={form.image} onChange={e => set('image', e.target.value)} placeholder="/imgs/commercial/work co work space2.jpg" />
         {form.image && (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={form.image} alt="" className="mt-2 rounded-lg object-cover" style={{ height: 80, width: 140 }} />

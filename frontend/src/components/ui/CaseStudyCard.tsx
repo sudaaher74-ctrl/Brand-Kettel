@@ -3,14 +3,17 @@
 import type { CaseStudy } from '@/lib/projectsData';
 import Image from 'next/image';
 import Link from 'next/link';
+import { cleanImagePath } from '@/lib/imageUtils';
 
 export default function CaseStudyCard({ project, index }: { project: CaseStudy; index: number }) {
   const imagesArray = project.images || (project as any).gallery || [(project as any).image].filter(Boolean) || [];
-  let mainImage = imagesArray[0] || '';
+  let mainImage = cleanImagePath(imagesArray[0] || (project as any).image);
 
   if (project.slug === 'gucci') mainImage = '/imgs/commercial/gucci-green.png';
   if (project.slug === 'malabar-gold') mainImage = '/imgs/commercial/malabarcoverimg.png';
-  if (project.slug === 'png') mainImage = '/imgs/commercial/pnjcoverimg.png';
+  if (project.slug === 'png') mainImage = '/imgs/commercial/png1.jpg';
+  if (project.slug === 'giva') mainImage = '/imgs/commercial/giva.png';
+  if (project.slug === 'taksha-hyderabad') mainImage = '/imgs/commercial/taksha coverimg.png';
 
   const category = project.category || (project as any).segment || 'Turnkey Fit-Out';
   const location = (project as any).location || '';

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { cleanImagePath } from '@/lib/imageUtils';
 
 export const metadata: Metadata = {
   title: 'Blog — Insights on Commercial Interior Design & Fit-Outs',
@@ -91,7 +92,7 @@ export default async function BlogPage() {
                 <div>
                   <div className="relative aspect-[16/10] overflow-hidden bg-black/40">
                     <Image
-                      src={p.coverImage || p.image || '/imgs/commercial/p073_101.jpg'}
+                      src={cleanImagePath(p.coverImage || p.image || '/imgs/commercial/brandkettle1.jpg')}
                       alt={p.imageAlt || p.title}
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       fill

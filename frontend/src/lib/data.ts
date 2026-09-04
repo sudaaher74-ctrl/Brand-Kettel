@@ -112,7 +112,7 @@ export const projects: Project[] = [
     area: '25,000 sq ft',
     year: '2023',
     image: '/imgs/commercial/ramda encre hotel1.jpg',
-    gallery: [ '/imgs/commercial/ramda encre hotel1.jpg', '/imgs/commercial/ramda encore hotel2.jpg', '/imgs/commercial/ramda encore hotel3.jpg', '/imgs/commercial/p064_079.jpg', '/imgs/commercial/p066_087.jpg'],
+    gallery: [ '/imgs/commercial/ramda encre hotel1.jpg', '/imgs/commercial/ramda encore hotel2.jpg', '/imgs/commercial/ramda encore hotel3.jpg', '/imgs/commercial/p066_087.jpg'],
     blurb: "BrandKettle's first collaboration with a luxury hotel. Centrally located in the medical hub, under 1 km from Bareilly Jn. train station and 11 km from Bareilly Airport (BEK). A new chapter where brand identity meets functionality.",
     segment: 'commercial',
     alt: 'Commercial Interior Contractors - Ramada Encore Hotel Bareilly',
@@ -181,7 +181,7 @@ export const services: Service[] = [
     title: 'Residential Interiors',
     tag: 'Premium',
     description: 'Bespoke homes where comfort, craft and detail meet.',
-    image: '/imgs/residential/p076_107.jpg',
+    image: '/imgs/commercial/home1.png',
   },
   {
     title: 'Custom Furniture',

@@ -97,7 +97,6 @@ export const caseStudies: CaseStudy[] = [
       '/imgs/commercial/ramda encre hotel1.jpg',
       '/imgs/commercial/ramda encore hotel2.jpg',
       '/imgs/commercial/ramda encore hotel3.jpg',
-      '/imgs/commercial/p064_079.jpg',
       '/imgs/commercial/p066_087.jpg',
     ],
   },

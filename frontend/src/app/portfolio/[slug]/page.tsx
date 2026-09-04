@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import { projects as fallbackProjects } from '@/lib/data';
 import ConsultationForm from '@/components/forms/ConsultationForm';
 import ProjectDetailMedia from '@/components/ui/ProjectDetailMedia';
+import { sanitizeProject } from '@/lib/imageUtils';
 
 type Project = {
   id: string;
@@ -39,18 +40,21 @@ function mapToProject(p: typeof fallbackProjects[0]): Project {
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 async function getProject(slug: string): Promise<Project | null> {
+  let project: Project | null = null;
   try {
     const res = await fetch(`${API_URL}/api/admin/projects/${slug}`, { next: { revalidate: 60 } });
     if (!res.ok) {
       const fallback = fallbackProjects.find(p => p.slug === slug);
-      return fallback ? mapToProject(fallback) : null;
+      project = fallback ? mapToProject(fallback) : null;
+    } else {
+      project = await res.json();
     }
-    return res.json();
   } catch (error) {
     console.warn(`Failed to fetch project ${slug}:`, error);
     const fallback = fallbackProjects.find(p => p.slug === slug);
-    return fallback ? mapToProject(fallback) : null;
+    project = fallback ? mapToProject(fallback) : null;
   }
+  return project ? sanitizeProject(project) : null;
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {

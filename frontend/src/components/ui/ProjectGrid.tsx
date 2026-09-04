@@ -2,6 +2,7 @@ import type { Project } from '@/lib/data';
 import Reveal from './Reveal';
 import Image from 'next/image';
 import Link from 'next/link';
+import { cleanImagePath } from '@/lib/imageUtils';
 
 export default function ProjectGrid({ items }: { items: Project[] | null }) {
   if (!items || !Array.isArray(items) || items.length === 0) return null;
@@ -9,10 +10,10 @@ export default function ProjectGrid({ items }: { items: Project[] | null }) {
   return (
     <div className="grid gap-6 sm:gap-8 sm:grid-cols-2">
       {items.map((p, i) => {
-        let displayImage = p.image;
+        let displayImage = cleanImagePath(p.image);
         if (p.slug === 'gucci') displayImage = '/imgs/commercial/gucci-green.png';
         if (p.slug === 'malabar-gold') displayImage = '/imgs/commercial/malabarcoverimg.png';
-        if (p.slug === 'png') displayImage = '/imgs/commercial/pnjcoverimg.png';
+        if (p.slug === 'png') displayImage = '/imgs/commercial/png1.jpg';
 
         return (
           <Reveal key={p.slug} index={i % 2} as="div">

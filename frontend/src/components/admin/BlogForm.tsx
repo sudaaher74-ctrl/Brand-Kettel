@@ -120,7 +120,7 @@ export default function BlogForm({ initial = {} }: { initial?: PostData }) {
         <div className="grid grid-cols-2 gap-5">
           <div>
             <label style={label}>Cover Image URL</label>
-            <input style={input} value={form.coverImage} onChange={e => set('coverImage', e.target.value)} placeholder="/imgs/blog/cover.jpg" />
+            <input style={input} value={form.coverImage} onChange={e => set('coverImage', e.target.value)} placeholder="/imgs/commercial/brandkettle1.jpg" />
             {form.coverImage && (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={form.coverImage} alt="" className="mt-2 rounded-lg object-cover" style={{ height: 80, width: 140 }} />
