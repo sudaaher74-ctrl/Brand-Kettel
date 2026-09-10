@@ -10,6 +10,13 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// The API runs behind a platform proxy in production. Without this,
+// express-rate-limit keys every request on the proxy's own IP, which turns
+// every per-IP limiter below into a single global bucket that one bot can
+// exhaust for all real users. TRUSTED_PROXY_HOPS should match the number of
+// proxies in front of this process (1 for a single platform load balancer).
+app.set('trust proxy', Number(process.env.TRUSTED_PROXY_HOPS ?? 1));
+
 // Fail fast if admin auth is misconfigured — never run with insecure defaults.
 if (!process.env.ADMIN_PASSWORD || !process.env.APP_SECRET) {
   console.error('FATAL: ADMIN_PASSWORD and APP_SECRET must both be set to strong secret values.');
@@ -34,6 +41,16 @@ const contactLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 10,
   message: { error: 'Too many requests, please try again later.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// The job-application endpoint is public so candidates can apply without an
+// account, which means it writes to the database unauthenticated. Bound it.
+const applicationLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 5,
+  message: { error: 'Too many applications submitted, please try again later.' },
   standardHeaders: true,
   legacyHeaders: false,
 });
@@ -69,6 +86,7 @@ app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
 // Admin API routes (auth handled individually per route)
 app.use('/api/admin/projects', projectsRoutes);
 app.use('/api/admin/services', servicesRoutes);
+app.use('/api/admin/careers/applications', applicationLimiter);
 app.use('/api/admin/careers', careersRoutes);
 app.use('/api/admin/testimonials', testimonialsRoutes);
 app.use('/api/admin/upload', uploadRoutes);
