@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { cleanImagePath } from '@/lib/imageUtils';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/blog' },
   title: 'Blog — Insights on Commercial Interior Design & Fit-Outs',
   description:
     'Practical thinking, project breakdowns, and architecture insights on commercial fit-outs, jewellery showrooms, and turnkey delivery from Brand Kettle BuildSpaces.',

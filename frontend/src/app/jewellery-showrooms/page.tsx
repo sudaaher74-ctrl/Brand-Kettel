@@ -6,6 +6,7 @@ import { projects as fallbackProjects } from '@/lib/data';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/jewellery-showrooms' },
   title: 'Jewellery Showroom Interior Designers | Jewellery Store Interior Design',
   description:
     'Brand Kettle BuildSpaces specializes in Jewellery Showroom Fit-Out and Jewellery Display Solutions. We are leading Jewellery Showroom Interior Designers crafting secure, luminous retail environments.',

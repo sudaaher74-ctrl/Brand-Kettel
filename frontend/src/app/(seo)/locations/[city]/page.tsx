@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { API_URL, absoluteUrl } from '@/lib/site';
 import Link from 'next/link';
 
 type Location = {
@@ -12,7 +13,7 @@ type Location = {
 
 async function getLocation(slug: string): Promise<Location | null> {
   try {
-    const res = await fetch(`http://localhost:3001/api/seo/locations/${slug}`, { next: { revalidate: 60 } });
+    const res = await fetch(`${API_URL}/api/seo/locations/${slug}`, { next: { revalidate: 60 } });
     if (!res.ok) return null;
     return res.json();
   } catch {
@@ -26,6 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   if (!location) return {};
   
   return {
+    alternates: { canonical: `/locations/${location.slug}` },
     title: `${location.title} | Brand Kettle BuildSpaces`,
     description: location.description,
   };
@@ -41,9 +43,9 @@ export default async function LocationPage({ params }: { params: Promise<{ city:
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'Brand Kettle BuildSpaces',
-    image: 'https://brandkettle.com/logo.png',
+    image: absoluteUrl('/logo.png'),
     telephone: '+918959173790',
-    url: `https://brandkettle.com/locations/${location.slug}`,
+    url: absoluteUrl(`/locations/${location.slug}`),
     address: {
       '@type': 'PostalAddress',
       addressLocality: location.city,

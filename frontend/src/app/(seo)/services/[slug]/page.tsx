@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { API_URL } from '@/lib/site';
 
 type Service = {
   id: string;
@@ -11,7 +12,7 @@ type Service = {
 
 async function getService(slug: string): Promise<Service | null> {
   try {
-    const res = await fetch(`http://localhost:3001/api/seo/services/${slug}`, { next: { revalidate: 60 } });
+    const res = await fetch(`${API_URL}/api/seo/services/${slug}`, { next: { revalidate: 60 } });
     if (!res.ok) return null;
     return res.json();
   } catch (e) {
@@ -25,6 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!service) return {};
   
   return {
+    alternates: { canonical: `/services/${service.slug}` },
     title: `${service.title} | Brand Kettle`,
     description: service.description,
   };

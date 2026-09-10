@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { processSteps as fallbackProcess } from '@/lib/data';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/process' },
   title: 'Our Process — How We Work',
   description:
     'Learn about our turnkey interior design and execution process. From initial concept to manufacturing and final handover.',

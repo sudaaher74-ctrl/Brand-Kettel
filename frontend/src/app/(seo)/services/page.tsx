@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { services as fallbackServices } from '@/lib/data';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/services' },
   title: 'Turnkey Services — Design, Build & Furnish',
   description:
     'Commercial interiors, retail stores, jewellery showrooms, office fit-outs, residential interiors and custom furniture — delivered turnkey by Brand Kettle BuildSpaces.',

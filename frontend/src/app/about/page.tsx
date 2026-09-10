@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/about' },
   title: 'About Us — Brand Kettle BuildSpaces',
   description:
     'Brand Kettle BuildSpaces is a turnkey interior design, commercial fit-out and custom furniture company delivering spaces across India.',

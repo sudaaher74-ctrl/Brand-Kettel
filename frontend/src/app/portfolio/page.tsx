@@ -4,6 +4,7 @@ import { caseStudies as fallbackProjects } from '@/lib/projectsData';
 import { sanitizeProject } from '@/lib/imageUtils';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/portfolio' },
   title: 'Portfolio — Turnkey Architectural Realizations',
   description:
     'Explore our completed commercial offices, flagship luxury retail, jewellery showrooms and hospitality fit-outs across India.',

@@ -8,6 +8,7 @@ import {
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/residential-interiors' },
   title: 'Residential Interior Designers in Indore | Luxury Home Interiors',
   description:
     'Award-winning Residential Interior Designers in Indore specializing in Luxury Home Interiors, Premium Home Interiors, and Turnkey Home Interiors. We craft private homes where comfort and craft converge.',

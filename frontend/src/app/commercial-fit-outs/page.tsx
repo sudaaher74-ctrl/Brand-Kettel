@@ -6,6 +6,7 @@ import { projects as fallbackProjects } from '@/lib/data';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/commercial-fit-outs' },
   title: 'Commercial Fit-Out Company in Indore | Office & Corporate Interiors',
   description:
     'Leading Commercial Fit-Out Company in Indore providing turnkey Commercial Interior Contractors, Office Fit-Out Company services, and Corporate Interior Solutions for dynamic workspaces.',

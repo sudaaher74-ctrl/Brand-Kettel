@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/careers' },
   title: 'Careers — Brand Kettle BuildSpaces',
   description:
     'Join the Brand Kettle team. Explore careers in commercial architecture, turnkey fit-outs, project management, and joinery manufacturing across India.',

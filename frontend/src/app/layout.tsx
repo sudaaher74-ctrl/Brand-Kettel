@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Poppins, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 import SiteShell from '@/components/layout/SiteShell';
+import { SITE_URL, absoluteUrl } from '@/lib/site';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -18,9 +19,9 @@ const cormorant = Cormorant_Garamond({
   style: ['normal', 'italic'],
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://brandkettle.com';
-
 export const metadata: Metadata = {
+  // SITE_URL === process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.brandkettle.co.in',
+  // with loopback origins additionally rejected — see src/lib/site.ts.
   metadataBase: new URL(SITE_URL),
   title: {
     default: 'Commercial Fit-Out Company in Indore | Brand Kettle BuildSpaces',
@@ -43,14 +44,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: SITE_URL,
+    url: '/',
     siteName: 'Brand Kettle BuildSpaces',
     title: 'Brand Kettle BuildSpaces — Commercial Spaces That Inspire Growth',
     description:
       'Turnkey Commercial Fit-Outs, Retail Flagships, Jewellery Showrooms, and Custom Architectural Joinery across India.',
     images: [
       {
-        url: `${SITE_URL}/imgs/commercial/gucci.png`,
+        url: '/imgs/commercial/gucci.png',
         width: 1200,
         height: 630,
         alt: 'Brand Kettle BuildSpaces — Turnkey Commercial Fit-Outs & Retail Interiors',
@@ -61,14 +62,14 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Brand Kettle BuildSpaces — Turnkey Commercial & Retail Fit-Outs',
     description: 'Design, Build & Furnish solutions for offices, retail flagships, showrooms and workspaces.',
-    images: [`${SITE_URL}/imgs/commercial/gucci.png`],
+    images: ['/imgs/commercial/gucci.png'],
   },
   icons: {
     icon: '/favicon.ico',
     apple: '/logo.png',
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: SITE_URL },
+  alternates: { canonical: '/' },
 };
 
 export const viewport: Viewport = {
@@ -85,7 +86,7 @@ const orgJsonLd = {
   description:
     'Brand Kettle BuildSpaces is a premier Design-Build and Commercial Fit-Out firm in Indore providing Turnkey Interior Solutions Pan-India.',
   url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
+  logo: absoluteUrl('/logo.png'),
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+91 89591 73790',
@@ -109,7 +110,7 @@ const localBusinessJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'GeneralContractor',
   name: 'Brand Kettle BuildSpaces',
-  image: `${SITE_URL}/imgs/commercial/gucci.png`,
+  image: absoluteUrl('/imgs/commercial/gucci.png'),
   telephone: '+91 89591 73790',
   url: SITE_URL,
   priceRange: '₹₹₹',

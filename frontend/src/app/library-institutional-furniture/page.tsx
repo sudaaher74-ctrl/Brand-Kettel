@@ -6,6 +6,7 @@ import { projects as fallbackProjects } from '@/lib/data';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/library-institutional-furniture' },
   title: 'Library Furniture Manufacturer | Educational & Institutional Furniture',
   description:
     'Brand Kettle BuildSpaces is a leading Library Furniture Manufacturer. We provide high-quality Educational Furniture, School & College Furniture, and Institutional Furniture.',

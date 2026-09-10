@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://brandkettle.com';
+import { SITE_URL } from '@/lib/site';
 // Use the same API URL the rest of the app uses — already configured in .env.local
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 

@@ -63,6 +63,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!project) return {};
   
   return {
+    alternates: { canonical: `/portfolio/${project.slug}` },
     title: `${project.name} | Commercial Interior Project`,
     description: project.blurb || `View our complete commercial interior fit-out project for ${project.name} in ${project.location}.`,
     openGraph: {

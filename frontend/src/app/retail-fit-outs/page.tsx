@@ -6,6 +6,7 @@ import { projects as fallbackProjects } from '@/lib/data';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/retail-fit-outs' },
   title: 'Retail Fit-Out Company in Indore | Retail Store Interior Design',
   description:
     'Brand Kettle BuildSpaces is the premier Retail Fit-Out Company in Indore. We are expert Retail Interior Contractors delivering Turnkey Shop Fit-Outs and Retail Store Interior Design.',

@@ -6,6 +6,7 @@ import { projects as fallbackProjects } from '@/lib/data';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/custom-furniture' },
   title: 'Custom Furniture Manufacturer in Indore | Premium Bespoke Furniture',
   description:
     'Top Custom Furniture Manufacturer in Indore offering Bespoke Furniture, Modular Furniture, and Premium Furniture. We are an expert Office Furniture Manufacturer delivering quality craftsmanship.',

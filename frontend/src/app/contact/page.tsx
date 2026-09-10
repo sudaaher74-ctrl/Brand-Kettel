@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import ConsultationForm from '@/components/forms/ConsultationForm';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/contact' },
   title: 'Contact — Book a Commercial Fit-Out Consultation',
   description:
     'Consult with Brand Kettle BuildSpaces for turnkey commercial fit-outs, luxury retail design, jewellery showrooms, and custom joinery across India.',
