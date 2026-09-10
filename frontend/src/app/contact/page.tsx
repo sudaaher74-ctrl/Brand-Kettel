@@ -1,11 +1,16 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import ConsultationForm from '@/components/forms/ConsultationForm';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/contact',
   title: 'Contact — Book a Commercial Fit-Out Consultation',
-  description:
-    'Consult with Brand Kettle BuildSpaces for turnkey commercial fit-outs, luxury retail design, jewellery showrooms, and custom joinery across India.',
-};
+  description: 'Consult with Brand Kettle BuildSpaces for turnkey commercial fit-outs, luxury retail design, jewellery showrooms, and custom joinery across India.',
+  socialTitle: 'Talk to Brand Kettle BuildSpaces About Your Fit-Out',
+  socialDescription: 'Share your space, category and timeline and our team responds within one business day. Indore HQ, projects across India.',
+  image: '/imgs/commercial/home1.webp',
+  imageAlt: 'Corporate reception fit-out — book a consultation with Brand Kettle BuildSpaces',
+});
 
 const STUDIOS = [
   {

@@ -1,23 +1,21 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
+import { serviceJsonLd, jsonLdScript } from '@/lib/structuredData';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectGrid from '@/components/ui/ProjectGrid';
 import { projects as fallbackProjects } from '@/lib/data';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/custom-furniture',
   title: 'Custom Furniture Manufacturer in Indore | Premium Bespoke Furniture',
-  description:
-    'Top Custom Furniture Manufacturer in Indore offering Bespoke Furniture, Modular Furniture, and Premium Furniture. We are an expert Office Furniture Manufacturer delivering quality craftsmanship.',
-  keywords: [
-    'Custom Furniture Manufacturer',
-    'Bespoke Furniture',
-    'Modular Furniture',
-    'Premium Furniture',
-    'Office Furniture Manufacturer',
-    'Furniture Manufacturer in Indore',
-  ],
-};
+  description: 'Top Custom Furniture Manufacturer in Indore offering Bespoke Furniture, Modular Furniture, and Premium Furniture. We are an expert Office Furniture Manufacturer delivering quality craftsmanship.',
+  socialTitle: 'Bespoke Furniture & Architectural Joinery, Made In-House',
+  socialDescription: 'Display counters, wall panels, reception desks and workstations fabricated in our own factory in metal, veneer, solid wood and glass.',
+  image: '/imgs/commercial/taksha-3.webp',
+  imageAlt: 'Bespoke joinery and built-in furniture manufactured by Brand Kettle BuildSpaces',
+});
 
 export const revalidate = 60;
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
@@ -38,30 +36,21 @@ async function getFurnitureProjects() {
 export default async function CustomFurniturePage() {
   const furniture = await getFurnitureProjects();
 
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
+  const serviceSchema = serviceJsonLd({
+    name: 'Custom Furniture & Architectural Joinery',
     serviceType: 'Custom Furniture Manufacturing',
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'Brand Kettle BuildSpaces',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Indore'
-      }
-    },
-    areaServed: 'Indore',
-    description: 'Expert Custom Furniture Manufacturer and Office Furniture Manufacturer in Indore.'
-  };
+    description: 'In-house manufacturing of bespoke and modular furniture, display counters, wall panelling, reception desks and workstations in metal, veneer, solid wood, laminate and glass.',
+    path: '/custom-furniture',
+  });
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(serviceSchema)} />
       <PageHero
         eyebrow="Custom Furniture"
         title="Bespoke & modular craftsmanship"
         subtitle="Premium Furniture and Modular Furniture tailored for your exact commercial and residential needs."
-        image="/imgs/commercial/Havana lounge1.jpg"
+        image="/imgs/commercial/havana-lounge-bareilly-1.jpg"
       />
 
       <section className="bg-background py-16 sm:py-24">

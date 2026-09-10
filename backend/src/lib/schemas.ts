@@ -60,14 +60,9 @@ export const TestimonialSchema = z.object({
   rating: z.number().min(1).max(5).optional().default(5),
 });
 
-export const LeadSchema = z.object({
-  name: z.string().min(1, 'Name is required'),
-  phone: z.string().min(1, 'Phone is required'),
-  email: z.string().email('Invalid email address'),
-  projectType: z.string().optional().default(''),
-  message: z.string().optional().default(''),
-  status: z.enum(['New', 'Contacted', 'Closed']).optional().default('New'),
-});
+// Contact-form submissions are validated by ContactSubmissionSchema in
+// ./leadValidation.ts, which enforces the project-type enum, Indian phone
+// format, honeypot and timing checks. The old permissive LeadSchema is gone.
 
 export const SettingsSchema = z.object({
   contactEmail: z.string().email('Invalid email address').optional().default(''),

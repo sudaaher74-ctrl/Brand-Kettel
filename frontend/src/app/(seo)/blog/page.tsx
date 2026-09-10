@@ -1,13 +1,18 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import Image from 'next/image';
 import { cleanImagePath } from '@/lib/imageUtils';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/blog',
   title: 'Blog — Insights on Commercial Interior Design & Fit-Outs',
-  description:
-    'Practical thinking, project breakdowns, and architecture insights on commercial fit-outs, jewellery showrooms, and turnkey delivery from Brand Kettle BuildSpaces.',
-};
+  description: 'Practical thinking, project breakdowns, and architecture insights on commercial fit-outs, jewellery showrooms, and turnkey delivery from Brand Kettle BuildSpaces.',
+  socialTitle: 'Insights on Commercial Interiors & Fit-Out Delivery',
+  socialDescription: 'Project breakdowns, material notes and delivery lessons from live turnkey fit-outs across India.',
+  image: '/imgs/commercial/experties2.jpeg',
+  imageAlt: 'Commercial interior detail from a Brand Kettle BuildSpaces project',
+});
 
 export const revalidate = 60;
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';

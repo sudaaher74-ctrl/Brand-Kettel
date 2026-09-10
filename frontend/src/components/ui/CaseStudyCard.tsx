@@ -9,11 +9,11 @@ export default function CaseStudyCard({ project, index }: { project: CaseStudy; 
   const imagesArray = project.images || (project as any).gallery || [(project as any).image].filter(Boolean) || [];
   let mainImage = cleanImagePath(imagesArray[0] || (project as any).image);
 
-  if (project.slug === 'gucci') mainImage = '/imgs/commercial/gucci-green.png';
-  if (project.slug === 'malabar-gold') mainImage = '/imgs/commercial/malabarcoverimg.png';
+  if (project.slug === 'gucci') mainImage = '/imgs/commercial/gucci-green.webp';
+  if (project.slug === 'malabar-gold') mainImage = '/imgs/commercial/malabar-gold-cover.webp';
   if (project.slug === 'png') mainImage = '/imgs/commercial/png1.jpg';
-  if (project.slug === 'giva') mainImage = '/imgs/commercial/giva.png';
-  if (project.slug === 'taksha-hyderabad') mainImage = '/imgs/commercial/taksha coverimg.png';
+  if (project.slug === 'giva') mainImage = '/imgs/commercial/giva.webp';
+  if (project.slug === 'taksha-hyderabad') mainImage = '/imgs/commercial/taksha-hyderabad-cover.webp';
 
   const category = project.category || (project as any).segment || 'Turnkey Fit-Out';
   const location = (project as any).location || '';
@@ -30,7 +30,11 @@ export default function CaseStudyCard({ project, index }: { project: CaseStudy; 
             alt={`${project.title} — ${category}`}
             className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-108"
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
+            // Cards are full width on phones and two-up above 768px, inside a
+            // 1400px container — so never wider than 700px on desktop.
+            sizes="(max-width: 768px) 100vw, 700px"
+            // Only the first row is above the fold; everything else lazy-loads.
+            priority={index < 2}
           />
         )}
         

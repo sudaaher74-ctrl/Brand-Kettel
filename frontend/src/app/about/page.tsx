@@ -1,12 +1,17 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/about',
   title: 'About Us — Brand Kettle BuildSpaces',
-  description:
-    'Brand Kettle BuildSpaces is a turnkey interior design, commercial fit-out and custom furniture company delivering spaces across India.',
-};
+  description: 'Brand Kettle BuildSpaces is a turnkey interior design, commercial fit-out and custom furniture company delivering spaces across India.',
+  socialTitle: 'About Brand Kettle BuildSpaces — One Partner, Design to Handover',
+  socialDescription: 'An Indore-headquartered design-build firm with an in-house joinery factory and site teams delivering turnkey fit-outs across India.',
+  image: '/imgs/commercial/brandkettle4.jpg',
+  imageAlt: 'Inside the Brand Kettle BuildSpaces design studio in Indore',
+});
 
 const STATS = [
   { value: '120+', label: 'Projects Delivered', sub: 'Offices, showrooms, and retail fit-outs completed turnkey.' },
@@ -77,7 +82,7 @@ export default function AboutPage() {
 
               <div className="lg:col-span-5 relative aspect-square rounded-2xl overflow-hidden border border-white/15 bg-black">
                 <Image
-                  src="/imgs/commercial/home1.png"
+                  src="/imgs/commercial/home1.webp"
                   alt="Brand Kettle Flagship Space"
                   fill
                   className="object-cover"
@@ -133,7 +138,7 @@ export default function AboutPage() {
             {/* Left Photo Showcase */}
             <div className="lg:col-span-5 relative aspect-[4/5] rounded-[24px] overflow-hidden border border-white/15 shadow-2xl bg-[#121216]">
               <Image
-                src="/imgs/commercial/taksha coverimg.png"
+                src="/imgs/commercial/taksha-hyderabad-cover.webp"
                 alt="Brand Kettle execution standards"
                 fill
                 className="object-cover"

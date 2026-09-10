@@ -7,9 +7,9 @@ export default function RonnCTA() {
   return (
     <section className="relative overflow-hidden bg-[#070708] text-white py-24 md:py-36 px-5 sm:px-8 border-b border-white/10">
       {/* Background architectural image with dark gradient */}
-      <div className="absolute inset-0 pointer-events-none select-none opacity-20">
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none select-none opacity-20">
         <Image
-          src="/imgs/commercial/ramda encre hotel1.jpg"
+          src="/imgs/commercial/ramada-encore-bareilly-hotel.jpg"
           alt=""
           fill
           sizes="100vw"

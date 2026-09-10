@@ -15,9 +15,9 @@ export const caseStudies: CaseStudy[] = [
     description: "BrandKettle's first high-end luxury project. Every detail, from custom finishes to ambient lighting, reflects the iconic elegance of the Gucci brand.",
     keyStat: 'First Luxury Project',
     images: [
-      '/imgs/commercial/gucci-green.png',
-      '/imgs/commercial/gucci.png',
-      '/imgs/commercial/gucci1.png',
+      '/imgs/commercial/gucci-green.webp',
+      '/imgs/commercial/gucci.webp',
+      '/imgs/commercial/gucci-1.webp',
     ],
   },
   {
@@ -26,10 +26,10 @@ export const caseStudies: CaseStudy[] = [
     category: 'Commercial Spaces',
     description: 'A 475 sq. yd. premium builder floor by Studio AKAAI, blending comfort, functionality and exclusivity with a modern façade and luxury design.',
     images: [
-      '/imgs/commercial/taksha coverimg.png',
-      '/imgs/commercial/taksha.png',
-      '/imgs/commercial/taksha1.png',
-      '/imgs/commercial/taksha3.png',
+      '/imgs/commercial/taksha-hyderabad-cover.webp',
+      '/imgs/commercial/taksha.webp',
+      '/imgs/commercial/taksha-1.webp',
+      '/imgs/commercial/taksha-3.webp',
     ],
   },
   {
@@ -50,9 +50,9 @@ export const caseStudies: CaseStudy[] = [
     description: "A secure, luminous environment created specifically for Giva's premium jewelry collections.",
     keyStat: 'Fast-Track Fit-Out',
     images: [
-      '/imgs/commercial/giva.png',
-      '/imgs/commercial/jwellary.png',
-      '/imgs/commercial/jwellary2.png',
+      '/imgs/commercial/giva.webp',
+      '/imgs/commercial/jewellery-showroom-display.webp',
+      '/imgs/commercial/jewellery-showroom-display-2.webp',
     ],
   },
   {
@@ -61,8 +61,8 @@ export const caseStudies: CaseStudy[] = [
     category: 'Jewellery Showroom',
     description: "A high-end jewellery showroom for the Indriya brand, designed to project luxury and exclusivity. BrandKettle's scope covered full interior fit-out including bespoke display counters, ambient lighting design and custom millwork.",
     images: [
-      '/imgs/commercial/jwellary.png',
-      '/imgs/commercial/jwellary2.png',
+      '/imgs/commercial/jewellery-showroom-display.webp',
+      '/imgs/commercial/jewellery-showroom-display-2.webp',
     ],
   },
   {
@@ -71,11 +71,11 @@ export const caseStudies: CaseStudy[] = [
     category: 'Hospitality',
     description: 'A standout rooftop lounge at the Ramada Hotel, combining lush aesthetics with durable commercial materials.',
     images: [
-      '/imgs/commercial/Havana lounge1.jpg',
-      '/imgs/commercial/havana lounge2.jpg',
-      '/imgs/commercial/havana lounge 3.jpg',
-      '/imgs/commercial/havana lounge4.jpg',
-      '/imgs/commercial/havna lounge5.jpg',
+      '/imgs/commercial/havana-lounge-bareilly-1.jpg',
+      '/imgs/commercial/havana-lounge-bareilly-2.jpg',
+      '/imgs/commercial/havana-lounge-bareilly-3.jpg',
+      '/imgs/commercial/havana-lounge-bareilly-4.jpg',
+      '/imgs/commercial/havana-lounge-bareilly-5.jpg',
     ],
   },
   {
@@ -94,9 +94,9 @@ export const caseStudies: CaseStudy[] = [
     description: 'Complete interior package for this prestigious hotel, from the lobby to guest rooms.',
     keyStat: '25,000 sq ft',
     images: [
-      '/imgs/commercial/ramda encre hotel1.jpg',
-      '/imgs/commercial/ramda encore hotel2.jpg',
-      '/imgs/commercial/ramda encore hotel3.jpg',
+      '/imgs/commercial/ramada-encore-bareilly-hotel.jpg',
+      '/imgs/commercial/ramada-encore-bareilly-hotel-2.jpg',
+      '/imgs/commercial/ramada-encore-bareilly-hotel-3.jpg',
       '/imgs/commercial/p066_087.jpg',
     ],
   },
@@ -106,9 +106,9 @@ export const caseStudies: CaseStudy[] = [
     category: 'Office',
     description: 'A modernized corporate workspace tailored to reflect a forward-thinking culture.',
     images: [
-      '/imgs/commercial/nanokirti pvt1.jpg',
-      '/imgs/commercial/nanokirti pvt2.jpg',
-      '/imgs/commercial/nanokirti pvt3.jpg',
+      '/imgs/commercial/nanokirti-office-1.jpg',
+      '/imgs/commercial/nanokirti-office-2.jpg',
+      '/imgs/commercial/nanokirti-office-3.jpg',
     ],
   },
   {
@@ -118,9 +118,9 @@ export const caseStudies: CaseStudy[] = [
     description: 'A collaborative, vibrant co-working hub designed to inspire productivity and connection.',
     keyStat: '15,000 sq ft',
     images: [
-      '/imgs/commercial/work co workspace.jpg',
-      '/imgs/commercial/work co workspace1.jpg',
-      '/imgs/commercial/work co work space2.jpg',
+      '/imgs/commercial/and-work-faridabad-coworking.jpg',
+      '/imgs/commercial/and-work-faridabad-coworking-2.jpg',
+      '/imgs/commercial/and-work-faridabad-coworking-3.jpg',
     ],
   }
 ];

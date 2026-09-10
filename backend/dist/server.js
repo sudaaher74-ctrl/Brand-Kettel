@@ -8,9 +8,16 @@ const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
+const rateLimitStore_1 = require("./lib/rateLimitStore");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3001;
+// The API runs behind a platform proxy in production. Without this,
+// express-rate-limit keys every request on the proxy's own IP, which turns
+// every per-IP limiter below into a single global bucket that one bot can
+// exhaust for all real users. TRUSTED_PROXY_HOPS should match the number of
+// proxies in front of this process (1 for a single platform load balancer).
+app.set('trust proxy', Number(process.env.TRUSTED_PROXY_HOPS ?? 1));
 // Fail fast if admin auth is misconfigured — never run with insecure defaults.
 if (!process.env.ADMIN_PASSWORD || !process.env.APP_SECRET) {
     console.error('FATAL: ADMIN_PASSWORD and APP_SECRET must both be set to strong secret values.');
@@ -28,12 +35,27 @@ app.use((0, cookie_parser_1.default)());
 app.get('/', (req, res) => {
     res.json({ status: 'ok' });
 });
+(0, rateLimitStore_1.warnIfMemoryStore)();
+// The lead form is the site's only public write path and the most attractive
+// target for bot floods; an unbounded one poisons the sending domain's
+// reputation. 5 submissions per IP per 10 minutes.
 const contactLimiter = (0, express_rate_limit_1.default)({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 10,
+    windowMs: 10 * 60 * 1000, // 10 minutes
+    max: 5,
     message: { error: 'Too many requests, please try again later.' },
     standardHeaders: true,
     legacyHeaders: false,
+    store: (0, rateLimitStore_1.createRateLimitStore)('contact'),
+});
+// The job-application endpoint is public so candidates can apply without an
+// account, which means it writes to the database unauthenticated. Bound it.
+const applicationLimiter = (0, express_rate_limit_1.default)({
+    windowMs: 60 * 60 * 1000, // 1 hour
+    max: 5,
+    message: { error: 'Too many applications submitted, please try again later.' },
+    standardHeaders: true,
+    legacyHeaders: false,
+    store: (0, rateLimitStore_1.createRateLimitStore)('applications'),
 });
 // Strict limiter to slow brute-force of the admin password.
 const loginLimiter = (0, express_rate_limit_1.default)({
@@ -42,6 +64,7 @@ const loginLimiter = (0, express_rate_limit_1.default)({
     message: { error: 'Too many login attempts, please try again later.' },
     standardHeaders: true,
     legacyHeaders: false,
+    store: (0, rateLimitStore_1.createRateLimitStore)('login'),
 });
 const admin_1 = __importDefault(require("./routes/admin"));
 const projects_1 = __importDefault(require("./routes/projects"));
@@ -62,6 +85,7 @@ app.use('/uploads', express_1.default.static(path_1.default.join(__dirname, '../
 // Admin API routes (auth handled individually per route)
 app.use('/api/admin/projects', projects_1.default);
 app.use('/api/admin/services', services_1.default);
+app.use('/api/admin/careers/applications', applicationLimiter);
 app.use('/api/admin/careers', careers_1.default);
 app.use('/api/admin/testimonials', testimonials_1.default);
 app.use('/api/admin/upload', upload_1.default);

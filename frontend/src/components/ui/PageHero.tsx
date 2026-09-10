@@ -1,8 +1,15 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 
+/**
+ * Shared page hero.
+ *
+ * This is a server component. It used to be a client component whose eyebrow,
+ * H1 and subtitle were framer-motion elements with initial={{ opacity: 0 }};
+ * that server-renders style="opacity:0", so the above-the-fold headline stayed
+ * invisible until the JS bundle hydrated. On a 4x-throttled mobile CPU that put
+ * LCP at 3.6s on every expertise page. The same entrance effect now comes from
+ * the .bk-rise CSS animation in globals.css, which runs at first paint.
+ */
 export default function PageHero({
   eyebrow,
   title,
@@ -18,18 +25,22 @@ export default function PageHero({
   fullScreen?: boolean;
   hideText?: boolean;
 }) {
+  const isVideo = image.endsWith('.mp4');
+
   if (fullScreen) {
     return (
       <section className="relative h-screen min-h-[600px] w-full overflow-hidden flex items-center justify-center bg-[#0A0A0B]">
         {/* Background Media */}
         <div className="absolute inset-0 z-0">
-          {image.endsWith('.mp4') ? (
+          {isVideo ? (
             <video
               src={image}
               autoPlay
               loop
               muted
               playsInline
+              preload="metadata"
+              aria-hidden="true"
               className="h-full w-full object-cover"
             />
           ) : (
@@ -39,6 +50,7 @@ export default function PageHero({
               className="object-cover"
               fill
               priority
+              // Full-bleed backdrop: one viewport width at every breakpoint.
               sizes="100vw"
             />
           )}
@@ -51,34 +63,19 @@ export default function PageHero({
         {/* Content */}
         {!hideText && (
           <div className="container-px relative z-10 text-center text-white mt-16 sm:mt-0 max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="inline-flex items-center gap-2 rounded-full bg-black/60 backdrop-blur-md border border-white/15 px-4 py-1.5 mb-6 shadow-xl"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880] animate-pulse" />
+            <div className="bk-rise inline-flex items-center gap-2 rounded-full bg-black/60 backdrop-blur-md border border-white/15 px-4 py-1.5 mb-6 shadow-xl">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880] animate-pulse" aria-hidden="true" />
               <span className="text-[11px] font-medium uppercase tracking-[0.25em] text-[#C5A880]">
                 {eyebrow}
               </span>
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display font-light text-4xl sm:text-5xl lg:text-6xl text-white uppercase tracking-[0.02em] leading-[1.1]"
-            >
+            </div>
+            <h1 className="bk-rise bk-rise-delay-1 font-display font-light text-4xl sm:text-5xl lg:text-6xl text-white uppercase tracking-[0.02em] leading-[1.1]">
               {title}
-            </motion.h1>
+            </h1>
             {subtitle && (
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="mt-6 text-sm sm:text-base text-white/80 font-light leading-relaxed max-w-2xl mx-auto"
-              >
+              <p className="bk-rise bk-rise-delay-2 mt-6 text-sm sm:text-base text-white/80 font-light leading-relaxed max-w-2xl mx-auto">
                 {subtitle}
-              </motion.p>
+              </p>
             )}
           </div>
         )}
@@ -92,71 +89,56 @@ export default function PageHero({
         <div className="grid items-center gap-10 lg:grid-cols-2">
           {/* Left Column: Typography */}
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-1.5 mb-6 shadow-sm"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880]" />
+            <div className="bk-rise inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-1.5 mb-6 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880]" aria-hidden="true" />
               <span className="text-[11px] font-medium uppercase tracking-[0.25em] text-[#C5A880]">
                 {eyebrow}
               </span>
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display font-light text-3xl sm:text-4xl lg:text-5xl text-white uppercase tracking-[0.02em] leading-[1.15]"
-            >
+            </div>
+            <h1 className="bk-rise bk-rise-delay-1 font-display font-light text-3xl sm:text-4xl lg:text-5xl text-white uppercase tracking-[0.02em] leading-[1.15]">
               {title}
-            </motion.h1>
+            </h1>
             {subtitle && (
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="mt-6 text-sm sm:text-base text-[#A1A1AA] font-light leading-relaxed max-w-xl"
-              >
+              <p className="bk-rise bk-rise-delay-2 mt-6 text-sm sm:text-base text-[#A1A1AA] font-light leading-relaxed max-w-xl">
                 {subtitle}
-              </motion.p>
+              </p>
             )}
           </div>
 
           {/* Right Column: Framed Media with Ambient Halo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="relative group"
-          >
+          <div className="bk-rise bk-rise-delay-1 relative group">
             {/* Ambient halo glow */}
-            <div className="absolute -inset-2 rounded-[28px] bg-gradient-to-tr from-[#C5A880]/20 via-transparent to-[#C5A880]/10 blur-2xl -z-10 opacity-60 group-hover:opacity-100 transition-opacity duration-700" />
+            <div
+              aria-hidden="true"
+              className="absolute -inset-2 rounded-[28px] bg-gradient-to-tr from-[#C5A880]/20 via-transparent to-[#C5A880]/10 blur-2xl -z-10 opacity-60 group-hover:opacity-100 transition-opacity duration-700"
+            />
 
-            {image.endsWith('.mp4') ? (
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[24px] border border-white/15 bg-[#121216] shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[24px] border border-white/15 bg-[#121216] shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+              {isVideo ? (
                 <video
                   src={image}
                   autoPlay
                   loop
                   muted
                   playsInline
+                  preload="metadata"
+                  aria-hidden="true"
                   className="h-full w-full object-cover"
                 />
-              </div>
-            ) : (
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[24px] border border-white/15 bg-[#121216] shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+              ) : (
                 <Image
                   src={image}
                   alt={title}
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   fill
                   priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  // Half-width column above lg; the media box never exceeds
+                  // half the 1400px container, so cap the request at 700px.
+                  sizes="(max-width: 1024px) 100vw, 700px"
                 />
-              </div>
-            )}
-          </motion.div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </section>

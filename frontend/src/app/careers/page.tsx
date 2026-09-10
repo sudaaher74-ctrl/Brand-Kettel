@@ -1,11 +1,16 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/careers',
   title: 'Careers — Brand Kettle BuildSpaces',
-  description:
-    'Join the Brand Kettle team. Explore careers in commercial architecture, turnkey fit-outs, project management, and joinery manufacturing across India.',
-};
+  description: 'Join the Brand Kettle team. Explore careers in commercial architecture, turnkey fit-outs, project management, and joinery manufacturing across India.',
+  socialTitle: 'Careers at Brand Kettle BuildSpaces',
+  socialDescription: 'Roles in commercial architecture, site project management and factory joinery, on live pan-India fit-out projects.',
+  image: '/imgs/commercial/brandkettle2.jpg',
+  imageAlt: 'Brand Kettle BuildSpaces studio workspace where the design and project teams sit',
+});
 
 export const revalidate = 60;
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';

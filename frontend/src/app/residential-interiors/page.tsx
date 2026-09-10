@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
+import { serviceJsonLd, jsonLdScript } from '@/lib/structuredData';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectGrid from '@/components/ui/ProjectGrid';
@@ -7,18 +9,15 @@ import {
 } from '@/lib/data';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/residential-interiors',
   title: 'Residential Interior Designers in Indore | Luxury Home Interiors',
-  description:
-    'Award-winning Residential Interior Designers in Indore specializing in Luxury Home Interiors, Premium Home Interiors, and Turnkey Home Interiors. We craft private homes where comfort and craft converge.',
-  keywords: [
-    'Luxury Home Interiors',
-    'Residential Interior Designers',
-    'Premium Home Interiors',
-    'Turnkey Home Interiors',
-    'Residential Interior Designers in Indore'
-  ],
-};
+  description: 'Award-winning Residential Interior Designers in Indore specializing in Luxury Home Interiors, Premium Home Interiors, and Turnkey Home Interiors. We craft private homes where comfort and craft converge.',
+  socialTitle: 'Luxury Home Interiors, Executed Like a Commercial Project',
+  socialDescription: 'A secondary practice for private clients who want the same detailing discipline and timeline certainty we bring to commercial work.',
+  image: '/imgs/commercial/experties1.jpeg',
+  imageAlt: 'Luxury residential living room interior by Brand Kettle BuildSpaces',
+});
 
 export const revalidate = 60;
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
@@ -39,30 +38,21 @@ async function getResidentialProjects() {
 export default async function ResidentialPage() {
   const residential = await getResidentialProjects();
 
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
+  const serviceSchema = serviceJsonLd({
+    name: 'Luxury Residential Interiors',
     serviceType: 'Residential Interior Design',
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'Brand Kettle BuildSpaces',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Indore'
-      }
-    },
-    areaServed: 'Indore',
-    description: 'Expert Residential Interior Designers in Indore offering Premium Home Interiors and Turnkey Solutions.'
-  };
+    description: 'Turnkey luxury home interiors for private clients, executed with the same detailing discipline, procurement and programme control we apply to commercial projects.',
+    path: '/residential-interiors',
+  });
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(serviceSchema)} />
       <PageHero
         eyebrow="Residential interiors"
         title="Premium homes, crafted with care"
         subtitle="A refined, secondary practice for private clients who value the same execution discipline we bring to commercial work."
-        image="/imgs/commercial/home1.png"
+        image="/imgs/commercial/home1.webp"
       />
 
       <section className="bg-background py-16 sm:py-24">

@@ -5,13 +5,18 @@ const mongodb_1 = require("../lib/mongodb");
 const mongodb_2 = require("mongodb");
 const schemas_1 = require("../lib/schemas");
 const requireAuth_1 = require("../middlewares/requireAuth");
+const optionalAuth_1 = require("../middlewares/optionalAuth");
 const router = (0, express_1.Router)();
 // --- Blog ---
+// Public: only published posts. Admins (valid session cookie) also see drafts.
+// Without this filter, unpublished drafts were readable by anyone hitting the
+// endpoint directly.
 router.get('/blog', async (req, res) => {
     const db = await (0, mongodb_1.getDb)();
     if (!db)
         return res.json([]);
-    const docs = await db.collection('blog_posts').find({}).sort({ createdAt: -1 }).toArray();
+    const filter = (0, optionalAuth_1.isAuthenticated)(req) ? {} : { published: true };
+    const docs = await db.collection('blog_posts').find(filter).sort({ createdAt: -1 }).toArray();
     res.json(docs.map(d => ({ ...d, id: d._id.toString(), _id: undefined })));
 });
 router.post('/blog', requireAuth_1.requireAuth, async (req, res) => {
@@ -37,6 +42,9 @@ router.get('/blog/:id', async (req, res) => {
     const query = isObjectId ? { _id: new mongodb_2.ObjectId(req.params.id) } : { slug: req.params.id };
     const doc = await db.collection('blog_posts').findOne(query);
     if (!doc)
+        return res.status(404).json({ error: 'Not found' });
+    // Same rule as the list endpoint: drafts are admin-only.
+    if (!doc.published && !(0, optionalAuth_1.isAuthenticated)(req))
         return res.status(404).json({ error: 'Not found' });
     res.json({ ...doc, id: doc._id.toString(), _id: undefined });
 });

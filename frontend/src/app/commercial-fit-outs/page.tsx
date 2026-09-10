@@ -1,22 +1,21 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
+import { serviceJsonLd, jsonLdScript } from '@/lib/structuredData';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectGrid from '@/components/ui/ProjectGrid';
 import { projects as fallbackProjects } from '@/lib/data';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/commercial-fit-outs',
   title: 'Commercial Fit-Out Company in Indore | Office & Corporate Interiors',
-  description:
-    'Leading Commercial Fit-Out Company in Indore providing turnkey Commercial Interior Contractors, Office Fit-Out Company services, and Corporate Interior Solutions for dynamic workspaces.',
-  keywords: [
-    'Commercial Fit-Out Company',
-    'Commercial Interior Contractors',
-    'Office Fit-Out Company',
-    'Corporate Interior Solutions',
-    'Commercial Fit-Out Company in Indore',
-  ],
-};
+  description: 'Leading Commercial Fit-Out Company in Indore providing turnkey Commercial Interior Contractors, Office Fit-Out Company services, and Corporate Interior Solutions for dynamic workspaces.',
+  socialTitle: 'Turnkey Commercial & Office Fit-Outs',
+  socialDescription: 'Bare-shell to handover for corporate offices and co-working hubs — civil, MEP, joinery and furniture under one contract.',
+  image: '/imgs/commercial/brandkettle1.jpg',
+  imageAlt: 'Completed corporate office reception fit-out by Brand Kettle BuildSpaces',
+});
 
 export const revalidate = 60;
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
@@ -60,30 +59,21 @@ export default async function CommercialProjectsPage() {
     return 0;
   });
 
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
+  const serviceSchema = serviceJsonLd({
+    name: 'Commercial & Office Fit-Outs',
     serviceType: 'Commercial Fit-Outs',
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'Brand Kettle BuildSpaces',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Indore'
-      }
-    },
-    areaServed: 'Indore',
-    description: 'Turnkey Commercial Interior Contractors and Office Fit-Out Company in Indore.'
-  };
+    description: 'Turnkey commercial interior contracting and office fit-outs: civil and structural works, MEP, architectural lighting, factory joinery and furniture, delivered bare-shell to handover under one contract.',
+    path: '/commercial-fit-outs',
+  });
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(serviceSchema)} />
       <PageHero
         eyebrow="Commercial projects"
         title="Spaces engineered for performance and brand impact"
         subtitle="Our core expertise — office interiors, retail environments, showrooms and turnkey commercial campuses."
-        image="/imgs/commercial/Havana lounge1.jpg"
+        image="/imgs/commercial/havana-lounge-bareilly-1.jpg"
       />
 
       <section className="bg-background py-16 sm:py-24">

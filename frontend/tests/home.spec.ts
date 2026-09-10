@@ -17,10 +17,12 @@ test('homepage hero renders CTA links', async ({ page }) => {
   await expect(page.locator('a[href="/contact"]').first()).toBeVisible();
 });
 
-test('Our Expertise section appears on the homepage', async ({ page }) => {
+test('services section appears on the homepage', async ({ page }) => {
   await page.goto('/');
-  // The ExpertiseStorytelling heading
-  const heading = page.getByText(/Our Core Interior/i).first();
+  // RonnServicesTotem — "Our End-to-End Accompaniment". This assertion used to
+  // look for "Our Core Interior", a string that has never existed in this
+  // repository, so the test could not pass.
+  const heading = page.getByText(/Accompaniment/i).first();
   await heading.scrollIntoViewIfNeeded();
   await expect(heading).toBeVisible();
 });

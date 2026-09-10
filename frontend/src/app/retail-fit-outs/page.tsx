@@ -1,22 +1,21 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
+import { serviceJsonLd, jsonLdScript } from '@/lib/structuredData';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectGrid from '@/components/ui/ProjectGrid';
 import { projects as fallbackProjects } from '@/lib/data';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/retail-fit-outs',
   title: 'Retail Fit-Out Company in Indore | Retail Store Interior Design',
-  description:
-    'Brand Kettle BuildSpaces is the premier Retail Fit-Out Company in Indore. We are expert Retail Interior Contractors delivering Turnkey Shop Fit-Outs and Retail Store Interior Design.',
-  keywords: [
-    'Retail Fit-Out Company',
-    'Retail Interior Contractors',
-    'Shop Fit-Out Company',
-    'Retail Store Interior Design',
-    'Retail Fit-Out Company in Indore',
-  ],
-};
+  description: 'Brand Kettle BuildSpaces is the premier Retail Fit-Out Company in Indore. We are expert Retail Interior Contractors delivering Turnkey Shop Fit-Outs and Retail Store Interior Design.',
+  socialTitle: 'Retail Fit-Outs Built to Brand Standard',
+  socialDescription: 'Flagship and multi-store rollouts for luxury and high-street brands, fabricated to global brand guidelines in our own factory.',
+  image: '/imgs/commercial/gucci-green.webp',
+  imageAlt: 'Gucci retail flagship interior fit-out delivered by Brand Kettle BuildSpaces',
+});
 
 export const revalidate = 60;
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
@@ -37,25 +36,16 @@ async function getRetailProjects() {
 export default async function RetailFitOutsPage() {
   const retail = await getRetailProjects();
 
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
+  const serviceSchema = serviceJsonLd({
+    name: 'Retail Store Fit-Outs',
     serviceType: 'Retail Fit-Outs',
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'Brand Kettle BuildSpaces',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Indore'
-      }
-    },
-    areaServed: 'Indore',
-    description: 'Expert Retail Interior Contractors and Retail Fit-Out Company in Indore.'
-  };
+    description: 'Turnkey retail store interior design and shop fit-outs for flagship and multi-store rollouts, fabricated to global brand guidelines in our own joinery factory.',
+    path: '/retail-fit-outs',
+  });
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(serviceSchema)} />
       <PageHero
         eyebrow="Retail Fit-Outs"
         title="Conversion-focused retail experiences"

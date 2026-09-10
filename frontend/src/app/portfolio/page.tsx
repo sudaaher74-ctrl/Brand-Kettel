@@ -1,13 +1,18 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import FilterableProjectGallery from '@/components/ui/FilterableProjectGallery';
 import { caseStudies as fallbackProjects } from '@/lib/projectsData';
 import { sanitizeProject } from '@/lib/imageUtils';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/portfolio',
   title: 'Portfolio — Turnkey Architectural Realizations',
-  description:
-    'Explore our completed commercial offices, flagship luxury retail, jewellery showrooms and hospitality fit-outs across India.',
-};
+  description: 'Explore our completed commercial offices, flagship luxury retail, jewellery showrooms and hospitality fit-outs across India.',
+  socialTitle: 'Brand Kettle BuildSpaces Portfolio — Delivered Projects',
+  socialDescription: 'Gucci, PNG Jewellers, Giva, Ramada Encore, Pret A Manger and more: offices, retail flagships, showrooms and hospitality interiors.',
+  image: '/imgs/commercial/taksha-1.webp',
+  imageAlt: 'Taksha premium builder floor interior delivered by Brand Kettle BuildSpaces',
+});
 
 export const revalidate = 60;
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';

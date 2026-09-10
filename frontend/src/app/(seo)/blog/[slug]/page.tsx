@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import Link from 'next/link';
 import DOMPurify from 'isomorphic-dompurify';
@@ -39,14 +40,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = await getBlogPost(resolvedParams.slug);
   if (!post) return {};
   
-  return {
+  const description =
+    post.metaDescription || post.excerpt || `Read about ${post.title} on the Brand Kettle BuildSpaces blog.`;
+
+  return pageMetadata({
+    path: `/blog/${post.slug}`,
     title: post.metaTitle || `${post.title} | Brand Kettle Blog`,
-    description: post.metaDescription || post.excerpt || `Read about ${post.title} on the Brand Kettle BuildSpaces blog.`,
-    openGraph: {
-      type: 'article',
-      images: post.image ? [{ url: post.image }] : [],
-    }
-  };
+    description,
+    socialTitle: post.title,
+    socialDescription: description,
+    image: post.image || '/imgs/commercial/experties2.jpeg',
+    imageAlt: post.imageAlt || `${post.title} — Brand Kettle BuildSpaces`,
+    type: 'article',
+  });
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -100,7 +106,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {post.image && (
           <div className="mb-14 rounded-[24px] overflow-hidden aspect-[21/9] relative border border-white/10 bg-[#121216]">
-            <Image src={cleanImagePath(post.image)} alt={post.imageAlt || post.title} className="object-cover" fill sizes="100vw" priority />
+            <Image src={cleanImagePath(post.image)} alt={post.imageAlt || post.title} className="object-cover" fill sizes="(max-width: 896px) 100vw, 896px" priority />
           </div>
         )}
 
