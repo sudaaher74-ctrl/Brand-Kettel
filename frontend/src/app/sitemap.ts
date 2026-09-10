@@ -1,110 +1,95 @@
 import type { MetadataRoute } from 'next';
+import { SITE_URL, API_URL } from '@/lib/site';
+import { projects as fallbackProjects } from '@/lib/data';
 
-import { SITE_URL } from '@/lib/site';
-// Use the same API URL the rest of the app uses — already configured in .env.local
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+type Entry = MetadataRoute.Sitemap[number];
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const routes = [
-    { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
-    { path: '/commercial-fit-outs', priority: 0.9, changeFrequency: 'monthly' as const },
-    { path: '/retail-fit-outs', priority: 0.9, changeFrequency: 'monthly' as const },
-    { path: '/jewellery-showrooms', priority: 0.9, changeFrequency: 'monthly' as const },
-    { path: '/residential-interiors', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/custom-furniture', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/library-institutional-furniture', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/services', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/portfolio', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/contact', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/about', priority: 0.7, changeFrequency: 'monthly' as const },
-    { path: '/process', priority: 0.7, changeFrequency: 'monthly' as const },
-    { path: '/careers', priority: 0.7, changeFrequency: 'monthly' as const },
-    { path: '/blog', priority: 0.7, changeFrequency: 'monthly' as const },
-  ];
+/** Static routes. `/` and `/contact` carry the highest priority, `/careers` the lowest. */
+const STATIC_ROUTES: { path: string; priority: number; changeFrequency: Entry['changeFrequency'] }[] = [
+  { path: '', priority: 1.0, changeFrequency: 'weekly' },
+  { path: '/contact', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/commercial-fit-outs', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/retail-fit-outs', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/jewellery-showrooms', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/portfolio', priority: 0.8, changeFrequency: 'weekly' },
+  { path: '/services', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/custom-furniture', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/residential-interiors', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/library-institutional-furniture', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/about', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/process', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/blog', priority: 0.5, changeFrequency: 'weekly' },
+  { path: '/careers', priority: 0.3, changeFrequency: 'yearly' },
+];
 
-  const sitemap: MetadataRoute.Sitemap = routes.map((r) => ({
-    url: `${SITE_URL}${r.path}`,
-    lastModified: new Date(),
-    changeFrequency: r.changeFrequency,
-    priority: r.priority,
-  }));
-
+/** Fetches a list of `{ slug }` records, returning [] on any failure. */
+async function fetchSlugs(endpoint: string): Promise<string[]> {
   try {
-    // Fetch dynamic services
-    const servicesRes = await fetch(`${API_URL}/api/seo/services`, { next: { revalidate: 3600 } }).catch(() => null);
-    if (servicesRes && servicesRes.ok) {
-      const services = await servicesRes.json().catch(() => []);
-      if (Array.isArray(services)) {
-        services.forEach((service: { slug: string }) => {
-          if (service?.slug) {
-            sitemap.push({
-              url: `${SITE_URL}/services/${service.slug}`,
-              lastModified: new Date(),
-              changeFrequency: 'monthly',
-              priority: 0.8,
-            });
-          }
-        });
-      }
-    }
-
-    // Fetch dynamic locations
-    const locationsRes = await fetch(`${API_URL}/api/seo/locations`, { next: { revalidate: 3600 } }).catch(() => null);
-    if (locationsRes && locationsRes.ok) {
-      const locations = await locationsRes.json().catch(() => []);
-      if (Array.isArray(locations)) {
-        locations.forEach((loc: { slug: string }) => {
-          if (loc?.slug) {
-            sitemap.push({
-              url: `${SITE_URL}/locations/${loc.slug}`,
-              lastModified: new Date(),
-              changeFrequency: 'monthly',
-              priority: 0.8,
-            });
-          }
-        });
-      }
-    }
-
-    // Fetch dynamic projects
-    const projectsRes = await fetch(`${API_URL}/api/admin/projects`, { next: { revalidate: 3600 } }).catch(() => null);
-    if (projectsRes && projectsRes.ok) {
-      const projects = await projectsRes.json().catch(() => []);
-      if (Array.isArray(projects)) {
-        projects.forEach((proj: { slug: string }) => {
-          if (proj?.slug) {
-            sitemap.push({
-              url: `${SITE_URL}/portfolio/${proj.slug}`,
-              lastModified: new Date(),
-              changeFrequency: 'monthly',
-              priority: 0.7,
-            });
-          }
-        });
-      }
-    }
-
-    // Fetch dynamic blogs
-    const blogsRes = await fetch(`${API_URL}/api/admin/blog`, { next: { revalidate: 3600 } }).catch(() => null);
-    if (blogsRes && blogsRes.ok) {
-      const blogs = await blogsRes.json().catch(() => []);
-      if (Array.isArray(blogs)) {
-        blogs.forEach((blog: { slug: string }) => {
-          if (blog?.slug) {
-            sitemap.push({
-              url: `${SITE_URL}/blog/${blog.slug}`,
-              lastModified: new Date(),
-              changeFrequency: 'monthly',
-              priority: 0.6,
-            });
-          }
-        });
-      }
-    }
-  } catch (e) {
-    console.error('Sitemap generation failed to fetch dynamic routes', e);
+    const res = await fetch(`${API_URL}${endpoint}`, { next: { revalidate: 3600 } });
+    if (!res.ok) return [];
+    const rows = await res.json();
+    if (!Array.isArray(rows)) return [];
+    return rows.map((row: { slug?: string }) => row?.slug).filter((slug): slug is string => Boolean(slug));
+  } catch (error) {
+    console.error(`Sitemap: failed to fetch ${endpoint}`, error);
+    return [];
   }
-
-  return sitemap;
 }
 
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const lastModified = new Date();
+
+  const [apiProjects, apiBlogSlugs, apiServiceSlugs, apiLocationSlugs] = await Promise.all([
+    fetchSlugs('/api/admin/projects'),
+    fetchSlugs('/api/admin/blog'),
+    fetchSlugs('/api/seo/services'),
+    fetchSlugs('/api/seo/locations'),
+  ]);
+
+  // Portfolio slugs must be present even when the CMS API is unreachable at
+  // build time, so start from the bundled project data and merge the API in.
+  const projectSlugs = Array.from(
+    new Set([...fallbackProjects.map((p) => p.slug), ...apiProjects]),
+  );
+
+  const entries: MetadataRoute.Sitemap = [
+    ...STATIC_ROUTES.map((route) => ({
+      url: `${SITE_URL}${route.path}`,
+      lastModified,
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+    })),
+    ...projectSlugs.map((slug) => ({
+      url: `${SITE_URL}/portfolio/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+    ...apiBlogSlugs.map((slug) => ({
+      url: `${SITE_URL}/blog/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    })),
+    ...apiServiceSlugs.map((slug) => ({
+      url: `${SITE_URL}/services/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+    ...apiLocationSlugs.map((slug) => ({
+      url: `${SITE_URL}/locations/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+  ];
+
+  // A duplicate <loc> makes the whole sitemap suspect; de-dupe on URL.
+  const seen = new Set<string>();
+  return entries.filter((entry) => {
+    if (seen.has(entry.url)) return false;
+    seen.add(entry.url);
+    return true;
+  });
+}

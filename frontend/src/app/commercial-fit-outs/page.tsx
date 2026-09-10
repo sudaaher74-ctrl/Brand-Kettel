@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
+import { serviceJsonLd, jsonLdScript } from '@/lib/structuredData';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectGrid from '@/components/ui/ProjectGrid';
@@ -58,25 +59,16 @@ export default async function CommercialProjectsPage() {
     return 0;
   });
 
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
+  const serviceSchema = serviceJsonLd({
+    name: 'Commercial & Office Fit-Outs',
     serviceType: 'Commercial Fit-Outs',
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'Brand Kettle BuildSpaces',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Indore'
-      }
-    },
-    areaServed: 'Indore',
-    description: 'Turnkey Commercial Interior Contractors and Office Fit-Out Company in Indore.'
-  };
+    description: 'Turnkey commercial interior contracting and office fit-outs: civil and structural works, MEP, architectural lighting, factory joinery and furniture, delivered bare-shell to handover under one contract.',
+    path: '/commercial-fit-outs',
+  });
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(serviceSchema)} />
       <PageHero
         eyebrow="Commercial projects"
         title="Spaces engineered for performance and brand impact"

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
+import { serviceJsonLd, jsonLdScript } from '@/lib/structuredData';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectGrid from '@/components/ui/ProjectGrid';
@@ -37,25 +38,16 @@ async function getResidentialProjects() {
 export default async function ResidentialPage() {
   const residential = await getResidentialProjects();
 
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
+  const serviceSchema = serviceJsonLd({
+    name: 'Luxury Residential Interiors',
     serviceType: 'Residential Interior Design',
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'Brand Kettle BuildSpaces',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Indore'
-      }
-    },
-    areaServed: 'Indore',
-    description: 'Expert Residential Interior Designers in Indore offering Premium Home Interiors and Turnkey Solutions.'
-  };
+    description: 'Turnkey luxury home interiors for private clients, executed with the same detailing discipline, procurement and programme control we apply to commercial projects.',
+    path: '/residential-interiors',
+  });
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(serviceSchema)} />
       <PageHero
         eyebrow="Residential interiors"
         title="Premium homes, crafted with care"

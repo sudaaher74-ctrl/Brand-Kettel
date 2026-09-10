@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
+import { serviceJsonLd, jsonLdScript } from '@/lib/structuredData';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectGrid from '@/components/ui/ProjectGrid';
@@ -35,25 +36,16 @@ async function getFurnitureProjects() {
 export default async function CustomFurniturePage() {
   const furniture = await getFurnitureProjects();
 
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
+  const serviceSchema = serviceJsonLd({
+    name: 'Custom Furniture & Architectural Joinery',
     serviceType: 'Custom Furniture Manufacturing',
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'Brand Kettle BuildSpaces',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Indore'
-      }
-    },
-    areaServed: 'Indore',
-    description: 'Expert Custom Furniture Manufacturer and Office Furniture Manufacturer in Indore.'
-  };
+    description: 'In-house manufacturing of bespoke and modular furniture, display counters, wall panelling, reception desks and workstations in metal, veneer, solid wood, laminate and glass.',
+    path: '/custom-furniture',
+  });
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(serviceSchema)} />
       <PageHero
         eyebrow="Custom Furniture"
         title="Bespoke & modular craftsmanship"

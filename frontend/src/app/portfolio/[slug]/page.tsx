@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
+import { breadcrumbJsonLd, jsonLdScript } from '@/lib/structuredData';
 import { projects as fallbackProjects } from '@/lib/data';
 import ConsultationForm from '@/components/forms/ConsultationForm';
 import ProjectDetailMedia from '@/components/ui/ProjectDetailMedia';
@@ -88,8 +89,15 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const project = await getProject(resolvedParams.slug);
   if (!project) notFound();
 
+  const breadcrumbs = breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Portfolio', path: '/portfolio' },
+    { name: project.name, path: `/portfolio/${project.slug}` },
+  ]);
+
   return (
     <article className="bg-[#0A0A0B] text-white min-h-screen pt-28 sm:pt-36 pb-24">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(breadcrumbs)} />
       <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
         {/* Back Link */}
         <div className="mb-8">

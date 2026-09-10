@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
+import { serviceJsonLd, jsonLdScript } from '@/lib/structuredData';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectGrid from '@/components/ui/ProjectGrid';
@@ -35,20 +36,16 @@ async function getInstitutionalProjects() {
 export default async function LibraryInstitutionalFurniturePage() {
   const instProjects = await getInstitutionalProjects();
 
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
+  const serviceSchema = serviceJsonLd({
+    name: 'Library & Institutional Furniture',
     serviceType: 'Institutional Furniture Manufacturing',
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'Brand Kettle BuildSpaces'
-    },
-    description: 'Specialized Library Furniture Manufacturer providing Educational Furniture and School & College Furniture.'
-  };
+    description: 'Library, educational and institutional furniture — reading tables, stack shelving, workstations and seating — manufactured, supplied and installed for campuses and government offices.',
+    path: '/library-institutional-furniture',
+  });
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(serviceSchema)} />
       <PageHero
         eyebrow="Institutional Furniture"
         title="Durable educational & institutional solutions"

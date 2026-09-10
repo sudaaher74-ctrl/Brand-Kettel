@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
+import { serviceJsonLd, jsonLdScript } from '@/lib/structuredData';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectGrid from '@/components/ui/ProjectGrid';
@@ -35,20 +36,16 @@ async function getJewelleryProjects() {
 export default async function JewelleryShowroomsPage() {
   const jewellery = await getJewelleryProjects();
 
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
+  const serviceSchema = serviceJsonLd({
+    name: 'Jewellery Showroom Fit-Outs',
     serviceType: 'Jewellery Showroom Interior Design',
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'Brand Kettle BuildSpaces'
-    },
-    description: 'Expert Jewellery Showroom Interior Designers offering comprehensive Jewellery Showroom Fit-Out and Jewellery Display Solutions.'
-  };
+    description: 'Jewellery showroom interior design and fit-out: secure display counters, high-CRI illumination, bespoke millwork and vault-adjacent detailing, prefabricated for fast-track handover.',
+    path: '/jewellery-showrooms',
+  });
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(serviceSchema)} />
       <PageHero
         eyebrow="Jewellery Showrooms"
         title="Secure, luminous environments"

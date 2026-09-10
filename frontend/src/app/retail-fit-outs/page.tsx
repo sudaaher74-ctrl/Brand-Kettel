@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
+import { serviceJsonLd, jsonLdScript } from '@/lib/structuredData';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectGrid from '@/components/ui/ProjectGrid';
@@ -35,25 +36,16 @@ async function getRetailProjects() {
 export default async function RetailFitOutsPage() {
   const retail = await getRetailProjects();
 
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
+  const serviceSchema = serviceJsonLd({
+    name: 'Retail Store Fit-Outs',
     serviceType: 'Retail Fit-Outs',
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'Brand Kettle BuildSpaces',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Indore'
-      }
-    },
-    areaServed: 'Indore',
-    description: 'Expert Retail Interior Contractors and Retail Fit-Out Company in Indore.'
-  };
+    description: 'Turnkey retail store interior design and shop fit-outs for flagship and multi-store rollouts, fabricated to global brand guidelines in our own joinery factory.',
+    path: '/retail-fit-outs',
+  });
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(serviceSchema)} />
       <PageHero
         eyebrow="Retail Fit-Outs"
         title="Conversion-focused retail experiences"

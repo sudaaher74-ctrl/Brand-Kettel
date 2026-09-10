@@ -2,7 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import { Poppins, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 import SiteShell from '@/components/layout/SiteShell';
-import { SITE_URL, absoluteUrl } from '@/lib/site';
+import { SITE_URL } from '@/lib/site';
+import { generalContractorJsonLd, jsonLdScript } from '@/lib/structuredData';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -71,77 +72,13 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-const orgJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Brand Kettle BuildSpaces Pvt. Ltd.',
-  description:
-    'Brand Kettle BuildSpaces is a premier Design-Build and Commercial Fit-Out firm in Indore providing Turnkey Interior Solutions Pan-India.',
-  url: SITE_URL,
-  logo: absoluteUrl('/logo.png'),
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+91 89591 73790',
-    contactType: 'customer service',
-    areaServed: 'IN',
-    availableLanguage: ['English', 'Hindi'],
-  },
-  areaServed: 'IN',
-  knowsAbout: [
-    'Commercial Fit-Out Company',
-    'Design Build Company',
-    'Interior Fit-Out Company',
-    'Turnkey Interior Solutions',
-    'Retail Fit-Out Company',
-    'Jewellery Showroom Design',
-    'Custom Joinery Manufacturing',
-  ],
-};
-
-const localBusinessJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'GeneralContractor',
-  name: 'Brand Kettle BuildSpaces',
-  image: absoluteUrl('/imgs/commercial/gucci.png'),
-  telephone: '+91 89591 73790',
-  url: SITE_URL,
-  priceRange: '₹₹₹',
-  currenciesAccepted: 'INR',
-  paymentAccepted: 'Bank Transfer, Cheque, Credit Card',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Corporate Office & Design Studio',
-    addressLocality: 'Indore',
-    addressRegion: 'Madhya Pradesh',
-    postalCode: '452001',
-    addressCountry: 'IN',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 22.7196,
-    longitude: 75.8577,
-  },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      opens: '09:30',
-      closes: '19:00',
-    },
-  ],
-};
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${poppins.variable} ${cormorant.variable}`}>
       <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+          dangerouslySetInnerHTML={jsonLdScript(generalContractorJsonLd)}
         />
         <SiteShell>{children}</SiteShell>
       </body>
