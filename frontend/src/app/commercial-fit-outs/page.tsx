@@ -1,23 +1,20 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectGrid from '@/components/ui/ProjectGrid';
 import { projects as fallbackProjects } from '@/lib/data';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  alternates: { canonical: '/commercial-fit-outs' },
+export const metadata: Metadata = pageMetadata({
+  path: '/commercial-fit-outs',
   title: 'Commercial Fit-Out Company in Indore | Office & Corporate Interiors',
-  description:
-    'Leading Commercial Fit-Out Company in Indore providing turnkey Commercial Interior Contractors, Office Fit-Out Company services, and Corporate Interior Solutions for dynamic workspaces.',
-  keywords: [
-    'Commercial Fit-Out Company',
-    'Commercial Interior Contractors',
-    'Office Fit-Out Company',
-    'Corporate Interior Solutions',
-    'Commercial Fit-Out Company in Indore',
-  ],
-};
+  description: 'Leading Commercial Fit-Out Company in Indore providing turnkey Commercial Interior Contractors, Office Fit-Out Company services, and Corporate Interior Solutions for dynamic workspaces.',
+  socialTitle: 'Turnkey Commercial & Office Fit-Outs',
+  socialDescription: 'Bare-shell to handover for corporate offices and co-working hubs — civil, MEP, joinery and furniture under one contract.',
+  image: '/imgs/commercial/brandkettle1.jpg',
+  imageAlt: 'Completed corporate office reception fit-out by Brand Kettle BuildSpaces',
+});
 
 export const revalidate = 60;
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';

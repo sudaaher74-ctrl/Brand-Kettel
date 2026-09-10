@@ -1,22 +1,20 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectGrid from '@/components/ui/ProjectGrid';
 import { projects as fallbackProjects } from '@/lib/data';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  alternates: { canonical: '/jewellery-showrooms' },
+export const metadata: Metadata = pageMetadata({
+  path: '/jewellery-showrooms',
   title: 'Jewellery Showroom Interior Designers | Jewellery Store Interior Design',
-  description:
-    'Brand Kettle BuildSpaces specializes in Jewellery Showroom Fit-Out and Jewellery Display Solutions. We are leading Jewellery Showroom Interior Designers crafting secure, luminous retail environments.',
-  keywords: [
-    'Jewellery Showroom Interior Designers',
-    'Jewellery Showroom Fit-Out',
-    'Jewellery Store Interior Design',
-    'Jewellery Display Solutions',
-  ],
-};
+  description: 'Brand Kettle BuildSpaces specializes in Jewellery Showroom Fit-Out and Jewellery Display Solutions. We are leading Jewellery Showroom Interior Designers crafting secure, luminous retail environments.',
+  socialTitle: 'Jewellery Showroom Fit-Outs — Secure, Luminous, Fast',
+  socialDescription: 'Display counters, high-CRI lighting and secure millwork for PNG Jewellers, Giva and Indriya, prefabricated for fast-track handover.',
+  image: '/imgs/commercial/jwellary.png',
+  imageAlt: 'Illuminated jewellery showroom display counters built by Brand Kettle BuildSpaces',
+});
 
 export const revalidate = 60;
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';

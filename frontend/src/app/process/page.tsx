@@ -1,15 +1,19 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import PageHero from '@/components/ui/PageHero';
 import Process from '@/components/home/Process';
 import Link from 'next/link';
 import { processSteps as fallbackProcess } from '@/lib/data';
 
-export const metadata: Metadata = {
-  alternates: { canonical: '/process' },
+export const metadata: Metadata = pageMetadata({
+  path: '/process',
   title: 'Our Process — How We Work',
-  description:
-    'Learn about our turnkey interior design and execution process. From initial concept to manufacturing and final handover.',
-};
+  description: 'Learn about our turnkey interior design and execution process. From initial concept to manufacturing and final handover.',
+  socialTitle: 'How Brand Kettle Delivers a Fit-Out, Stage by Stage',
+  socialDescription: 'Concept, detailing, factory joinery and site execution run in parallel — the method behind a 3,400 sq ft showroom in 27 days.',
+  image: '/imgs/commercial/png1.jpg',
+  imageAlt: 'PNG Jewellers showroom fit-out delivered by Brand Kettle BuildSpaces in 27 days',
+});
 
 export const revalidate = 60;
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';

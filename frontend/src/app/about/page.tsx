@@ -1,13 +1,17 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  alternates: { canonical: '/about' },
+export const metadata: Metadata = pageMetadata({
+  path: '/about',
   title: 'About Us — Brand Kettle BuildSpaces',
-  description:
-    'Brand Kettle BuildSpaces is a turnkey interior design, commercial fit-out and custom furniture company delivering spaces across India.',
-};
+  description: 'Brand Kettle BuildSpaces is a turnkey interior design, commercial fit-out and custom furniture company delivering spaces across India.',
+  socialTitle: 'About Brand Kettle BuildSpaces — One Partner, Design to Handover',
+  socialDescription: 'An Indore-headquartered design-build firm with an in-house joinery factory and site teams delivering turnkey fit-outs across India.',
+  image: '/imgs/commercial/brandkettle4.jpg',
+  imageAlt: 'Inside the Brand Kettle BuildSpaces design studio in Indore',
+});
 
 const STATS = [
   { value: '120+', label: 'Projects Delivered', sub: 'Offices, showrooms, and retail fit-outs completed turnkey.' },

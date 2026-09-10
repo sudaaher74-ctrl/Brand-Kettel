@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { API_URL } from '@/lib/site';
+import { pageMetadata } from '@/lib/seo';
 
 type Service = {
   id: string;
@@ -25,11 +26,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const service = await getService(resolvedParams.slug);
   if (!service) return {};
   
-  return {
-    alternates: { canonical: `/services/${service.slug}` },
+  return pageMetadata({
+    path: `/services/${service.slug}`,
     title: `${service.title} | Brand Kettle`,
     description: service.description,
-  };
+    socialTitle: `${service.title} — Brand Kettle BuildSpaces`,
+    socialDescription: service.description,
+    image: '/imgs/commercial/p098_129.jpg',
+    imageAlt: `${service.title} delivered turnkey by Brand Kettle BuildSpaces`,
+  });
 }
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {

@@ -1,14 +1,18 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import Link from 'next/link';
 import { services as fallbackServices } from '@/lib/data';
 
-export const metadata: Metadata = {
-  alternates: { canonical: '/services' },
+export const metadata: Metadata = pageMetadata({
+  path: '/services',
   title: 'Turnkey Services — Design, Build & Furnish',
-  description:
-    'Commercial interiors, retail stores, jewellery showrooms, office fit-outs, residential interiors and custom furniture — delivered turnkey by Brand Kettle BuildSpaces.',
-};
+  description: 'Commercial interiors, retail stores, jewellery showrooms, office fit-outs, residential interiors and custom furniture — delivered turnkey by Brand Kettle BuildSpaces.',
+  socialTitle: 'Design, Build & Furnish — All Under One Contract',
+  socialDescription: 'Civil and structural fit-out, factory joinery, HVAC and MEP engineering, and architectural lighting from a single accountable partner.',
+  image: '/imgs/commercial/p098_129.jpg',
+  imageAlt: 'Hospitality lobby fit-out delivered turnkey by Brand Kettle BuildSpaces',
+});
 
 export const revalidate = 60;
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';

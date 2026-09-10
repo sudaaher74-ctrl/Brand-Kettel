@@ -1,22 +1,20 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectGrid from '@/components/ui/ProjectGrid';
 import { projects as fallbackProjects } from '@/lib/data';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  alternates: { canonical: '/library-institutional-furniture' },
+export const metadata: Metadata = pageMetadata({
+  path: '/library-institutional-furniture',
   title: 'Library Furniture Manufacturer | Educational & Institutional Furniture',
-  description:
-    'Brand Kettle BuildSpaces is a leading Library Furniture Manufacturer. We provide high-quality Educational Furniture, School & College Furniture, and Institutional Furniture.',
-  keywords: [
-    'Library Furniture Manufacturer',
-    'Educational Furniture',
-    'School & College Furniture',
-    'Institutional Furniture',
-  ],
-};
+  description: 'Brand Kettle BuildSpaces is a leading Library Furniture Manufacturer. We provide high-quality Educational Furniture, School & College Furniture, and Institutional Furniture.',
+  socialTitle: 'Library, School & Institutional Furniture Built for Longevity',
+  socialDescription: 'Reading tables, stack shelving, workstations and seating for libraries, campuses and government offices, supplied and installed.',
+  image: '/imgs/commercial/lic1.jpg',
+  imageAlt: 'Institutional office furniture and workstations installed by Brand Kettle BuildSpaces',
+});
 
 export const revalidate = 60;
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';

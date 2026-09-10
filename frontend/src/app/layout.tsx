@@ -29,17 +29,6 @@ export const metadata: Metadata = {
   },
   description:
     'Brand Kettle BuildSpaces is a premium Design Build Company & Commercial Fit-Out Company in Indore. We provide Turnkey Interior Solutions, Commercial Interior Contractors, and Retail Fit-Outs.',
-  keywords: [
-    'Commercial Fit-Out Company',
-    'Design Build Company',
-    'Interior Fit-Out Company',
-    'Turnkey Interior Solutions',
-    'Commercial Interior Contractors',
-    'Retail Fit-Out Company',
-    'Office Interior Company',
-    'Custom Furniture Manufacturer',
-    'Commercial Interior Company in Indore',
-  ],
   authors: [{ name: 'Brand Kettle BuildSpaces Pvt. Ltd.' }],
   openGraph: {
     type: 'website',
@@ -52,8 +41,6 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/imgs/commercial/gucci.png',
-        width: 1200,
-        height: 630,
         alt: 'Brand Kettle BuildSpaces — Turnkey Commercial Fit-Outs & Retail Interiors',
       },
     ],
@@ -62,7 +49,12 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Brand Kettle BuildSpaces — Turnkey Commercial & Retail Fit-Outs',
     description: 'Design, Build & Furnish solutions for offices, retail flagships, showrooms and workspaces.',
-    images: ['/imgs/commercial/gucci.png'],
+    images: [
+      {
+        url: '/imgs/commercial/gucci.png',
+        alt: 'Brand Kettle BuildSpaces — Turnkey Commercial Fit-Outs & Retail Interiors',
+      },
+    ],
   },
   icons: {
     icon: '/favicon.ico',

@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import { projects as fallbackProjects } from '@/lib/data';
 import ConsultationForm from '@/components/forms/ConsultationForm';
 import ProjectDetailMedia from '@/components/ui/ProjectDetailMedia';
@@ -62,14 +63,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const project = await getProject(resolvedParams.slug);
   if (!project) return {};
   
-  return {
-    alternates: { canonical: `/portfolio/${project.slug}` },
+  const where = project.location ? ` in ${project.location}` : '';
+  const description =
+    project.blurb ||
+    `View our complete commercial interior fit-out project for ${project.name}${where}.`;
+  const social = `${project.name}${where} — ${project.category || 'Turnkey Fit-Out'} by Brand Kettle`;
+  // The project's own hero image, never the global share image.
+  const image = project.image || '/imgs/commercial/gucci.png';
+
+  return pageMetadata({
+    path: `/portfolio/${project.slug}`,
     title: `${project.name} | Commercial Interior Project`,
-    description: project.blurb || `View our complete commercial interior fit-out project for ${project.name} in ${project.location}.`,
-    openGraph: {
-      images: project.image ? [{ url: project.image }] : [],
-    }
-  };
+    description,
+    socialTitle: social,
+    socialDescription: description,
+    image,
+    imageAlt: `${project.name}${where} — interior fit-out delivered by Brand Kettle BuildSpaces`,
+    type: 'article',
+  });
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {

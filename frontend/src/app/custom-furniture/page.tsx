@@ -1,24 +1,20 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectGrid from '@/components/ui/ProjectGrid';
 import { projects as fallbackProjects } from '@/lib/data';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  alternates: { canonical: '/custom-furniture' },
+export const metadata: Metadata = pageMetadata({
+  path: '/custom-furniture',
   title: 'Custom Furniture Manufacturer in Indore | Premium Bespoke Furniture',
-  description:
-    'Top Custom Furniture Manufacturer in Indore offering Bespoke Furniture, Modular Furniture, and Premium Furniture. We are an expert Office Furniture Manufacturer delivering quality craftsmanship.',
-  keywords: [
-    'Custom Furniture Manufacturer',
-    'Bespoke Furniture',
-    'Modular Furniture',
-    'Premium Furniture',
-    'Office Furniture Manufacturer',
-    'Furniture Manufacturer in Indore',
-  ],
-};
+  description: 'Top Custom Furniture Manufacturer in Indore offering Bespoke Furniture, Modular Furniture, and Premium Furniture. We are an expert Office Furniture Manufacturer delivering quality craftsmanship.',
+  socialTitle: 'Bespoke Furniture & Architectural Joinery, Made In-House',
+  socialDescription: 'Display counters, wall panels, reception desks and workstations fabricated in our own factory in metal, veneer, solid wood and glass.',
+  image: '/imgs/commercial/taksha3.png',
+  imageAlt: 'Bespoke joinery and built-in furniture manufactured by Brand Kettle BuildSpaces',
+});
 
 export const revalidate = 60;
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';

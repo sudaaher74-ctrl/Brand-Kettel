@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { API_URL, absoluteUrl } from '@/lib/site';
+import { pageMetadata } from '@/lib/seo';
 import Link from 'next/link';
 
 type Location = {
@@ -26,11 +27,15 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   const location = await getLocation(resolvedParams.city);
   if (!location) return {};
   
-  return {
-    alternates: { canonical: `/locations/${location.slug}` },
+  return pageMetadata({
+    path: `/locations/${location.slug}`,
     title: `${location.title} | Brand Kettle BuildSpaces`,
     description: location.description,
-  };
+    socialTitle: `${location.title} — Brand Kettle BuildSpaces`,
+    socialDescription: location.description,
+    image: '/imgs/commercial/brandkettle1.jpg',
+    imageAlt: `Turnkey commercial fit-outs delivered in ${location.city} by Brand Kettle BuildSpaces`,
+  });
 }
 
 export default async function LocationPage({ params }: { params: Promise<{ city: string }> }) {
