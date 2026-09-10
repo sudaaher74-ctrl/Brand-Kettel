@@ -11,8 +11,8 @@ export default function ProjectGrid({ items }: { items: Project[] | null }) {
     <div className="grid gap-6 sm:gap-8 sm:grid-cols-2">
       {items.map((p, i) => {
         let displayImage = cleanImagePath(p.image);
-        if (p.slug === 'gucci') displayImage = '/imgs/commercial/gucci-green.png';
-        if (p.slug === 'malabar-gold') displayImage = '/imgs/commercial/malabarcoverimg.png';
+        if (p.slug === 'gucci') displayImage = '/imgs/commercial/gucci-green.webp';
+        if (p.slug === 'malabar-gold') displayImage = '/imgs/commercial/malabar-gold-cover.webp';
         if (p.slug === 'png') displayImage = '/imgs/commercial/png1.jpg';
 
         return (

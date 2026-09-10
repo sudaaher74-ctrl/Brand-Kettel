@@ -45,10 +45,13 @@ const cspDirectives = [
   "frame-src 'none'",
   "manifest-src 'self'",
   "worker-src 'self' blob:",
-  'upgrade-insecure-requests',
   'report-uri /api/csp-report',
 ];
 
+// `upgrade-insecure-requests` is intentionally absent while the policy is
+// report-only: browsers ignore it in that mode and log a console error for it,
+// which shows up as a real error in monitoring. Add it back in the same commit
+// that switches the header key to 'Content-Security-Policy'.
 const contentSecurityPolicy = {
   key: 'Content-Security-Policy-Report-Only',
   value: cspDirectives.join('; '),

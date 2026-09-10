@@ -41,7 +41,7 @@ export const metadata: Metadata = {
       'Turnkey Commercial Fit-Outs, Retail Flagships, Jewellery Showrooms, and Custom Architectural Joinery across India.',
     images: [
       {
-        url: '/imgs/commercial/gucci.png',
+        url: '/imgs/commercial/gucci.webp',
         alt: 'Brand Kettle BuildSpaces — Turnkey Commercial Fit-Outs & Retail Interiors',
       },
     ],
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     description: 'Design, Build & Furnish solutions for offices, retail flagships, showrooms and workspaces.',
     images: [
       {
-        url: '/imgs/commercial/gucci.png',
+        url: '/imgs/commercial/gucci.webp',
         alt: 'Brand Kettle BuildSpaces — Turnkey Commercial Fit-Outs & Retail Interiors',
       },
     ],

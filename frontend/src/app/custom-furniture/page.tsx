@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
   description: 'Top Custom Furniture Manufacturer in Indore offering Bespoke Furniture, Modular Furniture, and Premium Furniture. We are an expert Office Furniture Manufacturer delivering quality craftsmanship.',
   socialTitle: 'Bespoke Furniture & Architectural Joinery, Made In-House',
   socialDescription: 'Display counters, wall panels, reception desks and workstations fabricated in our own factory in metal, veneer, solid wood and glass.',
-  image: '/imgs/commercial/taksha3.png',
+  image: '/imgs/commercial/taksha-3.webp',
   imageAlt: 'Bespoke joinery and built-in furniture manufactured by Brand Kettle BuildSpaces',
 });
 
@@ -50,7 +50,7 @@ export default async function CustomFurniturePage() {
         eyebrow="Custom Furniture"
         title="Bespoke & modular craftsmanship"
         subtitle="Premium Furniture and Modular Furniture tailored for your exact commercial and residential needs."
-        image="/imgs/commercial/Havana lounge1.jpg"
+        image="/imgs/commercial/havana-lounge-bareilly-1.jpg"
       />
 
       <section className="bg-background py-16 sm:py-24">

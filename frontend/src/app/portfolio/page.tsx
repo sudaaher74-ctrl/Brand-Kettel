@@ -10,7 +10,7 @@ export const metadata: Metadata = pageMetadata({
   description: 'Explore our completed commercial offices, flagship luxury retail, jewellery showrooms and hospitality fit-outs across India.',
   socialTitle: 'Brand Kettle BuildSpaces Portfolio — Delivered Projects',
   socialDescription: 'Gucci, PNG Jewellers, Giva, Ramada Encore, Pret A Manger and more: offices, retail flagships, showrooms and hospitality interiors.',
-  image: '/imgs/commercial/taksha1.png',
+  image: '/imgs/commercial/taksha-1.webp',
   imageAlt: 'Taksha premium builder floor interior delivered by Brand Kettle BuildSpaces',
 });
 

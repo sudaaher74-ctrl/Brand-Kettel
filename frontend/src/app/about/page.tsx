@@ -82,7 +82,7 @@ export default function AboutPage() {
 
               <div className="lg:col-span-5 relative aspect-square rounded-2xl overflow-hidden border border-white/15 bg-black">
                 <Image
-                  src="/imgs/commercial/home1.png"
+                  src="/imgs/commercial/home1.webp"
                   alt="Brand Kettle Flagship Space"
                   fill
                   className="object-cover"
@@ -138,7 +138,7 @@ export default function AboutPage() {
             {/* Left Photo Showcase */}
             <div className="lg:col-span-5 relative aspect-[4/5] rounded-[24px] overflow-hidden border border-white/15 shadow-2xl bg-[#121216]">
               <Image
-                src="/imgs/commercial/taksha coverimg.png"
+                src="/imgs/commercial/taksha-hyderabad-cover.webp"
                 alt="Brand Kettle execution standards"
                 fill
                 className="object-cover"

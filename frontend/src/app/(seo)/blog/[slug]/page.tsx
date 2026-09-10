@@ -106,7 +106,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {post.image && (
           <div className="mb-14 rounded-[24px] overflow-hidden aspect-[21/9] relative border border-white/10 bg-[#121216]">
-            <Image src={cleanImagePath(post.image)} alt={post.imageAlt || post.title} className="object-cover" fill sizes="100vw" priority />
+            <Image src={cleanImagePath(post.image)} alt={post.imageAlt || post.title} className="object-cover" fill sizes="(max-width: 896px) 100vw, 896px" priority />
           </div>
         )}
 

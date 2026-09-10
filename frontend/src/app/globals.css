@@ -162,6 +162,41 @@
   }
 }
 
+/*
+ * Above-the-fold entrance animation.
+ *
+ * Hero text used to fade in via framer-motion with initial={{opacity:0}}, which
+ * server-renders style="opacity:0" and leaves the headline invisible until the
+ * JS bundle has downloaded, parsed and hydrated. On a throttled mobile CPU that
+ * pushed LCP past 3.5s. A CSS animation produces the identical effect but runs
+ * from the first paint with no JavaScript involved.
+ *
+ * The reduced-motion block below collapses the duration, so the text simply
+ * appears rather than sliding.
+ */
+@keyframes bk-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.bk-rise {
+  animation: bk-rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.bk-rise-delay-1 {
+  animation-delay: 0.08s;
+}
+
+.bk-rise-delay-2 {
+  animation-delay: 0.16s;
+}
+
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -170,5 +205,11 @@
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+  }
+
+  .bk-rise {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
   }
 }

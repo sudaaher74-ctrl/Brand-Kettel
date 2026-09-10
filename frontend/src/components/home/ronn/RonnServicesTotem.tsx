@@ -10,7 +10,7 @@ const SERVICES = [
     description:
       'Before calculating square footage, we evaluate your organizational goals and daily usage. We analyze circulation, team dynamics, and business projections to create an objective, data-backed space layout.',
     deliverables: ['Spatial efficiency audit', 'Zoning & circulation plans', 'Budget & milestone roadmap', 'Feasibility assessment'],
-    image: '/imgs/commercial/work co workspace.jpg',
+    image: '/imgs/commercial/and-work-faridabad-coworking.jpg',
     href: '/commercial-fit-outs',
   },
   {
@@ -19,7 +19,7 @@ const SERVICES = [
     description:
       'Your physical space defines who you are. We craft environments that marry elevated brand aesthetics with functional precision — tailored lighting, bespoke textures, and acoustic treatments without losing sight of budget.',
     deliverables: ['Photorealistic 3D renders', 'Lighting & acoustic design', 'Material curation & moodboards', 'Detailed technical drawings'],
-    image: '/imgs/commercial/gucci-green.png',
+    image: '/imgs/commercial/gucci-green.webp',
     href: '/retail-fit-outs',
   },
   {
@@ -28,7 +28,7 @@ const SERVICES = [
     description:
       'From the first line of estimation to ribbon-cutting, we oversee the entire job site. MEP engineering, HVAC, fire-fighting, drywall, and finishes. Committed deadlines, strict safety codes, and guaranteed quality.',
     deliverables: ['End-to-end site management', 'HVAC, MEP & statutory compliance', 'Snag-free quality audits', 'On-time turnkey handover'],
-    image: '/imgs/commercial/ramda encre hotel1.jpg',
+    image: '/imgs/commercial/ramada-encore-bareilly-hotel.jpg',
     href: '/process',
   },
   {
@@ -37,7 +37,7 @@ const SERVICES = [
     description:
       'In-house factory manufacturing gives us unmatched quality control and agility. We fabricate bespoke display cases for jewellery showrooms, modular workstations for corporate campuses, and custom hospitality joinery.',
     deliverables: ['In-house millwork & joinery', 'Modular workstations & storage', 'Luxury retail display counters', 'High-durability commercial finishes'],
-    image: '/imgs/commercial/jwellary.png',
+    image: '/imgs/commercial/jewellery-showroom-display.webp',
     href: '/custom-furniture',
   },
 ];

@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     `View our complete commercial interior fit-out project for ${project.name}${where}.`;
   const social = `${project.name}${where} — ${project.category || 'Turnkey Fit-Out'} by Brand Kettle`;
   // The project's own hero image, never the global share image.
-  const image = project.image || '/imgs/commercial/gucci.png';
+  const image = project.image || '/imgs/commercial/gucci.webp';
 
   return pageMetadata({
     path: `/portfolio/${project.slug}`,

@@ -16,6 +16,16 @@ const FILTER_TABS = [
 
 export default function FilterableProjectGallery({ projects }: { projects: CaseStudy[] }) {
   const [activeCategory, setActiveCategory] = useState('All');
+  /*
+   * The framer-motion entrance below server-renders style="opacity:0", so on
+   * the first paint the whole grid — including the above-the-fold cards that
+   * are the page's LCP — stayed invisible until hydration finished. On a
+   * throttled mobile CPU that cost ~2.2s of LCP.
+   *
+   * So: no JS-driven entrance until the visitor actually filters. The initial
+   * grid renders visible and fades in via the CSS .bk-rise animation instead.
+   */
+  const [hasFiltered, setHasFiltered] = useState(false);
 
   const filteredProjects = projects.filter((p) => {
     if (activeCategory === 'All') return true;
@@ -35,7 +45,10 @@ export default function FilterableProjectGallery({ projects }: { projects: CaseS
           return (
             <button
               key={tab.value}
-              onClick={() => setActiveCategory(tab.value)}
+              onClick={() => {
+                setActiveCategory(tab.value);
+                setHasFiltered(true);
+              }}
               className={`px-5 py-2.5 rounded-full text-xs md:text-sm uppercase tracking-[0.14em] font-medium transition-all duration-300 ${
                 isActive
                   ? 'bg-[#C5A880] text-[#0A0A0B] shadow-[0_0_20px_rgba(197,168,128,0.3)] font-semibold'
@@ -58,10 +71,12 @@ export default function FilterableProjectGallery({ projects }: { projects: CaseS
             <motion.div
               key={project.slug}
               layout
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={hasFiltered ? { opacity: 0, scale: 0.95 } : false}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className={hasFiltered ? undefined : 'bk-rise'}
+              style={hasFiltered ? undefined : { animationDelay: `${Math.min(index, 5) * 0.06}s` }}
             >
               <CaseStudyCard project={project} index={index} />
             </motion.div>

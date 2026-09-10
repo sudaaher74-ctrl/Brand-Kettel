@@ -52,7 +52,7 @@ export default async function ResidentialPage() {
         eyebrow="Residential interiors"
         title="Premium homes, crafted with care"
         subtitle="A refined, secondary practice for private clients who value the same execution discipline we bring to commercial work."
-        image="/imgs/commercial/home1.png"
+        image="/imgs/commercial/home1.webp"
       />
 
       <section className="bg-background py-16 sm:py-24">

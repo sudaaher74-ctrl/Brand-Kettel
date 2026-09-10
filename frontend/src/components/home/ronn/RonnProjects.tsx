@@ -10,7 +10,7 @@ const FEATURED_HERO = {
   location: 'India',
   area: '3,500 sq ft',
   year: '2023',
-  image: '/imgs/commercial/gucci-green.png',
+  image: '/imgs/commercial/gucci-green.webp',
   slug: 'gucci',
   blurb: 'A benchmark in luxury retail craftsmanship. Every custom fixture, ambient illumination, and bespoke millwork reflects the exacting standards of the iconic house.',
 };
@@ -31,7 +31,7 @@ const SUB_PROJECTS = [
     location: 'Ramada Hotel, Bareilly',
     area: '8,500 sq ft',
     timeline: 'Complete Fit-Out',
-    image: '/imgs/commercial/Havana lounge1.jpg',
+    image: '/imgs/commercial/havana-lounge-bareilly-1.jpg',
     slug: 'havana-lounge-bareilly',
   },
   {
@@ -40,7 +40,7 @@ const SUB_PROJECTS = [
     location: 'Hyderabad',
     area: '475 sq yd',
     timeline: 'Turnkey Luxury',
-    image: '/imgs/commercial/taksha coverimg.png',
+    image: '/imgs/commercial/taksha-hyderabad-cover.webp',
     slug: 'taksha-hyderabad',
   },
   {
@@ -49,7 +49,7 @@ const SUB_PROJECTS = [
     location: 'India',
     area: '1,200 sq ft',
     timeline: 'Fast-Track Fit-Out',
-    image: '/imgs/commercial/giva.png',
+    image: '/imgs/commercial/giva.webp',
     slug: 'giva',
   },
 ];

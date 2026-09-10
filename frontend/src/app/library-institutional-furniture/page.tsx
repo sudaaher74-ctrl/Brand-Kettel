@@ -50,7 +50,7 @@ export default async function LibraryInstitutionalFurniturePage() {
         eyebrow="Institutional Furniture"
         title="Durable educational & institutional solutions"
         subtitle="Expertly crafted Library Furniture, School & College Furniture built for longevity."
-        image="/imgs/commercial/GEM jeevan tara.jpg"
+        image="/imgs/commercial/gem-jeevan-tara-1.jpg"
       />
 
       <section className="bg-background py-16 sm:py-24">

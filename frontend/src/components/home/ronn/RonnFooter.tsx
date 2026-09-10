@@ -45,8 +45,8 @@ export default function RonnFooter() {
               <Image
                 src="/logo.png"
                 alt="Brand Kettle BuildSpaces"
-                width={170}
-                height={56}
+                width={72}
+                height={72}
                 className="h-9 w-auto object-contain"
                 style={{ filter: 'invert(1) brightness(1.2)' }}
               />

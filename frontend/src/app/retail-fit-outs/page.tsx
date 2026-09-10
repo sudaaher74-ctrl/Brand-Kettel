@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
   description: 'Brand Kettle BuildSpaces is the premier Retail Fit-Out Company in Indore. We are expert Retail Interior Contractors delivering Turnkey Shop Fit-Outs and Retail Store Interior Design.',
   socialTitle: 'Retail Fit-Outs Built to Brand Standard',
   socialDescription: 'Flagship and multi-store rollouts for luxury and high-street brands, fabricated to global brand guidelines in our own factory.',
-  image: '/imgs/commercial/gucci-green.png',
+  image: '/imgs/commercial/gucci-green.webp',
   imageAlt: 'Gucci retail flagship interior fit-out delivered by Brand Kettle BuildSpaces',
 });
 

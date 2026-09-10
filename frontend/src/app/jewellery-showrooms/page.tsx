@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
   description: 'Brand Kettle BuildSpaces specializes in Jewellery Showroom Fit-Out and Jewellery Display Solutions. We are leading Jewellery Showroom Interior Designers crafting secure, luminous retail environments.',
   socialTitle: 'Jewellery Showroom Fit-Outs — Secure, Luminous, Fast',
   socialDescription: 'Display counters, high-CRI lighting and secure millwork for PNG Jewellers, Giva and Indriya, prefabricated for fast-track handover.',
-  image: '/imgs/commercial/jwellary.png',
+  image: '/imgs/commercial/jewellery-showroom-display.webp',
   imageAlt: 'Illuminated jewellery showroom display counters built by Brand Kettle BuildSpaces',
 });
 
