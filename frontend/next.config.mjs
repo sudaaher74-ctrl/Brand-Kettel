@@ -57,6 +57,20 @@ const contentSecurityPolicy = {
   value: cspDirectives.join('; '),
 };
 
+/**
+ * One canonical host.
+ *
+ * The apex and www hosts must not both answer 200, or every page exists at two
+ * URLs and the canonical tag is the only thing separating them. The platform's
+ * own domain settings are the primary place to configure this (on Vercel:
+ * add both domains, mark www as primary); this redirect is the portable
+ * fallback so the rule travels with the code and survives a host change.
+ *
+ * Conditioned on the apex host only, so www -> www can never loop.
+ */
+const CANONICAL_HOST = 'www.brandkettle.co.in';
+const APEX_HOST = 'brandkettle.co.in';
+
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -82,6 +96,18 @@ const nextConfig = {
       {
         source: '/:path*',
         headers: [...securityHeaders, contentSecurityPolicy],
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: APEX_HOST }],
+        destination: `https://${CANONICAL_HOST}/:path*`,
+        // 301 rather than Next's default 308: both are permanent and Google
+        // treats them identically, but 301 is what the wider tooling expects.
+        statusCode: 301,
       },
     ];
   },
