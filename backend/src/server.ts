@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import rateLimit from 'express-rate-limit';
 import { requireAuth } from './middlewares/requireAuth';
+import { createRateLimitStore, warnIfMemoryStore } from './lib/rateLimitStore';
 
 dotenv.config();
 
@@ -37,12 +38,18 @@ app.get('/', (req, res) => {
   res.json({ status: 'ok' });
 });
 
+warnIfMemoryStore();
+
+// The lead form is the site's only public write path and the most attractive
+// target for bot floods; an unbounded one poisons the sending domain's
+// reputation. 5 submissions per IP per 10 minutes.
 const contactLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 10,
+  windowMs: 10 * 60 * 1000, // 10 minutes
+  max: 5,
   message: { error: 'Too many requests, please try again later.' },
   standardHeaders: true,
   legacyHeaders: false,
+  store: createRateLimitStore('contact'),
 });
 
 // The job-application endpoint is public so candidates can apply without an
@@ -53,6 +60,7 @@ const applicationLimiter = rateLimit({
   message: { error: 'Too many applications submitted, please try again later.' },
   standardHeaders: true,
   legacyHeaders: false,
+  store: createRateLimitStore('applications'),
 });
 
 // Strict limiter to slow brute-force of the admin password.
@@ -62,6 +70,7 @@ const loginLimiter = rateLimit({
   message: { error: 'Too many login attempts, please try again later.' },
   standardHeaders: true,
   legacyHeaders: false,
+  store: createRateLimitStore('login'),
 });
 
 import adminRoutes from './routes/admin';

@@ -8,6 +8,7 @@ const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
+const rateLimitStore_1 = require("./lib/rateLimitStore");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3001;
@@ -34,12 +35,17 @@ app.use((0, cookie_parser_1.default)());
 app.get('/', (req, res) => {
     res.json({ status: 'ok' });
 });
+(0, rateLimitStore_1.warnIfMemoryStore)();
+// The lead form is the site's only public write path and the most attractive
+// target for bot floods; an unbounded one poisons the sending domain's
+// reputation. 5 submissions per IP per 10 minutes.
 const contactLimiter = (0, express_rate_limit_1.default)({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 10,
+    windowMs: 10 * 60 * 1000, // 10 minutes
+    max: 5,
     message: { error: 'Too many requests, please try again later.' },
     standardHeaders: true,
     legacyHeaders: false,
+    store: (0, rateLimitStore_1.createRateLimitStore)('contact'),
 });
 // The job-application endpoint is public so candidates can apply without an
 // account, which means it writes to the database unauthenticated. Bound it.
@@ -49,6 +55,7 @@ const applicationLimiter = (0, express_rate_limit_1.default)({
     message: { error: 'Too many applications submitted, please try again later.' },
     standardHeaders: true,
     legacyHeaders: false,
+    store: (0, rateLimitStore_1.createRateLimitStore)('applications'),
 });
 // Strict limiter to slow brute-force of the admin password.
 const loginLimiter = (0, express_rate_limit_1.default)({
@@ -57,6 +64,7 @@ const loginLimiter = (0, express_rate_limit_1.default)({
     message: { error: 'Too many login attempts, please try again later.' },
     standardHeaders: true,
     legacyHeaders: false,
+    store: (0, rateLimitStore_1.createRateLimitStore)('login'),
 });
 const admin_1 = __importDefault(require("./routes/admin"));
 const projects_1 = __importDefault(require("./routes/projects"));

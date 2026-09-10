@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SettingsSchema = exports.LeadSchema = exports.TestimonialSchema = exports.JobApplicationSchema = exports.JobOpeningSchema = exports.BlogPostSchema = exports.ServiceSchema = exports.ProjectSchema = void 0;
+exports.SettingsSchema = exports.TestimonialSchema = exports.JobApplicationSchema = exports.JobOpeningSchema = exports.BlogPostSchema = exports.ServiceSchema = exports.ProjectSchema = void 0;
 const zod_1 = require("zod");
 exports.ProjectSchema = zod_1.z.object({
     slug: zod_1.z.string().min(1, 'Slug is required'),
@@ -56,14 +56,9 @@ exports.TestimonialSchema = zod_1.z.object({
     feedback: zod_1.z.string().min(1, 'Feedback is required'),
     rating: zod_1.z.number().min(1).max(5).optional().default(5),
 });
-exports.LeadSchema = zod_1.z.object({
-    name: zod_1.z.string().min(1, 'Name is required'),
-    phone: zod_1.z.string().min(1, 'Phone is required'),
-    email: zod_1.z.string().email('Invalid email address'),
-    projectType: zod_1.z.string().optional().default(''),
-    message: zod_1.z.string().optional().default(''),
-    status: zod_1.z.enum(['New', 'Contacted', 'Closed']).optional().default('New'),
-});
+// Contact-form submissions are validated by ContactSubmissionSchema in
+// ./leadValidation.ts, which enforces the project-type enum, Indian phone
+// format, honeypot and timing checks. The old permissive LeadSchema is gone.
 exports.SettingsSchema = zod_1.z.object({
     contactEmail: zod_1.z.string().email('Invalid email address').optional().default(''),
     contactPhone: zod_1.z.string().optional().default(''),
