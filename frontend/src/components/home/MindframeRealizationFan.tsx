@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -75,7 +75,17 @@ export default function MindframeRealizationFan() {
   const [activeIndex, setActiveIndex] = useState(2);
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(1440);
   const total = CARDS.length;
+
+  useEffect(() => {
+    setMounted(true);
+    const handleResize = () => setScreenWidth(window.innerWidth);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleCardClick = (idx: number) => {
     setActiveIndex(idx);
@@ -91,6 +101,62 @@ export default function MindframeRealizationFan() {
     }, 4000);
   };
 
+  // Compute wide horizontal distribution to completely fill left and right space
+  const getCardTransform = (offset: number) => {
+    if (!mounted || screenWidth >= 1200) {
+      // Large screens / Desktops: Wide horizontal spread covering entire container
+      if (offset === 0) {
+        return { x: '0vw', scale: 1.03, zIndex: 30, opacity: 1, rotateY: 0 };
+      }
+      if (offset === -1) {
+        return { x: '-18.5vw', scale: 0.92, zIndex: 20, opacity: 0.96, rotateY: 3 };
+      }
+      if (offset === 1) {
+        return { x: '18.5vw', scale: 0.92, zIndex: 20, opacity: 0.96, rotateY: -3 };
+      }
+      if (offset === -2) {
+        return { x: '-35.5vw', scale: 0.84, zIndex: 10, opacity: 0.92, rotateY: 6 };
+      }
+      // offset === 2
+      return { x: '35.5vw', scale: 0.84, zIndex: 10, opacity: 0.92, rotateY: -6 };
+    }
+
+    if (screenWidth >= 768) {
+      // Tablets / Medium screens
+      if (offset === 0) {
+        return { x: '0vw', scale: 1, zIndex: 30, opacity: 1, rotateY: 0 };
+      }
+      if (offset === -1) {
+        return { x: '-24vw', scale: 0.88, zIndex: 20, opacity: 0.94, rotateY: 3 };
+      }
+      if (offset === 1) {
+        return { x: '24vw', scale: 0.88, zIndex: 20, opacity: 0.94, rotateY: -3 };
+      }
+      if (offset === -2) {
+        return { x: '-42vw', scale: 0.8, zIndex: 10, opacity: 0.85, rotateY: 6 };
+      }
+      return { x: '42vw', scale: 0.8, zIndex: 10, opacity: 0.85, rotateY: -6 };
+    }
+
+    // Mobile screens (< 768px): Focus on center card with adjacent cards peeking
+    if (offset === 0) {
+      return { x: '0%', scale: 1, zIndex: 30, opacity: 1, rotateY: 0 };
+    }
+    if (offset === -1) {
+      return { x: '-80%', scale: 0.86, zIndex: 20, opacity: 0.88, rotateY: 4 };
+    }
+    if (offset === 1) {
+      return { x: '80%', scale: 0.86, zIndex: 20, opacity: 0.88, rotateY: -4 };
+    }
+    return {
+      x: offset < 0 ? '-140%' : '140%',
+      scale: 0.75,
+      zIndex: 10,
+      opacity: 0,
+      rotateY: 0,
+    };
+  };
+
   return (
     <div className="relative w-full select-none font-sans">
       
@@ -104,31 +170,31 @@ export default function MindframeRealizationFan() {
       `}</style>
 
       {/* ─────────────────────────────────────────────────────────────
-          1. UPPER SECTION HEADER: Typography & Overlapping Sector Badges
+          1. UPPER SECTION HEADER: Headline & Overlapping Sector Badges
           ───────────────────────────────────────────────────────────── */}
-      <div className="w-full flex items-start justify-between mb-8 sm:mb-12">
+      <div className="w-full flex items-start justify-between px-2 sm:px-4 mb-4 sm:mb-8">
         
-        {/* Left Headline: "Create your" (Cursive) + "space" (Bold Sans) + "with us" (Serif Italic) */}
+        {/* Left Headline: "Create your" (Cursive) + "space with US" */}
         <div>
           <h2 className="tracking-tight leading-[0.98]">
-            <span className="font-alex-brush text-5xl sm:text-7xl lg:text-[5.4rem] text-[#18181B] font-normal block mb-1">
+            <span className="font-alex-brush text-5xl sm:text-7xl lg:text-[5.5rem] text-[#18181B] font-normal block mb-1">
               Create your
             </span>
             <span className="font-sans text-4xl sm:text-5xl lg:text-6xl font-bold text-[#18181B] tracking-tight">
               space{' '}
             </span>
-            <span className="font-serif italic text-3xl sm:text-4xl lg:text-5xl font-normal text-[#A07A4F]">
-              with us
+            <span className="font-serif italic text-3xl sm:text-4xl lg:text-5xl font-normal text-[#18181B]">
+              with US
             </span>
           </h2>
         </div>
 
-        {/* Right Badges: Staggered "Comfort" & "Buildings" matching the reference design */}
+        {/* Right Badges: Staggered "Comfort" & "Buildings" with thin black outline */}
         <div className="relative flex flex-col items-end pt-3 sm:pt-4">
-          <div className="px-5 sm:px-6 py-1.5 sm:py-2 rounded-full border border-[#18181B]/30 bg-[#FAF8F5] text-xs sm:text-sm font-sans text-[#18181B] z-10 shadow-xs">
+          <div className="px-5 sm:px-6 py-1.5 sm:py-2 rounded-full border border-black/80 bg-[#FAF8F5] text-xs sm:text-sm font-sans text-black z-10 shadow-xs">
             Comfort
           </div>
-          <div className="-mt-2 sm:-mt-2.5 mr-3 sm:mr-4 px-5 sm:px-6 py-1.5 sm:py-2 rounded-full border border-[#18181B]/30 bg-[#FAF8F5] text-xs sm:text-sm font-sans text-[#18181B] z-20 shadow-xs">
+          <div className="-mt-2 sm:-mt-2.5 mr-3 sm:mr-4 px-5 sm:px-6 py-1.5 sm:py-2 rounded-full border border-black/80 bg-[#FAF8F5] text-xs sm:text-sm font-sans text-black z-20 shadow-xs">
             Buildings
           </div>
         </div>
@@ -136,9 +202,9 @@ export default function MindframeRealizationFan() {
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
-          2. 3D PERSPECTIVE FANNED CARDS (5 Interactive Cards in Visual Arc)
+          2. 3D PERSPECTIVE FANNED CARDS (Full-Width Arc from Left to Right Edge)
           ───────────────────────────────────────────────────────────── */}
-      <div className="relative w-full h-[520px] sm:h-[580px] lg:h-[640px] flex items-center justify-center [perspective:1800px] overflow-hidden my-4">
+      <div className="relative w-full h-[540px] sm:h-[600px] lg:h-[660px] xl:h-[700px] flex items-center justify-center [perspective:1800px] overflow-hidden my-2 sm:my-4">
         
         <div className="relative w-full h-full flex items-center justify-center">
           {CARDS.map((card, idx) => {
@@ -148,13 +214,7 @@ export default function MindframeRealizationFan() {
             if (offset > 2) offset -= total;
 
             const isCenter = offset === 0;
-
-            // Positioning calculations matching the reference arc
-            const xPercent = offset === 0 ? 0 : offset === -1 ? -29 : offset === 1 ? 29 : offset === -2 ? -57 : 57;
-            const scale = isCenter ? 1 : Math.abs(offset) === 1 ? 0.90 : 0.80;
-            const zIndex = isCenter ? 30 : Math.abs(offset) === 1 ? 20 : 10;
-            const opacity = isCenter ? 1 : Math.abs(offset) === 1 ? 0.96 : 0.88;
-            const rotateY = offset * -4; // Subtle 3D card tilt for natural fan depth
+            const anim = getCardTransform(offset);
 
             return (
               <motion.div
@@ -162,21 +222,21 @@ export default function MindframeRealizationFan() {
                 onClick={() => handleCardClick(idx)}
                 initial={false}
                 animate={{
-                  x: `${xPercent}%`,
-                  scale,
-                  zIndex,
-                  opacity,
-                  rotateY,
+                  x: anim.x,
+                  scale: anim.scale,
+                  zIndex: anim.zIndex,
+                  opacity: anim.opacity,
+                  rotateY: anim.rotateY,
                 }}
                 transition={{
                   type: 'spring',
                   stiffness: 280,
                   damping: 28,
                 }}
-                className={`absolute w-[86%] sm:w-[54%] md:w-[44%] lg:w-[35%] xl:w-[30%] h-[460px] sm:h-[520px] lg:h-[580px] rounded-[30px] sm:rounded-[34px] overflow-hidden cursor-pointer bg-neutral-900 transition-shadow duration-300 ${
+                className={`absolute w-[86%] sm:w-[50%] md:w-[38%] lg:w-[30%] xl:w-[26%] 2xl:w-[24%] h-[480px] sm:h-[540px] lg:h-[600px] xl:h-[640px] rounded-[30px] sm:rounded-[36px] overflow-hidden cursor-pointer bg-neutral-900 transition-shadow duration-300 ${
                   isCenter
-                    ? 'shadow-[0_30px_60px_-15px_rgba(0,0,0,0.35)] ring-1 ring-[#18181B]/15'
-                    : 'shadow-[0_15px_30px_-10px_rgba(0,0,0,0.2)] hover:shadow-2xl'
+                    ? 'shadow-[0_35px_70px_-15px_rgba(0,0,0,0.38)] ring-1 ring-[#18181B]/15'
+                    : 'shadow-[0_15px_35px_-10px_rgba(0,0,0,0.22)] hover:shadow-2xl'
                 }`}
                 style={{
                   transformStyle: 'preserve-3d',
@@ -188,7 +248,7 @@ export default function MindframeRealizationFan() {
                   alt={card.imageAlt}
                   fill
                   priority={isCenter}
-                  sizes="(max-width: 768px) 85vw, 35vw"
+                  sizes="(max-width: 768px) 85vw, 30vw"
                   className="object-cover object-center"
                 />
 
@@ -261,13 +321,13 @@ export default function MindframeRealizationFan() {
       {/* ─────────────────────────────────────────────────────────────
           3. BOTTOM CONTROLS: "🎙 AI Helper" (Left) & Customer Stats / Avatars (Right)
           ───────────────────────────────────────────────────────────── */}
-      <div className="w-full mt-6 sm:mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-[#18181B]/15">
+      <div className="w-full mt-4 sm:mt-8 pt-6 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-[#18181B]/15 px-2 sm:px-4">
         
         {/* Bottom Left: "🎙 AI Helper" Pill Button */}
         <Link
           href="/contact"
           data-cursor-text="ASK"
-          className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#18181B]/30 bg-[#FAF8F5] text-xs sm:text-sm font-sans text-[#18181B] hover:border-[#A07A4F] hover:text-[#A07A4F] transition-all shadow-xs cursor-pointer"
+          className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-black/80 bg-[#FAF8F5] text-xs sm:text-sm font-sans text-black hover:bg-black hover:text-white transition-all shadow-xs cursor-pointer"
         >
           <Mic className="size-3.5 stroke-[2]" />
           <span className="font-medium">AI Helper</span>
@@ -278,9 +338,9 @@ export default function MindframeRealizationFan() {
           <div>
             <p className="text-xs sm:text-sm text-[#52525B] leading-snug">
               <strong className="font-bold text-[#18181B] text-sm sm:text-base">2741</strong> customers are{' '}
-              <em className="font-serif italic text-[#A07A4F] font-normal">satisfied</em> with the results<br className="hidden sm:inline" />
+              <em className="font-serif italic text-black font-normal">satisfied</em> with the results<br className="hidden sm:inline" />
               and have created their own dream spaces{' '}
-              <em className="font-serif italic text-[#A07A4F] font-normal">with us.</em>
+              <em className="font-serif italic text-black font-normal">with us.</em>
             </p>
           </div>
 
