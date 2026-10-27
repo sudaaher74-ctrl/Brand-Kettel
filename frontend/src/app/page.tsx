@@ -154,24 +154,22 @@ export default function HomePage() {
               </div>
 
               {/* Technical CAD SVG Drawing */}
-              <div className="mt-5 aspect-[16/7] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] transition-colors duration-500 group-hover:bg-white/[0.05]">
-                <svg viewBox="0 0 320 190" aria-hidden="true" className="h-full w-full text-white/70">
+              <div className="mt-5 aspect-[16/7] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-colors duration-500 group-hover:bg-white/[0.05]">
+                <svg viewBox="0 0 320 190" aria-hidden="true" className="h-full w-full">
                   <defs>
                     <pattern id="grid-cad-0" width="16" height="16" patternUnits="userSpaceOnUse">
-                      <path d="M16 0H0V16" className="fill-none stroke-current text-white/10" strokeWidth="0.5" />
+                      <path d="M 16 0 L 0 0 0 16" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="0.5" />
                     </pattern>
                   </defs>
                   <rect width="320" height="190" fill="url(#grid-cad-0)" />
-                  <g className="fill-none stroke-current" strokeWidth="1">
+                  <g fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1">
                     <path d="M52 130h216M72 130V78h176v52M92 78V55h136v23M110 55l8-16h84l8 16M62 148h196" />
                     <path d="M110 39v-14m100 30V25M44 78h32m168 0h32" strokeDasharray="4 5" />
                     <circle cx="160" cy="92" r="22" />
                     <path d="M145 92h30M160 77v30" />
                   </g>
-                  <g className="fill-current text-[#C5A880] font-mono text-[7px]">
-                    <text x="12" y="18">AXIS / 01</text>
-                    <text x="250" y="178">REV. A</text>
-                  </g>
+                  <text x="14" y="20" fill="#C5A880" fontFamily="monospace" fontSize="8" letterSpacing="1">AXIS / 01</text>
+                  <text x="256" y="176" fill="#C5A880" fontFamily="monospace" fontSize="8" letterSpacing="1">REV. A</text>
                 </svg>
               </div>
 
@@ -193,25 +191,23 @@ export default function HomePage() {
               </div>
 
               {/* Technical CAD SVG Drawing */}
-              <div className="mt-5 aspect-[16/7] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] transition-colors duration-500 group-hover:bg-white/[0.05]">
-                <svg viewBox="0 0 320 190" aria-hidden="true" className="h-full w-full text-white/70">
+              <div className="mt-5 aspect-[16/7] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-colors duration-500 group-hover:bg-white/[0.05]">
+                <svg viewBox="0 0 320 190" aria-hidden="true" className="h-full w-full">
                   <defs>
                     <pattern id="grid-cad-1" width="16" height="16" patternUnits="userSpaceOnUse">
-                      <path d="M16 0H0V16" className="fill-none stroke-current text-white/10" strokeWidth="0.5" />
+                      <path d="M 16 0 L 0 0 0 16" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="0.5" />
                     </pattern>
                   </defs>
                   <rect width="320" height="190" fill="url(#grid-cad-1)" />
-                  <g className="fill-none stroke-current" strokeWidth="1">
+                  <g fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1">
                     <rect x="72" y="45" width="176" height="100" />
                     <rect x="88" y="59" width="144" height="72" strokeDasharray="4 4" />
                     <path d="M48 45h18m-18 100h18M54 45v100M72 158v16m176-16v16M72 166h176" />
                     <circle cx="160" cy="95" r="25" />
                     <path d="M122 95h76M160 57v76" />
                   </g>
-                  <g className="fill-current text-[#C5A880] font-mono text-[7px]">
-                    <text x="12" y="18">AXIS / 02</text>
-                    <text x="250" y="178">REV. A</text>
-                  </g>
+                  <text x="14" y="20" fill="#C5A880" fontFamily="monospace" fontSize="8" letterSpacing="1">AXIS / 02</text>
+                  <text x="256" y="176" fill="#C5A880" fontFamily="monospace" fontSize="8" letterSpacing="1">REV. A</text>
                 </svg>
               </div>
 
@@ -233,24 +229,22 @@ export default function HomePage() {
               </div>
 
               {/* Technical CAD SVG Drawing */}
-              <div className="mt-5 aspect-[16/7] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] transition-colors duration-500 group-hover:bg-white/[0.05]">
-                <svg viewBox="0 0 320 190" aria-hidden="true" className="h-full w-full text-white/70">
+              <div className="mt-5 aspect-[16/7] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-colors duration-500 group-hover:bg-white/[0.05]">
+                <svg viewBox="0 0 320 190" aria-hidden="true" className="h-full w-full">
                   <defs>
                     <pattern id="grid-cad-2" width="16" height="16" patternUnits="userSpaceOnUse">
-                      <path d="M16 0H0V16" className="fill-none stroke-current text-white/10" strokeWidth="0.5" />
+                      <path d="M 16 0 L 0 0 0 16" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="0.5" />
                     </pattern>
                   </defs>
                   <rect width="320" height="190" fill="url(#grid-cad-2)" />
-                  <g className="fill-none stroke-current" strokeWidth="1">
+                  <g fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1">
                     <path d="M63 135l45-88h135l14 20-45 88H77z" />
                     <path d="M108 47l14 20h135M77 155l45-88M212 155l45-88" />
                     <path d="M95 112h126M102 98h126M109 84h126" strokeDasharray="3 4" />
                     <circle cx="243" cy="67" r="5" />
                   </g>
-                  <g className="fill-current text-[#C5A880] font-mono text-[7px]">
-                    <text x="12" y="18">AXIS / 03</text>
-                    <text x="250" y="178">REV. A</text>
-                  </g>
+                  <text x="14" y="20" fill="#C5A880" fontFamily="monospace" fontSize="8" letterSpacing="1">AXIS / 03</text>
+                  <text x="256" y="176" fill="#C5A880" fontFamily="monospace" fontSize="8" letterSpacing="1">REV. A</text>
                 </svg>
               </div>
 
@@ -272,23 +266,21 @@ export default function HomePage() {
               </div>
 
               {/* Technical CAD SVG Drawing */}
-              <div className="mt-5 aspect-[16/7] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025] transition-colors duration-500 group-hover:bg-white/[0.05]">
-                <svg viewBox="0 0 320 190" aria-hidden="true" className="h-full w-full text-white/70">
+              <div className="mt-5 aspect-[16/7] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-colors duration-500 group-hover:bg-white/[0.05]">
+                <svg viewBox="0 0 320 190" aria-hidden="true" className="h-full w-full">
                   <defs>
                     <pattern id="grid-cad-3" width="16" height="16" patternUnits="userSpaceOnUse">
-                      <path d="M16 0H0V16" className="fill-none stroke-current text-white/10" strokeWidth="0.5" />
+                      <path d="M 16 0 L 0 0 0 16" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="0.5" />
                     </pattern>
                   </defs>
                   <rect width="320" height="190" fill="url(#grid-cad-3)" />
-                  <g className="fill-none stroke-current" strokeWidth="1">
+                  <g fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1">
                     <path d="M58 137h204M78 137V66h164v71M96 66l16-20h96l16 20M104 137v-32h112v32" />
                     <path d="M160 23v65m-8-8 8 8 8-8M80 154v16m160-16v16M80 162h160" />
                     <path d="M62 106h196" strokeDasharray="4 5" />
                   </g>
-                  <g className="fill-current text-[#C5A880] font-mono text-[7px]">
-                    <text x="12" y="18">AXIS / 04</text>
-                    <text x="250" y="178">REV. A</text>
-                  </g>
+                  <text x="14" y="20" fill="#C5A880" fontFamily="monospace" fontSize="8" letterSpacing="1">AXIS / 04</text>
+                  <text x="256" y="176" fill="#C5A880" fontFamily="monospace" fontSize="8" letterSpacing="1">REV. A</text>
                 </svg>
               </div>
 
