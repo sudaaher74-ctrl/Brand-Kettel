@@ -1,13 +1,13 @@
 import type { Metadata, Viewport } from 'next';
-import { Poppins, Cormorant_Garamond } from 'next/font/google';
+import { Inter, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 import SiteShell from '@/components/layout/SiteShell';
 import { SITE_URL } from '@/lib/site';
 import { generalContractorJsonLd, jsonLdScript } from '@/lib/structuredData';
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-poppins',
+  variable: '--font-inter',
   display: 'swap',
   weight: ['300', '400', '500', '600', '700'],
 });
@@ -74,7 +74,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
       <body>
         <script
           type="application/ld+json"

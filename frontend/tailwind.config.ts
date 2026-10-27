@@ -8,62 +8,80 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#0B0B0D', // Primary Background
-        surface: '#0F0F12',    // Secondary Background
-        surface2: '#131317',   // Section Alternate Background
-        card: '#131317',       // Card Background
+        background: '#FAF8F5', // Warm architectural alabaster
+        foreground: '#18181B', // Deep charcoal / obsidian
+        surface: '#0F0F12',    // CAD Blueprint background
+        surface2: '#EFECE6',   // Linen Alternate Background
+        card: '#FAF8F5',       // Card Background
+        primary: {
+          DEFAULT: '#18181B',
+          foreground: '#FAF8F5',
+        },
+        secondary: {
+          DEFAULT: '#EFECE6',
+          foreground: '#18181B',
+        },
+        muted: {
+          DEFAULT: '#EFECE6',
+          foreground: '#71717A',
+        },
+        bronze: {
+          DEFAULT: '#A07A4F',
+          light: '#C5A880',
+          dark: '#85643E',
+        },
+        deep: {
+          DEFAULT: '#0F0F12',
+          foreground: '#F4F4F5',
+        },
+        linen: {
+          DEFAULT: '#EFECE6',
+          foreground: '#18181B',
+        },
+        border: 'rgba(24, 24, 27, 0.15)',
         ronn: {
-          obsidian: '#0A0A0B',  // Deep black canvas
-          surface: '#121216',   // Dark card surface
-          elevated: '#181820',  // Elevated dark surface
-          gold: '#C5A880',      // Champagne gold accent
-          goldLight: '#E2C799', // Light champagne
-          border: 'rgba(255, 255, 255, 0.10)',
-          maron: '#0A0A0B',     // Unified black
-          sable: '#121216',     // Unified dark surface
-          parme: '#C5A880',     // Unified gold accent
-          cream: '#181820',     // Unified elevated dark
-          beige: '#0E0E12',
-          darkText: '#FFFFFF',
+          obsidian: '#0F0F12',
+          surface: '#18181B',
+          elevated: '#27272A',
+          gold: '#A07A4F',
+          goldLight: '#C5A880',
+          border: 'rgba(24, 24, 27, 0.15)',
+          maron: '#0F0F12',
+          sable: '#18181B',
+          parme: '#A07A4F',
+          cream: '#EFECE6',
+          beige: '#FAF8F5',
+          darkText: '#18181B',
         },
         accent: {
-          DEFAULT: '#8D7458',  // Primary Accent
-          secondary: '#B79B78', // Secondary Accent
-          luxury: '#C8A97E',    // Luxury Gold
-          wood: '#B58E67',      // Natural Wood
-          olive: '#717458',     // Olive Accent
-          hover: '#000000',     // Button Hover
+          DEFAULT: '#A07A4F',  // Warm Bronze
+          secondary: '#C5A880',
+          luxury: '#A07A4F',
+          wood: '#B58E67',
+          olive: '#717458',
+          hover: '#000000',
         },
         ink: {
-          DEFAULT: '#F4F4F5',  // Primary Text
-          secondary: '#8A8A93', // Secondary Text
-          muted: '#63636B',     // Muted Text
+          DEFAULT: '#18181B',
+          secondary: '#71717A',
+          muted: '#A1A1AA',
         },
         line: {
-          DEFAULT: 'rgba(255, 255, 255, 0.09)',  // Border Color
-          divider: 'rgba(255, 255, 255, 0.05)',  // Divider
+          DEFAULT: 'rgba(24, 24, 27, 0.15)',
+          divider: 'rgba(24, 24, 27, 0.08)',
         },
         button: {
-          border: '#2D2D2D',
-          hover: '#000000',
+          border: '#18181B',
+          hover: '#A07A4F',
         }
       },
       fontFamily: {
-        sans: ['var(--font-poppins)', 'Poppins', 'sans-serif'],
-        display: ['var(--font-poppins)', 'Poppins', 'sans-serif'],
+        sans: ['var(--font-inter)', '-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+        display: ['var(--font-inter)', '-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"Helvetica Neue"', 'Arial', 'sans-serif'],
         serif: ['var(--font-cormorant)', 'Georgia', 'serif'],
       },
       maxWidth: {
-        container: '1400px',
-      },
-      borderRadius: {
-        DEFAULT: '0px',
-        sm: '0px',
-        md: '0px',
-        lg: '0px',
-        xl: '0px',
-        '2xl': '0px',
-        '3xl': '0px',
+        container: '1480px',
       },
       boxShadow: {
         soft: 'none',

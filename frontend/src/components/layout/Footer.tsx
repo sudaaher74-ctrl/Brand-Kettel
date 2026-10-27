@@ -3,16 +3,16 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#050505] text-white pt-16 pb-12 px-5 sm:px-8 border-t border-white/10">
-      <div className="max-w-[1400px] mx-auto">
+    <footer className="relative bg-[#070708] text-white pt-20 pb-12 px-5 sm:px-8 lg:px-10 border-t border-white/10">
+      <div className="max-w-[1480px] mx-auto">
         
-        {/* Top Studio Presence Strip */}
-        <div className="rounded-[24px] bg-[#0E0E12] border border-white/10 p-8 sm:p-10 mb-14 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        {/* Top Studio Presence Strip (Akshat Architectural Framing) */}
+        <div className="bg-[#121216] border border-white/10 p-8 sm:p-10 mb-16 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <span className="text-xs uppercase tracking-[0.3em] font-medium text-[#C5A880] block mb-2">
+            <span className="font-mono text-[10px] uppercase tracking-[0.24em] font-semibold text-[#C5A880] block mb-2">
               Pan-India Turnkey Reach
             </span>
-            <h3 className="font-display font-light text-2xl sm:text-3xl text-white uppercase">
+            <h3 className="font-display font-light text-2xl sm:text-3xl text-white uppercase tracking-tight">
               Headquartered in Indore · Execution in 10+ Metros
             </h3>
             <p className="text-sm text-[#A1A1AA] font-light mt-2">
@@ -20,16 +20,16 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 shrink-0">
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
             <a
               href="mailto:vini@brandkettle.in"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black hover:bg-[#C5A880] text-xs uppercase tracking-[0.14em] font-medium transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3.5 border border-white/20 hover:border-[#C5A880] hover:bg-[#C5A880] hover:text-[#0A0A0B] text-xs font-mono uppercase tracking-[0.18em] transition-all duration-300"
             >
               vini@brandkettle.in
             </a>
             <a
               href="tel:+918959173790"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white hover:border-white text-xs uppercase tracking-[0.14em] font-light transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3.5 border border-white/15 text-white hover:border-white text-xs font-mono uppercase tracking-[0.18em] transition-all duration-300"
             >
               +91 89591 73790
             </a>
@@ -59,7 +59,7 @@ export default function Footer() {
                 href="https://www.instagram.com/brandkettle_buildspaces"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-[#C5A880] hover:border-[#C5A880] transition-colors"
+                className="size-9 border border-white/15 flex items-center justify-center text-white/70 hover:text-[#C5A880] hover:border-[#C5A880] transition-colors"
                 aria-label="Instagram"
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -70,7 +70,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/brand-kettle-buildspaces"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-[#C5A880] hover:border-[#C5A880] transition-colors"
+                className="size-9 border border-white/15 flex items-center justify-center text-white/70 hover:text-[#C5A880] hover:border-[#C5A880] transition-colors"
                 aria-label="LinkedIn"
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -82,7 +82,7 @@ export default function Footer() {
 
           {/* Col 2: Expertises */}
           <div>
-            <h4 className="text-xs uppercase tracking-[0.25em] font-semibold text-[#C5A880] mb-4">
+            <h4 className="font-mono text-[10px] uppercase tracking-[0.24em] font-semibold text-[#C5A880] mb-4">
               Expertises
             </h4>
             <ul className="space-y-2.5 text-sm font-light text-[#A1A1AA]">
@@ -106,7 +106,7 @@ export default function Footer() {
 
           {/* Col 3: Realizations */}
           <div>
-            <h4 className="text-xs uppercase tracking-[0.25em] font-semibold text-[#C5A880] mb-4">
+            <h4 className="font-mono text-[10px] uppercase tracking-[0.24em] font-semibold text-[#C5A880] mb-4">
               Realizations
             </h4>
             <ul className="space-y-2.5 text-sm font-light text-[#A1A1AA]">
@@ -123,14 +123,14 @@ export default function Footer() {
                 <Link href="/portfolio/havana-lounge-bareilly" className="hover:text-white transition-colors">Havana Lounge</Link>
               </li>
               <li>
-                <Link href="/portfolio" className="text-[#C5A880] hover:underline">All Realizations →</Link>
+                <Link href="/portfolio" className="text-[#C5A880] hover:underline font-mono text-xs">All Realizations →</Link>
               </li>
             </ul>
           </div>
 
           {/* Col 4: Studio & Company */}
           <div>
-            <h4 className="text-xs uppercase tracking-[0.25em] font-semibold text-[#C5A880] mb-4">
+            <h4 className="font-mono text-[10px] uppercase tracking-[0.24em] font-semibold text-[#C5A880] mb-4">
               Company
             </h4>
             <ul className="space-y-2.5 text-sm font-light text-[#A1A1AA]">
@@ -155,9 +155,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-white/40">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-white/40 font-mono">
           <p>© {new Date().getFullYear()} Brand Kettle BuildSpaces Pvt. Ltd. All rights reserved.</p>
-          <p className="font-serif italic text-sm text-[#C5A880]">Investir l&apos;espace · Design · Build · Furnish</p>
+          <p className="font-serif italic text-sm text-[#C5A880]">Turnkey Architecture · Design · Build · Furnish</p>
         </div>
 
       </div>

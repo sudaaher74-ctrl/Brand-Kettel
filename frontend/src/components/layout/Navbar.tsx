@@ -75,7 +75,7 @@ export default function Navbar() {
                       {/* Services trigger */}
                       <button
                         onClick={() => setServicesOpen((v) => !v)}
-                        className="flex items-center gap-1 rounded-full px-3.5 py-2 text-xs uppercase tracking-[0.14em] font-medium text-white/80 transition-colors hover:text-white"
+                        className="flex items-center gap-1 rounded-full px-3.5 py-2 font-mono text-[10px] uppercase tracking-[0.2em] font-medium text-white/80 transition-colors hover:text-[#C5A880]"
                         aria-expanded={servicesOpen}
                         aria-haspopup="true"
                       >
@@ -110,7 +110,7 @@ export default function Navbar() {
                               <Link
                                 href="/commercial-fit-outs"
                                 onClick={() => setServicesOpen(false)}
-                                className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C5A880] hover:text-white transition-colors"
+                                className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C5A880] hover:text-white transition-colors"
                               >
                                 All Services →
                               </Link>
@@ -150,7 +150,7 @@ export default function Navbar() {
                   <Link
                     key={l.href}
                     href={l.href}
-                    className="rounded-full px-3.5 py-2 text-xs uppercase tracking-[0.14em] font-medium text-white/80 transition-colors hover:text-white"
+                    className="rounded-full px-3.5 py-2 font-mono text-[10px] uppercase tracking-[0.2em] font-medium text-white/80 transition-colors hover:text-[#C5A880]"
                   >
                     {l.label}
                   </Link>
@@ -162,7 +162,7 @@ export default function Navbar() {
             <div className="flex items-center gap-2">
               <Link
                 href="/contact"
-                className="hidden sm:inline-flex rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] bg-white text-black hover:bg-[#C5A880] transition-all duration-300 shadow-md"
+                className="hidden sm:inline-flex rounded-full px-5 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] bg-white text-black hover:bg-[#C5A880] transition-all duration-300 shadow-md"
               >
                 Start a Project
               </Link>

@@ -13,12 +13,14 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     return <>{children}</>;
   }
 
+  const isHome = pathname === '/';
+
   return (
     <SmoothScroll>
-      <Navbar />
-      <main>{children}</main>
-      <Footer />
-      <StickyContact />
+      {!isHome && <Navbar />}
+      {children}
+      {!isHome && <Footer />}
+      {!isHome && <StickyContact />}
     </SmoothScroll>
   );
 }

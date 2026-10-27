@@ -4,69 +4,96 @@ import { motion } from 'framer-motion';
 
 const STATS = [
   {
+    idx: '01',
+    code: 'METRIC / 01',
     value: '120+',
     label: 'Projects Delivered',
-    sub: 'Offices, showrooms, and retail fit-outs completed turnkey.',
+    sub: 'Flagship showrooms, corporate offices, and retail fit-outs completed turnkey across India.',
   },
   {
+    idx: '02',
+    code: 'EXP / 02',
     value: '8+',
     label: 'Years of Craft',
-    sub: 'Proven track record in architecture, joinery & execution.',
+    sub: 'Proven track record uniting architecture, in-house joinery manufacturing, and site execution.',
   },
   {
+    idx: '03',
+    code: 'CLIENT / 03',
     value: '50+',
     label: 'Brands Served',
-    sub: 'Trusted by global luxury houses, jewellers & enterprises.',
+    sub: 'Trusted by luxury fashion houses, premier jewellers, and forward-thinking enterprises.',
   },
   {
+    idx: '04',
+    code: 'REACH / 04',
     value: 'Pan-India',
     label: 'Execution Reach',
-    sub: 'Active projects in Mumbai, Delhi, Hyderabad, Bengaluru, Indore.',
+    sub: 'Active delivery teams in Mumbai, Delhi NCR, Hyderabad, Bengaluru, Bareilly, and Indore.',
   },
 ];
 
 export default function RonnTheses() {
   return (
-    <section className="relative overflow-hidden bg-[#070708] text-white py-20 md:py-28 px-5 sm:px-8 border-b border-white/10">
-      <div className="max-w-[1400px] mx-auto">
+    <section className="relative overflow-hidden bg-[#070708] text-white py-24 md:py-32 px-5 sm:px-8 lg:px-10 border-b border-white/10">
+      <div className="max-w-[1480px] mx-auto">
         
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-          <div>
-            <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#C5A880] block mb-2">
-              By the Numbers
-            </span>
-            <h2 className="font-display font-light text-[36px] sm:text-[48px] md:text-[60px] leading-[1.05] tracking-tight uppercase text-white">
+        {/* Section Header Grid (Akshat Reference) */}
+        <div className="grid gap-8 lg:grid-cols-12 items-end mb-16 md:mb-20 border-b border-white/10 pb-8">
+          <div className="lg:col-span-2">
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#C5A880]">
+              02 / Figures
+            </p>
+          </div>
+
+          <div className="lg:col-span-6">
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl leading-[0.92] font-light tracking-tight text-white uppercase">
               Brand Kettle <br />
-              <span className="font-serif italic font-normal text-[#C5A880]">in figures</span>
+              <span className="font-serif italic font-normal text-[#C5A880] lowercase">in figures.</span>
             </h2>
           </div>
-          <p className="text-sm sm:text-base text-[#A1A1AA] max-w-md font-light leading-relaxed">
-            Consistent quality, strict timelines, and transparent delivery have earned us the confidence of leading brands nationwide.
-          </p>
+
+          <div className="lg:col-span-4 max-w-md lg:text-right">
+            <p className="text-sm leading-relaxed text-[#A1A1AA] font-light">
+              Consistent quality, strict milestone execution, and zero-compromise craftsmanship have earned us the confidence of leading brands nationwide.
+            </p>
+          </div>
         </div>
 
-        {/* 4 Large Stats Cards */}
+        {/* 4 Architectural Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {STATS.map((stat, idx) => (
+          {STATS.map((stat, i) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-[20px] bg-[#121216] p-8 border border-white/10 hover:border-[#C5A880]/50 transition-all duration-300 flex flex-col justify-between"
+              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="group border border-white/10 hover:border-[#C5A880]/60 bg-[#121216] p-7 sm:p-8 flex flex-col justify-between transition-all duration-300"
             >
+              {/* Top metadata */}
               <div>
-                <span className="font-display font-light text-[46px] sm:text-[56px] lg:text-[62px] leading-none text-white block mb-2">
+                <div className="flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.18em] pb-6 border-b border-white/10 mb-6">
+                  <span className="text-[#C5A880]">{stat.idx} — 04</span>
+                  <span className="text-white/40">{stat.code}</span>
+                </div>
+
+                <span className="font-display font-light text-4xl sm:text-5xl lg:text-6xl leading-none text-white block mb-3 group-hover:text-[#C5A880] transition-colors">
                   {stat.value}
                 </span>
-                <h3 className="font-display font-medium text-base text-[#C5A880] uppercase tracking-wide">
+
+                <h3 className="font-mono text-xs uppercase tracking-[0.16em] text-white/90 font-medium">
                   {stat.label}
                 </h3>
               </div>
-              <p className="mt-6 text-xs sm:text-sm text-[#A1A1AA] font-light leading-relaxed">
-                {stat.sub}
-              </p>
+
+              {/* Bottom copy & animated indicator line */}
+              <div className="mt-8 pt-5 border-t border-white/10">
+                <p className="text-xs sm:text-sm text-[#A1A1AA] font-light leading-relaxed">
+                  {stat.sub}
+                </p>
+                <div className="mt-4 h-0.5 w-8 bg-white/10 group-hover:w-full group-hover:bg-[#C5A880] transition-all duration-500" />
+              </div>
             </motion.div>
           ))}
         </div>

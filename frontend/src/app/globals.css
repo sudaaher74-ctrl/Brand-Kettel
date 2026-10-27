@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --bg: #0A0A0B;
-  --surface: #121216;
-  --surface-2: #18181E;
-  --accent: #C5A880;
-  --accent-soft: #DFC8A8;
-  --ink: #FFFFFF;
-  --ink-secondary: #D4D4D8;
+  --bg: #FAF8F5;
+  --surface: #0F0F12;
+  --surface-2: #EFECE6;
+  --accent: #A07A4F;
+  --accent-soft: #C5A880;
+  --ink: #18181B;
+  --ink-secondary: #71717A;
   --ink-muted: #A1A1AA;
-  --line: rgba(255, 255, 255, 0.10);
+  --line: rgba(24, 24, 27, 0.15);
 }
 
 @layer base {
@@ -29,7 +29,7 @@
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
     background-color: var(--bg);
-    color: var(--ink-secondary);
+    color: var(--ink);
   }
 
   /* Lenis */
@@ -45,13 +45,12 @@
   }
 
   ::selection {
-    background: rgba(141, 116, 88, 0.20);
-    color: var(--ink);
+    background: #A07A4F;
+    color: #FFFFFF;
   }
 
   h1, h2, h3 {
-    @apply font-display tracking-[0.02em] font-light;
-    text-wrap: balance;
+    @apply font-display font-light;
     color: var(--ink);
   }
 }
