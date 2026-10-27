@@ -1,10 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, CheckCircle2, ShieldCheck, Ruler, Layers, Sparkles } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, ShieldCheck, Ruler, Layers, Sparkles } from 'lucide-react';
 import { HOME_FAQS } from '@/lib/faqs';
 import { faqPageJsonLd, jsonLdScript } from '@/lib/structuredData';
-import TiltShowcaseCard from '@/components/ui/TiltShowcaseCard';
-import RealizationCard from '@/components/home/RealizationCard';
 import TopographicLines from '@/components/ui/TopographicLines';
 import MindframeRealizationFan from '@/components/home/MindframeRealizationFan';
 
@@ -149,72 +147,7 @@ export default function HomePage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          02. SECTION 01 / PHILOSOPHY (with Cursor-Reactive 3D Showcase)
-          ───────────────────────────────────────────────────────────── */}
-      <section id="philosophy" className="mx-auto max-w-[1480px] px-5 py-24 lg:px-10 lg:py-36">
-        
-        {/* Top Header Row */}
-        <div className="mb-14 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end border-b border-[#18181B]/15 pb-10">
-          <div className="lg:col-span-3">
-            <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#A07A4F]">
-              01 / Philosophy
-            </span>
-          </div>
-          <div className="lg:col-span-9">
-            <h2 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-light leading-[0.92] text-[#18181B] tracking-tight">
-              Precision is<br />
-              <em className="font-normal font-serif italic text-[#A07A4F]">our luxury.</em>
-            </h2>
-          </div>
-        </div>
-
-        {/* 2-Column Pairing: Cursor-Reactive 3D Tilt Frame + Editorial Narrative */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
-          {/* Left Column: 3D Cursor-Interactive Architectural Showcase */}
-          <div className="lg:col-span-6 xl:col-span-5">
-            <TiltShowcaseCard
-              src="/imgs/commercial/bk_joinery_detail.jpg"
-              alt="Brand Kettle Architectural Precision Millwork and Joinery Detail"
-            />
-          </div>
-
-          {/* Right Column: Narrative & Technical Standards */}
-          <div className="lg:col-span-6 xl:col-span-7 flex flex-col justify-center">
-            <p className="font-display text-2xl sm:text-3xl lg:text-4xl text-[#18181B] font-light leading-snug">
-              Luxury in commercial fit-outs isn’t only about how a space looks. It is about how precisely it is engineered and executed.
-            </p>
-            <p className="mt-8 text-base sm:text-lg leading-relaxed text-[#71717A] font-light max-w-xl">
-              Our delivery model unites experienced architectural design with in-house German machinery and rigorous civil execution. This allows us to achieve exceptional structural consistency, strict schedule compliance, and immaculate detailing across every square foot.
-            </p>
-
-            {/* Quality Standard Badges */}
-            <div className="mt-10 grid grid-cols-2 gap-4 border-t border-[#18181B]/15 pt-6 text-xs font-mono uppercase tracking-[0.16em] text-[#18181B]">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="size-3.5 text-[#A07A4F]" />
-                <span>Zero-Snag Handover</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="size-3.5 text-[#A07A4F]" />
-                <span>BIM LOD-400 Modeling</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="size-3.5 text-[#A07A4F]" />
-                <span>Owned 50k Sq.Ft Facility</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="size-3.5 text-[#A07A4F]" />
-                <span>±0.5mm CNC Tolerance</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────
-          03. SECTION 02 / REALIZATIONS (Mindframe 3D Cascading Fan Showcase)
+          02. REALIZATIONS (Mindframe 3D Cascading Fan Showcase)
           ───────────────────────────────────────────────────────────── */}
       <section id="collection" className="mx-auto max-w-[1480px] border-t border-[#18181B]/15 px-5 py-24 lg:px-10 lg:py-36">
         
