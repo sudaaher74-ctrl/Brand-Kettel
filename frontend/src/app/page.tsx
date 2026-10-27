@@ -116,35 +116,7 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* ─────────────────────────────────────────────────────────────
-          ARCHITECTURAL BENCHMARK METRICS RIBBON (Brand Kettle Provenance)
-          ───────────────────────────────────────────────────────────── */}
-      <section className="border-b border-[#18181B]/15 bg-[#FAF8F5]">
-        <div className="mx-auto max-w-[1480px] px-5 lg:px-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-[#18181B]/15">
-            <div className="py-7 md:py-9 pr-4">
-              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#A07A4F] block">Portfolio Metric</span>
-              <p className="mt-2 text-4xl lg:text-5xl font-light text-[#18181B]">120<span className="text-[#A07A4F]">+</span></p>
-              <p className="mt-2 text-xs font-light text-[#71717A] leading-relaxed">Turnkey spaces commissioned across 10+ Indian metros</p>
-            </div>
-            <div className="py-7 md:py-9 px-0 md:px-6">
-              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#A07A4F] block">Direct Manufacturing</span>
-              <p className="mt-2 text-4xl lg:text-5xl font-light text-[#18181B]">50k<span className="text-xl font-normal text-[#A07A4F]"> SQ FT</span></p>
-              <p className="mt-2 text-xs font-light text-[#71717A] leading-relaxed">Owned 5-axis CNC joinery facility in Central India</p>
-            </div>
-            <div className="py-7 md:py-9 px-0 md:px-6">
-              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#A07A4F] block">Execution Velocity</span>
-              <p className="mt-2 text-4xl lg:text-5xl font-light text-[#18181B]">27<span className="text-xl font-normal text-[#A07A4F]"> DAYS</span></p>
-              <p className="mt-2 text-xs font-light text-[#71717A] leading-relaxed">Average rapid-track delivery for commercial flagships</p>
-            </div>
-            <div className="py-7 md:py-9 pl-0 md:pl-6">
-              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#A07A4F] block">Fabrication Standard</span>
-              <p className="mt-2 text-4xl lg:text-5xl font-light text-[#18181B]">±0.5<span className="text-xl font-normal text-[#A07A4F]"> MM</span></p>
-              <p className="mt-2 text-xs font-light text-[#71717A] leading-relaxed">Micron tolerance with laser-calibrated shop drawings</p>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* ─────────────────────────────────────────────────────────────
           02. REALIZATIONS (Mindframe 3D Cascading Fan Showcase)
