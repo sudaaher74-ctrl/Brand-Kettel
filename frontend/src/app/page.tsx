@@ -5,6 +5,7 @@ import { HOME_FAQS } from '@/lib/faqs';
 import { faqPageJsonLd, jsonLdScript } from '@/lib/structuredData';
 import TiltShowcaseCard from '@/components/ui/TiltShowcaseCard';
 import RealizationCard from '@/components/home/RealizationCard';
+import TopographicLines from '@/components/ui/TopographicLines';
 
 export const revalidate = 60;
 
@@ -18,67 +19,85 @@ export default function HomePage() {
       />
 
       {/* ─────────────────────────────────────────────────────────────
-          01. ARCHITECTURAL HERO SECTION (50/50 Balanced Split)
+          01. ARCHITECTURAL HERO SECTION (Northline Atelier Diagonal Split)
           ───────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[820px] lg:min-h-[92svh] px-5 pb-16 pt-32 lg:px-10 lg:pb-20 lg:pt-36 flex items-center">
+      <section className="relative min-h-[90vh] lg:min-h-screen w-full overflow-hidden bg-[#FAF8F5] pt-24 lg:pt-0 flex items-center border-b border-[#18181B]/15">
         
-        {/* Giant Watermark Typography */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-[12%] overflow-hidden text-center font-display text-[15vw] lg:text-[17vw] leading-none text-[#18181B]/[0.03] select-none font-bold whitespace-nowrap tracking-tight"
-        >
-          BUILDSPACES
+        {/* Topographic Contour Lines Background on Left */}
+        <div className="absolute inset-y-0 left-0 w-full lg:w-[62%] overflow-hidden pointer-events-none z-0">
+          <TopographicLines className="opacity-90" />
         </div>
 
-        <div className="relative mx-auto grid w-full max-w-[1480px] grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-14 my-auto">
-          
-          {/* Left Column: Headline, Narrative & Direct Action CTAs */}
-          <div className="z-10 order-2 lg:order-1 lg:col-span-7 xl:col-span-6">
+        {/* Diagonal Architectural Photography (Desktop: Exact Angled Split Cut) */}
+        <div
+          className="hidden lg:block absolute right-0 inset-y-0 w-full overflow-hidden pointer-events-none z-10"
+          style={{
+            clipPath: 'polygon(56% 0, 100% 0, 100% 100%, 35% 100%)',
+          }}
+        >
+          <div className="relative h-full w-full pointer-events-auto group">
+            <Image
+              src="/imgs/northline_architectural_hero.jpg"
+              alt="Architecture that elevates life - Brand Kettle BuildSpaces Atelier"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 65vw"
+              className="object-cover object-center scale-[1.02] group-hover:scale-105 transition-transform duration-1000 ease-out"
+            />
+            {/* Subtle natural sunlight gradient */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/5 via-transparent to-transparent pointer-events-none" />
+          </div>
+        </div>
+
+        {/* Content Container (Positioned on the Left) */}
+        <div className="relative z-20 mx-auto w-full max-w-[1480px] px-5 sm:px-8 lg:px-12 xl:px-16 py-12 lg:py-24">
+          <div className="w-full lg:max-w-xl xl:max-w-2xl">
             
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] xl:text-[5.5rem] font-light leading-[0.92] text-[#18181B] tracking-tight">
-              Spaces,<br />
-              <em className="font-normal font-serif italic text-[#A07A4F]">crafted</em> to an<br />
-              exact standard.
+            {/* Overline with Horizontal Rule */}
+            <div className="flex items-center gap-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.24em] text-[#18181B] font-semibold mb-8">
+              <span className="w-8 h-[1.5px] bg-[#18181B]" />
+              <span>SPACES. CRAFTED WITH INTENTION.</span>
+            </div>
+
+            {/* Headline */}
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.25rem] xl:text-[6.2rem] font-light leading-[0.93] text-[#18181B] tracking-tight">
+              Architecture<br />
+              that elevates<br />
+              <em className="font-serif italic font-normal text-[#60694B]">life.</em>
             </h1>
 
-            <p className="mt-8 max-w-xl text-base sm:text-lg leading-relaxed text-[#71717A] font-light">
-              Where architectural vision meets German precision engineering—turnkey commercial environments for flagship luxury retail, corporate headquarters, and landmark hospitality across India.
+            {/* Editorial Narrative */}
+            <p className="mt-8 max-w-lg text-base sm:text-lg leading-relaxed text-[#52525B] font-light">
+              Brand Kettle is an architecture and interiors studio creating timeless spaces that balance beauty, purpose, and place.
             </p>
 
-            {/* Direct Architectural Action Buttons */}
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            {/* Rectangular Atelier Action Button */}
+            <div className="mt-10">
               <Link
                 href="/portfolio"
-                className="group inline-flex items-center gap-2.5 px-8 py-4 bg-[#18181B] text-[#FAF8F5] text-xs font-mono uppercase tracking-[0.18em] font-semibold hover:bg-[#A07A4F] transition-all shadow-sm"
+                data-cursor-text="EXPLORE"
+                className="group inline-flex items-center gap-4 bg-[#3E4535] hover:bg-[#2F3528] text-[#FAF8F5] px-9 py-4 sm:py-4.5 text-xs font-mono uppercase tracking-[0.2em] font-medium transition-all duration-300 shadow-sm hover:shadow-md"
               >
-                <span>Explore Portfolio</span>
-                <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2.5 px-8 py-4 border border-[#18181B]/20 text-[#18181B] text-xs font-mono uppercase tracking-[0.18em] font-medium hover:border-[#18181B] hover:bg-[#18181B]/5 transition-all"
-              >
-                <span>Start a Project</span>
+                <span>EXPLORE OUR WORK</span>
+                <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1.5" />
               </Link>
             </div>
 
-          </div>
-
-          {/* Right Column: Commanding 4K Architectural Showcase Frame */}
-          <div className="relative order-1 mx-auto w-full max-w-lg lg:order-2 lg:col-span-5 xl:col-span-6 lg:max-w-none">
-            <div className="relative ml-auto aspect-[4/5] sm:aspect-[1/1] lg:aspect-[4/5] w-full max-w-xl overflow-hidden bg-[#EFECE6] border border-[#18181B]/15 shadow-2xl group">
+            {/* Mobile / Tablet Photography Frame (Visible on screens < lg) */}
+            <div className="lg:hidden mt-12 relative aspect-[16/11] w-full overflow-hidden border border-[#18181B]/15 shadow-xl">
               <Image
-                src="/imgs/commercial/bk_hero_flagship.jpg"
-                alt="Brand Kettle Flagship Commercial Interior Showcase with Fluted Travertine & Bronze Vitrines"
+                src="/imgs/northline_architectural_hero.jpg"
+                alt="Architecture that elevates life - Brand Kettle BuildSpaces Atelier"
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.035]"
+                sizes="100vw"
+                className="object-cover"
               />
             </div>
-          </div>
 
+          </div>
         </div>
+
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
