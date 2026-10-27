@@ -6,6 +6,7 @@ import { faqPageJsonLd, jsonLdScript } from '@/lib/structuredData';
 import TiltShowcaseCard from '@/components/ui/TiltShowcaseCard';
 import RealizationCard from '@/components/home/RealizationCard';
 import TopographicLines from '@/components/ui/TopographicLines';
+import MindframeRealizationFan from '@/components/home/MindframeRealizationFan';
 
 export const revalidate = 60;
 
@@ -213,67 +214,12 @@ export default function HomePage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          03. SECTION 02 / REALIZATIONS (Architectural Portfolio Grid)
+          03. SECTION 02 / REALIZATIONS (Mindframe 3D Cascading Fan Showcase)
           ───────────────────────────────────────────────────────────── */}
       <section id="collection" className="mx-auto max-w-[1480px] border-t border-[#18181B]/15 px-5 py-24 lg:px-10 lg:py-36">
         
-        {/* Header Grid */}
-        <div className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#18181B]/15 pb-8">
-          <div>
-            <div className="inline-flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-[#A07A4F] mb-3">
-              <span className="w-5 h-px bg-[#A07A4F]" />
-              <span>02 / Realizations</span>
-            </div>
-            <h2 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-light leading-[0.92] text-[#18181B] tracking-tight">
-              Spaces built for<br />
-              <em className="font-normal font-serif italic text-[#A07A4F]">enduring impact.</em>
-            </h2>
-          </div>
-          <Link
-            href="/portfolio"
-            data-cursor-text="VIEW"
-            className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-[#18181B] hover:text-[#A07A4F] transition-colors font-medium border-b border-[#18181B]/20 pb-1 shrink-0"
-          >
-            <span>View All Realizations (120+)</span>
-            <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </div>
-
-        {/* 3-Column Interactive Architectural Realization Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 items-stretch">
-          <RealizationCard
-            number="01"
-            category="Retail & Luxury"
-            title="Retail & Jewellery Flagships"
-            description="Flagship stores for luxury brands with bespoke security vitrines, high-CRI illumination, and architectural facade engineering."
-            clients="Gucci · PNG Jewellers · GIVA"
-            imageSrc="/imgs/commercial/bk_realization_retail.jpg"
-            imageAlt="Brand Kettle High-End Retail & Jewellery Flagship Boutique"
-            href="/portfolio/gucci-flagship"
-          />
-
-          <RealizationCard
-            number="02"
-            category="Corporate HQs"
-            title="Corporate Workspaces"
-            description="High-performance enterprise headquarters, executive boardrooms, and collaborative coworking hubs with integrated MEP."
-            clients="&Work · Nanokirti · Suites"
-            imageSrc="/imgs/commercial/bk_realization_office.jpg"
-            imageAlt="Brand Kettle Corporate Headquarters and Executive Boardroom"
-            href="/portfolio/and-work-coworking"
-          />
-
-          <RealizationCard
-            number="03"
-            category="Hospitality"
-            title="Hospitality & Dining"
-            description="Atmospheric dining lounges, signature bars, and boutique hotels with ambient acoustics and custom millwork."
-            clients="Havana Lounge · Ramada Encore"
-            imageSrc="/imgs/commercial/bk_hospitality_lounge.jpg"
-            imageAlt="Brand Kettle Luxury Hospitality Lounge with Amber Onyx Bar"
-            href="/portfolio/havana-lounge-bareilly"
-          />
-        </div>
+        {/* Mindframe 3D Perspective Cascading Showcase */}
+        <MindframeRealizationFan />
 
         {/* Secondary 2-Column Architectural Split Cards (Residences & Manufacturing) */}
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8 border-t border-[#18181B]/15 pt-16">
