@@ -3,10 +3,10 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Mic, Sparkles } from 'lucide-react';
 
-interface ProjectItem {
+interface CardItem {
   id: string;
   number: string;
   title: string;
@@ -17,74 +17,71 @@ interface ProjectItem {
   href: string;
 }
 
-const PROJECTS: ProjectItem[] = [
+const CARDS: CardItem[] = [
   {
-    id: 'modular-pavilion',
-    number: '01/05',
-    title: 'Modular space',
-    subtitle: 'High-Performance Cantilevered Pavilion',
-    tags: ['commercial', '12,000 sq.ft', 'turnkey mep', 'prefabricated joinery'],
-    imageSrc: '/imgs/modular_architectural_pavilion.jpg',
-    imageAlt: 'Modern Modular Architectural Commercial Space by Brand Kettle',
+    id: 'four-story-office',
+    number: '20/20',
+    title: 'Four-story office',
+    subtitle: 'Installed between buildings',
+    tags: ['office', '480m²', 'for business', 'modular'],
+    imageSrc: '/imgs/four_story_urban_insert.jpg',
+    imageAlt: 'Four-story modern architectural building installed between historic townhouses',
     href: '/portfolio',
   },
   {
-    id: 'lumina-flagship',
-    number: '02/05',
-    title: 'Flagship boutique cafe',
-    subtitle: 'Double-Height Vitrine Facade & Retail Interior',
-    tags: ['luxury retail', 'high-cri lighting', 'precision vitrines', '27-day handover'],
+    id: 'cafe-house',
+    number: '19/20',
+    title: 'Cafe house',
+    subtitle: 'Installation near the building',
+    tags: ['cafe', '120m²', 'for business', 'frame'],
     imageSrc: '/imgs/commercial_glass_facade.jpg',
-    imageAlt: 'Lumina Commercial Flagship Boutique with Double-Height Vitrine',
-    href: '/portfolio/gucci-flagship',
+    imageAlt: 'European cafe house with modern double-height glass vitrine facade',
+    href: '/portfolio',
   },
   {
-    id: 'corporate-workspaces',
-    number: '03/05',
-    title: 'Corporate workspaces',
-    subtitle: 'High-Performance Executive Headquarters & Boardrooms',
-    tags: ['corporate hq', 'lod-400 bim', 'acoustic nrc 0.85', 'smoked oak'],
-    imageSrc: '/imgs/commercial/bk_realization_office.jpg',
-    imageAlt: 'Brand Kettle Corporate Executive Boardroom and Headquarters',
-    href: '/portfolio/and-work-coworking',
+    id: 'modular-space',
+    number: '01/20',
+    title: 'Modular space',
+    subtitle: 'Recommended on the Black Sea coast',
+    tags: ['villa', '65m²', 'for living', 'prefabricated'],
+    imageSrc: '/imgs/modular_architectural_pavilion.jpg',
+    imageAlt: 'Modular space pavilion recommended on the Black Sea coast',
+    href: '/portfolio',
   },
   {
-    id: 'hospitality-lounge',
-    number: '04/05',
-    title: 'Two-story lounge',
-    subtitle: 'Signature Dining Lounges & Luxury Hospitality',
-    tags: ['signature lounge', 'backlit onyx', 'custom millwork', 'turnkey mep'],
-    imageSrc: '/imgs/commercial/bk_hospitality_lounge.jpg',
-    imageAlt: 'Luxury Hospitality Lounge with Amber Onyx Bar by Brand Kettle',
-    href: '/portfolio/havana-lounge-bareilly',
+    id: 'two-story-villa',
+    number: '02/20',
+    title: 'Two story villa',
+    subtitle: 'Recommended for coastal cafes',
+    tags: ['villa', '132m²', 'cafe', 'prefabricated'],
+    imageSrc: '/imgs/two_story_coastal_villa.jpg',
+    imageAlt: 'Two story cantilevered villa recommended for coastal cafes',
+    href: '/portfolio',
   },
   {
-    id: 'private-estate',
-    number: '05/05',
-    title: 'Taksha private estate',
-    subtitle: 'Bespoke Private Residences & Penthouse Joinery',
-    tags: ['private villa', 'italian marble', 'bespoke woodwork', 'smart lighting'],
-    imageSrc: '/imgs/commercial/taksha-hyderabad-cover.webp',
-    imageAlt: 'Taksha Luxury Villa Residence by Brand Kettle',
-    href: '/residential-interiors',
+    id: 'three-story-cafe',
+    number: '03/20',
+    title: 'Three-story cafe',
+    subtitle: 'Recommended with restoration',
+    tags: ['cafe', '240m²', 'for business', 'frame'],
+    imageSrc: '/imgs/three_story_cafe.jpg',
+    imageAlt: 'Three-story cafe recommended with architectural restoration',
+    href: '/portfolio',
   },
 ];
 
 export default function MindframeRealizationFan() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  // Center card is index 2 ("Modular space", 01/20) by default
+  const [activeIndex, setActiveIndex] = useState(2);
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  const total = PROJECTS.length;
+  const total = CARDS.length;
 
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % total);
+  const handleCardClick = (idx: number) => {
+    setActiveIndex(idx);
   };
 
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + total) % total);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
     setSubmitted(true);
@@ -95,114 +92,74 @@ export default function MindframeRealizationFan() {
   };
 
   return (
-    <div className="w-full relative overflow-hidden py-6">
+    <div className="relative w-full select-none font-sans">
       
+      {/* Dynamic Font Styling for Exact Calligraphy & Typography */}
+      <style jsx global>{`
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,600&display=swap');
+
+        .font-alex-brush {
+          font-family: 'Alex Brush', cursive;
+        }
+      `}</style>
+
       {/* ─────────────────────────────────────────────────────────────
-          Top Header: Editorial Typography & Sector Badges
+          1. UPPER SECTION HEADER: Typography & Overlapping Sector Badges
           ───────────────────────────────────────────────────────────── */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
+      <div className="w-full flex items-start justify-between mb-8 sm:mb-12">
+        
+        {/* Left Headline: "Create your" (Cursive) + "space" (Bold Sans) + "with us" (Serif Italic) */}
         <div>
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-[#A07A4F] mb-3">
-            02 / Realizations
-          </p>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light text-[#18181B] tracking-tight leading-[1.04]">
-            <span className="font-serif italic font-normal text-[#18181B]">Create your</span><br />
-            <span className="font-sans font-bold">space </span>
-            <span className="font-serif italic font-normal text-[#A07A4F]">with us</span>
+          <h2 className="tracking-tight leading-[0.98]">
+            <span className="font-alex-brush text-5xl sm:text-7xl lg:text-[5.4rem] text-[#18181B] font-normal block mb-1">
+              Create your
+            </span>
+            <span className="font-sans text-4xl sm:text-5xl lg:text-6xl font-bold text-[#18181B] tracking-tight">
+              space{' '}
+            </span>
+            <span className="font-serif italic text-3xl sm:text-4xl lg:text-5xl font-normal text-[#A07A4F]">
+              with us
+            </span>
           </h2>
         </div>
 
-        {/* Top-Right Category Pill Badges (Matching Mindframe 'Comfort' / 'Buildings') */}
-        <div className="flex flex-wrap items-center gap-3 self-start md:self-end">
-          <button
-            onClick={() => setActiveIndex(0)}
-            className={`px-5 py-2 rounded-full border text-xs font-mono uppercase tracking-[0.16em] transition-all duration-300 ${
-              activeIndex === 0
-                ? 'bg-[#18181B] text-white border-[#18181B]'
-                : 'border-[#18181B]/20 text-[#18181B] hover:border-[#18181B] bg-white/70'
-            }`}
-          >
-            Modular Space
-          </button>
-          <button
-            onClick={() => setActiveIndex(1)}
-            className={`px-5 py-2 rounded-full border text-xs font-mono uppercase tracking-[0.16em] transition-all duration-300 ${
-              activeIndex === 1
-                ? 'bg-[#18181B] text-white border-[#18181B]'
-                : 'border-[#18181B]/20 text-[#18181B] hover:border-[#18181B] bg-white/70'
-            }`}
-          >
-            Flagships
-          </button>
-          <button
-            onClick={() => setActiveIndex(2)}
-            className={`px-5 py-2 rounded-full border text-xs font-mono uppercase tracking-[0.16em] transition-all duration-300 ${
-              activeIndex === 2
-                ? 'bg-[#18181B] text-white border-[#18181B]'
-                : 'border-[#18181B]/20 text-[#18181B] hover:border-[#18181B] bg-white/70'
-            }`}
-          >
-            Workspaces
-          </button>
-          <button
-            onClick={() => setActiveIndex(3)}
-            className={`px-5 py-2 rounded-full border text-xs font-mono uppercase tracking-[0.16em] transition-all duration-300 ${
-              activeIndex === 3
-                ? 'bg-[#18181B] text-white border-[#18181B]'
-                : 'border-[#18181B]/20 text-[#18181B] hover:border-[#18181B] bg-white/70'
-            }`}
-          >
-            Hospitality
-          </button>
+        {/* Right Badges: Staggered "Comfort" & "Buildings" matching the reference design */}
+        <div className="relative flex flex-col items-end pt-3 sm:pt-4">
+          <div className="px-5 sm:px-6 py-1.5 sm:py-2 rounded-full border border-[#18181B]/30 bg-[#FAF8F5] text-xs sm:text-sm font-sans text-[#18181B] z-10 shadow-xs">
+            Comfort
+          </div>
+          <div className="-mt-2 sm:-mt-2.5 mr-3 sm:mr-4 px-5 sm:px-6 py-1.5 sm:py-2 rounded-full border border-[#18181B]/30 bg-[#FAF8F5] text-xs sm:text-sm font-sans text-[#18181B] z-20 shadow-xs">
+            Buildings
+          </div>
         </div>
+
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
-          3D Perspective Cascading Fan Cards Container
+          2. 3D PERSPECTIVE FANNED CARDS (5 Interactive Cards in Visual Arc)
           ───────────────────────────────────────────────────────────── */}
-      <div className="relative min-h-[580px] sm:min-h-[640px] lg:min-h-[680px] w-full flex items-center justify-center [perspective:1400px]">
+      <div className="relative w-full h-[520px] sm:h-[580px] lg:h-[640px] flex items-center justify-center [perspective:1800px] overflow-hidden my-4">
         
-        {/* Navigation Arrow Floating Buttons */}
-        <button
-          onClick={handlePrev}
-          aria-label="Previous Project"
-          className="absolute left-2 sm:left-4 z-40 p-3 sm:p-4 rounded-full bg-white/90 hover:bg-white text-[#18181B] shadow-xl border border-[#18181B]/10 hover:border-[#A07A4F] transition-all hover:scale-105 active:scale-95"
-        >
-          <ArrowLeft className="size-5" />
-        </button>
-
-        <button
-          onClick={handleNext}
-          aria-label="Next Project"
-          className="absolute right-2 sm:right-4 z-40 p-3 sm:p-4 rounded-full bg-white/90 hover:bg-white text-[#18181B] shadow-xl border border-[#18181B]/10 hover:border-[#A07A4F] transition-all hover:scale-105 active:scale-95"
-        >
-          <ArrowRight className="size-5" />
-        </button>
-
-        {/* The 5 Stacked Cards */}
-        <div className="relative w-full h-[540px] sm:h-[600px] lg:h-[640px] flex items-center justify-center">
-          {PROJECTS.map((project, idx) => {
-            // Calculate relative offset from active index (-2, -1, 0, +1, +2)
+        <div className="relative w-full h-full flex items-center justify-center">
+          {CARDS.map((card, idx) => {
+            // Compute relative offset from the currently active center card: -2, -1, 0, 1, 2
             let offset = idx - activeIndex;
             if (offset < -2) offset += total;
             if (offset > 2) offset -= total;
 
             const isCenter = offset === 0;
-            const isVisible = Math.abs(offset) <= 2;
 
-            if (!isVisible) return null;
-
-            // Compute dynamic 3D positioning
-            const xPercent = offset * 26; // horizontal shift percent
-            const scale = 1 - Math.abs(offset) * 0.12;
-            const zIndex = 30 - Math.abs(offset) * 10;
-            const opacity = 1 - Math.abs(offset) * 0.28;
-            const rotateY = offset * -6; // subtle 3D tilt inwards
+            // Positioning calculations matching the reference arc
+            const xPercent = offset === 0 ? 0 : offset === -1 ? -29 : offset === 1 ? 29 : offset === -2 ? -57 : 57;
+            const scale = isCenter ? 1 : Math.abs(offset) === 1 ? 0.90 : 0.80;
+            const zIndex = isCenter ? 30 : Math.abs(offset) === 1 ? 20 : 10;
+            const opacity = isCenter ? 1 : Math.abs(offset) === 1 ? 0.96 : 0.88;
+            const rotateY = offset * -4; // Subtle 3D card tilt for natural fan depth
 
             return (
-              <motion.article
-                key={project.id}
-                onClick={() => setActiveIndex(idx)}
+              <motion.div
+                key={card.id}
+                onClick={() => handleCardClick(idx)}
                 initial={false}
                 animate={{
                   x: `${xPercent}%`,
@@ -214,108 +171,87 @@ export default function MindframeRealizationFan() {
                 transition={{
                   type: 'spring',
                   stiffness: 280,
-                  damping: 26,
+                  damping: 28,
                 }}
-                className={`absolute w-[86%] sm:w-[58%] md:w-[48%] lg:w-[40%] xl:w-[35%] h-full rounded-[28px] sm:rounded-[34px] overflow-hidden shadow-2xl cursor-pointer select-none transition-shadow duration-500 ${
+                className={`absolute w-[86%] sm:w-[54%] md:w-[44%] lg:w-[35%] xl:w-[30%] h-[460px] sm:h-[520px] lg:h-[580px] rounded-[30px] sm:rounded-[34px] overflow-hidden cursor-pointer bg-neutral-900 transition-shadow duration-300 ${
                   isCenter
-                    ? 'ring-1 ring-[#18181B]/10 shadow-[0_30px_70px_-15px_rgba(24,24,27,0.35)]'
-                    : 'shadow-lg hover:opacity-100'
+                    ? 'shadow-[0_30px_60px_-15px_rgba(0,0,0,0.35)] ring-1 ring-[#18181B]/15'
+                    : 'shadow-[0_15px_30px_-10px_rgba(0,0,0,0.2)] hover:shadow-2xl'
                 }`}
                 style={{
                   transformStyle: 'preserve-3d',
                 }}
               >
-                {/* Background Full Photography */}
+                {/* Full-bleed Architectural Image */}
                 <Image
-                  src={project.imageSrc}
-                  alt={project.imageAlt}
+                  src={card.imageSrc}
+                  alt={card.imageAlt}
                   fill
                   priority={isCenter}
-                  sizes="(max-width: 768px) 90vw, 40vw"
-                  className="object-cover object-center transition-transform duration-700 ease-out hover:scale-105"
+                  sizes="(max-width: 768px) 85vw, 35vw"
+                  className="object-cover object-center"
                 />
 
-                {/* Top Notch Tab Index (Matching Mindframe '01/20' notch) */}
+                {/* Top-Right Tab Notch Badge (01/20, 02/20, 19/20, 20/20, etc.) */}
                 <div className="absolute top-0 right-0 z-20">
-                  <div className="bg-[#FAF8F5]/90 backdrop-blur-md px-6 py-2.5 rounded-bl-[20px] border-b border-l border-[#18181B]/10 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#18181B]">
-                    {project.number}
+                  <div className="bg-[#FAF8F5] pl-5 pr-4 py-2.5 rounded-bl-[22px] font-mono text-[11px] sm:text-xs font-semibold text-[#71717A] tracking-wider">
+                    {card.number}
                   </div>
                 </div>
 
-                {/* Bottom Overlay Gradient & Project Meta */}
-                <div className="absolute inset-x-0 bottom-0 z-20 p-6 sm:p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent text-white pt-24">
+                {/* Bottom Overlay with Subtle Gradient (Preserves image clarity while keeping text readable) */}
+                <div className="absolute inset-x-0 bottom-0 z-20 p-5 sm:p-7 bg-gradient-to-t from-black/85 via-black/40 to-transparent text-white pt-28">
                   
-                  {/* Title & Subtitle */}
-                  <h3 className="text-2xl sm:text-3xl font-light tracking-tight text-white capitalize">
-                    {project.title}
+                  {/* Card Title & Subtitle */}
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight text-white capitalize leading-tight">
+                    {card.title}
                   </h3>
-                  <p className="mt-1 text-xs sm:text-sm text-white/80 font-light line-clamp-1">
-                    {project.subtitle}
+                  <p className="mt-1 text-xs sm:text-sm text-white/90 font-light line-clamp-1">
+                    {card.subtitle}
                   </p>
 
-                  {/* Specification Pill Badges (villa, 65m², for living, prefabricated) */}
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
+                  {/* Solid White Pill Tags (office, 480m², for business, modular, etc.) */}
+                  <div className="mt-3.5 flex flex-wrap gap-1.5 sm:gap-2">
+                    {card.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-[10px] font-mono uppercase tracking-[0.12em] text-white/90"
+                        className="px-3 py-1 rounded-full bg-white text-neutral-800 text-[10px] sm:text-[11px] font-sans font-medium shadow-xs"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  {/* Inline Contact Bar / Quick Action (Matching Mindframe input + 'Contact us') */}
+                  {/* Center Card Interactive Email & Contact Pill Bar */}
                   {isCenter && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.15 }}
-                      className="mt-6"
-                    >
+                    <div className="mt-5">
                       <form
-                        onSubmit={handleSubmit}
+                        onSubmit={handleEmailSubmit}
                         onClick={(e) => e.stopPropagation()}
-                        className="flex items-center rounded-full bg-white/20 backdrop-blur-md border border-white/30 p-1.5 focus-within:border-white transition-colors"
+                        className="flex items-center rounded-full bg-white/95 backdrop-blur-md p-1 shadow-lg border border-black/5"
                       >
                         <input
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          placeholder={submitted ? 'Inquiry received!' : 'Enter your e-mail'}
+                          placeholder={submitted ? 'Message sent!' : 'Enter your e-mail'}
                           disabled={submitted}
-                          className="flex-1 bg-transparent px-4 text-xs text-white placeholder-white/70 focus:outline-none font-light"
+                          className="flex-1 bg-transparent px-4 text-xs sm:text-sm text-neutral-900 placeholder-neutral-500 focus:outline-none font-light"
                         />
                         <button
                           type="submit"
                           disabled={submitted}
-                          className="px-5 py-2 rounded-full bg-white text-[#18181B] text-xs font-mono font-semibold uppercase tracking-[0.14em] hover:bg-[#FAF8F5] transition-all flex items-center gap-1.5 shrink-0 shadow-sm"
+                          className="px-4 sm:px-5 py-2 rounded-full border border-black/80 bg-white hover:bg-neutral-50 text-neutral-900 text-xs sm:text-sm font-sans font-medium transition-colors flex items-center gap-1.5 shrink-0 shadow-xs"
                         >
-                          {submitted ? (
-                            <>
-                              <span>Sent</span>
-                              <Check className="size-3 text-emerald-600" />
-                            </>
-                          ) : (
-                            <>
-                              <span>Contact us</span>
-                              <ArrowRight className="size-3" />
-                            </>
-                          )}
+                          <span>Contact us</span>
+                          <ArrowRight className="size-3.5" />
                         </button>
                       </form>
-                    </motion.div>
-                  )}
-
-                  {!isCenter && (
-                    <div className="mt-5 flex items-center justify-between text-xs font-mono uppercase tracking-[0.16em] text-white/80">
-                      <span>Click to view</span>
-                      <ArrowRight className="size-3.5" />
                     </div>
                   )}
 
                 </div>
-              </motion.article>
+              </motion.div>
             );
           })}
         </div>
@@ -323,39 +259,71 @@ export default function MindframeRealizationFan() {
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
-          Bottom Social Proof & Archive Link (Matching Mindframe 2741 customers)
+          3. BOTTOM CONTROLS: "🎙 AI Helper" (Left) & Customer Stats / Avatars (Right)
           ───────────────────────────────────────────────────────────── */}
-      <div className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-[#18181B]/15 pt-8">
+      <div className="w-full mt-6 sm:mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-[#18181B]/15">
         
-        {/* Customer Trust Metric */}
-        <div className="flex items-center gap-4">
-          <div className="flex -space-x-2 overflow-hidden">
-            <span className="inline-block h-9 w-9 rounded-full ring-2 ring-[#FAF8F5] bg-[#E8E4DC] flex items-center justify-center text-[10px] font-bold text-[#18181B] shadow-sm">
-              GC
-            </span>
-            <span className="inline-block h-9 w-9 rounded-full ring-2 ring-[#FAF8F5] bg-[#D8CFBF] flex items-center justify-center text-[10px] font-bold text-[#18181B] shadow-sm">
-              PG
-            </span>
-            <span className="inline-block h-9 w-9 rounded-full ring-2 ring-[#FAF8F5] bg-[#A07A4F] flex items-center justify-center text-[10px] font-bold text-white shadow-sm">
-              BK
-            </span>
+        {/* Bottom Left: "🎙 AI Helper" Pill Button */}
+        <Link
+          href="/contact"
+          data-cursor-text="ASK"
+          className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#18181B]/30 bg-[#FAF8F5] text-xs sm:text-sm font-sans text-[#18181B] hover:border-[#A07A4F] hover:text-[#A07A4F] transition-all shadow-xs cursor-pointer"
+        >
+          <Mic className="size-3.5 stroke-[2]" />
+          <span className="font-medium">AI Helper</span>
+        </Link>
+
+        {/* Bottom Right: "2741 customers are satisfied..." + Avatars Reviews Capsule */}
+        <div className="flex flex-col sm:flex-row items-center sm:items-end gap-5 text-center sm:text-right">
+          <div>
+            <p className="text-xs sm:text-sm text-[#52525B] leading-snug">
+              <strong className="font-bold text-[#18181B] text-sm sm:text-base">2741</strong> customers are{' '}
+              <em className="font-serif italic text-[#A07A4F] font-normal">satisfied</em> with the results<br className="hidden sm:inline" />
+              and have created their own dream spaces{' '}
+              <em className="font-serif italic text-[#A07A4F] font-normal">with us.</em>
+            </p>
           </div>
-          <p className="text-xs sm:text-sm text-[#71717A] font-light">
-            <strong className="font-semibold text-[#18181B]">120+ enterprises</strong> are{' '}
-            <em className="font-serif italic text-[#A07A4F]">satisfied with the precision</em>{' '}
-            and have built their landmark spaces with us.
-          </p>
+
+          {/* Customer Reviews Capsule with 3 Photo Avatars + Sparkle Badge */}
+          <div className="flex items-center gap-2.5">
+            <span className="text-[11px] sm:text-xs font-normal text-[#71717A]">
+              Customer reviews
+            </span>
+            <div className="flex items-center -space-x-2">
+              <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden ring-2 ring-[#FAF8F5] shadow-xs">
+                <Image
+                  src="/imgs/avatar_user1.jpg"
+                  alt="Customer Reviewer 1"
+                  fill
+                  sizes="32px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden ring-2 ring-[#FAF8F5] shadow-xs">
+                <Image
+                  src="/imgs/avatar_user2.jpg"
+                  alt="Customer Reviewer 2"
+                  fill
+                  sizes="32px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden ring-2 ring-[#FAF8F5] shadow-xs">
+                <Image
+                  src="/imgs/avatar_user3.jpg"
+                  alt="Customer Reviewer 3"
+                  fill
+                  sizes="32px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#18181B] flex items-center justify-center text-white ring-2 ring-[#FAF8F5] shadow-xs">
+                <Sparkles className="size-3.5 text-white" />
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* View All Archive Link */}
-        <Link
-          href="/portfolio"
-          data-cursor-text="VIEW ALL"
-          className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-[#18181B] hover:text-[#A07A4F] transition-colors font-medium border-b border-[#18181B]/20 pb-1 shrink-0"
-        >
-          <span>View All Realizations (120+)</span>
-          <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-        </Link>
       </div>
 
     </div>
