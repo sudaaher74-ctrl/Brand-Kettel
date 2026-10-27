@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight, CheckCircle2, ShieldCheck, Ruler, Layers, Spa
 import { HOME_FAQS } from '@/lib/faqs';
 import { faqPageJsonLd, jsonLdScript } from '@/lib/structuredData';
 import TiltShowcaseCard from '@/components/ui/TiltShowcaseCard';
+import RealizationCard from '@/components/home/RealizationCard';
 
 export const revalidate = 60;
 
@@ -176,148 +177,152 @@ export default function HomePage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          03. SECTION 02 / REALIZATIONS (3-Column Staggered Portfolio Showcase)
+          03. SECTION 02 / REALIZATIONS (Architectural Portfolio Grid)
           ───────────────────────────────────────────────────────────── */}
       <section id="collection" className="mx-auto max-w-[1480px] border-t border-[#18181B]/15 px-5 py-24 lg:px-10 lg:py-36">
         
         {/* Header Grid */}
-        <div className="mb-12 grid items-end border-b border-[#18181B]/15 pb-7 md:grid-cols-12">
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#A07A4F] md:col-span-3">
-            02 / Realizations
-          </p>
-          <h2 className="mt-4 text-6xl leading-none md:col-span-9 md:mt-0 lg:text-8xl font-light text-[#18181B]">
-            Spaces built for<br />
-            <em className="font-normal font-serif italic text-[#A07A4F]">enduring impact.</em>
-          </h2>
+        <div className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#18181B]/15 pb-8">
+          <div>
+            <div className="inline-flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-[#A07A4F] mb-3">
+              <span className="w-5 h-px bg-[#A07A4F]" />
+              <span>02 / Realizations</span>
+            </div>
+            <h2 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-light leading-[0.92] text-[#18181B] tracking-tight">
+              Spaces built for<br />
+              <em className="font-normal font-serif italic text-[#A07A4F]">enduring impact.</em>
+            </h2>
+          </div>
+          <Link
+            href="/portfolio"
+            data-cursor-text="VIEW"
+            className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-[#18181B] hover:text-[#A07A4F] transition-colors font-medium border-b border-[#18181B]/20 pb-1 shrink-0"
+          >
+            <span>View All Realizations (120+)</span>
+            <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
 
-        {/* 3 Staggered Columns Grid with 4K Interior Photography */}
-        <div className="grid gap-8 md:grid-cols-12">
-          
-          {/* Column 1: Retail & Luxury Flagships (4K Emerald Marble Boutique) */}
-          <article className="md:col-span-5">
-            <Link href="/portfolio/gucci-flagship" className="group block">
-              <div className="relative overflow-hidden aspect-[4/5] w-full bg-[#EFECE6] border border-[#18181B]/10 shadow-lg">
-                <Image
-                  src="/imgs/commercial/bk_realization_retail.jpg"
-                  alt="Brand Kettle High-End Retail & Jewellery Flagship Boutique"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 42vw"
-                  className="object-cover transition-transform duration-1000 group-hover:scale-[1.035]"
-                />
-              </div>
+        {/* 3-Column Interactive Architectural Realization Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 items-stretch">
+          <RealizationCard
+            number="01"
+            category="Retail & Luxury"
+            title="Retail & Jewellery Flagships"
+            description="Flagship stores for luxury brands with bespoke security vitrines, high-CRI illumination, and architectural facade engineering."
+            clients="Gucci · PNG Jewellers · GIVA"
+            imageSrc="/imgs/commercial/bk_realization_retail.jpg"
+            imageAlt="Brand Kettle High-End Retail & Jewellery Flagship Boutique"
+            href="/portfolio/gucci-flagship"
+          />
 
-              <div className="mt-5 flex items-start justify-between gap-5 border-t border-[#18181B]/15 pt-4">
-                <div>
-                  <h3 className="text-3xl lg:text-4xl font-light text-[#18181B] group-hover:text-[#A07A4F] transition-colors">
-                    Retail &amp; Jewellery Flagships
-                  </h3>
-                  <p className="mt-2 max-w-sm text-sm leading-6 text-[#71717A] font-light">
-                    Flagship stores for luxury brands with bespoke security vitrines, high-CRI illumination, and architectural facade engineering (Gucci, PNG Jewellers, GIVA).
-                  </p>
-                  <div className="mt-3 flex items-center gap-3 font-mono text-[9px] text-[#A07A4F] uppercase tracking-[0.16em]">
-                    <span>Precision CNC Vitrines</span>
-                    <span>·</span>
-                    <span>27-Day Handover</span>
-                  </div>
-                </div>
-                <ArrowRight className="mt-2 size-5 shrink-0 text-[#A07A4F] transition-transform group-hover:translate-x-2" />
-              </div>
-            </Link>
-          </article>
+          <RealizationCard
+            number="02"
+            category="Corporate HQs"
+            title="Corporate Workspaces"
+            description="High-performance enterprise headquarters, executive boardrooms, and collaborative coworking hubs with integrated MEP."
+            clients="&Work · Nanokirti · Suites"
+            imageSrc="/imgs/commercial/bk_realization_office.jpg"
+            imageAlt="Brand Kettle Corporate Headquarters and Executive Boardroom"
+            href="/portfolio/and-work-coworking"
+          />
 
-          {/* Column 2: Corporate Workspaces & HQs (4K Smoked Oak Boardroom) */}
-          <article className="md:col-span-4 md:mt-24">
-            <Link href="/portfolio/and-work-coworking" className="group block">
-              <div className="relative overflow-hidden aspect-[4/5] w-full bg-[#EFECE6] border border-[#18181B]/10 shadow-lg">
-                <Image
-                  src="/imgs/commercial/bk_realization_office.jpg"
-                  alt="Brand Kettle Corporate Headquarters and Executive Boardroom"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 34vw"
-                  className="object-cover transition-transform duration-1000 group-hover:scale-[1.035]"
-                />
-              </div>
-
-              <div className="mt-5 flex items-start justify-between gap-5 border-t border-[#18181B]/15 pt-4">
-                <div>
-                  <h3 className="text-3xl lg:text-4xl font-light text-[#18181B] group-hover:text-[#A07A4F] transition-colors">
-                    Corporate Workspaces
-                  </h3>
-                  <p className="mt-2 max-w-sm text-sm leading-6 text-[#71717A] font-light">
-                    High-performance enterprise headquarters, executive boardrooms, and collaborative coworking hubs with integrated MEP (&amp;Work, Nanokirti, Corporate Suites).
-                  </p>
-                  <div className="mt-3 flex items-center gap-3 font-mono text-[9px] text-[#A07A4F] uppercase tracking-[0.16em]">
-                    <span>LOD-400 BIM</span>
-                    <span>·</span>
-                    <span>Acoustic NRC 0.85</span>
-                  </div>
-                </div>
-                <ArrowRight className="mt-2 size-5 shrink-0 text-[#A07A4F] transition-transform group-hover:translate-x-2" />
-              </div>
-            </Link>
-          </article>
-
-          {/* Column 3: Hospitality & Dining Environments (4K Amber Onyx Lounge) */}
-          <article className="md:col-span-3 md:mt-48">
-            <Link href="/portfolio/havana-lounge-bareilly" className="group block">
-              <div className="relative overflow-hidden aspect-[4/5] w-full bg-[#EFECE6] border border-[#18181B]/10 shadow-lg">
-                <Image
-                  src="/imgs/commercial/bk_hospitality_lounge.jpg"
-                  alt="Brand Kettle Luxury Hospitality Lounge with Amber Onyx Bar"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 25vw"
-                  className="object-cover transition-transform duration-1000 group-hover:scale-[1.035]"
-                />
-              </div>
-
-              <div className="mt-5 flex items-start justify-between gap-5 border-t border-[#18181B]/15 pt-4">
-                <div>
-                  <h3 className="text-3xl lg:text-4xl font-light text-[#18181B] group-hover:text-[#A07A4F] transition-colors">
-                    Hospitality &amp; Dining
-                  </h3>
-                  <p className="mt-2 max-w-sm text-sm leading-6 text-[#71717A] font-light">
-                    Atmospheric dining lounges, signature bars, and boutique hotels with ambient acoustics and custom woodwork (Havana Lounge, Ramada Encore).
-                  </p>
-                  <div className="mt-3 flex items-center gap-3 font-mono text-[9px] text-[#A07A4F] uppercase tracking-[0.16em]">
-                    <span>Custom Millwork</span>
-                    <span>·</span>
-                    <span>Turnkey MEP</span>
-                  </div>
-                </div>
-                <ArrowRight className="mt-2 size-5 shrink-0 text-[#A07A4F] transition-transform group-hover:translate-x-2" />
-              </div>
-            </Link>
-          </article>
-
+          <RealizationCard
+            number="03"
+            category="Hospitality"
+            title="Hospitality & Dining"
+            description="Atmospheric dining lounges, signature bars, and boutique hotels with ambient acoustics and custom millwork."
+            clients="Havana Lounge · Ramada Encore"
+            imageSrc="/imgs/commercial/bk_hospitality_lounge.jpg"
+            imageAlt="Brand Kettle Luxury Hospitality Lounge with Amber Onyx Bar"
+            href="/portfolio/havana-lounge-bareilly"
+          />
         </div>
 
-        {/* Secondary 2-Column Realization Cards */}
-        <div className="mt-20 grid border-t border-[#18181B]/15 sm:grid-cols-2">
+        {/* Secondary 2-Column Architectural Split Cards (Residences & Manufacturing) */}
+        <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8 border-t border-[#18181B]/15 pt-16">
           
-          <div className="border-b border-[#18181B]/15 py-10 sm:pr-12 sm:odd:border-r">
-            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#A07A4F] block mb-2">04 / RESIDENCES</span>
-            <h3 className="text-3xl font-light text-[#18181B]">Luxury Residential Interiors</h3>
-            <p className="mt-3 max-w-md text-sm leading-7 text-[#71717A] font-light">
-              Bespoke private estates, luxury villas, and penthouse residences designed with custom joinery, integrated lighting, and Italian marble finishes (Taksha, Signature Residences).
-            </p>
-            <Link href="/residential-interiors" className="inline-flex items-center gap-2 mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-[#A07A4F] hover:text-[#18181B] transition-colors font-medium">
-              <span>Explore Residential</span>
-              <ArrowRight className="size-3" />
-            </Link>
-          </div>
+          {/* Card 04: Luxury Residences */}
+          <Link
+            href="/residential-interiors"
+            data-cursor-text="VIEW"
+            className="group block border border-[#18181B]/15 bg-[#FAF8F5] hover:border-[#A07A4F] transition-all duration-500 hover:shadow-xl overflow-hidden"
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-12 h-full">
+              <div className="sm:col-span-5 relative aspect-[16/11] sm:aspect-auto sm:min-h-[220px] overflow-hidden bg-[#EFECE6]">
+                <Image
+                  src="/imgs/commercial/taksha-hyderabad-cover.webp"
+                  alt="Taksha Luxury Villa Residence by Brand Kettle"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 25vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </div>
+              <div className="sm:col-span-7 p-6 sm:p-8 flex flex-col justify-between bg-white/40 group-hover:bg-white transition-colors duration-500">
+                <div>
+                  <div className="mb-2 flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em] text-[#A07A4F] font-semibold">
+                    <span>04</span>
+                    <span className="h-px w-3 bg-[#A07A4F]/60" />
+                    <span>Private Estates</span>
+                  </div>
+                  <h3 className="text-2xl font-light text-[#18181B] group-hover:text-[#A07A4F] transition-colors leading-snug">
+                    Luxury Residential Interiors
+                  </h3>
+                  <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-[#71717A] font-light">
+                    Bespoke private estates, luxury villas, and penthouse residences designed with custom joinery and Italian marble.
+                  </p>
+                </div>
+                <div className="mt-6 flex items-center justify-between border-t border-[#18181B]/10 pt-4 font-mono text-[10px] uppercase tracking-[0.16em]">
+                  <span className="text-[#18181B]/60 font-medium">Taksha · Signature Villas</span>
+                  <span className="inline-flex items-center gap-1 text-[#A07A4F] font-semibold group-hover:translate-x-1 transition-transform">
+                    <span>Explore</span>
+                    <ArrowRight className="size-3" />
+                  </span>
+                </div>
+              </div>
+            </div>
+          </Link>
 
-          <div className="border-b border-[#18181B]/15 py-10 sm:even:pl-12">
-            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#A07A4F] block mb-2">05 / MANUFACTURING</span>
-            <h3 className="text-3xl font-light text-[#18181B]">Custom Architectural Joinery</h3>
-            <p className="mt-3 max-w-md text-sm leading-7 text-[#71717A] font-light">
-              In-house manufactured architectural partitions, reception desks, executive conference tables, wall cladding, and acoustic systems built to custom project drawings.
-            </p>
-            <Link href="/custom-furniture" className="inline-flex items-center gap-2 mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-[#A07A4F] hover:text-[#18181B] transition-colors font-medium">
-              <span>Explore Millwork</span>
-              <ArrowRight className="size-3" />
-            </Link>
-          </div>
+          {/* Card 05: In-House Manufacturing */}
+          <Link
+            href="/custom-furniture"
+            data-cursor-text="VIEW"
+            className="group block border border-[#18181B]/15 bg-[#FAF8F5] hover:border-[#A07A4F] transition-all duration-500 hover:shadow-xl overflow-hidden"
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-12 h-full">
+              <div className="sm:col-span-5 relative aspect-[16/11] sm:aspect-auto sm:min-h-[220px] overflow-hidden bg-[#EFECE6]">
+                <Image
+                  src="/imgs/commercial/bk_joinery_detail.jpg"
+                  alt="Brand Kettle 5-Axis CNC Precision Joinery Detail"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 25vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </div>
+              <div className="sm:col-span-7 p-6 sm:p-8 flex flex-col justify-between bg-white/40 group-hover:bg-white transition-colors duration-500">
+                <div>
+                  <div className="mb-2 flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em] text-[#A07A4F] font-semibold">
+                    <span>05</span>
+                    <span className="h-px w-3 bg-[#A07A4F]/60" />
+                    <span>In-House Millwork</span>
+                  </div>
+                  <h3 className="text-2xl font-light text-[#18181B] group-hover:text-[#A07A4F] transition-colors leading-snug">
+                    Custom Architectural Joinery
+                  </h3>
+                  <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-[#71717A] font-light">
+                    Direct factory-manufactured acoustic panels, conference tables, vitrines, and wall panelling built to custom CAD drawings.
+                  </p>
+                </div>
+                <div className="mt-6 flex items-center justify-between border-t border-[#18181B]/10 pt-4 font-mono text-[10px] uppercase tracking-[0.16em]">
+                  <span className="text-[#18181B]/60 font-medium">50,000 Sq.Ft Facility</span>
+                  <span className="inline-flex items-center gap-1 text-[#A07A4F] font-semibold group-hover:translate-x-1 transition-transform">
+                    <span>Explore</span>
+                    <ArrowRight className="size-3" />
+                  </span>
+                </div>
+              </div>
+            </div>
+          </Link>
 
         </div>
       </section>
