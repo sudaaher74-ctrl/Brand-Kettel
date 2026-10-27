@@ -101,44 +101,41 @@ export default function MindframeRealizationFan() {
     }, 4000);
   };
 
-  // Compute wide horizontal distribution to completely fill left and right space
+  // Compute wide horizontal distribution with compact vertical footprint
   const getCardTransform = (offset: number) => {
     if (!mounted || screenWidth >= 1200) {
-      // Large screens / Desktops: Wide horizontal spread covering entire container
       if (offset === 0) {
         return { x: '0vw', scale: 1.02, zIndex: 30, opacity: 1, rotateY: 0 };
       }
       if (offset === -1) {
-        return { x: '-18.5vw', scale: 0.91, zIndex: 20, opacity: 0.96, rotateY: 3 };
+        return { x: '-18vw', scale: 0.91, zIndex: 20, opacity: 0.96, rotateY: 3 };
       }
       if (offset === 1) {
-        return { x: '18.5vw', scale: 0.91, zIndex: 20, opacity: 0.96, rotateY: -3 };
+        return { x: '18vw', scale: 0.91, zIndex: 20, opacity: 0.96, rotateY: -3 };
       }
       if (offset === -2) {
-        return { x: '-35.5vw', scale: 0.83, zIndex: 10, opacity: 0.92, rotateY: 6 };
+        return { x: '-35vw', scale: 0.83, zIndex: 10, opacity: 0.92, rotateY: 6 };
       }
-      // offset === 2
-      return { x: '35.5vw', scale: 0.83, zIndex: 10, opacity: 0.92, rotateY: -6 };
+      return { x: '35vw', scale: 0.83, zIndex: 10, opacity: 0.92, rotateY: -6 };
     }
 
     if (screenWidth >= 768) {
-      // Tablets / Medium screens
       if (offset === 0) {
         return { x: '0vw', scale: 1, zIndex: 30, opacity: 1, rotateY: 0 };
       }
       if (offset === -1) {
-        return { x: '-24vw', scale: 0.88, zIndex: 20, opacity: 0.94, rotateY: 3 };
+        return { x: '-23vw', scale: 0.88, zIndex: 20, opacity: 0.94, rotateY: 3 };
       }
       if (offset === 1) {
-        return { x: '24vw', scale: 0.88, zIndex: 20, opacity: 0.94, rotateY: -3 };
+        return { x: '23vw', scale: 0.88, zIndex: 20, opacity: 0.94, rotateY: -3 };
       }
       if (offset === -2) {
-        return { x: '-42vw', scale: 0.79, zIndex: 10, opacity: 0.85, rotateY: 6 };
+        return { x: '-40vw', scale: 0.79, zIndex: 10, opacity: 0.85, rotateY: 6 };
       }
-      return { x: '42vw', scale: 0.79, zIndex: 10, opacity: 0.85, rotateY: -6 };
+      return { x: '40vw', scale: 0.79, zIndex: 10, opacity: 0.85, rotateY: -6 };
     }
 
-    // Mobile screens (< 768px): Focus on center card with adjacent cards peeking
+    // Mobile screens (< 768px)
     if (offset === 0) {
       return { x: '0%', scale: 1, zIndex: 30, opacity: 1, rotateY: 0 };
     }
@@ -170,31 +167,31 @@ export default function MindframeRealizationFan() {
       `}</style>
 
       {/* ─────────────────────────────────────────────────────────────
-          1. UPPER SECTION HEADER: Headline & Overlapping Sector Badges
+          1. COMPACT SECTION HEADER: Headline & Overlapping Badges
           ───────────────────────────────────────────────────────────── */}
-      <div className="w-full flex items-start justify-between px-2 sm:px-4 mb-2 sm:mb-4">
+      <div className="w-full flex items-start justify-between px-2 sm:px-4 mb-1 sm:mb-2">
         
         {/* Left Headline: "Create your" (Cursive) + "space with US" */}
         <div>
-          <h2 className="tracking-tight leading-[0.96]">
-            <span className="font-alex-brush text-4xl sm:text-5xl lg:text-[4.2rem] text-[#18181B] font-normal block -mb-0.5">
+          <h2 className="tracking-tight leading-[0.94]">
+            <span className="font-alex-brush text-3xl sm:text-4xl lg:text-[3.2rem] text-[#18181B] font-normal block -mb-1">
               Create your
             </span>
-            <span className="font-sans text-3xl sm:text-4xl lg:text-5xl font-bold text-[#18181B] tracking-tight">
+            <span className="font-sans text-2xl sm:text-3xl lg:text-4xl font-bold text-[#18181B] tracking-tight">
               space{' '}
             </span>
-            <span className="font-serif italic text-2xl sm:text-3xl lg:text-4xl font-normal text-[#18181B]">
+            <span className="font-serif italic text-xl sm:text-2xl lg:text-3xl font-normal text-[#18181B]">
               with US
             </span>
           </h2>
         </div>
 
-        {/* Right Badges: Staggered "Comfort" & "Buildings" with thin black outline */}
-        <div className="relative flex flex-col items-end pt-1 sm:pt-2">
-          <div className="px-4 sm:px-5 py-1 sm:py-1.5 rounded-full border border-black/80 bg-[#FAF8F5] text-[11px] sm:text-xs font-sans text-black z-10 shadow-xs">
+        {/* Right Badges: Staggered "Comfort" & "Buildings" */}
+        <div className="relative flex flex-col items-end pt-1">
+          <div className="px-3.5 sm:px-4 py-0.5 sm:py-1 rounded-full border border-black/80 bg-[#FAF8F5] text-[10px] sm:text-[11px] font-sans text-black z-10 shadow-xs">
             Comfort
           </div>
-          <div className="-mt-1.5 sm:-mt-2 mr-2.5 sm:mr-3 px-4 sm:px-5 py-1 sm:py-1.5 rounded-full border border-black/80 bg-[#FAF8F5] text-[11px] sm:text-xs font-sans text-black z-20 shadow-xs">
+          <div className="-mt-1 sm:-mt-1.5 mr-2 sm:mr-2.5 px-3.5 sm:px-4 py-0.5 sm:py-1 rounded-full border border-black/80 bg-[#FAF8F5] text-[10px] sm:text-[11px] font-sans text-black z-20 shadow-xs">
             Buildings
           </div>
         </div>
@@ -202,9 +199,9 @@ export default function MindframeRealizationFan() {
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
-          2. 3D PERSPECTIVE FANNED CARDS (Proportionate Height & Full-Width Arc)
+          2. 3D PERSPECTIVE FANNED CARDS (Reduced Height for Optimal Viewport Fit)
           ───────────────────────────────────────────────────────────── */}
-      <div className="relative w-full h-[420px] sm:h-[460px] md:h-[490px] lg:h-[530px] xl:h-[550px] flex items-center justify-center [perspective:1800px] overflow-hidden my-1 sm:my-2">
+      <div className="relative w-full h-[330px] sm:h-[360px] md:h-[390px] lg:h-[420px] xl:h-[440px] flex items-center justify-center [perspective:1800px] overflow-hidden my-1">
         
         <div className="relative w-full h-full flex items-center justify-center">
           {CARDS.map((card, idx) => {
@@ -233,10 +230,10 @@ export default function MindframeRealizationFan() {
                   stiffness: 280,
                   damping: 28,
                 }}
-                className={`absolute w-[86%] sm:w-[50%] md:w-[38%] lg:w-[30%] xl:w-[26%] 2xl:w-[24%] h-[370px] sm:h-[410px] md:h-[440px] lg:h-[470px] xl:h-[490px] rounded-[24px] sm:rounded-[28px] overflow-hidden cursor-pointer bg-neutral-900 transition-shadow duration-300 ${
+                className={`absolute w-[84%] sm:w-[48%] md:w-[36%] lg:w-[28%] xl:w-[24%] 2xl:w-[22%] h-[290px] sm:h-[320px] md:h-[350px] lg:h-[380px] xl:h-[400px] rounded-[20px] sm:rounded-[24px] overflow-hidden cursor-pointer bg-neutral-900 transition-shadow duration-300 ${
                   isCenter
-                    ? 'shadow-[0_25px_50px_-12px_rgba(0,0,0,0.35)] ring-1 ring-[#18181B]/15'
-                    : 'shadow-[0_12px_28px_-8px_rgba(0,0,0,0.2)] hover:shadow-xl'
+                    ? 'shadow-[0_20px_40px_-10px_rgba(0,0,0,0.35)] ring-1 ring-[#18181B]/15'
+                    : 'shadow-[0_10px_24px_-8px_rgba(0,0,0,0.18)] hover:shadow-lg'
                 }`}
                 style={{
                   transformStyle: 'preserve-3d',
@@ -248,34 +245,34 @@ export default function MindframeRealizationFan() {
                   alt={card.imageAlt}
                   fill
                   priority={isCenter}
-                  sizes="(max-width: 768px) 85vw, 30vw"
+                  sizes="(max-width: 768px) 85vw, 25vw"
                   className="object-cover object-center"
                 />
 
                 {/* Top-Right Tab Notch Badge (01/20, 02/20, 19/20, 20/20, etc.) */}
                 <div className="absolute top-0 right-0 z-20">
-                  <div className="bg-[#FAF8F5] pl-4 pr-3.5 py-2 rounded-bl-[18px] font-mono text-[10px] sm:text-[11px] font-semibold text-[#71717A] tracking-wider">
+                  <div className="bg-[#FAF8F5] pl-3.5 pr-3 py-1.5 rounded-bl-[16px] font-mono text-[9px] sm:text-[10px] font-semibold text-[#71717A] tracking-wider">
                     {card.number}
                   </div>
                 </div>
 
                 {/* Bottom Overlay with Subtle Gradient */}
-                <div className="absolute inset-x-0 bottom-0 z-20 p-4 sm:p-5 lg:p-5.5 bg-gradient-to-t from-black/85 via-black/40 to-transparent text-white pt-20">
+                <div className="absolute inset-x-0 bottom-0 z-20 p-3.5 sm:p-4 bg-gradient-to-t from-black/85 via-black/40 to-transparent text-white pt-16">
                   
                   {/* Card Title & Subtitle */}
-                  <h3 className="text-lg sm:text-xl lg:text-2xl font-medium tracking-tight text-white capitalize leading-snug">
+                  <h3 className="text-base sm:text-lg lg:text-xl font-medium tracking-tight text-white capitalize leading-tight">
                     {card.title}
                   </h3>
-                  <p className="mt-0.5 text-[11px] sm:text-xs text-white/90 font-light line-clamp-1">
+                  <p className="mt-0.5 text-[10px] sm:text-[11px] text-white/90 font-light line-clamp-1">
                     {card.subtitle}
                   </p>
 
                   {/* Solid White Pill Tags (office, 480m², for business, modular, etc.) */}
-                  <div className="mt-2.5 flex flex-wrap gap-1 sm:gap-1.5">
+                  <div className="mt-2 flex flex-wrap gap-1">
                     {card.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2.5 py-0.5 rounded-full bg-white text-neutral-800 text-[9px] sm:text-[10px] font-sans font-medium shadow-xs"
+                        className="px-2 py-0.5 rounded-full bg-white text-neutral-800 text-[8px] sm:text-[9px] font-sans font-medium shadow-xs"
                       >
                         {tag}
                       </span>
@@ -284,11 +281,11 @@ export default function MindframeRealizationFan() {
 
                   {/* Center Card Interactive Email & Contact Pill Bar */}
                   {isCenter && (
-                    <div className="mt-3.5 sm:mt-4">
+                    <div className="mt-2.5 sm:mt-3">
                       <form
                         onSubmit={handleEmailSubmit}
                         onClick={(e) => e.stopPropagation()}
-                        className="flex items-center rounded-full bg-white/95 backdrop-blur-md p-0.5 sm:p-1 shadow-lg border border-black/5"
+                        className="flex items-center rounded-full bg-white/95 backdrop-blur-md p-0.5 shadow-md border border-black/5"
                       >
                         <input
                           type="email"
@@ -296,15 +293,15 @@ export default function MindframeRealizationFan() {
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder={submitted ? 'Message sent!' : 'Enter your e-mail'}
                           disabled={submitted}
-                          className="flex-1 bg-transparent px-3 text-xs text-neutral-900 placeholder-neutral-500 focus:outline-none font-light"
+                          className="flex-1 bg-transparent px-2.5 text-[11px] text-neutral-900 placeholder-neutral-500 focus:outline-none font-light"
                         />
                         <button
                           type="submit"
                           disabled={submitted}
-                          className="px-3.5 sm:px-4 py-1.5 rounded-full border border-black/80 bg-white hover:bg-neutral-50 text-neutral-900 text-[11px] sm:text-xs font-sans font-medium transition-colors flex items-center gap-1 shrink-0 shadow-xs"
+                          className="px-3 py-1 rounded-full border border-black/80 bg-white hover:bg-neutral-50 text-neutral-900 text-[10px] font-sans font-medium transition-colors flex items-center gap-1 shrink-0 shadow-xs"
                         >
                           <span>Contact us</span>
-                          <ArrowRight className="size-3" />
+                          <ArrowRight className="size-2.5" />
                         </button>
                       </form>
                     </div>
@@ -319,25 +316,25 @@ export default function MindframeRealizationFan() {
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
-          3. BOTTOM CONTROLS: "🎙 AI Helper" (Left) & Customer Stats / Avatars (Right)
+          3. COMPACT BOTTOM CONTROLS: "🎙 AI Helper" (Left) & Customer Stats / Avatars (Right)
           ───────────────────────────────────────────────────────────── */}
-      <div className="w-full mt-3 sm:mt-5 pt-4 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-[#18181B]/15 px-2 sm:px-4">
+      <div className="w-full mt-2 sm:mt-3 pt-2.5 flex flex-col md:flex-row items-center justify-between gap-3 border-t border-[#18181B]/15 px-2 sm:px-4">
         
         {/* Bottom Left: "🎙 AI Helper" Pill Button */}
         <Link
           href="/contact"
           data-cursor-text="ASK"
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-black/80 bg-[#FAF8F5] text-xs font-sans text-black hover:bg-black hover:text-white transition-all shadow-xs cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-black/80 bg-[#FAF8F5] text-[11px] font-sans text-black hover:bg-black hover:text-white transition-all shadow-xs cursor-pointer"
         >
-          <Mic className="size-3 stroke-[2]" />
+          <Mic className="size-2.5 stroke-[2]" />
           <span className="font-medium">AI Helper</span>
         </Link>
 
         {/* Bottom Right: "2741 customers are satisfied..." + Avatars Reviews Capsule */}
-        <div className="flex flex-col sm:flex-row items-center sm:items-end gap-4 text-center sm:text-right">
+        <div className="flex flex-col sm:flex-row items-center sm:items-end gap-3 text-center sm:text-right">
           <div>
-            <p className="text-[11px] sm:text-xs text-[#52525B] leading-snug">
-              <strong className="font-bold text-[#18181B] text-xs sm:text-sm">2741</strong> customers are{' '}
+            <p className="text-[10px] sm:text-[11px] text-[#52525B] leading-snug">
+              <strong className="font-bold text-[#18181B] text-[11px] sm:text-xs">2741</strong> customers are{' '}
               <em className="font-serif italic text-black font-normal">satisfied</em> with the results<br className="hidden sm:inline" />
               and have created their own dream spaces{' '}
               <em className="font-serif italic text-black font-normal">with us.</em>
@@ -345,40 +342,40 @@ export default function MindframeRealizationFan() {
           </div>
 
           {/* Customer Reviews Capsule with 3 Photo Avatars + Sparkle Badge */}
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] sm:text-[11px] font-normal text-[#71717A]">
+          <div className="flex items-center gap-1.5">
+            <span className="text-[9px] sm:text-[10px] font-normal text-[#71717A]">
               Customer reviews
             </span>
             <div className="flex items-center -space-x-1.5">
-              <div className="relative w-6 h-6 sm:w-7 sm:h-7 rounded-full overflow-hidden ring-2 ring-[#FAF8F5] shadow-xs">
+              <div className="relative w-5 h-5 sm:w-6 sm:h-6 rounded-full overflow-hidden ring-1.5 ring-[#FAF8F5] shadow-xs">
                 <Image
                   src="/imgs/avatar_user1.jpg"
                   alt="Customer Reviewer 1"
                   fill
-                  sizes="28px"
+                  sizes="24px"
                   className="object-cover"
                 />
               </div>
-              <div className="relative w-6 h-6 sm:w-7 sm:h-7 rounded-full overflow-hidden ring-2 ring-[#FAF8F5] shadow-xs">
+              <div className="relative w-5 h-5 sm:w-6 sm:h-6 rounded-full overflow-hidden ring-1.5 ring-[#FAF8F5] shadow-xs">
                 <Image
                   src="/imgs/avatar_user2.jpg"
                   alt="Customer Reviewer 2"
                   fill
-                  sizes="28px"
+                  sizes="24px"
                   className="object-cover"
                 />
               </div>
-              <div className="relative w-6 h-6 sm:w-7 sm:h-7 rounded-full overflow-hidden ring-2 ring-[#FAF8F5] shadow-xs">
+              <div className="relative w-5 h-5 sm:w-6 sm:h-6 rounded-full overflow-hidden ring-1.5 ring-[#FAF8F5] shadow-xs">
                 <Image
                   src="/imgs/avatar_user3.jpg"
                   alt="Customer Reviewer 3"
                   fill
-                  sizes="28px"
+                  sizes="24px"
                   className="object-cover"
                 />
               </div>
-              <div className="relative w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#18181B] flex items-center justify-center text-white ring-2 ring-[#FAF8F5] shadow-xs">
-                <Sparkles className="size-3 text-white" />
+              <div className="relative w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#18181B] flex items-center justify-center text-white ring-1.5 ring-[#FAF8F5] shadow-xs">
+                <Sparkles className="size-2.5 text-white" />
               </div>
             </div>
           </div>
