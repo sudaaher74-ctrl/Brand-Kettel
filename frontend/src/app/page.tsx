@@ -138,38 +138,9 @@ export default function HomePage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          CLIENT TRUST MARQUEE (Pan-India Corporate & Retail Flagships)
-          ───────────────────────────────────────────────────────────── */}
-      <section className="border-b border-[#18181B]/15 bg-[#F2EDE4]/60 py-4 overflow-hidden">
-        <div className="mx-auto max-w-[1480px] px-5 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="inline-block size-1.5 rounded-full bg-[#A07A4F]" />
-            <span className="font-mono text-[9px] font-semibold uppercase tracking-[0.22em] text-[#A07A4F]">
-              TRUSTED BY LEADERS IN COMMERCE:
-            </span>
-          </div>
-          <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-8 gap-y-2 font-mono text-[11px] uppercase tracking-[0.22em] text-[#18181B]/80 font-medium">
-            <span className="hover:text-[#A07A4F] transition-colors">GUCCI</span>
-            <span className="text-[#18181B]/20">/</span>
-            <span className="hover:text-[#A07A4F] transition-colors">PNG JEWELLERS</span>
-            <span className="text-[#18181B]/20">/</span>
-            <span className="hover:text-[#A07A4F] transition-colors">GIVA</span>
-            <span className="text-[#18181B]/20">/</span>
-            <span className="hover:text-[#A07A4F] transition-colors">RAMADA ENCORE</span>
-            <span className="text-[#18181B]/20">/</span>
-            <span className="hover:text-[#A07A4F] transition-colors">&amp;WORK COWORKING</span>
-            <span className="text-[#18181B]/20">/</span>
-            <span className="hover:text-[#A07A4F] transition-colors">PRET A MANGER</span>
-            <span className="text-[#18181B]/20">/</span>
-            <span className="hover:text-[#A07A4F] transition-colors">TAKSHA</span>
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────
           02. SECTION 01 / PHILOSOPHY
           ───────────────────────────────────────────────────────────── */}
-      <section id="philosophy" className="mx-auto grid max-w-[1480px] gap-12 border-t border-[#18181B]/15 px-5 py-24 lg:grid-cols-12 lg:px-10 lg:py-36">
+      <section id="philosophy" className="mx-auto grid max-w-[1480px] gap-12 px-5 py-24 lg:grid-cols-12 lg:px-10 lg:py-36">
         <div className="lg:col-span-2">
           <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#A07A4F]">
             01 / Philosophy
@@ -419,50 +390,10 @@ export default function HomePage() {
           <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#A07A4F] md:col-span-3">
             02 / Realizations
           </p>
-          <h2 className="mt-4 text-6xl leading-none md:col-span-6 md:mt-0 lg:text-8xl font-light text-[#18181B]">
+          <h2 className="mt-4 text-6xl leading-none md:col-span-9 md:mt-0 lg:text-8xl font-light text-[#18181B]">
             Spaces built for<br />
             <em className="font-normal font-serif italic text-[#A07A4F]">enduring impact.</em>
           </h2>
-          <p className="hidden max-w-xs text-right text-sm leading-6 text-[#71717A] md:col-span-3 md:block font-light">
-            Flagship Retail.<br />
-            Corporate Workspaces.<br />
-            Luxury Lounges.
-          </p>
-        </div>
-
-        {/* Architectural Sector Directory Ribbon */}
-        <div className="mb-14 flex flex-wrap items-center gap-3 border-b border-[#18181B]/10 pb-6 text-[10px] font-mono uppercase tracking-[0.18em]">
-          <span className="text-[#71717A] mr-2">FILTER BY SECTOR:</span>
-          <Link
-            href="/portfolio"
-            className="px-3.5 py-1.5 rounded-full bg-[#18181B] text-[#FAF8F5] font-semibold transition-all hover:bg-[#A07A4F]"
-          >
-            All Sectors (120+)
-          </Link>
-          <Link
-            href="/portfolio?sector=retail"
-            className="px-3.5 py-1.5 rounded-full border border-[#18181B]/20 text-[#18181B] transition-all hover:border-[#A07A4F] hover:text-[#A07A4F]"
-          >
-            Luxury Retail Flagships
-          </Link>
-          <Link
-            href="/portfolio?sector=corporate"
-            className="px-3.5 py-1.5 rounded-full border border-[#18181B]/20 text-[#18181B] transition-all hover:border-[#A07A4F] hover:text-[#A07A4F]"
-          >
-            Corporate Workspaces
-          </Link>
-          <Link
-            href="/portfolio?sector=hospitality"
-            className="px-3.5 py-1.5 rounded-full border border-[#18181B]/20 text-[#18181B] transition-all hover:border-[#A07A4F] hover:text-[#A07A4F]"
-          >
-            Hospitality &amp; Dining
-          </Link>
-          <Link
-            href="/portfolio?sector=joinery"
-            className="px-3.5 py-1.5 rounded-full border border-[#18181B]/20 text-[#18181B] transition-all hover:border-[#A07A4F] hover:text-[#A07A4F]"
-          >
-            Direct Joinery Works
-          </Link>
         </div>
 
         {/* 3 Staggered Columns Grid with 4K Interior Photography */}
