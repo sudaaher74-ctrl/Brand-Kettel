@@ -101,9 +101,26 @@ export default function HomePage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
+          02. EDITORIAL MANIFESTO QUOTE (Second Scroll Statement)
+          ───────────────────────────────────────────────────────────── */}
+      <section className="bg-[#F2EDE4] px-5 py-24 text-center lg:py-36 text-[#18181B] border-b border-[#18181B]/15">
+        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#A07A4F]">
+          Built for those who notice the details
+        </p>
+        <blockquote className="mx-auto mt-8 max-w-5xl font-display text-4xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[0.96] font-light text-[#18181B]">
+          “A perfectly aligned architectural reveal.<br />
+          <em className="font-serif italic font-normal text-[#A07A4F]">A seamless joinery edge.</em><br />
+          A space executed without compromise.”
+        </blockquote>
+        <p className="mx-auto mt-9 max-w-xl text-sm leading-7 text-[#71717A] font-light">
+          These details may seem subtle. Together, they define the difference between a routine fit-out and an enduring architectural benchmark.
+        </p>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
           ARCHITECTURAL BENCHMARK METRICS RIBBON (Brand Kettle Provenance)
           ───────────────────────────────────────────────────────────── */}
-      <section className="border-y border-[#18181B]/15 bg-[#FAF8F5]">
+      <section className="border-b border-[#18181B]/15 bg-[#FAF8F5]">
         <div className="mx-auto max-w-[1480px] px-5 lg:px-10">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-[#18181B]/15">
             <div className="py-7 md:py-9 pr-4">
@@ -630,22 +647,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─────────────────────────────────────────────────────────────
-          09. EDITORIAL QUOTE BANNER (Centered Monograph on Linen)
-          ───────────────────────────────────────────────────────────── */}
-      <section className="bg-[#F2EDE4] px-5 py-24 text-center lg:py-36 text-[#18181B]">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#A07A4F]">
-          Built for those who notice the details
-        </p>
-        <blockquote className="mx-auto mt-8 max-w-5xl font-display text-5xl leading-[0.95] lg:text-8xl font-light">
-          “A perfectly aligned architectural reveal.<br />
-          <em className="font-serif italic font-normal text-[#A07A4F]">A seamless joinery edge.</em><br />
-          A space executed without compromise.”
-        </blockquote>
-        <p className="mx-auto mt-9 max-w-xl text-sm leading-7 text-[#71717A] font-light">
-          These details may seem subtle. Together, they define the difference between a routine fit-out and an enduring architectural benchmark.
-        </p>
-      </section>
 
       {/* ─────────────────────────────────────────────────────────────
           10. SECTION 06 / START A PROJECT CTA
