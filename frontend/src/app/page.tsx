@@ -33,19 +33,7 @@ export default function HomePage() {
           {/* Left Column: Coordinates + Monumental Headline + Value Proposition */}
           <div className="z-10 order-2 lg:order-1 lg:col-span-4 lg:self-end lg:pb-16">
             
-            {/* Architectural Coordinates & Provenance Ribbon */}
-            <div className="flex items-center gap-2 mb-5">
-              <span className="inline-block size-2 rounded-full bg-[#A07A4F] animate-pulse" />
-              <span className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#A07A4F] font-semibold">
-                INDORE CENTRAL HQ · 22.7196° N, 75.8577° E
-              </span>
-            </div>
-
-            <p className="max-w-xs border-l border-[#18181B] pl-4 text-[10px] font-semibold uppercase leading-5 tracking-[0.22em] text-[#18181B]">
-              Commercial Fit-Outs · Precision Joinery · Turnkey Execution
-            </p>
-            
-            <h1 className="mt-7 max-w-md text-6xl leading-[0.84] sm:text-7xl lg:text-[5.5rem] font-light text-[#18181B]">
+            <h1 className="max-w-md text-6xl leading-[0.84] sm:text-7xl lg:text-[5.5rem] font-light text-[#18181B]">
               Spaces,<br />
               <em className="font-normal font-serif italic text-[#A07A4F]">crafted</em> to an<br />
               exact standard.
@@ -55,23 +43,6 @@ export default function HomePage() {
               Where architectural vision meets German precision engineering—turnkey commercial environments for flagship luxury retail, corporate headquarters, and landmark hospitality across India.
             </p>
 
-            {/* Quick Architectural Trust Pill */}
-            <div className="mt-8 flex items-center gap-6 border-t border-[#18181B]/15 pt-5 text-[11px] font-mono uppercase tracking-[0.16em] text-[#18181B]">
-              <div>
-                <span className="block text-xs font-bold text-[#A07A4F]">50,000 SQ FT</span>
-                <span className="text-[9px] text-[#71717A]">Direct Factory</span>
-              </div>
-              <div className="h-6 w-px bg-[#18181B]/15" />
-              <div>
-                <span className="block text-xs font-bold text-[#A07A4F]">±0.5 MM</span>
-                <span className="text-[9px] text-[#71717A]">CNC Tolerance</span>
-              </div>
-              <div className="h-6 w-px bg-[#18181B]/15" />
-              <div>
-                <span className="block text-xs font-bold text-[#A07A4F]">PAN-INDIA</span>
-                <span className="text-[9px] text-[#71717A]">10+ Metros</span>
-              </div>
-            </div>
           </div>
 
           {/* Center Column: 4K Portrait Project Showcase + Floating Technical Annotations */}
@@ -131,11 +102,6 @@ export default function HomePage() {
               </span>
             </div>
 
-            <div className="mt-10 text-right text-[10px] uppercase tracking-[0.2em]">
-              <p className="font-semibold text-[#18181B]">Engineered for commerce</p>
-              <p className="mt-2 text-[#71717A]">Accuracy / tolerance / finish</p>
-              <p className="mt-2 font-mono text-[#A07A4F] font-semibold">120+ Spaces Delivered Pan-India</p>
-            </div>
           </div>
 
         </div>
