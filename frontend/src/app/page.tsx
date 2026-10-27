@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowDown, ArrowRight, ArrowUpRight, CheckCircle2, ShieldCheck, Ruler, Layers, Sparkles } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, CheckCircle2, ShieldCheck, Ruler, Layers, Sparkles } from 'lucide-react';
 import { HOME_FAQS } from '@/lib/faqs';
 import { faqPageJsonLd, jsonLdScript } from '@/lib/structuredData';
 
@@ -45,7 +45,7 @@ export default function HomePage() {
 
           </div>
 
-          {/* Center Column: 4K Portrait Project Showcase + Floating Technical Annotations */}
+          {/* Center Column: 4K Portrait Project Showcase */}
           <div className="relative order-1 mx-auto w-full max-w-md lg:order-2 lg:col-span-5 lg:max-w-none">
             <div className="aspect-[4/5] overflow-hidden bg-[#EFECE6] relative shadow-2xl group border border-[#18181B]/10">
               <Image
@@ -56,38 +56,10 @@ export default function HomePage() {
                 sizes="(max-width: 1024px) 100vw, 45vw"
                 className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.035]"
               />
-
-              {/* Floating Architectural Technical Spec Tag */}
-              <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-                <span className="bg-[#18181B]/85 backdrop-blur-md px-3 py-1 text-[#FAF8F5] font-mono text-[9px] uppercase tracking-[0.2em] border border-white/10">
-                  FLAGSHIP SPEC · BK-2026
-                </span>
-                <span className="hidden sm:inline-block bg-[#FAF8F5]/90 backdrop-blur-md px-2.5 py-1 text-[#18181B] font-mono text-[9px] uppercase tracking-[0.18em]">
-                  ATRIUM AT ±0.5MM
-                </span>
-              </div>
-
-              {/* Bottom Architectural Caption Plaque */}
-              <div className="absolute bottom-4 left-4 right-24 sm:right-28 bg-[#18181B]/85 backdrop-blur-md p-3 text-white border border-white/10">
-                <p className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#C5A880]">Turnkey Realization</p>
-                <p className="text-xs font-light tracking-wide text-white/90 truncate">
-                  Double-Height Fluted Travertine &amp; Bronze Architectural Joinery
-                </p>
-              </div>
             </div>
-
-            {/* Circular Floating Explore Stamp */}
-            <a
-              href="#philosophy"
-              aria-label="Scroll to philosophy"
-              className="group absolute -bottom-7 right-3 lg:-right-7 size-28 sm:size-32 rounded-full bg-[#18181B] text-[#FAF8F5] shadow-2xl hover:bg-[#A07A4F] transition-all duration-300 flex flex-col items-center justify-center text-[10px] uppercase font-bold tracking-[0.2em] cursor-pointer"
-            >
-              <span>Explore</span>
-              <ArrowDown className="size-4 mt-1 transition-transform group-hover:translate-y-1 text-[#FAF8F5]" />
-            </a>
           </div>
 
-          {/* Right Column: 4K Joinery Detail Tile + Technical Specifications */}
+          {/* Right Column: 4K Joinery Detail Tile */}
           <div className="order-3 hidden lg:col-span-3 lg:block lg:self-end lg:pb-16">
             <div className="relative ml-auto aspect-square max-w-64 overflow-hidden bg-[#EFECE6] border border-[#18181B]/10 shadow-lg group">
               <Image
@@ -97,11 +69,7 @@ export default function HomePage() {
                 sizes="256px"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <span className="absolute bottom-3 left-3 bg-[#FAF8F5]/95 backdrop-blur-sm px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-[#18181B] border border-[#18181B]/10">
-                MACRO / 01 · 5mm Reveal
-              </span>
             </div>
-
           </div>
 
         </div>
@@ -205,18 +173,6 @@ export default function HomePage() {
                   sizes="(max-width: 768px) 100vw, 42vw"
                   className="object-cover transition-transform duration-1000 group-hover:scale-[1.035]"
                 />
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-                  <span className="bg-[#FAF8F5]/95 backdrop-blur-sm px-2.5 py-1 font-mono text-[9px] tracking-[0.18em] border border-[#18181B]/10 font-medium">
-                    FIG. 01 / RETAIL
-                  </span>
-                  <span className="bg-[#18181B]/80 backdrop-blur-sm text-white px-2 py-0.5 font-mono text-[8px] uppercase tracking-[0.16em]">
-                    3,400 SQ FT
-                  </span>
-                </div>
-                <div className="absolute bottom-3 left-3 right-3 bg-[#18181B]/85 backdrop-blur-md px-3 py-2 text-white border border-white/10 opacity-90 transition-opacity group-hover:opacity-100">
-                  <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-[#C5A880]">Joinery Specification</p>
-                  <p className="text-[11px] font-light text-white/90 truncate">Emerald Marble Wall &amp; Brushed Brass Vitrines</p>
-                </div>
               </div>
 
               <div className="mt-5 flex items-start justify-between gap-5 border-t border-[#18181B]/15 pt-4">
@@ -249,18 +205,6 @@ export default function HomePage() {
                   sizes="(max-width: 768px) 100vw, 34vw"
                   className="object-cover transition-transform duration-1000 group-hover:scale-[1.035]"
                 />
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-                  <span className="bg-[#FAF8F5]/95 backdrop-blur-sm px-2.5 py-1 font-mono text-[9px] tracking-[0.18em] border border-[#18181B]/10 font-medium">
-                    FIG. 02 / CORPORATE
-                  </span>
-                  <span className="bg-[#18181B]/80 backdrop-blur-sm text-white px-2 py-0.5 font-mono text-[8px] uppercase tracking-[0.16em]">
-                    18,500 SQ FT
-                  </span>
-                </div>
-                <div className="absolute bottom-3 left-3 right-3 bg-[#18181B]/85 backdrop-blur-md px-3 py-2 text-white border border-white/10 opacity-90 transition-opacity group-hover:opacity-100">
-                  <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-[#C5A880]">Acoustic &amp; Millwork Spec</p>
-                  <p className="text-[11px] font-light text-white/90 truncate">Fluted Smoked Oak &amp; Double-Glazed Bronze Partitions</p>
-                </div>
               </div>
 
               <div className="mt-5 flex items-start justify-between gap-5 border-t border-[#18181B]/15 pt-4">
@@ -293,18 +237,6 @@ export default function HomePage() {
                   sizes="(max-width: 768px) 100vw, 25vw"
                   className="object-cover transition-transform duration-1000 group-hover:scale-[1.035]"
                 />
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-                  <span className="bg-[#FAF8F5]/95 backdrop-blur-sm px-2.5 py-1 font-mono text-[9px] tracking-[0.18em] border border-[#18181B]/10 font-medium">
-                    FIG. 03 / LOUNGE
-                  </span>
-                  <span className="bg-[#18181B]/80 backdrop-blur-sm text-white px-2 py-0.5 font-mono text-[8px] uppercase tracking-[0.16em]">
-                    6,200 SQ FT
-                  </span>
-                </div>
-                <div className="absolute bottom-3 left-3 right-3 bg-[#18181B]/85 backdrop-blur-md px-3 py-2 text-white border border-white/10 opacity-90 transition-opacity group-hover:opacity-100">
-                  <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-[#C5A880]">Signature Surface Spec</p>
-                  <p className="text-[11px] font-light text-white/90 truncate">Illuminated Onyx &amp; Coffered Walnut Millwork</p>
-                </div>
               </div>
 
               <div className="mt-5 flex items-start justify-between gap-5 border-t border-[#18181B]/15 pt-4">
