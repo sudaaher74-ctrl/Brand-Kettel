@@ -16,58 +16,62 @@ export default function HomePage() {
       />
 
       {/* ─────────────────────────────────────────────────────────────
-          01. HERO SECTION (Differentiated Architectural Fit-Out Showcase)
+          01. ARCHITECTURAL HERO SECTION (50/50 Balanced Split)
           ───────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[820px] px-5 pb-16 pt-32 lg:min-h-[96svh] lg:px-10 lg:pb-12 lg:pt-32 flex flex-col justify-between">
+      <section className="relative min-h-[820px] lg:min-h-[92svh] px-5 pb-16 pt-32 lg:px-10 lg:pb-20 lg:pt-36 flex items-center">
         
         {/* Giant Watermark Typography */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-[14%] overflow-hidden text-center font-display text-[15vw] lg:text-[18vw] leading-none text-[#18181B]/[0.035] select-none font-bold whitespace-nowrap tracking-tight"
+          className="pointer-events-none absolute inset-x-0 top-[12%] overflow-hidden text-center font-display text-[15vw] lg:text-[17vw] leading-none text-[#18181B]/[0.03] select-none font-bold whitespace-nowrap tracking-tight"
         >
           BUILDSPACES
         </div>
 
-        <div className="relative mx-auto grid h-full w-full max-w-[1480px] grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-8 my-auto">
+        <div className="relative mx-auto grid w-full max-w-[1480px] grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-14 my-auto">
           
-          {/* Left Column: Coordinates + Monumental Headline + Value Proposition */}
-          <div className="z-10 order-2 lg:order-1 lg:col-span-4 lg:self-end lg:pb-16">
+          {/* Left Column: Headline, Narrative & Direct Action CTAs */}
+          <div className="z-10 order-2 lg:order-1 lg:col-span-7 xl:col-span-6">
             
-            <h1 className="max-w-md text-6xl leading-[0.84] sm:text-7xl lg:text-[5.5rem] font-light text-[#18181B]">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] xl:text-[5.5rem] font-light leading-[0.92] text-[#18181B] tracking-tight">
               Spaces,<br />
               <em className="font-normal font-serif italic text-[#A07A4F]">crafted</em> to an<br />
               exact standard.
             </h1>
 
-            <p className="mt-7 max-w-sm text-sm leading-7 text-[#71717A] font-light">
+            <p className="mt-8 max-w-xl text-base sm:text-lg leading-relaxed text-[#71717A] font-light">
               Where architectural vision meets German precision engineering—turnkey commercial environments for flagship luxury retail, corporate headquarters, and landmark hospitality across India.
             </p>
 
+            {/* Direct Architectural Action Buttons */}
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <Link
+                href="/portfolio"
+                className="group inline-flex items-center gap-2.5 px-8 py-4 bg-[#18181B] text-[#FAF8F5] text-xs font-mono uppercase tracking-[0.18em] font-semibold hover:bg-[#A07A4F] transition-all shadow-sm"
+              >
+                <span>Explore Portfolio</span>
+                <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2.5 px-8 py-4 border border-[#18181B]/20 text-[#18181B] text-xs font-mono uppercase tracking-[0.18em] font-medium hover:border-[#18181B] hover:bg-[#18181B]/5 transition-all"
+              >
+                <span>Start a Project</span>
+              </Link>
+            </div>
+
           </div>
 
-          {/* Center Column: 4K Portrait Project Showcase */}
-          <div className="relative order-1 mx-auto w-full max-w-md lg:order-2 lg:col-span-5 lg:max-w-none">
-            <div className="aspect-[4/5] overflow-hidden bg-[#EFECE6] relative shadow-2xl group border border-[#18181B]/10">
+          {/* Right Column: Commanding 4K Architectural Showcase Frame */}
+          <div className="relative order-1 mx-auto w-full max-w-lg lg:order-2 lg:col-span-5 xl:col-span-6 lg:max-w-none">
+            <div className="relative ml-auto aspect-[4/5] sm:aspect-[1/1] lg:aspect-[4/5] w-full max-w-xl overflow-hidden bg-[#EFECE6] border border-[#18181B]/15 shadow-2xl group">
               <Image
                 src="/imgs/commercial/bk_hero_flagship.jpg"
                 alt="Brand Kettle Flagship Commercial Interior Showcase with Fluted Travertine & Bronze Vitrines"
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 45vw"
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.035]"
-              />
-            </div>
-          </div>
-
-          {/* Right Column: 4K Joinery Detail Tile */}
-          <div className="order-3 hidden lg:col-span-3 lg:block lg:self-end lg:pb-16">
-            <div className="relative ml-auto aspect-square max-w-64 overflow-hidden bg-[#EFECE6] border border-[#18181B]/10 shadow-lg group">
-              <Image
-                src="/imgs/commercial/bk_joinery_detail.jpg"
-                alt="Brand Kettle Architectural Fluted Oak Joinery Detail"
-                fill
-                sizes="256px"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
             </div>
           </div>
