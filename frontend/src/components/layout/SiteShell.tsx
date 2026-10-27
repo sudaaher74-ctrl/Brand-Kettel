@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import SmoothScroll from '@/components/providers/SmoothScroll';
 import StickyContact from '@/components/ui/StickyContact';
+import CustomCursor from '@/components/ui/CustomCursor';
 
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -15,6 +16,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
 
   return (
     <SmoothScroll>
+      <CustomCursor />
       <Navbar />
       <main>{children}</main>
       <Footer />
