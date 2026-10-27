@@ -11,26 +11,25 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Detail stays in the console / server logs; the visitor sees none of it.
     console.error(error);
   }, [error]);
 
   return (
-    <section className="grid min-h-screen place-items-center bg-[#0A0A0B] text-white px-5 py-24">
+    <section className="grid min-h-screen place-items-center bg-[#FAF8F5] text-[#18181B] px-5 py-24 selection:bg-[#A07A4F] selection:text-white">
       <div className="text-center max-w-lg">
         <span
           aria-hidden="true"
-          className="font-serif italic text-6xl sm:text-7xl font-light text-[#C5A880] block mb-3"
+          className="font-serif italic text-6xl sm:text-7xl font-light text-[#A07A4F] block mb-3"
         >
-          Oh.
+          Notice
         </span>
-        <h1 className="font-display font-light text-2xl sm:text-3xl uppercase tracking-wide text-white">
+        <h1 className="font-display font-light text-2xl sm:text-3xl uppercase tracking-wide text-[#18181B]">
           Something went wrong
         </h1>
-        <p className="mt-4 text-sm text-[#A1A1AA] font-light leading-relaxed">
+        <p className="mt-4 text-sm text-[#71717A] font-light leading-relaxed">
           An unexpected error stopped this page from loading. Trying again usually fixes it — if it
-          does not, call us on{' '}
-          <a href="tel:+918959173790" className="text-[#C5A880] hover:text-white transition-colors">
+          does not, call us directly on{' '}
+          <a href="tel:+918959173790" className="text-[#A07A4F] hover:text-[#18181B] underline transition-colors">
             +91 89591 73790
           </a>
           .
@@ -40,28 +39,23 @@ export default function Error({
           <button
             type="button"
             onClick={() => reset()}
-            className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-3.5 rounded-full bg-[#C5A880] text-[#0A0A0B] hover:bg-white text-xs uppercase tracking-[0.14em] font-semibold transition-colors duration-300 shadow-xl"
+            className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-3.5 bg-[#18181B] text-[#FAF8F5] hover:bg-[#A07A4F] hover:text-white font-mono text-[11px] uppercase tracking-[0.18em] font-semibold transition-all duration-300 shadow-sm cursor-pointer"
           >
             Try again
           </button>
           <Link
             href="/portfolio"
-            className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-3.5 rounded-full border border-white/25 hover:border-[#C5A880] text-white hover:text-[#C5A880] text-xs uppercase tracking-[0.14em] font-semibold transition-colors duration-300"
+            className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-3.5 border border-[#18181B]/20 hover:border-[#18181B] text-[#18181B] font-mono text-[11px] uppercase tracking-[0.18em] font-semibold transition-all duration-300"
           >
             View our work
           </Link>
           <Link
             href="/contact"
-            className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-3.5 rounded-full border border-white/25 hover:border-[#C5A880] text-white hover:text-[#C5A880] text-xs uppercase tracking-[0.14em] font-semibold transition-colors duration-300"
+            className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-3.5 border border-[#18181B]/20 hover:border-[#18181B] text-[#18181B] font-mono text-[11px] uppercase tracking-[0.18em] font-semibold transition-all duration-300"
           >
             Talk to us
           </Link>
         </div>
-
-        {error.digest && (
-          // Useful when a visitor reports a problem; meaningless to an attacker.
-          <p className="mt-8 text-[11px] text-white/30 font-mono">Reference: {error.digest}</p>
-        )}
       </div>
     </section>
   );

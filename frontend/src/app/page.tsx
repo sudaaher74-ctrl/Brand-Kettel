@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowDown, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowDown, ArrowRight, ArrowUpRight, CheckCircle2, ShieldCheck, Ruler, Layers, Sparkles } from 'lucide-react';
 import { HOME_FAQS } from '@/lib/faqs';
 import { faqPageJsonLd, jsonLdScript } from '@/lib/structuredData';
 
@@ -16,9 +16,9 @@ export default function HomePage() {
       />
 
       {/* ─────────────────────────────────────────────────────────────
-          01. HERO SECTION (Identical layout to reference site)
+          01. HERO SECTION (Differentiated Architectural Fit-Out Showcase)
           ───────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[820px] px-5 pb-20 pt-32 lg:min-h-[96svh] lg:px-10 lg:pb-12 lg:pt-32 flex flex-col justify-between">
+      <section className="relative min-h-[820px] px-5 pb-16 pt-32 lg:min-h-[96svh] lg:px-10 lg:pb-12 lg:pt-32 flex flex-col justify-between">
         
         {/* Giant Watermark Typography */}
         <div
@@ -30,8 +30,17 @@ export default function HomePage() {
 
         <div className="relative mx-auto grid h-full w-full max-w-[1480px] grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-8 my-auto">
           
-          {/* Left Column: Eyebrow + Monumental Headline + Value Proposition */}
+          {/* Left Column: Coordinates + Monumental Headline + Value Proposition */}
           <div className="z-10 order-2 lg:order-1 lg:col-span-4 lg:self-end lg:pb-16">
+            
+            {/* Architectural Coordinates & Provenance Ribbon */}
+            <div className="flex items-center gap-2 mb-5">
+              <span className="inline-block size-2 rounded-full bg-[#A07A4F] animate-pulse" />
+              <span className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#A07A4F] font-semibold">
+                INDORE CENTRAL HQ · 22.7196° N, 75.8577° E
+              </span>
+            </div>
+
             <p className="max-w-xs border-l border-[#18181B] pl-4 text-[10px] font-semibold uppercase leading-5 tracking-[0.22em] text-[#18181B]">
               Commercial Fit-Outs · Precision Joinery · Turnkey Execution
             </p>
@@ -43,53 +52,89 @@ export default function HomePage() {
             </h1>
 
             <p className="mt-7 max-w-sm text-sm leading-7 text-[#71717A] font-light">
-              Where sophisticated architecture meets German precision engineering—turnkey commercial environments for flagship luxury retail, corporate headquarters, and landmark hospitality across India.
+              Where architectural vision meets German precision engineering—turnkey commercial environments for flagship luxury retail, corporate headquarters, and landmark hospitality across India.
             </p>
+
+            {/* Quick Architectural Trust Pill */}
+            <div className="mt-8 flex items-center gap-6 border-t border-[#18181B]/15 pt-5 text-[11px] font-mono uppercase tracking-[0.16em] text-[#18181B]">
+              <div>
+                <span className="block text-xs font-bold text-[#A07A4F]">50,000 SQ FT</span>
+                <span className="text-[9px] text-[#71717A]">Direct Factory</span>
+              </div>
+              <div className="h-6 w-px bg-[#18181B]/15" />
+              <div>
+                <span className="block text-xs font-bold text-[#A07A4F]">±0.5 MM</span>
+                <span className="text-[9px] text-[#71717A]">CNC Tolerance</span>
+              </div>
+              <div className="h-6 w-px bg-[#18181B]/15" />
+              <div>
+                <span className="block text-xs font-bold text-[#A07A4F]">PAN-INDIA</span>
+                <span className="text-[9px] text-[#71717A]">10+ Metros</span>
+              </div>
+            </div>
           </div>
 
-          {/* Center Column: Portrait Project Showcase + Circular Floating Explore Stamp */}
+          {/* Center Column: 4K Portrait Project Showcase + Floating Technical Annotations */}
           <div className="relative order-1 mx-auto w-full max-w-md lg:order-2 lg:col-span-5 lg:max-w-none">
-            <div className="aspect-[4/5] overflow-hidden bg-[#EFECE6] relative shadow-2xl group">
+            <div className="aspect-[4/5] overflow-hidden bg-[#EFECE6] relative shadow-2xl group border border-[#18181B]/10">
               <Image
-                src="/imgs/commercial/gucci.webp"
-                alt="Brand Kettle Flagship Retail & Luxury Commercial Fit-Out"
+                src="/imgs/commercial/bk_hero_flagship.jpg"
+                alt="Brand Kettle Flagship Commercial Interior Showcase with Fluted Travertine & Bronze Vitrines"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 45vw"
                 className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.035]"
               />
+
+              {/* Floating Architectural Technical Spec Tag */}
+              <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
+                <span className="bg-[#18181B]/85 backdrop-blur-md px-3 py-1 text-[#FAF8F5] font-mono text-[9px] uppercase tracking-[0.2em] border border-white/10">
+                  FLAGSHIP SPEC · BK-2026
+                </span>
+                <span className="hidden sm:inline-block bg-[#FAF8F5]/90 backdrop-blur-md px-2.5 py-1 text-[#18181B] font-mono text-[9px] uppercase tracking-[0.18em]">
+                  ATRIUM AT ±0.5MM
+                </span>
+              </div>
+
+              {/* Bottom Architectural Caption Plaque */}
+              <div className="absolute bottom-4 left-4 right-24 sm:right-28 bg-[#18181B]/85 backdrop-blur-md p-3 text-white border border-white/10">
+                <p className="font-mono text-[8px] uppercase tracking-[0.22em] text-[#C5A880]">Turnkey Realization</p>
+                <p className="text-xs font-light tracking-wide text-white/90 truncate">
+                  Double-Height Fluted Travertine &amp; Bronze Architectural Joinery
+                </p>
+              </div>
             </div>
 
             {/* Circular Floating Explore Stamp */}
             <a
               href="#philosophy"
               aria-label="Scroll to philosophy"
-              className="group absolute -bottom-8 right-4 lg:-right-7 size-28 sm:size-32 rounded-full bg-[#18181B] text-[#FAF8F5] shadow-2xl hover:bg-[#A07A4F] transition-all duration-300 flex flex-col items-center justify-center text-[10px] uppercase font-bold tracking-[0.2em] cursor-pointer"
+              className="group absolute -bottom-7 right-3 lg:-right-7 size-28 sm:size-32 rounded-full bg-[#18181B] text-[#FAF8F5] shadow-2xl hover:bg-[#A07A4F] transition-all duration-300 flex flex-col items-center justify-center text-[10px] uppercase font-bold tracking-[0.2em] cursor-pointer"
             >
               <span>Explore</span>
               <ArrowDown className="size-4 mt-1 transition-transform group-hover:translate-y-1 text-[#FAF8F5]" />
             </a>
           </div>
 
-          {/* Right Column: Joinery Detail Tile + Technical Specifications */}
+          {/* Right Column: 4K Joinery Detail Tile + Technical Specifications */}
           <div className="order-3 hidden lg:col-span-3 lg:block lg:self-end lg:pb-16">
-            <div className="relative ml-auto aspect-square max-w-64 overflow-hidden bg-[#EFECE6] border border-[#18181B]/10 group">
+            <div className="relative ml-auto aspect-square max-w-64 overflow-hidden bg-[#EFECE6] border border-[#18181B]/10 shadow-lg group">
               <Image
-                src="/imgs/commercial/brandkettle1.jpg"
-                alt="Brand Kettle Architectural Joinery Detail Specification"
+                src="/imgs/commercial/bk_joinery_detail.jpg"
+                alt="Brand Kettle Architectural Fluted Oak Joinery Detail"
                 fill
                 sizes="256px"
-                className="h-full w-full object-cover scale-125 transition-transform duration-700 group-hover:scale-150"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <span className="absolute bottom-3 left-3 bg-[#FAF8F5]/95 backdrop-blur-sm px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-[#18181B] border border-[#18181B]/10">
-                Detail / 01—24 · Joinery Spec
+                MACRO / 01 · 5mm Reveal
               </span>
             </div>
 
-            <div className="mt-12 text-right text-[10px] uppercase tracking-[0.2em]">
+            <div className="mt-10 text-right text-[10px] uppercase tracking-[0.2em]">
               <p className="font-semibold text-[#18181B]">Engineered for commerce</p>
               <p className="mt-2 text-[#71717A]">Accuracy / tolerance / finish</p>
-              <p className="mt-2 font-mono text-[#A07A4F] font-medium">120+ Spaces Delivered Pan-India</p>
+              <p className="mt-2 font-mono text-[#A07A4F] font-semibold">120+ Spaces Delivered Pan-India</p>
             </div>
           </div>
 
@@ -97,7 +142,66 @@ export default function HomePage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          02. SECTION 01 / PHILOSOPHY (Identical layout to reference site)
+          ARCHITECTURAL BENCHMARK METRICS RIBBON (Brand Kettle Provenance)
+          ───────────────────────────────────────────────────────────── */}
+      <section className="border-y border-[#18181B]/15 bg-[#FAF8F5]">
+        <div className="mx-auto max-w-[1480px] px-5 lg:px-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-[#18181B]/15">
+            <div className="py-7 md:py-9 pr-4">
+              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#A07A4F] block">Portfolio Metric</span>
+              <p className="mt-2 text-4xl lg:text-5xl font-light text-[#18181B]">120<span className="text-[#A07A4F]">+</span></p>
+              <p className="mt-2 text-xs font-light text-[#71717A] leading-relaxed">Turnkey spaces commissioned across 10+ Indian metros</p>
+            </div>
+            <div className="py-7 md:py-9 px-0 md:px-6">
+              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#A07A4F] block">Direct Manufacturing</span>
+              <p className="mt-2 text-4xl lg:text-5xl font-light text-[#18181B]">50k<span className="text-xl font-normal text-[#A07A4F]"> SQ FT</span></p>
+              <p className="mt-2 text-xs font-light text-[#71717A] leading-relaxed">Owned 5-axis CNC joinery facility in Central India</p>
+            </div>
+            <div className="py-7 md:py-9 px-0 md:px-6">
+              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#A07A4F] block">Execution Velocity</span>
+              <p className="mt-2 text-4xl lg:text-5xl font-light text-[#18181B]">27<span className="text-xl font-normal text-[#A07A4F]"> DAYS</span></p>
+              <p className="mt-2 text-xs font-light text-[#71717A] leading-relaxed">Average rapid-track delivery for commercial flagships</p>
+            </div>
+            <div className="py-7 md:py-9 pl-0 md:pl-6">
+              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#A07A4F] block">Fabrication Standard</span>
+              <p className="mt-2 text-4xl lg:text-5xl font-light text-[#18181B]">±0.5<span className="text-xl font-normal text-[#A07A4F]"> MM</span></p>
+              <p className="mt-2 text-xs font-light text-[#71717A] leading-relaxed">Micron tolerance with laser-calibrated shop drawings</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          CLIENT TRUST MARQUEE (Pan-India Corporate & Retail Flagships)
+          ───────────────────────────────────────────────────────────── */}
+      <section className="border-b border-[#18181B]/15 bg-[#F2EDE4]/60 py-4 overflow-hidden">
+        <div className="mx-auto max-w-[1480px] px-5 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="inline-block size-1.5 rounded-full bg-[#A07A4F]" />
+            <span className="font-mono text-[9px] font-semibold uppercase tracking-[0.22em] text-[#A07A4F]">
+              TRUSTED BY LEADERS IN COMMERCE:
+            </span>
+          </div>
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-8 gap-y-2 font-mono text-[11px] uppercase tracking-[0.22em] text-[#18181B]/80 font-medium">
+            <span className="hover:text-[#A07A4F] transition-colors">GUCCI</span>
+            <span className="text-[#18181B]/20">/</span>
+            <span className="hover:text-[#A07A4F] transition-colors">PNG JEWELLERS</span>
+            <span className="text-[#18181B]/20">/</span>
+            <span className="hover:text-[#A07A4F] transition-colors">GIVA</span>
+            <span className="text-[#18181B]/20">/</span>
+            <span className="hover:text-[#A07A4F] transition-colors">RAMADA ENCORE</span>
+            <span className="text-[#18181B]/20">/</span>
+            <span className="hover:text-[#A07A4F] transition-colors">&amp;WORK COWORKING</span>
+            <span className="text-[#18181B]/20">/</span>
+            <span className="hover:text-[#A07A4F] transition-colors">PRET A MANGER</span>
+            <span className="text-[#18181B]/20">/</span>
+            <span className="hover:text-[#A07A4F] transition-colors">TAKSHA</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          02. SECTION 01 / PHILOSOPHY
           ───────────────────────────────────────────────────────────── */}
       <section id="philosophy" className="mx-auto grid max-w-[1480px] gap-12 border-t border-[#18181B]/15 px-5 py-24 lg:grid-cols-12 lg:px-10 lg:py-36">
         <div className="lg:col-span-2">
@@ -120,20 +224,37 @@ export default function HomePage() {
           <p className="mt-8 text-sm leading-7 text-[#71717A] font-light">
             Our delivery model unites experienced architectural design with in-house German machinery and rigorous civil execution. This allows us to achieve exceptional structural consistency, strict schedule compliance, and immaculate detailing across every square foot.
           </p>
+
+          <div className="mt-8 grid grid-cols-2 gap-4 border-t border-[#18181B]/15 pt-6 text-xs font-mono uppercase tracking-[0.16em] text-[#18181B]">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="size-3.5 text-[#A07A4F]" />
+              <span>Zero-Snag Handover</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="size-3.5 text-[#A07A4F]" />
+              <span>BIM LOD-400 Modeling</span>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          03. THE MAKING OF PRECISION (4 CAD Blueprint Cards - Deep Contrast)
+          03. BUILDOS™ Turnkey Fit-Out & Engineering Protocol
           ───────────────────────────────────────────────────────────── */}
       <section className="bg-[#121214] py-20 text-[#F4F4F5] lg:py-28">
         <div className="mx-auto max-w-[1480px] px-5 lg:px-10">
           
           {/* Header Grid */}
           <div className="mb-14 grid gap-6 lg:grid-cols-12 lg:items-end">
-            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#C5A880] lg:col-span-3">
-              The making of precision
-            </p>
+            <div className="lg:col-span-3">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#C5A880]/15 text-[#C5A880] font-mono text-[9px] uppercase tracking-[0.2em] mb-2 border border-[#C5A880]/30">
+                <span className="size-1.5 rounded-full bg-[#C5A880]" />
+                BuildOS™ Protocol
+              </span>
+              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#C5A880]">
+                Turnkey Engineering
+              </p>
+            </div>
             <h2 className="text-5xl leading-[0.95] lg:col-span-6 lg:text-7xl font-light">
               Engineering, made <em className="font-serif italic font-normal text-[#C5A880]">visible.</em>
             </h2>
@@ -149,7 +270,7 @@ export default function HomePage() {
             {/* Card 1: German Machinery & Joinery */}
             <article className="group border-b border-white/15 p-5 md:odd:border-r lg:p-7 bg-[#121214] hover:bg-[#18181C] transition-colors duration-500">
               <div className="flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.16em]">
-                <span className="text-[#C5A880]">01 — 04</span>
+                <span className="text-[#C5A880]">01 — 04 · MILLWORK</span>
                 <span className="text-white/40">CUT / 01</span>
               </div>
 
@@ -174,11 +295,17 @@ export default function HomePage() {
               </div>
 
               <div className="mt-6 grid gap-3 lg:grid-cols-[1fr_1.15fr]">
-                <h3 className="text-2xl leading-tight lg:text-3xl font-light text-white">
-                  German Machinery &amp; Joinery
-                </h3>
+                <div>
+                  <h3 className="text-2xl leading-tight lg:text-3xl font-light text-white">
+                    German Machinery &amp; Joinery
+                  </h3>
+                  <div className="mt-3 flex flex-wrap gap-2 text-[9px] font-mono text-white/50">
+                    <span className="border border-white/10 px-2 py-0.5">TOLERANCE ±0.5MM</span>
+                    <span className="border border-white/10 px-2 py-0.5 text-[#C5A880]">5-AXIS CNC HOMAG</span>
+                  </div>
+                </div>
                 <p className="text-sm leading-6 text-white/60 font-light">
-                  Precise CNC cutting, drilling, edge processing and architectural millwork manufactured in our owned facility.
+                  Precise CNC cutting, drilling, edge processing and architectural millwork manufactured in our owned 50,000 sq ft facility.
                 </p>
               </div>
             </article>
@@ -186,7 +313,7 @@ export default function HomePage() {
             {/* Card 2: Precision Modular Manufacturing */}
             <article className="group border-b border-white/15 p-5 md:odd:border-r lg:p-7 bg-[#121214] hover:bg-[#18181C] transition-colors duration-500">
               <div className="flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.16em]">
-                <span className="text-[#C5A880]">02 — 04</span>
+                <span className="text-[#C5A880]">02 — 04 · FABRICATION</span>
                 <span className="text-white/40">ALIGN / 02</span>
               </div>
 
@@ -212,11 +339,17 @@ export default function HomePage() {
               </div>
 
               <div className="mt-6 grid gap-3 lg:grid-cols-[1fr_1.15fr]">
-                <h3 className="text-2xl leading-tight lg:text-3xl font-light text-white">
-                  Precision Manufacturing
-                </h3>
+                <div>
+                  <h3 className="text-2xl leading-tight lg:text-3xl font-light text-white">
+                    Precision Manufacturing
+                  </h3>
+                  <div className="mt-3 flex flex-wrap gap-2 text-[9px] font-mono text-white/50">
+                    <span className="border border-white/10 px-2 py-0.5">BIM LOD-400</span>
+                    <span className="border border-white/10 px-2 py-0.5 text-[#C5A880]">CLASH DETECTION</span>
+                  </div>
+                </div>
                 <p className="text-sm leading-6 text-white/60 font-light">
-                  Strict tolerance control and shop drawing validation ensuring seamless site assembly across commercial projects.
+                  Strict tolerance control and shop drawing validation ensuring zero field errors during fast-track assembly.
                 </p>
               </div>
             </article>
@@ -224,7 +357,7 @@ export default function HomePage() {
             {/* Card 3: Refined Architectural Finishing */}
             <article className="group border-b border-white/15 p-5 md:odd:border-r lg:p-7 bg-[#121214] hover:bg-[#18181C] transition-colors duration-500">
               <div className="flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.16em]">
-                <span className="text-[#C5A880]">03 — 04</span>
+                <span className="text-[#C5A880]">03 — 04 · SURFACES</span>
                 <span className="text-white/40">EDGE / 03</span>
               </div>
 
@@ -249,11 +382,17 @@ export default function HomePage() {
               </div>
 
               <div className="mt-6 grid gap-3 lg:grid-cols-[1fr_1.15fr]">
-                <h3 className="text-2xl leading-tight lg:text-3xl font-light text-white">
-                  Refined Finishing
-                </h3>
+                <div>
+                  <h3 className="text-2xl leading-tight lg:text-3xl font-light text-white">
+                    Refined Architectural Finishing
+                  </h3>
+                  <div className="mt-3 flex flex-wrap gap-2 text-[9px] font-mono text-white/50">
+                    <span className="border border-white/10 px-2 py-0.5">ACOUSTIC NRC 0.85</span>
+                    <span className="border border-white/10 px-2 py-0.5 text-[#C5A880]">BRUSHED BRONZE</span>
+                  </div>
+                </div>
                 <p className="text-sm leading-6 text-white/60 font-light">
-                  Hand-selected veneers, acoustic slatted paneling, metal cladding, and exacting surface finishes.
+                  Hand-selected veneers, acoustic slatted paneling, bronze vitrines, and exacting surface reveals.
                 </p>
               </div>
             </article>
@@ -261,7 +400,7 @@ export default function HomePage() {
             {/* Card 4: Turnkey Civil Execution & MEP */}
             <article className="group border-b border-white/15 p-5 md:odd:border-r lg:p-7 bg-[#121214] hover:bg-[#18181C] transition-colors duration-500">
               <div className="flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.16em]">
-                <span className="text-[#C5A880]">04 — 04</span>
+                <span className="text-[#C5A880]">04 — 04 · EXECUTION</span>
                 <span className="text-white/40">LOAD / 04</span>
               </div>
 
@@ -285,11 +424,17 @@ export default function HomePage() {
               </div>
 
               <div className="mt-6 grid gap-3 lg:grid-cols-[1fr_1.15fr]">
-                <h3 className="text-2xl leading-tight lg:text-3xl font-light text-white">
-                  Turnkey Civil Execution
-                </h3>
+                <div>
+                  <h3 className="text-2xl leading-tight lg:text-3xl font-light text-white">
+                    Turnkey Civil Execution
+                  </h3>
+                  <div className="mt-3 flex flex-wrap gap-2 text-[9px] font-mono text-white/50">
+                    <span className="border border-white/10 px-2 py-0.5">MEP &amp; HVAC INTEGRATION</span>
+                    <span className="border border-white/10 px-2 py-0.5 text-[#C5A880]">27-DAY FAST TRACK</span>
+                  </div>
+                </div>
                 <p className="text-sm leading-6 text-white/60 font-light">
-                  Complete MEP integration, HVAC, fire fighting, civil finishing and timely handover across 10+ metros.
+                  Complete MEP integration, HVAC, fire fighting, civil finishing and snag-free handover across 10+ metros.
                 </p>
               </div>
             </article>
@@ -304,7 +449,7 @@ export default function HomePage() {
       <section id="collection" className="mx-auto max-w-[1480px] px-5 py-24 lg:px-10 lg:py-36">
         
         {/* Header Grid */}
-        <div className="mb-16 grid items-end border-b border-[#18181B]/15 pb-7 md:grid-cols-12">
+        <div className="mb-12 grid items-end border-b border-[#18181B]/15 pb-7 md:grid-cols-12">
           <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#A07A4F] md:col-span-3">
             02 / Realizations
           </p>
@@ -319,90 +464,170 @@ export default function HomePage() {
           </p>
         </div>
 
-        {/* 3 Staggered Columns Grid */}
-        <div className="grid gap-6 md:grid-cols-12">
+        {/* Architectural Sector Directory Ribbon */}
+        <div className="mb-14 flex flex-wrap items-center gap-3 border-b border-[#18181B]/10 pb-6 text-[10px] font-mono uppercase tracking-[0.18em]">
+          <span className="text-[#71717A] mr-2">FILTER BY SECTOR:</span>
+          <Link
+            href="/portfolio"
+            className="px-3.5 py-1.5 rounded-full bg-[#18181B] text-[#FAF8F5] font-semibold transition-all hover:bg-[#A07A4F]"
+          >
+            All Sectors (120+)
+          </Link>
+          <Link
+            href="/portfolio?sector=retail"
+            className="px-3.5 py-1.5 rounded-full border border-[#18181B]/20 text-[#18181B] transition-all hover:border-[#A07A4F] hover:text-[#A07A4F]"
+          >
+            Luxury Retail Flagships
+          </Link>
+          <Link
+            href="/portfolio?sector=corporate"
+            className="px-3.5 py-1.5 rounded-full border border-[#18181B]/20 text-[#18181B] transition-all hover:border-[#A07A4F] hover:text-[#A07A4F]"
+          >
+            Corporate Workspaces
+          </Link>
+          <Link
+            href="/portfolio?sector=hospitality"
+            className="px-3.5 py-1.5 rounded-full border border-[#18181B]/20 text-[#18181B] transition-all hover:border-[#A07A4F] hover:text-[#A07A4F]"
+          >
+            Hospitality &amp; Dining
+          </Link>
+          <Link
+            href="/portfolio?sector=joinery"
+            className="px-3.5 py-1.5 rounded-full border border-[#18181B]/20 text-[#18181B] transition-all hover:border-[#A07A4F] hover:text-[#A07A4F]"
+          >
+            Direct Joinery Works
+          </Link>
+        </div>
+
+        {/* 3 Staggered Columns Grid with 4K Interior Photography */}
+        <div className="grid gap-8 md:grid-cols-12">
           
-          {/* Column 1: Retail & Luxury Flagships */}
+          {/* Column 1: Retail & Luxury Flagships (4K Emerald Marble Boutique) */}
           <article className="md:col-span-5">
             <Link href="/portfolio/gucci-flagship" className="group block">
-              <div className="relative overflow-hidden aspect-[4/5] w-full bg-[#EFECE6]">
+              <div className="relative overflow-hidden aspect-[4/5] w-full bg-[#EFECE6] border border-[#18181B]/10 shadow-lg">
                 <Image
-                  src="/imgs/commercial/gucci.webp"
-                  alt="Gucci Flagship Retail Interior"
+                  src="/imgs/commercial/bk_realization_retail.jpg"
+                  alt="Brand Kettle High-End Retail & Jewellery Flagship Boutique"
                   fill
                   sizes="(max-width: 768px) 100vw, 42vw"
                   className="object-cover transition-transform duration-1000 group-hover:scale-[1.035]"
                 />
-                <span className="absolute left-4 top-4 bg-[#FAF8F5] px-2.5 py-1 font-mono text-[9px] tracking-[0.18em] border border-[#18181B]/10">
-                  FIG. 01
-                </span>
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                  <span className="bg-[#FAF8F5]/95 backdrop-blur-sm px-2.5 py-1 font-mono text-[9px] tracking-[0.18em] border border-[#18181B]/10 font-medium">
+                    FIG. 01 / RETAIL
+                  </span>
+                  <span className="bg-[#18181B]/80 backdrop-blur-sm text-white px-2 py-0.5 font-mono text-[8px] uppercase tracking-[0.16em]">
+                    3,400 SQ FT
+                  </span>
+                </div>
+                <div className="absolute bottom-3 left-3 right-3 bg-[#18181B]/85 backdrop-blur-md px-3 py-2 text-white border border-white/10 opacity-90 transition-opacity group-hover:opacity-100">
+                  <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-[#C5A880]">Joinery Specification</p>
+                  <p className="text-[11px] font-light text-white/90 truncate">Emerald Marble Wall &amp; Brushed Brass Vitrines</p>
+                </div>
               </div>
+
               <div className="mt-5 flex items-start justify-between gap-5 border-t border-[#18181B]/15 pt-4">
                 <div>
                   <h3 className="text-3xl lg:text-4xl font-light text-[#18181B] group-hover:text-[#A07A4F] transition-colors">
                     Retail &amp; Jewellery Flagships
                   </h3>
                   <p className="mt-2 max-w-sm text-sm leading-6 text-[#71717A] font-light">
-                    Flagship stores for global luxury brands and premier jewellers with bespoke security vitrines, lighting, and facade engineering (Gucci, PNG Jewellers, GIVA).
+                    Flagship stores for luxury brands with bespoke security vitrines, high-CRI illumination, and architectural facade engineering (Gucci, PNG Jewellers, GIVA).
                   </p>
+                  <div className="mt-3 flex items-center gap-3 font-mono text-[9px] text-[#A07A4F] uppercase tracking-[0.16em]">
+                    <span>Precision CNC Vitrines</span>
+                    <span>·</span>
+                    <span>27-Day Handover</span>
+                  </div>
                 </div>
                 <ArrowRight className="mt-2 size-5 shrink-0 text-[#A07A4F] transition-transform group-hover:translate-x-2" />
               </div>
             </Link>
           </article>
 
-          {/* Column 2: Corporate Workspaces & HQs (Staggered Down) */}
-          <article className="md:col-span-4 md:mt-28">
+          {/* Column 2: Corporate Workspaces & HQs (4K Smoked Oak Boardroom) */}
+          <article className="md:col-span-4 md:mt-24">
             <Link href="/portfolio/and-work-coworking" className="group block">
-              <div className="relative overflow-hidden aspect-[4/5] w-full bg-[#EFECE6]">
+              <div className="relative overflow-hidden aspect-[4/5] w-full bg-[#EFECE6] border border-[#18181B]/10 shadow-lg">
                 <Image
-                  src="/imgs/commercial/and-work-faridabad-coworking.jpg"
-                  alt="&Work Coworking Corporate Office Fit-Out"
+                  src="/imgs/commercial/bk_realization_office.jpg"
+                  alt="Brand Kettle Corporate Headquarters and Executive Boardroom"
                   fill
                   sizes="(max-width: 768px) 100vw, 34vw"
                   className="object-cover transition-transform duration-1000 group-hover:scale-[1.035]"
                 />
-                <span className="absolute left-4 top-4 bg-[#FAF8F5] px-2.5 py-1 font-mono text-[9px] tracking-[0.18em] border border-[#18181B]/10">
-                  FIG. 02
-                </span>
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                  <span className="bg-[#FAF8F5]/95 backdrop-blur-sm px-2.5 py-1 font-mono text-[9px] tracking-[0.18em] border border-[#18181B]/10 font-medium">
+                    FIG. 02 / CORPORATE
+                  </span>
+                  <span className="bg-[#18181B]/80 backdrop-blur-sm text-white px-2 py-0.5 font-mono text-[8px] uppercase tracking-[0.16em]">
+                    18,500 SQ FT
+                  </span>
+                </div>
+                <div className="absolute bottom-3 left-3 right-3 bg-[#18181B]/85 backdrop-blur-md px-3 py-2 text-white border border-white/10 opacity-90 transition-opacity group-hover:opacity-100">
+                  <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-[#C5A880]">Acoustic &amp; Millwork Spec</p>
+                  <p className="text-[11px] font-light text-white/90 truncate">Fluted Smoked Oak &amp; Double-Glazed Bronze Partitions</p>
+                </div>
               </div>
+
               <div className="mt-5 flex items-start justify-between gap-5 border-t border-[#18181B]/15 pt-4">
                 <div>
                   <h3 className="text-3xl lg:text-4xl font-light text-[#18181B] group-hover:text-[#A07A4F] transition-colors">
                     Corporate Workspaces
                   </h3>
                   <p className="mt-2 max-w-sm text-sm leading-6 text-[#71717A] font-light">
-                    High-performance enterprise headquarters, executive boardrooms, and collaborative coworking hubs (&amp;Work, Nanokirti, Corporate Suites).
+                    High-performance enterprise headquarters, executive boardrooms, and collaborative coworking hubs with integrated MEP (&amp;Work, Nanokirti, Corporate Suites).
                   </p>
+                  <div className="mt-3 flex items-center gap-3 font-mono text-[9px] text-[#A07A4F] uppercase tracking-[0.16em]">
+                    <span>LOD-400 BIM</span>
+                    <span>·</span>
+                    <span>Acoustic NRC 0.85</span>
+                  </div>
                 </div>
                 <ArrowRight className="mt-2 size-5 shrink-0 text-[#A07A4F] transition-transform group-hover:translate-x-2" />
               </div>
             </Link>
           </article>
 
-          {/* Column 3: Hospitality & Dining Environments (Staggered Further) */}
-          <article className="md:col-span-3 md:mt-56">
+          {/* Column 3: Hospitality & Dining Environments (4K Amber Onyx Lounge) */}
+          <article className="md:col-span-3 md:mt-48">
             <Link href="/portfolio/havana-lounge-bareilly" className="group block">
-              <div className="relative overflow-hidden aspect-[4/5] w-full bg-[#EFECE6]">
+              <div className="relative overflow-hidden aspect-[4/5] w-full bg-[#EFECE6] border border-[#18181B]/10 shadow-lg">
                 <Image
-                  src="/imgs/commercial/havana-lounge-bareilly-1.jpg"
-                  alt="Havana Lounge Bareilly Luxury Hospitality"
+                  src="/imgs/commercial/bk_hospitality_lounge.jpg"
+                  alt="Brand Kettle Luxury Hospitality Lounge with Amber Onyx Bar"
                   fill
                   sizes="(max-width: 768px) 100vw, 25vw"
                   className="object-cover transition-transform duration-1000 group-hover:scale-[1.035]"
                 />
-                <span className="absolute left-4 top-4 bg-[#FAF8F5] px-2.5 py-1 font-mono text-[9px] tracking-[0.18em] border border-[#18181B]/10">
-                  FIG. 03
-                </span>
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                  <span className="bg-[#FAF8F5]/95 backdrop-blur-sm px-2.5 py-1 font-mono text-[9px] tracking-[0.18em] border border-[#18181B]/10 font-medium">
+                    FIG. 03 / LOUNGE
+                  </span>
+                  <span className="bg-[#18181B]/80 backdrop-blur-sm text-white px-2 py-0.5 font-mono text-[8px] uppercase tracking-[0.16em]">
+                    6,200 SQ FT
+                  </span>
+                </div>
+                <div className="absolute bottom-3 left-3 right-3 bg-[#18181B]/85 backdrop-blur-md px-3 py-2 text-white border border-white/10 opacity-90 transition-opacity group-hover:opacity-100">
+                  <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-[#C5A880]">Signature Surface Spec</p>
+                  <p className="text-[11px] font-light text-white/90 truncate">Illuminated Onyx &amp; Coffered Walnut Millwork</p>
+                </div>
               </div>
+
               <div className="mt-5 flex items-start justify-between gap-5 border-t border-[#18181B]/15 pt-4">
                 <div>
                   <h3 className="text-3xl lg:text-4xl font-light text-[#18181B] group-hover:text-[#A07A4F] transition-colors">
                     Hospitality &amp; Dining
                   </h3>
                   <p className="mt-2 max-w-sm text-sm leading-6 text-[#71717A] font-light">
-                    Atmospheric restaurants, signature dining lounges, and boutique hotels with ambient acoustics and custom woodwork (Havana Lounge, Ramada Encore).
+                    Atmospheric dining lounges, signature bars, and boutique hotels with ambient acoustics and custom woodwork (Havana Lounge, Ramada Encore).
                   </p>
+                  <div className="mt-3 flex items-center gap-3 font-mono text-[9px] text-[#A07A4F] uppercase tracking-[0.16em]">
+                    <span>Custom Millwork</span>
+                    <span>·</span>
+                    <span>Turnkey MEP</span>
+                  </div>
                 </div>
                 <ArrowRight className="mt-2 size-5 shrink-0 text-[#A07A4F] transition-transform group-hover:translate-x-2" />
               </div>
@@ -412,7 +637,7 @@ export default function HomePage() {
         </div>
 
         {/* Secondary 2-Column Realization Cards */}
-        <div className="mt-16 grid border-t border-[#18181B]/15 sm:grid-cols-2">
+        <div className="mt-20 grid border-t border-[#18181B]/15 sm:grid-cols-2">
           
           <div className="border-b border-[#18181B]/15 py-10 sm:pr-12 sm:odd:border-r">
             <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#A07A4F] block mb-2">04 / RESIDENCES</span>
@@ -420,7 +645,7 @@ export default function HomePage() {
             <p className="mt-3 max-w-md text-sm leading-7 text-[#71717A] font-light">
               Bespoke private estates, luxury villas, and penthouse residences designed with custom joinery, integrated lighting, and Italian marble finishes (Taksha, Signature Residences).
             </p>
-            <Link href="/residential-interiors" className="inline-flex items-center gap-2 mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-[#A07A4F] hover:text-[#18181B] transition-colors">
+            <Link href="/residential-interiors" className="inline-flex items-center gap-2 mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-[#A07A4F] hover:text-[#18181B] transition-colors font-medium">
               <span>Explore Residential</span>
               <ArrowRight className="size-3" />
             </Link>
@@ -432,10 +657,122 @@ export default function HomePage() {
             <p className="mt-3 max-w-md text-sm leading-7 text-[#71717A] font-light">
               In-house manufactured architectural partitions, reception desks, executive conference tables, wall cladding, and acoustic systems built to custom project drawings.
             </p>
-            <Link href="/custom-furniture" className="inline-flex items-center gap-2 mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-[#A07A4F] hover:text-[#18181B] transition-colors">
+            <Link href="/custom-furniture" className="inline-flex items-center gap-2 mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-[#A07A4F] hover:text-[#18181B] transition-colors font-medium">
               <span>Explore Millwork</span>
               <ArrowRight className="size-3" />
             </Link>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          ARCHITECTURAL STANDARD MATRIX (Brand Kettle Differentiator)
+          ───────────────────────────────────────────────────────────── */}
+      <section className="border-y border-[#18181B]/15 bg-[#FAF8F5] py-20 lg:py-28">
+        <div className="mx-auto max-w-[1480px] px-5 lg:px-10">
+          
+          <div className="mb-14 grid gap-6 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-3">
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#A07A4F]">
+                Standard of delivery
+              </span>
+            </div>
+            <h2 className="text-5xl leading-[0.95] lg:col-span-6 lg:text-7xl font-light text-[#18181B]">
+              Engineered standard vs <em className="font-serif italic font-normal text-[#A07A4F]">conventional.</em>
+            </h2>
+            <p className="max-w-sm text-sm leading-6 text-[#71717A] lg:col-span-3 font-light">
+              Why India’s most demanding corporate directors and luxury retail brands mandate Brand Kettle BuildSpaces.
+            </p>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse border border-[#18181B]/15 text-sm">
+              <thead>
+                <tr className="bg-[#F2EDE4] font-mono text-[10px] uppercase tracking-[0.2em] text-[#18181B]">
+                  <th className="p-4 lg:p-6 border-b border-r border-[#18181B]/15 font-semibold">Delivery Parameter</th>
+                  <th className="p-4 lg:p-6 border-b border-r border-[#18181B]/15 font-semibold text-[#A07A4F] bg-[#FAF8F5]">
+                    ★ Brand Kettle BuildSpaces
+                  </th>
+                  <th className="p-4 lg:p-6 border-b border-[#18181B]/15 font-light text-[#71717A]">
+                    Conventional Contractors
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#18181B]/15 font-light">
+                <tr className="hover:bg-[#F2EDE4]/30 transition-colors">
+                  <td className="p-4 lg:p-6 border-r border-[#18181B]/15 font-medium text-[#18181B]">
+                    Joinery &amp; Millwork Fabrication
+                  </td>
+                  <td className="p-4 lg:p-6 border-r border-[#18181B]/15 bg-[#FAF8F5]/80">
+                    <div className="flex items-start gap-2.5">
+                      <CheckCircle2 className="size-4 text-[#A07A4F] shrink-0 mt-0.5" />
+                      <div>
+                        <strong className="font-medium text-[#18181B]">Direct 50,000 sq.ft 5-Axis Factory</strong>
+                        <p className="mt-1 text-xs text-[#71717A]">Off-site CNC manufacturing, edge banding, zero site sawdust.</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="p-4 lg:p-6 text-[#71717A]">
+                    Manual on-site carpentry with inconsistent cuts, high dust &amp; uneven reveals.
+                  </td>
+                </tr>
+
+                <tr className="hover:bg-[#F2EDE4]/30 transition-colors">
+                  <td className="p-4 lg:p-6 border-r border-[#18181B]/15 font-medium text-[#18181B]">
+                    Timeline &amp; Penalty Guarantee
+                  </td>
+                  <td className="p-4 lg:p-6 border-r border-[#18181B]/15 bg-[#FAF8F5]/80">
+                    <div className="flex items-start gap-2.5">
+                      <CheckCircle2 className="size-4 text-[#A07A4F] shrink-0 mt-0.5" />
+                      <div>
+                        <strong className="font-medium text-[#18181B]">27-Day Fast-Track Delivery</strong>
+                        <p className="mt-1 text-xs text-[#71717A]">Milestone-backed scheduling with daily digital site log updates.</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="p-4 lg:p-6 text-[#71717A]">
+                    Frequent 60-90 day uncoordinated delays, rent leakage, and scope creep.
+                  </td>
+                </tr>
+
+                <tr className="hover:bg-[#F2EDE4]/30 transition-colors">
+                  <td className="p-4 lg:p-6 border-r border-[#18181B]/15 font-medium text-[#18181B]">
+                    Technical Coordination (BIM &amp; MEP)
+                  </td>
+                  <td className="p-4 lg:p-6 border-r border-[#18181B]/15 bg-[#FAF8F5]/80">
+                    <div className="flex items-start gap-2.5">
+                      <CheckCircle2 className="size-4 text-[#A07A4F] shrink-0 mt-0.5" />
+                      <div>
+                        <strong className="font-medium text-[#18181B]">LOD-400 3D Modeling</strong>
+                        <p className="mt-1 text-xs text-[#71717A]">Pre-fabrication clash detection for HVAC, electrical, and plumbing.</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="p-4 lg:p-6 text-[#71717A]">
+                    Uncoordinated 2D paper drawings causing site clashes and costly rework.
+                  </td>
+                </tr>
+
+                <tr className="hover:bg-[#F2EDE4]/30 transition-colors">
+                  <td className="p-4 lg:p-6 border-r border-[#18181B]/15 font-medium text-[#18181B]">
+                    Quality Tolerance &amp; Warranty
+                  </td>
+                  <td className="p-4 lg:p-6 border-r border-[#18181B]/15 bg-[#FAF8F5]/80">
+                    <div className="flex items-start gap-2.5">
+                      <CheckCircle2 className="size-4 text-[#A07A4F] shrink-0 mt-0.5" />
+                      <div>
+                        <strong className="font-medium text-[#18181B]">±0.5mm Tolerance · 5-Yr Warranty</strong>
+                        <p className="mt-1 text-xs text-[#71717A]">Laser calibrated finishes, snag-free signoff, and SLA support.</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="p-4 lg:p-6 text-[#71717A]">
+                    No tolerance standard, zero formal warranty, and difficult snag rectification.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
         </div>

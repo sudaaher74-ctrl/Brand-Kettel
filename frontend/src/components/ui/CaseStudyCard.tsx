@@ -21,33 +21,30 @@ export default function CaseStudyCard({ project, index }: { project: CaseStudy; 
 
   return (
     <Link href={`/portfolio/${project.slug}`} className="group block h-full w-full overflow-hidden relative">
-      <article className="relative w-full aspect-[4/3] sm:aspect-square bg-[#121216] rounded-[24px] overflow-hidden border border-white/10 hover:border-[#C5A880]/60 transition-all duration-500 shadow-xl">
+      <article className="relative w-full aspect-[4/3] sm:aspect-square bg-[#F2EDE4] overflow-hidden border border-[#18181B]/15 hover:border-[#18181B]/60 transition-all duration-500 shadow-sm">
         
         {/* Background Image */}
         {mainImage && (
           <Image
             src={mainImage}
             alt={`${project.title} — ${category}`}
-            className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-108"
+            className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-106"
             fill
-            // Cards are full width on phones and two-up above 768px, inside a
-            // 1400px container — so never wider than 700px on desktop.
             sizes="(max-width: 768px) 100vw, 700px"
-            // Only the first row is above the fold; everything else lazy-loads.
             priority={index < 2}
           />
         )}
         
-        {/* Static Ambient Vignette */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none" />
+        {/* Vignette Gradient for Text Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#121214]/90 via-[#121214]/30 to-transparent pointer-events-none" />
 
         {/* Top Badges */}
-        <div className="absolute top-5 left-5 right-5 flex items-center justify-between z-10 pointer-events-none">
-          <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[11px] uppercase tracking-[0.14em] font-medium text-[#C5A880]">
+        <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10 pointer-events-none">
+          <span className="px-3 py-1 bg-[#FAF8F5]/90 backdrop-blur-md border border-[#18181B]/15 font-mono text-[9px] uppercase tracking-[0.2em] font-semibold text-[#A07A4F]">
             {category}
           </span>
           {keyStat && (
-            <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[11px] text-white/80 font-light">
+            <span className="px-3 py-1 bg-[#FAF8F5]/90 backdrop-blur-md border border-[#18181B]/15 font-mono text-[9px] text-[#18181B] tracking-wider">
               {keyStat}
             </span>
           )}
@@ -56,19 +53,19 @@ export default function CaseStudyCard({ project, index }: { project: CaseStudy; 
         {/* Bottom Details Content */}
         <div className="absolute bottom-0 inset-x-0 p-6 sm:p-8 z-10 flex flex-col justify-end">
           {location && (
-            <span className="text-xs uppercase tracking-[0.2em] text-[#C5A880] mb-1 font-medium block">
+            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#A07A4F] mb-1 block">
               {location}
             </span>
           )}
-          <h3 className="font-display font-light text-2xl sm:text-3xl text-white uppercase tracking-wide group-hover:text-[#C5A880] transition-colors duration-300">
+          <h3 className="font-display font-light text-2xl sm:text-3xl text-white uppercase tracking-tight group-hover:text-[#A07A4F] transition-colors duration-300">
             {project.title || (project as any).name}
           </h3>
           
-          <div className="mt-4 flex items-center justify-between opacity-90 group-hover:opacity-100 transition-opacity">
-            <span className="text-xs text-white/60 font-light max-w-[80%] line-clamp-1">
+          <div className="mt-3 flex items-center justify-between opacity-90 group-hover:opacity-100 transition-opacity">
+            <span className="text-xs text-white/70 font-light max-w-[80%] line-clamp-1">
               {project.description}
             </span>
-            <span className="w-8 h-8 rounded-full bg-white/10 group-hover:bg-[#C5A880] group-hover:text-[#0A0A0B] text-white flex items-center justify-center text-xs transition-all duration-300 shrink-0">
+            <span className="w-8 h-8 rounded-full bg-[#FAF8F5] text-[#18181B] group-hover:bg-[#A07A4F] group-hover:text-white flex items-center justify-center text-xs font-bold transition-all duration-300 shrink-0 shadow-sm">
               →
             </span>
           </div>

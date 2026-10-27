@@ -1,15 +1,5 @@
 import Image from 'next/image';
 
-/**
- * Shared page hero.
- *
- * This is a server component. It used to be a client component whose eyebrow,
- * H1 and subtitle were framer-motion elements with initial={{ opacity: 0 }};
- * that server-renders style="opacity:0", so the above-the-fold headline stayed
- * invisible until the JS bundle hydrated. On a 4x-throttled mobile CPU that put
- * LCP at 3.6s on every expertise page. The same entrance effect now comes from
- * the .bk-rise CSS animation in globals.css, which runs at first paint.
- */
 export default function PageHero({
   eyebrow,
   title,
@@ -29,7 +19,7 @@ export default function PageHero({
 
   if (fullScreen) {
     return (
-      <section className="relative h-screen min-h-[600px] w-full overflow-hidden flex items-center justify-center bg-[#0A0A0B]">
+      <section className="relative h-screen min-h-[600px] w-full overflow-hidden flex items-center justify-center bg-[#121214]">
         {/* Background Media */}
         <div className="absolute inset-0 z-0">
           {isVideo ? (
@@ -50,22 +40,20 @@ export default function PageHero({
               className="object-cover"
               fill
               priority
-              // Full-bleed backdrop: one viewport width at every breakpoint.
               sizes="100vw"
             />
           )}
-          {/* Subtle cinematic gradient overlay to ensure text readability */}
           {!hideText && (
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0B]/60 via-black/40 to-[#0A0A0B]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#121214]/60 via-black/40 to-[#121214]" />
           )}
         </div>
 
         {/* Content */}
         {!hideText && (
           <div className="container-px relative z-10 text-center text-white mt-16 sm:mt-0 max-w-4xl mx-auto">
-            <div className="bk-rise inline-flex items-center gap-2 rounded-full bg-black/60 backdrop-blur-md border border-white/15 px-4 py-1.5 mb-6 shadow-xl">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880] animate-pulse" aria-hidden="true" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.25em] text-[#C5A880]">
+            <div className="bk-rise inline-flex items-center gap-2 bg-[#FAF8F5]/90 backdrop-blur-md border border-[#18181B]/15 px-4 py-1.5 mb-6 shadow-sm">
+              <span className="w-1.5 h-1.5 bg-[#A07A4F]" aria-hidden="true" />
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#18181B]">
                 {eyebrow}
               </span>
             </div>
@@ -84,36 +72,30 @@ export default function PageHero({
   }
 
   return (
-    <section className="relative overflow-hidden bg-[#0A0A0B] pt-28 sm:pt-36">
-      <div className="container-px relative pb-14 sm:pb-20">
+    <section className="relative overflow-hidden bg-[#FAF8F5] pt-28 sm:pt-36">
+      <div className="container-px relative pb-14 sm:pb-20 max-w-[1480px] mx-auto px-5 sm:px-8 lg:px-12">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           {/* Left Column: Typography */}
           <div>
-            <div className="bk-rise inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-1.5 mb-6 shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880]" aria-hidden="true" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.25em] text-[#C5A880]">
+            <div className="bk-rise inline-flex items-center gap-2 bg-[#F2EDE4] border border-[#18181B]/15 px-4 py-1.5 mb-6 shadow-sm">
+              <span className="w-1.5 h-1.5 bg-[#A07A4F]" aria-hidden="true" />
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#A07A4F]">
                 {eyebrow}
               </span>
             </div>
-            <h1 className="bk-rise bk-rise-delay-1 font-display font-light text-3xl sm:text-4xl lg:text-5xl text-white uppercase tracking-[0.02em] leading-[1.15]">
+            <h1 className="bk-rise bk-rise-delay-1 font-display font-light text-3xl sm:text-4xl lg:text-5xl text-[#18181B] uppercase tracking-[0.02em] leading-[1.15]">
               {title}
             </h1>
             {subtitle && (
-              <p className="bk-rise bk-rise-delay-2 mt-6 text-sm sm:text-base text-[#A1A1AA] font-light leading-relaxed max-w-xl">
+              <p className="bk-rise bk-rise-delay-2 mt-6 text-sm sm:text-base text-[#71717A] font-light leading-relaxed max-w-xl">
                 {subtitle}
               </p>
             )}
           </div>
 
-          {/* Right Column: Framed Media with Ambient Halo */}
+          {/* Right Column: Framed Media */}
           <div className="bk-rise bk-rise-delay-1 relative group">
-            {/* Ambient halo glow */}
-            <div
-              aria-hidden="true"
-              className="absolute -inset-2 rounded-[28px] bg-gradient-to-tr from-[#C5A880]/20 via-transparent to-[#C5A880]/10 blur-2xl -z-10 opacity-60 group-hover:opacity-100 transition-opacity duration-700"
-            />
-
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[24px] border border-white/15 bg-[#121216] shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+            <div className="relative aspect-[4/3] w-full overflow-hidden border border-[#18181B]/15 bg-[#F2EDE4] shadow-md">
               {isVideo ? (
                 <video
                   src={image}
@@ -132,8 +114,6 @@ export default function PageHero({
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   fill
                   priority
-                  // Half-width column above lg; the media box never exceeds
-                  // half the 1400px container, so cap the request at 700px.
                   sizes="(max-width: 1024px) 100vw, 700px"
                 />
               )}

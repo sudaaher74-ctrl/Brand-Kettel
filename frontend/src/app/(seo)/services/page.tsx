@@ -1,42 +1,58 @@
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
-import Image from 'next/image';
 import Link from 'next/link';
-import { services as fallbackServices } from '@/lib/data';
+import Image from 'next/image';
 
 export const metadata: Metadata = pageMetadata({
   path: '/services',
-  title: 'Turnkey Services — Design, Build & Furnish',
-  description: 'Commercial interiors, retail stores, jewellery showrooms, office fit-outs, residential interiors and custom furniture — delivered turnkey by Brand Kettle BuildSpaces.',
-  socialTitle: 'Design, Build & Furnish — All Under One Contract',
-  socialDescription: 'Civil and structural fit-out, factory joinery, HVAC and MEP engineering, and architectural lighting from a single accountable partner.',
-  image: '/imgs/commercial/p098_129.jpg',
-  imageAlt: 'Hospitality lobby fit-out delivered turnkey by Brand Kettle BuildSpaces',
+  title: 'Turnkey Commercial Interior Services — Brand Kettle BuildSpaces',
+  description: 'Explore our full spectrum of turnkey commercial interior services: corporate fit-outs, luxury retail environments, jewellery showrooms, and bespoke joinery.',
+  socialTitle: 'Services & Disciplines — Brand Kettle BuildSpaces',
+  socialDescription: 'End-to-end commercial architecture, engineering, in-house joinery and on-site fit-out execution delivered across India.',
+  image: '/imgs/commercial/gucci.webp',
+  imageAlt: 'Turnkey interior execution by Brand Kettle BuildSpaces',
 });
-
-export const revalidate = 60;
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-
-async function getServices() {
-  try {
-    const res = await fetch(`${API_URL}/api/admin/content?type=services`, { next: { revalidate: 60 } });
-    if (!res.ok) return fallbackServices;
-    const data = await res.json();
-    return Array.isArray(data) && data.length > 0 ? data : fallbackServices;
-  } catch (error) {
-    console.warn(`Failed to fetch services:`, error);
-    return fallbackServices;
-  }
-}
 
 const SERVICE_LINKS: Record<string, string> = {
   'Commercial Fit-Outs': '/commercial-fit-outs',
-  'Retail Store Design': '/retail-fit-outs',
+  'Retail Fit-Outs': '/retail-fit-outs',
   'Jewellery Showrooms': '/jewellery-showrooms',
-  'Residential Interiors': '/residential-interiors',
   'Custom Furniture': '/custom-furniture',
-  'Institutional Furniture': '/library-institutional-furniture',
+  'Residential Interiors': '/residential-interiors',
 };
+
+const DEFAULT_SERVICES = [
+  {
+    title: 'Commercial Fit-Outs',
+    image: '/imgs/commercial/and-work-faridabad-coworking.jpg',
+    tag: 'Corporate & Campuses',
+    description: 'High-performance offices, collaborative workspaces, and enterprise fit-outs engineered for productivity and brand identity.',
+  },
+  {
+    title: 'Retail Fit-Outs',
+    image: '/imgs/commercial/gucci.webp',
+    tag: 'Luxury Flagships',
+    description: 'Turnkey luxury retail environments engineered for flawless brand expression, high footfall, and rapid retail rollouts.',
+  },
+  {
+    title: 'Jewellery Showrooms',
+    image: '/imgs/commercial/png1.jpg',
+    tag: 'High-Security Retail',
+    description: 'Specialized jewellery retail fit-outs combining high-CRI illumination, secure display joinery, and fast-track delivery.',
+  },
+  {
+    title: 'Custom Furniture',
+    image: '/imgs/commercial/brandkettle1.jpg',
+    tag: 'Factory Joinery',
+    description: 'Precision architectural woodwork, modular workstations, and bespoke furniture manufactured in our direct factory facilities.',
+  },
+  {
+    title: 'Residential Interiors',
+    image: '/imgs/commercial/taksha-hyderabad-cover.webp',
+    tag: 'Bespoke Living',
+    description: 'High-end luxury residences, penthouses, and private estates executed with meticulous joinery and turnkey precision.',
+  },
+];
 
 const SCOPE_PILLARS = [
   { no: '01', title: 'Civil & Structural Fit-Out', desc: 'Demolition, drywalls, ceilings, flooring, masonry, and architectural finishes.' },
@@ -45,41 +61,41 @@ const SCOPE_PILLARS = [
   { no: '04', title: 'Architectural Lighting', desc: 'High-CRI retail illumination, ambient mood controls, and task lighting.' },
 ];
 
-export default async function ServicesPage() {
-  const services = await getServices();
-
+export default function ServicesPage() {
   return (
-    <div className="w-full bg-[#0A0A0B] text-white min-h-screen pt-28 sm:pt-36 pb-24">
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
+    <div className="w-full bg-[#FAF8F5] text-[#18181B] min-h-screen pt-28 sm:pt-36 pb-24 selection:bg-[#A07A4F] selection:text-white">
+      <div className="max-w-[1480px] mx-auto px-5 sm:px-8 lg:px-12">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 md:mb-28">
-          <div className="inline-flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.3em] font-medium text-[#C5A880] mb-5">
-            <span>✦</span>
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+          <div className="flex items-center justify-center gap-2 font-mono text-[10px] md:text-xs uppercase tracking-[0.24em] font-semibold text-[#A07A4F] mb-4">
+            <span>03</span>
+            <span className="text-[#18181B]/30">/</span>
+            <span>Disciplines</span>
+            <span className="text-[#18181B]/30">—</span>
             <span>End-to-End Capabilities</span>
-            <span>✦</span>
           </div>
-          <h1 className="font-display font-light text-[38px] sm:text-[52px] md:text-[64px] leading-[1.05] tracking-tight uppercase text-white">
+          <h1 className="font-display font-light text-[38px] sm:text-[52px] md:text-[64px] leading-[1.04] tracking-tight uppercase text-[#18181B]">
             Design, Build &amp; <br />
-            <span className="font-serif italic font-normal text-[#C5A880]">Furnish Under One Roof</span>
+            <span className="font-serif italic font-normal text-[#A07A4F]">Furnish Under One Roof</span>
           </h1>
-          <p className="mt-6 text-sm sm:text-base text-[#A1A1AA] font-light leading-relaxed max-w-xl mx-auto">
-            Six disciplined specializations with single-point accountability — from strategic discovery to on-site execution and final handover.
+          <p className="mt-6 text-sm sm:text-base text-[#71717A] font-light leading-relaxed max-w-xl mx-auto">
+            Disciplined specializations with single-point accountability — from strategic discovery to on-site execution and final handover.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-24 md:mb-32">
-          {services.map((s: { title: string; image: string; tag: string; description: string }) => {
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-20 md:mb-28">
+          {DEFAULT_SERVICES.map((s) => {
             const href = SERVICE_LINKS[s.title] || '/contact';
             return (
               <Link
                 key={s.title}
                 href={href}
-                className="group block h-full rounded-[24px] bg-[#121216] border border-white/10 hover:border-[#C5A880]/50 transition-all duration-300 overflow-hidden shadow-2xl flex flex-col justify-between"
+                className="group block h-full bg-[#F2EDE4] border border-[#18181B]/15 hover:border-[#18181B]/50 transition-all duration-300 overflow-hidden shadow-sm flex flex-col justify-between"
               >
                 <div>
-                  <div className="relative aspect-[16/10] overflow-hidden bg-black/40">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-black/10">
                     <Image
                       src={s.image}
                       alt={s.title}
@@ -87,27 +103,27 @@ export default async function ServicesPage() {
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#121216] via-transparent to-transparent opacity-80" />
-                    <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] uppercase tracking-[0.14em] font-medium text-[#C5A880]">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121214]/60 via-transparent to-transparent opacity-60" />
+                    <span className="absolute top-4 left-4 px-3 py-1 bg-[#FAF8F5]/90 backdrop-blur-md border border-[#18181B]/15 font-mono text-[9px] uppercase tracking-[0.2em] font-semibold text-[#A07A4F]">
                       {s.tag}
                     </span>
                   </div>
 
                   <div className="p-7">
-                    <h3 className="font-display font-light text-2xl text-white uppercase tracking-wide group-hover:text-[#C5A880] transition-colors mb-3">
+                    <h3 className="font-display font-light text-2xl text-[#18181B] uppercase tracking-wide group-hover:text-[#A07A4F] transition-colors mb-3">
                       {s.title}
                     </h3>
-                    <p className="text-sm text-[#A1A1AA] font-light leading-relaxed">
+                    <p className="text-sm text-[#71717A] font-light leading-relaxed">
                       {s.description}
                     </p>
                   </div>
                 </div>
 
-                <div className="px-7 pb-7 pt-2 flex items-center justify-between border-t border-white/5">
-                  <span className="text-xs uppercase tracking-[0.14em] text-[#C5A880] font-medium">
+                <div className="px-7 pb-7 pt-3 flex items-center justify-between border-t border-[#18181B]/10">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#A07A4F] font-semibold">
                     Explore Discipline
                   </span>
-                  <span className="w-8 h-8 rounded-full bg-white/5 group-hover:bg-[#C5A880] group-hover:text-[#0A0A0B] text-white flex items-center justify-center text-xs transition-colors">
+                  <span className="w-8 h-8 rounded-full bg-white text-[#18181B] group-hover:bg-[#18181B] group-hover:text-[#FAF8F5] border border-[#18181B]/10 flex items-center justify-center text-xs font-bold transition-colors">
                     →
                   </span>
                 </div>
@@ -117,12 +133,12 @@ export default async function ServicesPage() {
         </div>
 
         {/* Turnkey Scope Breakdown */}
-        <section className="mb-24 md:mb-32">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-medium block mb-2">
+        <section className="mb-20 md:mb-28">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A07A4F] font-semibold block mb-2">
               Full Spectrum
             </span>
-            <h2 className="font-display font-light text-3xl sm:text-4xl text-white uppercase tracking-tight">
+            <h2 className="font-display font-light text-3xl sm:text-4xl text-[#18181B] uppercase tracking-tight">
               Turnkey Scope of Works
             </h2>
           </div>
@@ -131,13 +147,13 @@ export default async function ServicesPage() {
             {SCOPE_PILLARS.map((p) => (
               <div
                 key={p.no}
-                className="rounded-[20px] bg-[#121216] p-7 border border-white/10 hover:border-[#C5A880]/50 transition-all duration-300"
+                className="bg-[#F2EDE4] p-7 border border-[#18181B]/15 hover:border-[#18181B]/50 transition-all duration-300 shadow-sm"
               >
-                <span className="font-serif italic text-xs text-[#C5A880] mb-2 block">{p.no}</span>
-                <h3 className="font-display text-base font-medium uppercase tracking-wide text-white mb-3">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#A07A4F] font-semibold mb-2 block">{p.no}</span>
+                <h3 className="font-display text-base font-semibold uppercase tracking-wide text-[#18181B] mb-3">
                   {p.title}
                 </h3>
-                <p className="text-xs text-[#A1A1AA] font-light leading-relaxed">
+                <p className="text-xs text-[#71717A] font-light leading-relaxed">
                   {p.desc}
                 </p>
               </div>
@@ -145,21 +161,21 @@ export default async function ServicesPage() {
           </div>
         </section>
 
-        {/* Bottom Consultation CTA */}
-        <div className="rounded-[28px] bg-[#121216] border border-white/10 p-8 sm:p-14 text-center max-w-4xl mx-auto shadow-2xl">
-          <span className="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-medium block mb-3">
+        {/* Bottom Consultation CTA in Deep Charcoal Contrast */}
+        <div className="bg-[#121214] text-white border border-[#18181B]/20 p-8 sm:p-14 text-center max-w-4xl mx-auto shadow-xl">
+          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#A07A4F] font-semibold block mb-3">
             Custom Requirements?
           </span>
           <h3 className="font-display font-light text-3xl sm:text-4xl text-white uppercase mb-4">
             Request an Architectural Consultation
           </h3>
-          <p className="text-sm text-[#A1A1AA] font-light max-w-xl mx-auto mb-8">
+          <p className="text-sm text-white/70 font-light max-w-xl mx-auto mb-8">
             Tell us about your project brief, timeline, and location. Our project directors will provide an upfront scope roadmap.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#C5A880] text-[#0A0A0B] hover:bg-white text-xs uppercase tracking-[0.14em] font-semibold transition-all duration-300 shadow-xl"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#FAF8F5] text-[#18181B] hover:bg-[#A07A4F] hover:text-white font-mono text-[11px] uppercase tracking-[0.18em] font-semibold transition-all duration-300 shadow-sm"
             >
               Discuss Your Requirement →
             </Link>

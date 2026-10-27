@@ -44,21 +44,23 @@ export default async function PortfolioPage() {
   });
 
   return (
-    <div className="w-full bg-[#0A0A0B] text-white min-h-screen pt-28 sm:pt-36 pb-24">
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
+    <div className="w-full bg-[#FAF8F5] text-[#18181B] min-h-screen pt-28 sm:pt-36 pb-24 selection:bg-[#A07A4F] selection:text-white">
+      <div className="max-w-[1480px] mx-auto px-5 sm:px-8 lg:px-12">
         {/* Architectural Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-          <div className="inline-flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.3em] font-medium text-[#C5A880] mb-5">
-            <span>✦</span>
-            <span>Selected Realizations</span>
-            <span>✦</span>
+        <div className="max-w-3xl mb-14 md:mb-18">
+          <div className="flex items-center gap-2 font-mono text-[10px] md:text-xs uppercase tracking-[0.24em] font-semibold text-[#A07A4F] mb-4">
+            <span>02</span>
+            <span className="text-[#18181B]/30">/</span>
+            <span>Realizations</span>
+            <span className="text-[#18181B]/30">—</span>
+            <span>Selected Works</span>
           </div>
-          <h1 className="font-display font-light text-[38px] sm:text-[52px] md:text-[64px] leading-[1.05] tracking-tight uppercase text-white">
-            Spaces That Define <br />
-            <span className="font-serif italic font-normal text-[#C5A880]">Excellence</span>
+          <h1 className="font-display font-light text-[38px] sm:text-[54px] md:text-[68px] leading-[1.04] tracking-tight uppercase text-[#18181B]">
+            Spaces Crafted to an <br />
+            <span className="font-serif italic font-normal text-[#A07A4F]">Exact Standard</span>
           </h1>
-          <p className="mt-6 text-sm sm:text-base text-[#A1A1AA] font-light leading-relaxed max-w-xl mx-auto">
-            From flagship retail and prestigious jewellery showrooms to high-performance corporate workspaces across India — executed completely turnkey.
+          <p className="mt-6 text-sm sm:text-base text-[#71717A] font-light leading-relaxed max-w-xl">
+            From flagship luxury retail and prestigious jewellery showrooms to high-performance corporate workspaces across India — executed completely turnkey.
           </p>
         </div>
 

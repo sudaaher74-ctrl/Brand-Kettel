@@ -3,24 +3,23 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Page Not Found',
-  // A 404 should never be indexed even if something links to it.
   robots: { index: false, follow: true },
 };
 
 export default function NotFound() {
   return (
-    <section className="grid min-h-screen place-items-center bg-[#0A0A0B] text-white px-5 py-24">
+    <section className="grid min-h-screen place-items-center bg-[#FAF8F5] text-[#18181B] px-5 py-24 selection:bg-[#A07A4F] selection:text-white">
       <div className="text-center max-w-lg">
         <span
           aria-hidden="true"
-          className="font-serif italic text-7xl sm:text-8xl font-light text-[#C5A880] block mb-2"
+          className="font-serif italic text-7xl sm:text-8xl font-light text-[#A07A4F] block mb-2"
         >
           404
         </span>
-        <h1 className="font-display font-light text-2xl sm:text-3xl uppercase tracking-wide text-white">
+        <h1 className="font-display font-light text-2xl sm:text-3xl uppercase tracking-wide text-[#18181B]">
           Space Not Found
         </h1>
-        <p className="mt-4 text-sm text-[#A1A1AA] font-light leading-relaxed">
+        <p className="mt-4 text-sm text-[#71717A] font-light leading-relaxed">
           The page you are looking for has moved, been renamed, or does not exist. Our completed
           projects and the team are both one click away.
         </p>
@@ -28,20 +27,20 @@ export default function NotFound() {
         <div className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             href="/portfolio"
-            className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-3.5 rounded-full bg-[#C5A880] text-[#0A0A0B] hover:bg-white text-xs uppercase tracking-[0.14em] font-semibold transition-colors duration-300 shadow-xl"
+            className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-3.5 bg-[#18181B] text-[#FAF8F5] hover:bg-[#A07A4F] hover:text-white font-mono text-[11px] uppercase tracking-[0.18em] font-semibold transition-all duration-300 shadow-sm"
           >
             View our work
           </Link>
           <Link
             href="/contact"
-            className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-3.5 rounded-full border border-white/25 hover:border-[#C5A880] text-white hover:text-[#C5A880] text-xs uppercase tracking-[0.14em] font-semibold transition-colors duration-300"
+            className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-3.5 border border-[#18181B]/20 hover:border-[#18181B] text-[#18181B] font-mono text-[11px] uppercase tracking-[0.18em] font-semibold transition-all duration-300"
           >
             Talk to us
           </Link>
         </div>
 
-        <p className="mt-8 text-xs text-white/40">
-          <Link href="/" className="hover:text-[#C5A880] transition-colors">
+        <p className="mt-8 text-xs text-[#71717A]">
+          <Link href="/" className="hover:text-[#A07A4F] transition-colors underline">
             Return to homepage
           </Link>
         </p>

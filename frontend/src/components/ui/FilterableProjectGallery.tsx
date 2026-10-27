@@ -16,15 +16,6 @@ const FILTER_TABS = [
 
 export default function FilterableProjectGallery({ projects }: { projects: CaseStudy[] }) {
   const [activeCategory, setActiveCategory] = useState('All');
-  /*
-   * The framer-motion entrance below server-renders style="opacity:0", so on
-   * the first paint the whole grid — including the above-the-fold cards that
-   * are the page's LCP — stayed invisible until hydration finished. On a
-   * throttled mobile CPU that cost ~2.2s of LCP.
-   *
-   * So: no JS-driven entrance until the visitor actually filters. The initial
-   * grid renders visible and fades in via the CSS .bk-rise animation instead.
-   */
   const [hasFiltered, setHasFiltered] = useState(false);
 
   const filteredProjects = projects.filter((p) => {
@@ -39,7 +30,7 @@ export default function FilterableProjectGallery({ projects }: { projects: CaseS
   return (
     <div className="w-full">
       {/* Category Filter Pills */}
-      <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-12 md:mb-16">
+      <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-12 md:mb-16">
         {FILTER_TABS.map((tab) => {
           const isActive = activeCategory === tab.value;
           return (
@@ -49,10 +40,10 @@ export default function FilterableProjectGallery({ projects }: { projects: CaseS
                 setActiveCategory(tab.value);
                 setHasFiltered(true);
               }}
-              className={`px-5 py-2.5 rounded-full text-xs md:text-sm uppercase tracking-[0.14em] font-medium transition-all duration-300 ${
+              className={`px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs uppercase tracking-[0.16em] font-mono transition-all duration-300 border cursor-pointer ${
                 isActive
-                  ? 'bg-[#C5A880] text-[#0A0A0B] shadow-[0_0_20px_rgba(197,168,128,0.3)] font-semibold'
-                  : 'bg-[#121216] text-[#A1A1AA] hover:text-white hover:bg-white/10 border border-white/10'
+                  ? 'bg-[#18181B] text-[#FAF8F5] border-[#18181B] font-semibold shadow-sm'
+                  : 'bg-white/70 text-[#18181B]/70 hover:text-[#18181B] hover:bg-[#F2EDE4] border-[#18181B]/15'
               }`}
             >
               {tab.label}
@@ -71,12 +62,12 @@ export default function FilterableProjectGallery({ projects }: { projects: CaseS
             <motion.div
               key={project.slug}
               layout
-              initial={hasFiltered ? { opacity: 0, scale: 0.95 } : false}
+              initial={hasFiltered ? { opacity: 0, scale: 0.96 } : false}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className={hasFiltered ? undefined : 'bk-rise'}
-              style={hasFiltered ? undefined : { animationDelay: `${Math.min(index, 5) * 0.06}s` }}
+              style={hasFiltered ? undefined : { animationDelay: `${Math.min(index, 5) * 0.05}s` }}
             >
               <CaseStudyCard project={project} index={index} />
             </motion.div>

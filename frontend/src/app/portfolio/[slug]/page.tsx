@@ -69,7 +69,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     project.blurb ||
     `View our complete commercial interior fit-out project for ${project.name}${where}.`;
   const social = `${project.name}${where} — ${project.category || 'Turnkey Fit-Out'} by Brand Kettle`;
-  // The project's own hero image, never the global share image.
   const image = project.image || '/imgs/commercial/gucci.webp';
 
   return pageMetadata({
@@ -96,16 +95,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   ]);
 
   return (
-    <article className="bg-[#0A0A0B] text-white min-h-screen pt-28 sm:pt-36 pb-24">
+    <article className="bg-[#FAF8F5] text-[#18181B] min-h-screen pt-28 sm:pt-36 pb-24 selection:bg-[#A07A4F] selection:text-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(breadcrumbs)} />
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
+      <div className="max-w-[1480px] mx-auto px-5 sm:px-8 lg:px-12">
         {/* Back Link */}
-        <div className="mb-8">
+        <div className="mb-10">
           <Link
             href="/portfolio"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-medium text-[#C5A880] hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] font-medium text-[#A07A4F] hover:text-[#18181B] transition-colors"
           >
-            ← Back to Portfolio
+            ← Back to Realizations
           </Link>
         </div>
 
@@ -116,44 +115,44 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           gallery={project.gallery || []}
         >
           <header className="mb-8">
-            <span className="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-medium block mb-2">
+            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A07A4F] font-semibold block mb-2">
               {project.category || 'Turnkey Commercial'}
             </span>
-            <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-6xl text-white uppercase tracking-tight mb-8">
+            <h1 className="font-display font-light text-4xl sm:text-5xl lg:text-6xl text-[#18181B] uppercase tracking-tight mb-8">
               {project.name}
             </h1>
 
             {/* Specs Grid */}
-            <div className="grid grid-cols-2 gap-4 p-6 rounded-2xl bg-[#121216] border border-white/10">
+            <div className="grid grid-cols-2 gap-4 p-6 bg-[#F2EDE4] border border-[#18181B]/15">
               {project.location && (
                 <div>
-                  <span className="text-[10px] uppercase tracking-wider text-[#A1A1AA] block mb-1">Location</span>
-                  <span className="text-sm font-medium text-white">{project.location}</span>
+                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#71717A] block mb-1">Location</span>
+                  <span className="text-sm font-medium text-[#18181B]">{project.location}</span>
                 </div>
               )}
               {project.category && (
                 <div>
-                  <span className="text-[10px] uppercase tracking-wider text-[#A1A1AA] block mb-1">Sector</span>
-                  <span className="text-sm font-medium text-white">{project.category}</span>
+                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#71717A] block mb-1">Sector</span>
+                  <span className="text-sm font-medium text-[#18181B]">{project.category}</span>
                 </div>
               )}
               {project.area && (
                 <div>
-                  <span className="text-[10px] uppercase tracking-wider text-[#A1A1AA] block mb-1">Scale</span>
-                  <span className="text-sm font-medium text-white">{project.area} sq ft</span>
+                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#71717A] block mb-1">Scale</span>
+                  <span className="text-sm font-medium text-[#18181B]">{project.area} sq ft</span>
                 </div>
               )}
               {project.year && (
                 <div>
-                  <span className="text-[10px] uppercase tracking-wider text-[#A1A1AA] block mb-1">Completion</span>
-                  <span className="text-sm font-medium text-white">{project.year}</span>
+                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#71717A] block mb-1">Completion</span>
+                  <span className="text-sm font-medium text-[#18181B]">{project.year}</span>
                 </div>
               )}
             </div>
           </header>
 
           {project.blurb && (
-            <div className="text-base sm:text-lg text-[#D4D4D8] font-light leading-relaxed space-y-4">
+            <div className="text-base sm:text-lg text-[#18181B]/80 font-light leading-relaxed space-y-4">
               {project.blurb.split('\n').map((para, i) => (
                 <p key={i}>{para}</p>
               ))}
@@ -161,16 +160,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           )}
         </ProjectDetailMedia>
 
-        {/* Consultation CTA Card in Dark Obsidian */}
-        <div className="max-w-4xl mx-auto bg-[#121216] rounded-[28px] p-8 md:p-14 border border-white/15 shadow-2xl">
+        {/* Consultation CTA Card in Deep Charcoal (Home Page Contrast Banner) */}
+        <div className="max-w-4xl mx-auto bg-[#121214] text-white p-8 md:p-14 border border-[#18181B]/20 shadow-2xl mt-20">
           <div className="mb-8 text-center max-w-xl mx-auto">
-            <span className="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-medium block mb-2">
+            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#A07A4F] font-semibold block mb-2">
               Start Your Vision
             </span>
             <h2 className="font-display font-light text-3xl sm:text-4xl text-white uppercase mb-3">
               Inspired by this space?
             </h2>
-            <p className="text-sm text-[#A1A1AA] font-light">
+            <p className="text-sm text-white/70 font-light">
               Discuss your commercial, retail, or workspace requirements with our turnkey interior specialists.
             </p>
           </div>

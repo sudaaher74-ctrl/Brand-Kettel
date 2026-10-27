@@ -65,32 +65,34 @@ export default async function CareersPage() {
   const jobs = await getJobs();
 
   return (
-    <div className="w-full bg-[#0A0A0B] text-white min-h-screen pt-28 sm:pt-36 pb-24">
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
+    <div className="w-full bg-[#FAF8F5] text-[#18181B] min-h-screen pt-28 sm:pt-36 pb-24 selection:bg-[#A07A4F] selection:text-white">
+      <div className="max-w-[1480px] mx-auto px-5 sm:px-8 lg:px-12">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 md:mb-28">
-          <div className="inline-flex items-center gap-2 text-xs md:text-sm uppercase tracking-[0.3em] font-medium text-[#C5A880] mb-5">
-            <span>✦</span>
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+          <div className="flex items-center justify-center gap-2 font-mono text-[10px] md:text-xs uppercase tracking-[0.24em] font-semibold text-[#A07A4F] mb-4">
+            <span>05</span>
+            <span className="text-[#18181B]/30">/</span>
             <span>Talent &amp; Leadership</span>
-            <span>✦</span>
+            <span className="text-[#18181B]/30">—</span>
+            <span>Careers</span>
           </div>
-          <h1 className="font-display font-light text-[38px] sm:text-[52px] md:text-[64px] leading-[1.05] tracking-tight uppercase text-white">
+          <h1 className="font-display font-light text-[38px] sm:text-[52px] md:text-[64px] leading-[1.04] tracking-tight uppercase text-[#18181B]">
             Build Spaces. <br />
-            <span className="font-serif italic font-normal text-[#C5A880]">Build Your Career.</span>
+            <span className="font-serif italic font-normal text-[#A07A4F]">Build Your Career.</span>
           </h1>
-          <p className="mt-6 text-sm sm:text-base text-[#A1A1AA] font-light leading-relaxed max-w-xl mx-auto">
+          <p className="mt-6 text-sm sm:text-base text-[#71717A] font-light leading-relaxed max-w-xl mx-auto">
             We are always seeking ambitious architects, interior project managers, and joinery engineers who share our devotion to craft, speed, and precision.
           </p>
         </div>
 
         {/* Culture & Perks Grid */}
-        <section className="mb-24 md:mb-32">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-medium block mb-2">
+        <section className="mb-20 md:mb-28">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A07A4F] font-semibold block mb-2">
               Why Brand Kettle
             </span>
-            <h2 className="font-display font-light text-3xl sm:text-4xl text-white uppercase tracking-tight">
+            <h2 className="font-display font-light text-3xl sm:text-4xl text-[#18181B] uppercase tracking-tight">
               A Culture of Architectural Excellence
             </h2>
           </div>
@@ -99,15 +101,15 @@ export default async function CareersPage() {
             {CULTURE_PILLARS.map((p) => (
               <div
                 key={p.num}
-                className="rounded-[20px] bg-[#121216] p-7 border border-white/10 hover:border-[#C5A880]/50 transition-all duration-300 flex flex-col justify-between"
+                className="bg-[#F2EDE4] p-7 border border-[#18181B]/15 hover:border-[#18181B]/50 transition-all duration-300 flex flex-col justify-between shadow-sm"
               >
                 <div>
-                  <span className="font-serif italic text-xs text-[#C5A880] mb-3 block">{p.num}</span>
-                  <h3 className="font-display text-base font-medium uppercase tracking-wide text-white mb-3">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#A07A4F] font-semibold mb-3 block">{p.num}</span>
+                  <h3 className="font-display text-base font-semibold uppercase tracking-wide text-[#18181B] mb-3">
                     {p.title}
                   </h3>
                 </div>
-                <p className="text-xs text-[#A1A1AA] font-light leading-relaxed mt-2">
+                <p className="text-xs text-[#71717A] font-light leading-relaxed mt-2">
                   {p.desc}
                 </p>
               </div>
@@ -117,27 +119,27 @@ export default async function CareersPage() {
 
         {/* Open Positions List */}
         <section className="max-w-4xl mx-auto mb-20">
-          <div className="flex items-center justify-between mb-8">
-            <h3 className="font-display font-light text-2xl sm:text-3xl text-white uppercase tracking-wide">
+          <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#18181B]/15">
+            <h3 className="font-display font-light text-2xl sm:text-3xl text-[#18181B] uppercase tracking-wide">
               Current Openings
             </h3>
-            <span className="text-xs uppercase tracking-[0.2em] text-[#C5A880] font-medium">
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#A07A4F] font-semibold">
               {jobs.length} Active {jobs.length === 1 ? 'Role' : 'Roles'}
             </span>
           </div>
 
           {jobs.length === 0 ? (
-            <div className="rounded-[24px] bg-[#121216] border border-white/10 p-10 sm:p-14 text-center">
-              <span className="w-3 h-3 rounded-full bg-[#C5A880] inline-block animate-pulse mb-4" />
-              <h4 className="font-display font-light text-xl text-white uppercase mb-2">
+            <div className="bg-[#F2EDE4] border border-[#18181B]/15 p-10 sm:p-14 text-center shadow-sm">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#A07A4F] inline-block animate-pulse mb-4" />
+              <h4 className="font-display font-light text-2xl text-[#18181B] uppercase mb-2">
                 No Specific Role Openings Listed Today
               </h4>
-              <p className="text-sm text-[#A1A1AA] font-light max-w-md mx-auto mb-8">
+              <p className="text-sm text-[#71717A] font-light max-w-md mx-auto mb-8">
                 We are always expanding our turnkey architectural and site execution teams across India. Send your portfolio and resume directly to our leadership team.
               </p>
               <a
                 href="mailto:vini@brandkettle.in?subject=Spontaneous%20Application%20-%20Architectural%20%26%20Project%20Role"
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#C5A880] text-[#0A0A0B] hover:bg-white text-xs uppercase tracking-[0.14em] font-semibold transition-all duration-300 shadow-xl"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#18181B] text-[#FAF8F5] hover:bg-[#A07A4F] hover:text-white font-mono text-[11px] uppercase tracking-[0.18em] font-semibold transition-all duration-300 shadow-sm"
               >
                 Submit Spontaneous Application →
               </a>
@@ -147,20 +149,20 @@ export default async function CareersPage() {
               {jobs.map((job) => (
                 <div
                   key={job.id}
-                  className="rounded-[24px] bg-[#121216] border border-white/10 hover:border-[#C5A880]/50 p-8 transition-all duration-300 shadow-xl"
+                  className="bg-white border border-[#18181B]/15 hover:border-[#18181B]/50 p-8 transition-all duration-300 shadow-sm"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                     <div>
-                      <h4 className="font-display font-light text-2xl text-white uppercase tracking-wide">
+                      <h4 className="font-display font-light text-2xl text-[#18181B] uppercase tracking-wide">
                         {job.title}
                       </h4>
                       <div className="mt-2.5 flex flex-wrap gap-2.5">
                         {job.location && (
-                          <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] text-[#C5A880] uppercase tracking-wider font-medium">
+                          <span className="px-3 py-1 bg-[#F2EDE4] border border-[#18181B]/15 font-mono text-[10px] text-[#A07A4F] uppercase tracking-wider font-semibold">
                             {job.location}
                           </span>
                         )}
-                        <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] text-white/70 uppercase tracking-wider font-light">
+                        <span className="px-3 py-1 bg-[#F2EDE4] border border-[#18181B]/15 font-mono text-[10px] text-[#71717A] uppercase tracking-wider font-light">
                           {job.type || 'Full-time'}
                         </span>
                       </div>
@@ -168,14 +170,14 @@ export default async function CareersPage() {
 
                     <a
                       href={`mailto:vini@brandkettle.in?subject=Application for ${encodeURIComponent(job.title)}`}
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#C5A880] text-[#0A0A0B] hover:bg-white text-xs uppercase tracking-[0.14em] font-semibold transition-all duration-300 shrink-0"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#18181B] text-[#FAF8F5] hover:bg-[#A07A4F] hover:text-white font-mono text-[10px] uppercase tracking-[0.16em] font-semibold transition-all duration-300 shrink-0"
                     >
                       Apply Now →
                     </a>
                   </div>
 
                   {job.description && (
-                    <div className="mt-6 text-xs sm:text-sm text-[#A1A1AA] font-light leading-relaxed border-t border-white/5 pt-5">
+                    <div className="mt-6 text-xs sm:text-sm text-[#71717A] font-light leading-relaxed border-t border-[#18181B]/10 pt-5">
                       {job.description}
                     </div>
                   )}

@@ -103,7 +103,7 @@ export default function ProjectDetailMedia({
           <div className="lg:col-span-6 lg:sticky lg:top-32">
             <div
               onClick={() => openLightbox(0)}
-              className="group relative rounded-[24px] overflow-hidden aspect-[4/3] lg:aspect-[4/5] w-full border border-white/15 bg-[#121216] shadow-2xl cursor-pointer"
+              className="group relative overflow-hidden aspect-[4/3] lg:aspect-[4/5] w-full border border-[#18181B]/15 bg-[#F2EDE4] shadow-md cursor-pointer"
             >
               <Image
                 src={cleanedHero}
@@ -116,8 +116,8 @@ export default function ProjectDetailMedia({
 
               {/* Hover Overlay & Expand Badge */}
               <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-              <div className="absolute bottom-4 right-4 flex items-center gap-2 rounded-full bg-black/70 backdrop-blur-md px-4 py-2 border border-white/20 text-white text-xs uppercase tracking-wider font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-xl">
-                <Maximize2 className="h-3.5 w-3.5 text-[#C5A880]" />
+              <div className="absolute bottom-4 right-4 flex items-center gap-2 bg-[#FAF8F5]/95 backdrop-blur-md px-4 py-2 border border-[#18181B]/15 text-[#18181B] text-xs font-mono uppercase tracking-wider font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-md">
+                <Maximize2 className="h-3.5 w-3.5 text-[#A07A4F]" />
                 <span>Fullscreen View</span>
               </div>
             </div>
@@ -130,14 +130,14 @@ export default function ProjectDetailMedia({
         <div className="mb-24">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <span className="text-xs uppercase tracking-[0.25em] text-[#C5A880] font-medium block mb-1">
+              <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A07A4F] font-semibold block mb-1">
                 Visual Documentation
               </span>
-              <h3 className="font-display font-light text-2xl sm:text-3xl text-white uppercase tracking-tight">
+              <h3 className="font-display font-light text-2xl sm:text-3xl text-[#18181B] uppercase tracking-tight">
                 Project Gallery
               </h3>
             </div>
-            <span className="text-xs text-[#A1A1AA] uppercase tracking-wider">
+            <span className="font-mono text-xs text-[#71717A] uppercase tracking-wider">
               {cleanedGallery.length} {cleanedGallery.length === 1 ? 'View' : 'Views'} • Click to Zoom
             </span>
           </div>
@@ -149,7 +149,7 @@ export default function ProjectDetailMedia({
                 <div
                   key={i}
                   onClick={() => openLightbox(itemIndex)}
-                  className="group relative rounded-[20px] overflow-hidden aspect-[4/3] border border-white/10 bg-[#121216] cursor-pointer shadow-lg"
+                  className="group relative overflow-hidden aspect-[4/3] border border-[#18181B]/15 bg-[#F2EDE4] cursor-pointer shadow-sm"
                 >
                   <Image
                     src={img}
@@ -160,14 +160,14 @@ export default function ProjectDetailMedia({
                   />
 
                   {/* Hover Overlay with Champagne Gold Zoom Icon */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                    <span className="h-11 w-11 rounded-full bg-[#C5A880] text-[#0A0A0B] flex items-center justify-center shadow-2xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                      <Maximize2 className="h-5 w-5" />
+                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                    <span className="h-11 w-11 rounded-full bg-[#18181B] text-[#FAF8F5] flex items-center justify-center shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                      <Maximize2 className="h-5 w-5 text-[#A07A4F]" />
                     </span>
                   </div>
 
                   {/* Image number tag */}
-                  <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-sm border border-white/10 text-[10px] uppercase tracking-wider text-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-3 left-3 px-2.5 py-1 bg-[#FAF8F5]/90 backdrop-blur-sm border border-[#18181B]/15 font-mono text-[9px] uppercase tracking-wider text-[#18181B] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     Detail {i + 1}
                   </div>
                 </div>
