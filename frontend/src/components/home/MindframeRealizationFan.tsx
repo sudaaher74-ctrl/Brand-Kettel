@@ -18,53 +18,53 @@ interface CardItem {
 
 const CARDS: CardItem[] = [
   {
-    id: 'four-story-office',
-    number: '20/20',
-    title: 'Four-story office',
-    subtitle: 'Installed between buildings',
-    tags: ['office', '480m²', 'for business', 'modular'],
-    imageSrc: '/imgs/four_story_urban_insert.jpg',
-    imageAlt: 'Four-story modern architectural building installed between historic townhouses',
-    href: '/portfolio',
-  },
-  {
-    id: 'cafe-house',
-    number: '19/20',
-    title: 'Cafe house',
-    subtitle: 'Installation near the building',
-    tags: ['cafe', '120m²', 'for business', 'frame'],
-    imageSrc: '/imgs/commercial_glass_facade.jpg',
-    imageAlt: 'European cafe house with modern double-height glass vitrine facade',
-    href: '/portfolio',
-  },
-  {
-    id: 'modular-space',
+    id: 'retail-flagships',
     number: '01/20',
-    title: 'Modular space',
-    subtitle: 'Recommended on the Black Sea coast',
-    tags: ['villa', '65m²', 'for living', 'prefabricated'],
-    imageSrc: '/imgs/modular_architectural_pavilion.jpg',
-    imageAlt: 'Modular space pavilion recommended on the Black Sea coast',
+    title: 'Retail Flagships',
+    subtitle: 'Emerald marble & custom bronze vitrines',
+    tags: ['Retail', '4,200 sq.ft', 'High-CRI', 'Luxury'],
+    imageSrc: '/imgs/commercial/bk_realization_retail.jpg',
+    imageAlt: 'Brand Kettle Luxury Retail & Jewellery Flagship with Emerald Marble and Bronze Vitrines',
     href: '/portfolio',
   },
   {
-    id: 'two-story-villa',
+    id: 'corporate-headquarters',
     number: '02/20',
-    title: 'Two story villa',
-    subtitle: 'Recommended for coastal cafes',
-    tags: ['villa', '132m²', 'cafe', 'prefabricated'],
-    imageSrc: '/imgs/two_story_coastal_villa.jpg',
-    imageAlt: 'Two story cantilevered villa recommended for coastal cafes',
+    title: 'Corporate HQs',
+    subtitle: 'Acoustic timber & executive boardrooms',
+    tags: ['Corporate', '25,000 sq.ft', 'Turnkey MEP', 'Pan-India'],
+    imageSrc: '/imgs/commercial/bk_realization_office.jpg',
+    imageAlt: 'Brand Kettle Executive Corporate Boardroom with Slatted Oak Acoustic Walls',
     href: '/portfolio',
   },
   {
-    id: 'three-story-cafe',
+    id: 'flagship-atrium',
     number: '03/20',
-    title: 'Three-story cafe',
-    subtitle: 'Recommended with restoration',
-    tags: ['cafe', '240m²', 'for business', 'frame'],
-    imageSrc: '/imgs/three_story_cafe.jpg',
-    imageAlt: 'Three-story cafe recommended with architectural restoration',
+    title: 'Turnkey Atrium',
+    subtitle: 'Double-height fluted travertine & bronze',
+    tags: ['Flagship Atrium', '18,500 sq.ft', 'Turnkey', 'German CNC'],
+    imageSrc: '/imgs/commercial/bk_hero_flagship.jpg',
+    imageAlt: 'Brand Kettle Turnkey Commercial Flagship Atrium with Fluted Travertine and Monumental Staircase',
+    href: '/portfolio',
+  },
+  {
+    id: 'hospitality-lounges',
+    number: '04/20',
+    title: 'Hospitality & Dining',
+    subtitle: 'Backlit amber onyx bar & coffered timber',
+    tags: ['Hospitality', '8,500 sq.ft', 'Onyx Bar', 'Bespoke'],
+    imageSrc: '/imgs/commercial/bk_hospitality_lounge.jpg',
+    imageAlt: 'Brand Kettle Signature Luxury Hospitality Lounge with Backlit Amber Onyx Bar',
+    href: '/portfolio',
+  },
+  {
+    id: 'precision-joinery',
+    number: '05/20',
+    title: 'Precision Joinery',
+    subtitle: 'Laser-calibrated architectural millwork',
+    tags: ['Direct Joinery', '±0.5mm', '5-Axis CNC', '50k sq.ft Plant'],
+    imageSrc: '/imgs/commercial/bk_joinery_detail.jpg',
+    imageAlt: 'Brand Kettle Architectural Fluted Oak Joinery Detail with Concealed Cove Lighting',
     href: '/portfolio',
   },
 ];
@@ -92,7 +92,10 @@ export default function MindframeRealizationFan() {
 
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    if (!email) {
+      window.location.href = '/contact';
+      return;
+    }
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
@@ -172,7 +175,7 @@ export default function MindframeRealizationFan() {
         
         {/* Left Headline: "02 / Realizations" + "Create your space with us" */}
         <div>
-          <p className="font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.24em] text-[#C5A880] mb-3">
+          <p className="font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.24em] text-[#A07A4F] mb-3">
             02 / Realizations
           </p>
           <h2 className="tracking-tight leading-[0.92]">
@@ -182,7 +185,7 @@ export default function MindframeRealizationFan() {
             <span className="font-sans text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white tracking-tight">
               space{' '}
             </span>
-            <span className="font-serif italic text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-normal text-[#C5A880]">
+            <span className="font-serif italic text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-normal text-[#A07A4F]">
               with us
             </span>
           </h2>
@@ -287,23 +290,23 @@ export default function MindframeRealizationFan() {
                       <form
                         onSubmit={handleEmailSubmit}
                         onClick={(e) => e.stopPropagation()}
-                        className="flex items-center rounded-full bg-white/10 backdrop-blur-md p-1 shadow-lg border border-white/20"
+                        className="flex items-center rounded-full bg-white p-1 sm:p-1.5 shadow-2xl transition-all w-full border border-white/40"
                       >
                         <input
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          placeholder={submitted ? 'Message sent!' : 'Enter your e-mail'}
+                          placeholder={submitted ? 'Message sent!' : 'Enter your email'}
                           disabled={submitted}
-                          className="flex-1 bg-transparent px-3.5 text-xs sm:text-sm text-white placeholder-white/50 focus:outline-none font-light"
+                          className="min-w-0 flex-1 bg-transparent px-2.5 sm:px-3 text-[11px] sm:text-xs text-[#18181B] placeholder-[#71717A] focus:outline-none font-light"
                         />
                         <button
                           type="submit"
                           disabled={submitted}
-                          className="px-4 sm:px-5 py-2 rounded-full bg-[#C5A880] hover:bg-[#B8996F] text-[#121214] text-xs sm:text-sm font-sans font-semibold transition-colors flex items-center gap-1.5 shrink-0 shadow-sm"
+                          className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#18181B] hover:bg-[#A07A4F] text-white text-[11px] sm:text-xs font-medium transition-colors flex items-center gap-1 shrink-0 shadow-sm"
                         >
                           <span>Contact us</span>
-                          <ArrowRight className="size-3.5" />
+                          <ArrowRight className="size-3" />
                         </button>
                       </form>
                     </div>
