@@ -121,10 +121,10 @@ export default function HomePage() {
       {/* ─────────────────────────────────────────────────────────────
           02. REALIZATIONS (Mindframe 3D Cascading Fan Showcase)
           ───────────────────────────────────────────────────────────── */}
-      <section id="collection" className="w-full max-w-[1800px] mx-auto border-t border-[#18181B]/15 px-4 sm:px-6 lg:px-10 py-4 lg:py-6 overflow-hidden">
-        
-        {/* Mindframe 3D Perspective Cascading Showcase */}
-        <MindframeRealizationFan />
+      <section id="collection" className="w-full bg-[#121214] text-[#F4F4F5] border-y border-white/10 py-16 lg:py-24 overflow-hidden">
+        <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10">
+          <MindframeRealizationFan />
+        </div>
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
