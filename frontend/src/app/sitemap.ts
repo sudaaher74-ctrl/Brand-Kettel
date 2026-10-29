@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL, API_URL } from '@/lib/site';
 import { projects as fallbackProjects } from '@/lib/data';
+import { INDUSTRIES } from '@/lib/landingContent';
 
 type Entry = MetadataRoute.Sitemap[number];
 
@@ -18,6 +19,7 @@ const STATIC_ROUTES: { path: string; priority: number; changeFrequency: Entry['c
   { path: '/library-institutional-furniture', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/about', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/process', priority: 0.6, changeFrequency: 'monthly' },
+  ...INDUSTRIES.map((i) => ({ path: `/industries/${i.slug}`, priority: 0.8, changeFrequency: 'monthly' as const })),
   { path: '/blog', priority: 0.5, changeFrequency: 'weekly' },
   { path: '/careers', priority: 0.3, changeFrequency: 'yearly' },
 ];

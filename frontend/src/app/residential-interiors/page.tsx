@@ -8,6 +8,8 @@ import {
   projects as fallbackProjects,
 } from '@/lib/data';
 import Link from 'next/link';
+import LandingCopy from '@/components/ui/LandingCopy';
+import { LANDING } from '@/lib/landingContent';
 
 export const metadata: Metadata = pageMetadata({
   path: '/residential-interiors',
@@ -68,6 +70,7 @@ export default async function ResidentialPage() {
           </div>
         </div>
       </section>
+      <LandingCopy content={LANDING['residential-interiors']} path="/residential-interiors" />
     </>
   );
 }

@@ -6,6 +6,8 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectGrid from '@/components/ui/ProjectGrid';
 import { projects as fallbackProjects } from '@/lib/data';
 import Link from 'next/link';
+import LandingCopy from '@/components/ui/LandingCopy';
+import { LANDING } from '@/lib/landingContent';
 
 export const metadata: Metadata = pageMetadata({
   path: '/custom-furniture',
@@ -69,6 +71,7 @@ export default async function CustomFurniturePage() {
           </div>
         </div>
       </section>
+      <LandingCopy content={LANDING['custom-furniture']} path="/custom-furniture" />
     </>
   );
 }

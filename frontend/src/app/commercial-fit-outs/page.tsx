@@ -6,6 +6,8 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectGrid from '@/components/ui/ProjectGrid';
 import { projects as fallbackProjects } from '@/lib/data';
 import Link from 'next/link';
+import LandingCopy from '@/components/ui/LandingCopy';
+import { LANDING } from '@/lib/landingContent';
 
 export const metadata: Metadata = pageMetadata({
   path: '/commercial-fit-outs',
@@ -92,6 +94,7 @@ export default async function CommercialProjectsPage() {
           </div>
         </div>
       </section>
+      <LandingCopy content={LANDING['commercial-fit-outs']} path="/commercial-fit-outs" />
     </>
   );
 }
