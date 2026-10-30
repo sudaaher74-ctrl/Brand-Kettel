@@ -927,3 +927,4 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 export function getBlogArticle(slug: string): BlogArticle | undefined {
   return BLOG_ARTICLES.find((a) => a.slug === slug);
 }
+

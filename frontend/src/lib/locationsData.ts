@@ -408,3 +408,4 @@ export const LOCATIONS_DATA: LocationHub[] = [
 export function getLocationHub(slug: string): LocationHub | undefined {
   return LOCATIONS_DATA.find((l) => l.slug === slug);
 }
+
