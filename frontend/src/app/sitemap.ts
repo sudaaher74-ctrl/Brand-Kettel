@@ -63,7 +63,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const entries: MetadataRoute.Sitemap = [
     ...STATIC_ROUTES.map((route) => ({
-      url: `${SITE_URL}${route.path}`,
+      url: route.path ? `${SITE_URL}${route.path}` : `${SITE_URL}/`,
       lastModified,
       changeFrequency: route.changeFrequency,
       priority: route.priority,
