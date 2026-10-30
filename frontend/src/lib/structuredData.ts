@@ -37,6 +37,13 @@ export const generalContractorJsonLd = {
   '@type': 'GeneralContractor',
   '@id': ORGANIZATION_ID,
   name: 'Brand Kettle BuildSpaces',
+  alternateName: [
+    'Brand Kettle',
+    'BrandKettle',
+    'Brand Kettle Interiors',
+    'Brand Kettle Commercial Interiors',
+    'Brand Kettle Indore',
+  ],
   legalName: 'Brand Kettle BuildSpaces Pvt. Ltd.',
   description:
     'Brand Kettle BuildSpaces is a design-build and commercial fit-out firm headquartered in Indore, delivering turnkey interior solutions across India.',

@@ -101,12 +101,27 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // 1. Apex to www on primary domain
       {
         source: '/:path*',
         has: [{ type: 'host', value: APEX_HOST }],
         destination: `https://${CANONICAL_HOST}/:path*`,
-        // 301 rather than Next's default 308: both are permanent and Google
-        // treats them identically, but 301 is what the wider tooling expects.
+        statusCode: 301,
+      },
+      // 2. Legacy internal URL fixes & broken links
+      {
+        source: '/portfolio/gucci-flagship',
+        destination: '/portfolio/gucci',
+        statusCode: 301,
+      },
+      {
+        source: '/portfolio/png-jewellers',
+        destination: '/portfolio/png',
+        statusCode: 301,
+      },
+      {
+        source: '/portfolio/and-work-coworking',
+        destination: '/portfolio/and-work-faridabad',
         statusCode: 301,
       },
     ];

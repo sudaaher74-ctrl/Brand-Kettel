@@ -64,10 +64,10 @@ export default function Footer() {
               02 / Realizations
             </p>
             <ul className="space-y-3 font-light text-[#71717A]">
-              <li><Link href="/portfolio/gucci-flagship" className="hover:text-[#18181B] transition-colors">Gucci Flagship</Link></li>
-              <li><Link href="/portfolio/png-jewellers" className="hover:text-[#18181B] transition-colors">PNG Jewellers</Link></li>
+              <li><Link href="/portfolio/gucci" className="hover:text-[#18181B] transition-colors">Gucci Showroom</Link></li>
+              <li><Link href="/portfolio/png" className="hover:text-[#18181B] transition-colors">PNG Jewellers (27 Days)</Link></li>
               <li><Link href="/portfolio/havana-lounge-bareilly" className="hover:text-[#18181B] transition-colors">Havana Lounge</Link></li>
-              <li><Link href="/portfolio/and-work-coworking" className="hover:text-[#18181B] transition-colors">&amp;Work Coworking HQ</Link></li>
+              <li><Link href="/portfolio/and-work-faridabad" className="hover:text-[#18181B] transition-colors">&amp;Work Coworking HQ</Link></li>
               <li><Link href="/portfolio/taksha-hyderabad" className="hover:text-[#18181B] transition-colors">Taksha Hyderabad</Link></li>
               <li><Link href="/portfolio" className="text-[#A07A4F] hover:underline font-mono text-[11px] block pt-1">All Projects →</Link></li>
             </ul>
@@ -76,13 +76,15 @@ export default function Footer() {
           {/* Column 3: Studio & Company */}
           <div>
             <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[#A07A4F] font-semibold mb-5">
-              03 / Studio
+              03 / Studio &amp; Tools
             </p>
             <ul className="space-y-3 font-light text-[#71717A]">
               <li><Link href="/about" className="hover:text-[#18181B] transition-colors">About Brand Kettle</Link></li>
-              <li><Link href="/process" className="hover:text-[#18181B] transition-colors">Our 6-Stage Process</Link></li>
-              <li><Link href="/blog" className="hover:text-[#18181B] transition-colors">Architectural Journal</Link></li>
-              <li><Link href="/careers" className="hover:text-[#18181B] transition-colors">Careers</Link></li>
+              <li><Link href="/services" className="hover:text-[#18181B] transition-colors">All Services &amp; Disciplines</Link></li>
+              <li><Link href="/resources/fit-out-cost-calculator" className="hover:text-[#18181B] transition-colors">Fit-Out Cost Calculator</Link></li>
+              <li><Link href="/resources/office-interior-planning-checklist" className="hover:text-[#18181B] transition-colors">Office Planning Checklist</Link></li>
+              <li><Link href="/resources/commercial-interior-faq-hub" className="hover:text-[#18181B] transition-colors">Commercial FAQ Hub</Link></li>
+              <li><Link href="/blog" className="hover:text-[#18181B] transition-colors">Insights &amp; Guides</Link></li>
               <li><Link href="/contact" className="hover:text-[#18181B] transition-colors">Contact Studio</Link></li>
             </ul>
           </div>
@@ -94,9 +96,16 @@ export default function Footer() {
             </p>
             <div className="space-y-2 text-[#71717A] font-light leading-relaxed">
               <p className="font-medium text-[#18181B]">Headquarters &amp; Joinery Facility:</p>
-              <p>Indore, Madhya Pradesh, India</p>
-              <p className="pt-2 font-medium text-[#18181B]">Active Regional Delivery:</p>
-              <p>Mumbai · Delhi NCR · Hyderabad · Bengaluru · Bareilly · Indore</p>
+              <p><Link href="/locations/indore" className="hover:text-[#A07A4F] underline">Indore HQ &amp; Direct Factory</Link></p>
+              <p className="pt-2 font-medium text-[#18181B]">Active Regional Delivery Hubs:</p>
+              <p className="space-x-1.5">
+                <Link href="/locations/mumbai" className="hover:text-[#A07A4F] underline">Mumbai</Link> · 
+                <Link href="/locations/delhi-ncr" className="hover:text-[#A07A4F] underline">Delhi NCR</Link> · 
+                <Link href="/locations/hyderabad" className="hover:text-[#A07A4F] underline">Hyderabad</Link> · 
+                <Link href="/locations/bengaluru" className="hover:text-[#A07A4F] underline">Bengaluru</Link> · 
+                <Link href="/locations/bareilly" className="hover:text-[#A07A4F] underline">Bareilly</Link> · 
+                <Link href="/locations/pune" className="hover:text-[#A07A4F] underline">Pune</Link>
+              </p>
               <div className="pt-4">
                 <a
                   href="https://wa.me/918959173790"

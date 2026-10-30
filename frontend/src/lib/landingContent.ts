@@ -337,6 +337,121 @@ export const INDUSTRIES: Industry[] = [
       ],
     },
   },
+  {
+    slug: 'coworking-spaces',
+    name: 'Co-Working & Flexible Workspaces',
+    title: 'Co-Working Space Interior Design & Fit-Out Contractor',
+    description: 'Turnkey co-working space interiors, flexible hubs, and private cabin build-outs by Brand Kettle BuildSpaces. Realized projects include &Work Faridabad (15,000 sq ft).',
+    heroSubtitle: 'Flexible, high-density workspaces engineered for community and revenue per square foot.',
+    image: '/imgs/commercial/and-work-faridabad-coworking.jpg',
+    content: {
+      intro: [
+        'Co-working spaces demand a delicate balance between maximum seat density and vibrant community acoustics. Brand Kettle BuildSpaces designs and builds flexible workspaces, open hot-desks, private cabins, and common café lounges under one turnkey contract.',
+        'Our project portfolio includes the 15,000 sq ft &Work Co-working space in Faridabad, delivered on-time and with high occupant satisfaction.',
+      ],
+      sections: [
+        { heading: 'Revenue per square foot optimization', body: 'We calculate circulation ratios, phone booth distributions, and meeting room turns to ensure co-working operators maximize rentable workstation yield without feeling overcrowded.' },
+        { heading: 'Acoustic privacy & phone booths', body: 'Sound leakage is the number one complaint in flexible workspaces. We engineer double-glazed partitions, acoustic baffles, and isolated phone pods so calls remain confidential.' },
+        { heading: 'Modular, reconfigurable joinery', body: 'Teams expand and contract. Our in-house joinery facility builds modular demountable partitions and power-integrated benching that reconfigures in hours.' },
+        { heading: 'Turnkey MEP & power infrastructure', body: 'High-density IT power drops, redundant Wi-Fi routing, access-control biometric doors, and multi-zone HVAC cooling ensure zero downtime for member tenants.' },
+      ],
+      faqs: [
+        { q: 'What is the ideal seat density for a co-working space?', a: 'Modern flexible workspaces target 50 to 65 sq ft per workstation including common circulation, phone booths, meeting rooms, and pantry areas.' },
+        { q: 'Can you deliver a co-working space on a tight schedule?', a: 'Yes. We build all workstations, reception desks, and acoustic panels in our factory while flooring and MEP rough-ins happen on-site, shortening project duration by 35%.' },
+        { q: 'Do you supply ergonomic furniture for co-working hubs?', a: 'Yes. We manufacture heavy-duty commercial workstations and source BIFMA-certified ergonomic seating built for 24/7 commercial durability.' },
+      ],
+      related: [
+        { href: '/commercial-fit-outs', label: 'Commercial fit-outs' },
+        { href: '/industries/corporate-offices', label: 'Corporate offices' },
+        ...RELATED_CORE,
+      ],
+    },
+  },
+  {
+    slug: 'healthcare-clinics',
+    name: 'Healthcare & Specialty Clinics',
+    title: 'Healthcare Interior Design & Clinic Fit-Out Contractors',
+    description: 'Turnkey specialty clinic interiors, diagnostic centers, and wellness spaces designed for sterile compliance, patient comfort, and smooth practitioner flow.',
+    heroSubtitle: 'Sterile efficiency meets calming architectural reassurance.',
+    image: '/imgs/commercial/gem-jeevan-tara-1.jpg',
+    content: {
+      intro: [
+        'Healthcare interior design requires medical-grade hygienic finishes, strict accessibility compliance, and an environment that reduces patient anxiety. Brand Kettle delivers turnkey interiors for medical centers, dental studios, aesthetic clinics, and diagnostic labs.',
+      ],
+      sections: [
+        { heading: 'Hygienic, anti-microbial material selection', body: 'Seamless medical-grade vinyl flooring, non-porous solid-surface countertops, anti-bacterial wall cladding, and touchless fixtures ensure clinical hygiene standards.' },
+        { heading: 'Doctor & patient circulation separation', body: 'We plan distinct sterile corridors, private consultation rooms, patient recovery zones, and comfortable waiting lounges to prevent cross-contamination and maintain privacy.' },
+        { heading: 'MEP, medical gases & radiation shielding', body: 'From lead-lined X-ray and imaging room partitions to specialized HVAC negative pressure airflow and clean power backups, our engineering team handles technical compliance.' },
+      ],
+      faqs: [
+        { q: 'Do you install anti-bacterial materials for clinics?', a: 'Yes. We specify and install medical-grade PVC wall protection, seamless vinyl floors with coved skirting, and non-porous joinery surfaces.' },
+        { q: 'Can you handle X-ray room lead shielding?', a: 'Yes. We execute certified lead-sheet wall lining and lead-glass observation windows in accordance with AERB safety standards.' },
+        { q: 'How do you design calming waiting rooms?', a: 'We utilize indirect biophilic illumination, acoustic dampening, warm natural timber laminates, and comfortable seating layouts to alleviate patient stress.' },
+      ],
+      related: [
+        { href: '/commercial-fit-outs', label: 'Commercial fit-outs' },
+        { href: '/library-institutional-furniture', label: 'Institutional furniture' },
+        ...RELATED_CORE,
+      ],
+    },
+  },
+  {
+    slug: 'educational-institutions',
+    name: 'Educational Institutions & Campus Facilities',
+    title: 'School, College & University Campus Interior Fit-Outs',
+    description: 'Campus interiors, modern lecture halls, libraries, and administrative headquarters by Brand Kettle BuildSpaces. Durable, inspiring educational environments.',
+    heroSubtitle: 'Inspiring spaces that empower learning, collaboration, and institutional legacy.',
+    image: '/imgs/commercial/gem-jeevan-tara-1.jpg',
+    content: {
+      intro: [
+        'Educational environments must withstand decades of vigorous daily use while providing modern, collaborative spaces for students and faculty. Brand Kettle fits out university auditoriums, campus libraries, administrative blocks, and digital learning classrooms across India.',
+      ],
+      sections: [
+        { heading: 'Heavy-duty commercial joinery for campuses', body: 'All library study carrels, seminar tables, and classroom benches are manufactured with scratch-resistant high-pressure laminates, impact-resistant PVC edge-banding, and heavy-gauge powder-coated steel.' },
+        { heading: 'Acoustics for lecture halls & auditoriums', body: 'Clear speech intelligibility is essential. We calculate reverberation times (RT60) and install perforated wooden acoustic paneling, fabric-wrapped baffles, and stage millwork.' },
+        { heading: 'Campus library transformations', body: 'Modern academic libraries blend quiet book stacks with collaborative group study pods and digital media labs. We provide modular, flexible layouts tailored to campus needs.' },
+      ],
+      faqs: [
+        { q: 'Do you manufacture classroom and library furniture?', a: 'Yes. Our factory produces custom library racks, study carrels, collaborative tables, and administrative desks in bulk.' },
+        { q: 'Can work be executed during school or college vacations?', a: 'Yes. We specialize in fast-track execution during semester breaks and summer vacations to ensure zero disruption to student classes.' },
+        { q: 'Are your materials certified for educational use?', a: 'We use non-toxic, low-VOC paints, E1/E0 grade engineered boards, and fire-retardant fabric finishes.' },
+      ],
+      related: [
+        { href: '/library-institutional-furniture', label: 'Institutional furniture' },
+        { href: '/custom-furniture', label: 'Custom furniture' },
+        ...RELATED_CORE,
+      ],
+    },
+  },
+  {
+    slug: 'jewellery-retail-flagships',
+    name: 'Jewellery Retail Flagships & Boutiques',
+    title: 'Jewellery Flagship Interior Design & High-Security Retail Build',
+    description: 'Specialized luxury jewellery showroom design and fit-out. Turnkey delivery for PNG Jewellers, Giva, Malabar Gold, and Indriya. High-CRI lighting and reinforced security joinery.',
+    heroSubtitle: 'Luminous luxury display engineering backed by vault-grade security.',
+    image: '/imgs/commercial/malbargold1.jpg',
+    content: {
+      intro: [
+        'Jewellery showrooms represent the pinnacle of high-value retail interior contracting. Every square foot must inspire customer trust, showcase diamond and gold brilliance under calibrated lux levels, and protect multi-crore inventory without feeling like a fortress.',
+        'Brand Kettle BuildSpaces is a recognized leader in jewellery retail fit-outs, having completed flagship showrooms for PNG Jewellers (delivered in 27 days), Giva, Indriya, and Malabar Gold.',
+      ],
+      sections: [
+        { heading: 'High-CRI & Lux-calibrated illumination', body: 'Standard commercial lights make gold look dull and diamonds look yellow. We specify specialized 95+ CRI luminaires with dual-circuit 3000K (gold warmth) and 5000K (diamond brilliance) optics to make jewelry glitter with maximum dispersion.' },
+        { heading: 'Vault-adjacent & reinforced security millwork', body: 'Our factory fabricates display counters with concealed multi-point mechanical locks, shatter-resistant laminated glass (12mm to 19mm), concealed alarm cabling, and fortified steel kick-plates.' },
+        { heading: 'Fast-track execution to minimize retail downtime', body: 'Every day a flagship jewellery store remains closed is lost revenue. By prefabricating all display counters, chandeliers, and wall boiseries in our factory, we handed over PNG Jewellers in Goregaon in just 27 days.' },
+      ],
+      faqs: [
+        { q: 'Why is lighting critical in jewellery store interiors?', a: 'High-CRI (Color Rendering Index > 95) is required to render true diamond clarity and rich 22K gold color. Calibrated beam angles prevent glare while creating diamond scintillation.' },
+        { q: 'What glass specifications do you use for jewellery counters?', a: 'We install extra-clear low-iron laminated security glass (typically 12mm to 19mm thickness with PVB interlayers) to maximize transparency and prevent smash-and-grab attempts.' },
+        { q: 'Can you execute jewellery stores pan-India?', a: 'Yes. We have delivered jewellery flagships in Mumbai, Hyderabad, and tier-1/tier-2 hubs with factory prefabrication from Indore.' },
+      ],
+      related: [
+        { href: '/jewellery-showrooms', label: 'Jewellery showrooms' },
+        { href: '/retail-fit-outs', label: 'Retail fit-outs' },
+        ...RELATED_CORE,
+      ],
+    },
+  },
 ];
 
 export function getIndustry(slug: string) {

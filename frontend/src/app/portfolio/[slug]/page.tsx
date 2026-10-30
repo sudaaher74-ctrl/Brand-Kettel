@@ -41,6 +41,10 @@ function mapToProject(p: typeof fallbackProjects[0]): Project {
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
+export function generateStaticParams() {
+  return fallbackProjects.map((p) => ({ slug: p.slug }));
+}
+
 async function getProject(slug: string): Promise<Project | null> {
   let project: Project | null = null;
   try {
@@ -83,10 +87,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   });
 }
 
+function getCityLink(loc?: string): { name: string; href: string } | null {
+  if (!loc) return null;
+  const l = loc.toLowerCase();
+  if (l.includes('mumbai') || l.includes('goregaon')) return { name: 'Mumbai Commercial Hub', href: '/locations/mumbai' };
+  if (l.includes('delhi') || l.includes('faridabad')) return { name: 'Delhi NCR Commercial Hub', href: '/locations/delhi-ncr' };
+  if (l.includes('bareilly')) return { name: 'Bareilly Regional Hub', href: '/locations/bareilly' };
+  if (l.includes('hyderabad')) return { name: 'Hyderabad Commercial Hub', href: '/locations/hyderabad' };
+  if (l.includes('indore')) return { name: 'Indore Direct Factory & HQ', href: '/locations/indore' };
+  return null;
+}
+
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   const project = await getProject(resolvedParams.slug);
   if (!project) notFound();
+
+  const cityLink = getCityLink(project.location);
 
   const breadcrumbs = breadcrumbJsonLd([
     { name: 'Home', path: '/' },
@@ -127,7 +144,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               {project.location && (
                 <div>
                   <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#71717A] block mb-1">Location</span>
-                  <span className="text-sm font-medium text-[#18181B]">{project.location}</span>
+                  {cityLink ? (
+                    <Link href={cityLink.href} className="text-sm font-medium text-[#18181B] hover:text-[#A07A4F] underline underline-offset-4">
+                      {project.location} ({cityLink.name} →)
+                    </Link>
+                  ) : (
+                    <span className="text-sm font-medium text-[#18181B]">{project.location}</span>
+                  )}
                 </div>
               )}
               {project.category && (
@@ -139,7 +162,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               {project.area && (
                 <div>
                   <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#71717A] block mb-1">Scale</span>
-                  <span className="text-sm font-medium text-[#18181B]">{project.area} sq ft</span>
+                  <span className="text-sm font-medium text-[#18181B]">{project.area.includes('sq') ? project.area : `${project.area} sq ft`}</span>
                 </div>
               )}
               {project.year && (
@@ -152,10 +175,23 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </header>
 
           {project.blurb && (
-            <div className="text-base sm:text-lg text-[#18181B]/80 font-light leading-relaxed space-y-4">
+            <div className="text-base sm:text-lg text-[#18181B]/80 font-light leading-relaxed space-y-6">
               {project.blurb.split('\n').map((para, i) => (
                 <p key={i}>{para}</p>
               ))}
+
+              <div className="pt-6 border-t border-[#18181B]/10 space-y-4">
+                <h3 className="font-display font-medium text-xl text-[#18181B] uppercase">Turnkey Execution &amp; Scope Summary</h3>
+                <p className="text-sm text-[#71717A] font-light leading-relaxed">
+                  Brand Kettle BuildSpaces acted as the turnkey design-build and interior contracting partner for {project.name}. Our scope encompassed civil modifications, MEP integration, specialized architectural lighting, and precision millwork prefabricated concurrently in our Central India manufacturing facility to ensure exact handover on schedule.
+                </p>
+                <div className="flex flex-wrap gap-2 pt-2">
+                  <span className="px-3 py-1 bg-[#EFE9DF] text-xs font-mono uppercase tracking-wider text-[#18181B]">Turnkey Fit-Out</span>
+                  <span className="px-3 py-1 bg-[#EFE9DF] text-xs font-mono uppercase tracking-wider text-[#18181B]">In-House Joinery</span>
+                  <span className="px-3 py-1 bg-[#EFE9DF] text-xs font-mono uppercase tracking-wider text-[#18181B]">MEP Engineering</span>
+                  <span className="px-3 py-1 bg-[#EFE9DF] text-xs font-mono uppercase tracking-wider text-[#18181B]">Milestone Guarantee</span>
+                </div>
+              </div>
             </div>
           )}
         </ProjectDetailMedia>

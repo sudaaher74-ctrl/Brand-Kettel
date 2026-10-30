@@ -15,8 +15,13 @@ export default function RonnFooter() {
             <h3 className="font-display font-light text-2xl sm:text-3xl text-white uppercase">
               Headquartered in Indore · Active in 10+ Metros
             </h3>
-            <p className="text-sm text-[#FFEAD4]/60 font-light mt-2">
-              Mumbai · Delhi NCR · Hyderabad · Bengaluru · Bareilly · Indore
+            <p className="text-sm text-[#FFEAD4]/75 font-light mt-2 space-x-2">
+              <Link href="/locations/mumbai" className="hover:text-white underline">Mumbai</Link> · 
+              <Link href="/locations/delhi-ncr" className="hover:text-white underline">Delhi NCR</Link> · 
+              <Link href="/locations/hyderabad" className="hover:text-white underline">Hyderabad</Link> · 
+              <Link href="/locations/bengaluru" className="hover:text-white underline">Bengaluru</Link> · 
+              <Link href="/locations/bareilly" className="hover:text-white underline">Bareilly</Link> · 
+              <Link href="/locations/indore" className="hover:text-white underline">Indore HQ</Link>
             </p>
           </div>
 
@@ -87,6 +92,9 @@ export default function RonnFooter() {
             </h4>
             <ul className="space-y-3 text-sm font-light text-[#FFEAD4]/75">
               <li>
+                <Link href="/services" className="hover:text-white transition-colors text-[#DBB6FC]">All Services Directory →</Link>
+              </li>
+              <li>
                 <Link href="/commercial-fit-outs" className="hover:text-white transition-colors">Commercial Fit-Outs</Link>
               </li>
               <li>
@@ -96,10 +104,13 @@ export default function RonnFooter() {
                 <Link href="/jewellery-showrooms" className="hover:text-white transition-colors">Jewellery Showrooms</Link>
               </li>
               <li>
-                <Link href="/residential-interiors" className="hover:text-white transition-colors">Residential Interiors</Link>
+                <Link href="/custom-furniture" className="hover:text-white transition-colors">Custom Factory Joinery</Link>
               </li>
               <li>
-                <Link href="/custom-furniture" className="hover:text-white transition-colors">Custom Furniture</Link>
+                <Link href="/library-institutional-furniture" className="hover:text-white transition-colors">Institutional Millwork</Link>
+              </li>
+              <li>
+                <Link href="/residential-interiors" className="hover:text-white transition-colors">Residential Interiors</Link>
               </li>
             </ul>
           </div>
@@ -131,7 +142,7 @@ export default function RonnFooter() {
           {/* Col 4: Studio & Company */}
           <div>
             <h4 className="text-xs uppercase tracking-[0.25em] font-semibold text-[#DBB6FC] mb-5">
-              Company
+              Company &amp; Tools
             </h4>
             <ul className="space-y-3 text-sm font-light text-[#FFEAD4]/75">
               <li>
@@ -141,7 +152,10 @@ export default function RonnFooter() {
                 <Link href="/process" className="hover:text-white transition-colors">Our Process</Link>
               </li>
               <li>
-                <Link href="/careers" className="hover:text-white transition-colors">Careers</Link>
+                <Link href="/resources/fit-out-cost-calculator" className="hover:text-white transition-colors">Fit-Out Cost Estimator</Link>
+              </li>
+              <li>
+                <Link href="/resources" className="hover:text-white transition-colors">Planning Tools &amp; Checklists</Link>
               </li>
               <li>
                 <Link href="/blog" className="hover:text-white transition-colors">Blog &amp; Insights</Link>

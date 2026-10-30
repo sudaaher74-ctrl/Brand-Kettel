@@ -26,20 +26,20 @@ export const metadata: Metadata = {
   // with loopback origins additionally rejected — see src/lib/site.ts.
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Commercial Fit-Out Company in Indore | Brand Kettle BuildSpaces',
+    default: 'Brand Kettle | Commercial Interior & Fit-Out Company',
     template: '%s | Brand Kettle BuildSpaces',
   },
   description:
-    'Brand Kettle BuildSpaces is a premium Design Build Company & Commercial Fit-Out Company in Indore. We provide Turnkey Interior Solutions, Commercial Interior Contractors, and Retail Fit-Outs.',
+    'Brand Kettle delivers turnkey commercial interiors, corporate office fit-outs, luxury retail spaces, and jewellery showroom projects across India.',
   authors: [{ name: 'Brand Kettle BuildSpaces Pvt. Ltd.' }],
   openGraph: {
     type: 'website',
     locale: 'en_IN',
     url: '/',
     siteName: 'Brand Kettle BuildSpaces',
-    title: 'Brand Kettle BuildSpaces — Commercial Spaces That Inspire Growth',
+    title: 'Brand Kettle | Commercial Interior & Fit-Out Company',
     description:
-      'Turnkey Commercial Fit-Outs, Retail Flagships, Jewellery Showrooms, and Custom Architectural Joinery across India.',
+      'Brand Kettle delivers turnkey commercial interiors, corporate office fit-outs, luxury retail spaces, and jewellery showroom projects across India.',
     images: [
       {
         url: '/imgs/commercial/gucci.webp',

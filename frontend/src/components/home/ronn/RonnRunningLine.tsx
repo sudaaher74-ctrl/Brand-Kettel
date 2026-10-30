@@ -76,6 +76,24 @@ const TICKER_PROJECTS = [
     slug: 'and-work-faridabad',
     scope: '15,000 SQ FT',
   },
+  {
+    fig: 'FIG. 09',
+    name: 'NANOKIRTI PVT',
+    location: 'India',
+    category: 'Corporate Office',
+    image: '/imgs/commercial/nanokirti-office-1.jpg',
+    slug: 'nanokirti-pvt',
+    scope: '12,000 SQ FT',
+  },
+  {
+    fig: 'FIG. 10',
+    name: 'INDRIYA JEWELLERY',
+    location: 'India',
+    category: 'Jewellery Showroom',
+    image: '/imgs/commercial/jewellery-showroom-display.webp',
+    slug: 'indriya',
+    scope: 'LUXURY SHOWROOM',
+  },
 ];
 
 export default function RonnRunningLine() {
