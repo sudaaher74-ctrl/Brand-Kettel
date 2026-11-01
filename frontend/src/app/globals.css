@@ -13,7 +13,6 @@
   --ink-muted: #A1A1AA;
   --line: rgba(24, 24, 27, 0.15);
 }
-
 @layer base {
   * {
     @apply border-line;
@@ -212,4 +211,83 @@
     transform: none;
   }
 
+}
+@keyframes home-client-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.home-clients-section {
+  overflow: hidden;
+  background: #f4f2ee;
+  color: #18181b;
+}
+
+.home-clients-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgb(160 122 79 / 20%);
+  background: rgb(160 122 79 / 9%);
+  padding: 0.45rem 0.8rem;
+  color: #a07a4f;
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.home-client-marquee-mask {
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.home-client-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: home-client-marquee 44s linear infinite;
+}
+
+.home-client-marquee-track-reverse {
+  animation-direction: reverse;
+  animation-duration: 50s;
+}
+
+.home-client-marquee-mask:hover .home-client-marquee-track,
+.home-client-marquee-mask:focus-within .home-client-marquee-track {
+  animation-play-state: paused;
+}
+
+.home-client-logo-card {
+  display: flex;
+  width: clamp(190px, 21vw, 300px);
+  height: clamp(90px, 9vw, 124px);
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+  border: 1px solid rgb(24 24 27 / 6%);
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0 12px 24px rgb(24 24 27 / 5%);
+  transition: box-shadow 250ms ease, transform 250ms ease;
+}
+
+.home-client-logo-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px rgb(24 24 27 / 9%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-client-marquee-track,
+  .home-client-marquee-track-reverse {
+    animation: none;
+    transform: none;
+  }
+
+  .home-client-marquee-mask {
+    overflow-x: auto;
+    mask-image: none;
+  }
 }
