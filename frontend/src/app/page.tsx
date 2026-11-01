@@ -54,25 +54,27 @@ export default function HomePage() {
           </div>
         </div>
 
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[15] hidden bg-gradient-to-r from-[#18181B]/85 via-[#18181B]/60 to-transparent lg:block" />
+
         {/* Content Container (Positioned on the Left) */}
         <div className="relative z-20 mx-auto w-full max-w-[1480px] px-5 sm:px-8 lg:px-12 xl:px-16 py-12 lg:py-24">
           <div className="w-full lg:max-w-xl xl:max-w-2xl">
             
             {/* Overline with Horizontal Rule */}
-            <div data-hero-copy className="flex items-center gap-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.24em] text-[#18181B] font-semibold mb-8">
-              <span className="w-8 h-[1.5px] bg-[#18181B]" />
+            <div data-hero-copy className="flex items-center gap-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.24em] text-[#18181B] font-semibold mb-8 lg:text-[#FAF8F5]">
+              <span className="w-8 h-[1.5px] bg-[#18181B] lg:bg-[#FAF8F5]" />
               <span>SPACES. CRAFTED WITH INTENTION.</span>
             </div>
 
             {/* Headline */}
-            <h1 data-hero-copy className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.25rem] xl:text-[6.2rem] font-light leading-[0.93] text-[#18181B] tracking-tight">
+            <h1 data-hero-copy className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.25rem] xl:text-[6.2rem] font-light leading-[0.93] text-[#18181B] tracking-tight lg:text-[#FAF8F5]">
               Architecture<br />
               that elevates<br />
-              <em className="font-serif italic font-normal text-[#60694B]">life.</em>
+              <em className="font-serif italic font-normal text-[#60694B] lg:text-[#D6B47E]">life.</em>
             </h1>
 
             {/* Editorial Narrative */}
-            <p data-hero-copy className="mt-8 max-w-lg text-base sm:text-lg leading-relaxed text-[#52525B] font-light">
+            <p data-hero-copy className="mt-8 max-w-lg text-base sm:text-lg leading-relaxed text-[#52525B] font-light lg:text-white/85">
               Brand Kettle is an architecture and interiors studio creating timeless spaces that balance beauty, purpose, and place.
             </p>
 
@@ -81,7 +83,7 @@ export default function HomePage() {
               <Link
                 href="/portfolio"
                 data-cursor-text="EXPLORE"
-                className="group inline-flex items-center gap-4 bg-[#3E4535] hover:bg-[#2F3528] text-[#FAF8F5] px-9 py-4 sm:py-4.5 text-xs font-mono uppercase tracking-[0.2em] font-medium transition-all duration-300 shadow-sm hover:shadow-md"
+                className="group inline-flex items-center gap-4 bg-[#3E4535] hover:bg-[#2F3528] text-[#FAF8F5] px-9 py-4 sm:py-4.5 text-xs font-mono uppercase tracking-[0.2em] font-medium transition-all duration-300 shadow-sm hover:shadow-md lg:bg-[#F2EDE4] lg:text-[#18181B] lg:hover:bg-[#D6B47E] lg:hover:text-[#18181B] lg:shadow-[0_8px_30px_rgba(0,0,0,0.18)]
               >
                 <span>EXPLORE OUR WORK</span>
                 <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1.5" />
