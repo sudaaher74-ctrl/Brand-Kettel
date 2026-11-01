@@ -24,7 +24,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[#18181B]/15 bg-[#FAF8F5]/90 backdrop-blur-md transition-all duration-300">
-      <div className="mx-auto flex h-20 md:h-24 max-w-[1480px] items-center justify-between px-5 lg:px-10">
+      <div className="mx-auto flex h-16 md:h-20 max-w-[1480px] items-center justify-between px-5 lg:px-10">
         
         {/* Brand Kettle Logo */}
         <Link href="/" className="group flex items-center p-1" onClick={() => setOpen(false)}>
@@ -33,7 +33,7 @@ export default function Navbar() {
             alt="Brand Kettle BuildSpaces"
             width={160}
             height={44}
-            className="h-8 md:h-10 w-auto object-contain"
+            className="h-7 md:h-8 w-auto object-contain"
             priority
           />
         </Link>
