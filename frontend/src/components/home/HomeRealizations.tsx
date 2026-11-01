@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, MoveUpRight } from 'lucide-react';
+import RealizationVisual from '@/components/home/RealizationVisual';
 
 const realizations = [
   {
@@ -47,42 +48,6 @@ const realizations = [
     delivery: 'Made in-house',
   },
 ];
-
-function SpatialDrawing() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 440 360" fill="none" className="pointer-events-none absolute -right-8 -top-5 h-[19rem] w-[23rem] max-w-[78%] text-[#60694B]/60 sm:right-2 sm:top-0 sm:h-[23rem] sm:w-[28rem]">
-      <motion.path
-        d="M55 64h130v57h66V75h125v100h-51v111H202v-55H55V64Z"
-        stroke="currentColor"
-        strokeWidth="1.25"
-        initial={{ pathLength: 0, opacity: 0.2 }}
-        animate={{ pathLength: 1, opacity: 0.7 }}
-        transition={{ duration: 1.5, ease: 'easeInOut' }}
-      />
-      <motion.path
-        d="M185 64v94h66V75M55 231h103v-54h-42V64m209 0v82h-51v140M158 231v55m-37-109h51m80-52h124m-124 41h175"
-        stroke="currentColor"
-        strokeWidth="1"
-        strokeDasharray="4 6"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 0.56 }}
-        transition={{ duration: 1.2, delay: 0.25, ease: 'easeInOut' }}
-      />
-      <motion.circle
-        cx="251"
-        cy="158"
-        r="5"
-        fill="#A07A4F"
-        initial={{ scale: 0.7, opacity: 0.4 }}
-        animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.4, 1, 0.4] }}
-        transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <circle cx="55" cy="64" r="3" fill="#A07A4F" />
-      <circle cx="376" cy="75" r="3" fill="#A07A4F" />
-      <circle cx="325" cy="286" r="3" fill="#A07A4F" />
-    </svg>
-  );
-}
 
 export default function HomeRealizations() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -165,7 +130,7 @@ export default function HomeRealizations() {
 
           <div className="relative min-h-[400px] overflow-hidden border border-[#18181B]/10 bg-[#E9E9E1] p-6 sm:min-h-[430px] sm:p-9 lg:min-h-[490px] lg:p-12">
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-50 [background-image:linear-gradient(rgba(24,24,27,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(24,24,27,0.035)_1px,transparent_1px)] [background-size:34px_34px]" />
-            <SpatialDrawing />
+            <RealizationVisual activeIndex={activeIndex} />
             <div className="relative z-10 flex h-full min-h-[350px] flex-col justify-between sm:min-h-[350px] lg:min-h-[390px]">
               <div className="flex items-center justify-between gap-4 font-mono text-[9px] font-medium uppercase tracking-[0.18em] text-[#71717A] sm:text-[10px]">
                 <span>Selected realization</span>
