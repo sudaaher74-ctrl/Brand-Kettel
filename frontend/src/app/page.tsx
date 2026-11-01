@@ -7,6 +7,7 @@ import TopographicLines from '@/components/ui/TopographicLines';
 import MindframeRealizationFan from '@/components/home/MindframeRealizationFan';
 import HomeMotion from '@/components/home/HomeMotion';
 import HomeProcess from '@/components/home/HomeProcess';
+import HomeClients from '@/components/home/HomeClients';
 
 export const revalidate = 60;
 
@@ -260,6 +261,8 @@ export default function HomePage() {
 
         </div>
       </section>
+
+      <HomeClients />
 
 
       {/* ─────────────────────────────────────────────────────────────
