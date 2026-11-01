@@ -8,6 +8,7 @@ import HomeRealizations from '@/components/home/HomeRealizations';
 import HomeMotion from '@/components/home/HomeMotion';
 import HomeProcess from '@/components/home/HomeProcess';
 import HomeClients from '@/components/home/HomeClients';
+import HomePrecision from '@/components/home/HomePrecision';
 
 export const revalidate = 60;
 
@@ -130,32 +131,7 @@ export default function HomePage() {
 
       <HomeProcess />
 
-      {/* ─────────────────────────────────────────────────────────────
-          07. THE PRECISION MINDSET (Deep Dark Contrast Banner)
-          ───────────────────────────────────────────────────────────── */}
-      <section data-motion="stagger" className="bg-[#121214] py-24 text-[#F4F4F5] lg:py-36">
-        <div className="mx-auto grid max-w-[1480px] gap-16 px-5 lg:grid-cols-2 lg:px-10">
-          <div data-motion-item>
-            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C5A880]">
-              Executed with technology. Perfected by craftsmanship.
-            </p>
-            <h2 className="mt-6 text-6xl leading-[0.88] lg:text-8xl font-light">
-              Precision is not<br />
-              a machine setting.<br />
-              <em className="font-serif italic font-normal text-[#C5A880]">It is a mindset.</em>
-            </h2>
-          </div>
-
-          <div data-motion-item className="self-end">
-            <p className="font-display text-3xl leading-tight font-light text-white">
-              Engineering gives us precision. Eight years of site delivery gives us judgment.
-            </p>
-            <p className="mt-7 leading-8 text-white/65 font-light">
-              German manufacturing machinery delivers micron-level accuracy and repeatability, while our seasoned project managers ensure every installation meets the uncompromising visual, functional, and acoustic standards expected by India’s leading enterprises.
-            </p>
-          </div>
-        </div>
-      </section>
+      <HomePrecision />
 
       {/* ─────────────────────────────────────────────────────────────
           08. SECTION 05 / THE BRAND KETTLE STANDARD (6 Specification Cards)
