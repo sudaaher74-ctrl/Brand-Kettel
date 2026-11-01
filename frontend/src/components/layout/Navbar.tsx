@@ -88,9 +88,6 @@ export default function Navbar() {
               <Link onClick={() => setOpen(false)} href="/portfolio" className="py-2 border-b border-[#18181B]/10">
                 Portfolio
               </Link>
-              <Link onClick={() => setOpen(false)} href="/process" className="py-2 border-b border-[#18181B]/10">
-                Process
-              </Link>
               <Link onClick={() => setOpen(false)} href="/blog" className="py-2 border-b border-[#18181B]/10">
                 Blog
               </Link>

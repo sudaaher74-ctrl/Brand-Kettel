@@ -108,7 +108,13 @@ const nextConfig = {
         destination: `https://${CANONICAL_HOST}/:path*`,
         statusCode: 301,
       },
-      // 2. Legacy internal URL fixes & broken links
+      // Keep the process content on the homepage; preserve old links by sending them to its section.
+      {
+        source: '/process',
+        destination: '/#process',
+        statusCode: 301,
+      },
+      // Legacy internal URL fixes & broken links
       {
         source: '/portfolio/gucci-flagship',
         destination: '/portfolio/gucci',

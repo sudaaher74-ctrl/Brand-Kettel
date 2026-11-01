@@ -151,7 +151,7 @@ export default function HomeProcess() {
 
           <div className="mt-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
             <p className="text-xs font-light leading-6 text-white/45 sm:text-sm">One accountable team, from first brief to opening day.</p>
-            <Link href="/process" className="inline-flex items-center gap-2 font-mono text-[9px] font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:text-[#C5A880] sm:text-[10px]">
+            <Link href="/#process" className="inline-flex items-center gap-2 font-mono text-[9px] font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:text-[#C5A880] sm:text-[10px]">
               Explore the full process <ArrowRight className="size-4" />
             </Link>
           </div>
