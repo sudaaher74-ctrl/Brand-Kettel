@@ -125,9 +125,22 @@ export default function HomePage() {
       {/* ─────────────────────────────────────────────────────────────
           02. REALIZATIONS (Mindframe 3D Cascading Fan Showcase)
           ───────────────────────────────────────────────────────────── */}
-      <section id="collection" data-motion="rise" className="w-full bg-[#121214] text-[#F4F4F5] border-y border-white/10 py-16 lg:py-24 overflow-hidden">
-        <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10">
+      <section id="collection" data-motion="rise" className="relative isolate w-full overflow-hidden border-y border-[#18181B]/10 bg-[#F6F3EE] py-16 text-[#18181B] lg:py-24">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div
+            className="absolute inset-[-5%] bg-cover bg-center opacity-20 blur-[2px]"
+            style={{ backgroundImage: "url('/imgs/commercial/bk_hero_flagship.jpg')" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#FAF8F5]/95 via-[#F3EEE6]/80 to-[#E7E1D7]/95" />
+          <div className="absolute -left-24 top-12 size-80 rounded-full bg-[#A07A4F]/10 blur-3xl" />
+          <div className="absolute -right-24 bottom-0 size-96 rounded-full bg-[#60694B]/10 blur-3xl" />
+        </div>
+        <div className="relative z-10 mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-10">
           <MindframeRealizationFan />
+          <p className="mx-auto mt-2 max-w-[1800px] text-right text-xs leading-6 text-[#52525B] sm:text-sm">
+            <span className="mr-2 font-display text-2xl font-semibold tracking-tight text-[#18181B] sm:text-3xl">120+</span>
+            spaces delivered nationwide on budget and on schedule.
+          </p>
         </div>
       </section>
 
