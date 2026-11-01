@@ -128,11 +128,23 @@ export default function HomeRealizations() {
             })}
           </nav>
 
-          <div className="relative min-h-[400px] overflow-hidden border border-[#18181B]/10 bg-[#E9E9E1] p-6 sm:min-h-[430px] sm:p-9 lg:min-h-[490px] lg:p-12">
-            <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-50 [background-image:linear-gradient(rgba(24,24,27,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(24,24,27,0.035)_1px,transparent_1px)] [background-size:34px_34px]" />
-            <RealizationVisual activeIndex={activeIndex} />
-            <div className="relative z-10 flex h-full min-h-[350px] flex-col justify-between sm:min-h-[350px] lg:min-h-[390px]">
-              <div className="flex items-center justify-between gap-4 font-mono text-[9px] font-medium uppercase tracking-[0.18em] text-[#71717A] sm:text-[10px]">
+          <div className="grid min-h-[560px] overflow-hidden border border-[#18181B]/10 bg-[#F3EDE3] lg:min-h-[570px] lg:grid-cols-2">
+            <div className="relative isolate min-h-[300px] overflow-hidden bg-[#252923] text-[#F4EFE6] sm:min-h-[360px] lg:min-h-[570px]">
+              <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(244,239,230,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(244,239,230,0.08)_1px,transparent_1px)] [background-size:34px_34px]" />
+              <div aria-hidden="true" className="pointer-events-none absolute -left-16 top-1/4 size-72 rounded-full bg-[#A07A4F]/20 blur-[90px]" />
+              <div className="absolute inset-x-6 top-6 z-10 flex items-center justify-between gap-4 font-mono text-[8px] uppercase tracking-[0.16em] text-[#E4D9C8]/65 sm:inset-x-8 sm:top-8 sm:text-[9px]">
+                <span>Spatial study / {active.category}</span>
+                <span className="text-[#D6A56E]">{String(activeIndex + 1).padStart(2, '0')} — 0{realizations.length}</span>
+              </div>
+              <RealizationVisual activeIndex={activeIndex} />
+              <div className="absolute inset-x-6 bottom-6 z-10 flex items-end justify-between border-t border-[#F4EFE6]/20 pt-3 font-mono text-[7px] uppercase tracking-[0.14em] text-[#E4D9C8]/55 sm:inset-x-8 sm:bottom-8 sm:text-[8px]">
+                <span>Brand Kettle / BuildSpaces</span>
+                <span>Plan view · 01:{String(activeIndex + 1).padStart(2, '0')}</span>
+              </div>
+            </div>
+
+            <div className="relative flex min-h-[390px] flex-col justify-between bg-[#F3EDE3] px-6 py-7 sm:px-9 sm:py-9 lg:min-h-[570px] lg:px-10 lg:py-10">
+              <div className="flex items-center justify-between gap-4 font-mono text-[9px] font-medium uppercase tracking-[0.18em] text-[#77756E] sm:text-[10px]">
                 <span>Selected realization</span>
                 <span className="text-[#A07A4F]">{String(activeIndex + 1).padStart(2, '0')} / 0{realizations.length}</span>
               </div>
@@ -144,32 +156,39 @@ export default function HomeRealizations() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={prefersReducedMotion ? undefined : { opacity: 0, y: -12 }}
                   transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-                  className="max-w-[22rem] pb-3 pt-28 sm:pt-36 lg:pt-40"
+                  className="max-w-[25rem] py-10 sm:py-12 lg:py-8"
                 >
-                  <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#60694B]">{active.category} / Brand Kettle BuildSpaces</p>
-                  <h3 className="mt-4 font-display text-4xl font-light leading-[0.98] tracking-[-0.05em] text-[#18181B] sm:text-5xl lg:text-5xl">{active.title}</h3>
-                  <p className="mt-4 max-w-lg text-sm leading-6 text-[#52525B] sm:text-base sm:leading-7">{active.detail}</p>
+                  <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#73795B]">{active.category} / Brand Kettle BuildSpaces</p>
+                  <h3 className="mt-4 font-display text-4xl font-light leading-[0.98] tracking-[-0.05em] text-[#18181B] sm:text-5xl lg:text-[3.4rem]">{active.title}</h3>
+                  <p className="mt-5 max-w-lg text-sm leading-6 text-[#5E5B56] sm:text-base sm:leading-7">{active.detail}</p>
+                  <div aria-hidden="true" className="mt-7 flex items-center gap-2">
+                    <span className="h-px w-10 bg-[#A07A4F]" />
+                    <span className="size-1 rounded-full bg-[#A07A4F]" />
+                    <span className="h-px w-7 bg-[#18181B]/15" />
+                  </div>
                 </motion.div>
               </AnimatePresence>
 
-              <div className="relative z-10 flex flex-wrap items-end justify-between gap-5 border-t border-[#18181B]/15 pt-5">
-                <div className="flex flex-wrap gap-x-7 gap-y-3">
+              <div className="relative z-10 border-t border-[#18181B]/15 pt-5">
+                <div className="grid grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-3 sm:gap-x-5">
                   <div>
-                    <p className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#71717A]">Scale / precision</p>
+                    <p className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#77756E]">Scale / precision</p>
                     <p className="mt-1 text-xs font-medium text-[#18181B] sm:text-sm">{active.scale}</p>
                   </div>
                   <div>
-                    <p className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#71717A]">Focus</p>
+                    <p className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#77756E]">Focus</p>
                     <p className="mt-1 text-xs font-medium text-[#18181B] sm:text-sm">{active.focus}</p>
                   </div>
                   <div>
-                    <p className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#71717A]">Delivery</p>
+                    <p className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#77756E]">Delivery</p>
                     <p className="mt-1 text-xs font-medium text-[#18181B] sm:text-sm">{active.delivery}</p>
                   </div>
                 </div>
-                <Link href="/portfolio" className="group inline-flex items-center gap-2 text-xs font-medium text-[#18181B] transition-colors hover:text-[#A07A4F]">
-                  View projects <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-                </Link>
+                <div className="mt-6 flex justify-end">
+                  <Link href="/portfolio" className="group inline-flex items-center gap-2 text-xs font-medium text-[#18181B] transition-colors hover:text-[#A07A4F]">
+                    View projects <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
