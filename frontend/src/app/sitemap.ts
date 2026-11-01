@@ -26,7 +26,6 @@ const STATIC_ROUTES: { path: string; priority: number; changeFrequency: Entry['c
   { path: '/resources/commercial-interior-faq-hub', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/resources/turnkey-fit-out-process-guide', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/about', priority: 0.7, changeFrequency: 'monthly' },
-  { path: '/process', priority: 0.7, changeFrequency: 'monthly' },
   ...INDUSTRIES.map((i) => ({ path: `/industries/${i.slug}`, priority: 0.8, changeFrequency: 'monthly' as const })),
   { path: '/blog', priority: 0.8, changeFrequency: 'weekly' },
   { path: '/careers', priority: 0.3, changeFrequency: 'yearly' },

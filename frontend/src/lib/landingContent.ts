@@ -16,7 +16,7 @@ export type LandingContent = {
 
 const RELATED_CORE = [
   { href: '/portfolio', label: 'View our portfolio' },
-  { href: '/process', label: 'How we deliver' },
+  { href: '/#process', label: 'How we deliver' },
   { href: '/contact', label: 'Request a consultation' },
 ];
 
