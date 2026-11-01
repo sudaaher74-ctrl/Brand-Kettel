@@ -5,11 +5,13 @@ import { HOME_FAQS } from '@/lib/faqs';
 import { faqPageJsonLd, jsonLdScript } from '@/lib/structuredData';
 import TopographicLines from '@/components/ui/TopographicLines';
 import MindframeRealizationFan from '@/components/home/MindframeRealizationFan';
+import HomeMotion from '@/components/home/HomeMotion';
 
 export const revalidate = 60;
 
 export default function HomePage() {
   return (
+    <HomeMotion>
     <div className="w-full bg-[#FAF8F5] text-[#18181B] selection:bg-[#A07A4F] selection:text-white overflow-hidden">
       {/* FAQPage Schema JSON-LD */}
       <script
@@ -20,7 +22,7 @@ export default function HomePage() {
       {/* ─────────────────────────────────────────────────────────────
           01. ARCHITECTURAL HERO SECTION (Northline Atelier Diagonal Split)
           ───────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[90vh] lg:min-h-screen w-full overflow-hidden bg-[#FAF8F5] pt-24 lg:pt-0 flex items-center border-b border-[#18181B]/15">
+      <section data-motion="hero" className="relative min-h-[90vh] lg:min-h-screen w-full overflow-hidden bg-[#FAF8F5] pt-24 lg:pt-0 flex items-center border-b border-[#18181B]/15">
         
         {/* Topographic Contour Lines Background on Left */}
         <div className="absolute inset-y-0 left-0 w-full lg:w-[62%] overflow-hidden pointer-events-none z-0">
@@ -29,12 +31,13 @@ export default function HomePage() {
 
         {/* Diagonal Architectural Photography (Desktop: Exact Angled Split Cut) */}
         <div
+          data-motion="hero-image"
           className="hidden lg:block absolute right-0 inset-y-0 w-full overflow-hidden pointer-events-none z-10"
           style={{
             clipPath: 'polygon(56% 0, 100% 0, 100% 100%, 35% 100%)',
           }}
         >
-          <div className="relative h-full w-full pointer-events-auto group">
+          <div data-motion-parallax className="relative h-full w-full pointer-events-auto group">
             <Image
               src="/imgs/northline_architectural_hero.jpg"
               alt="Architecture that elevates life - Brand Kettle BuildSpaces Atelier"
@@ -53,25 +56,25 @@ export default function HomePage() {
           <div className="w-full lg:max-w-xl xl:max-w-2xl">
             
             {/* Overline with Horizontal Rule */}
-            <div className="flex items-center gap-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.24em] text-[#18181B] font-semibold mb-8">
+            <div data-hero-copy className="flex items-center gap-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.24em] text-[#18181B] font-semibold mb-8">
               <span className="w-8 h-[1.5px] bg-[#18181B]" />
               <span>SPACES. CRAFTED WITH INTENTION.</span>
             </div>
 
             {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.25rem] xl:text-[6.2rem] font-light leading-[0.93] text-[#18181B] tracking-tight">
+            <h1 data-hero-copy className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.25rem] xl:text-[6.2rem] font-light leading-[0.93] text-[#18181B] tracking-tight">
               Architecture<br />
               that elevates<br />
               <em className="font-serif italic font-normal text-[#60694B]">life.</em>
             </h1>
 
             {/* Editorial Narrative */}
-            <p className="mt-8 max-w-lg text-base sm:text-lg leading-relaxed text-[#52525B] font-light">
+            <p data-hero-copy className="mt-8 max-w-lg text-base sm:text-lg leading-relaxed text-[#52525B] font-light">
               Brand Kettle is an architecture and interiors studio creating timeless spaces that balance beauty, purpose, and place.
             </p>
 
             {/* Rectangular Atelier Action Button */}
-            <div className="mt-10">
+            <div data-hero-copy className="mt-10">
               <Link
                 href="/portfolio"
                 data-cursor-text="EXPLORE"
@@ -83,7 +86,7 @@ export default function HomePage() {
             </div>
 
             {/* Mobile / Tablet Photography Frame (Visible on screens < lg) */}
-            <div className="lg:hidden mt-12 relative aspect-[16/11] w-full overflow-hidden border border-[#18181B]/15 shadow-xl">
+            <div data-motion="image-reveal" className="lg:hidden mt-12 relative aspect-[16/11] w-full overflow-hidden border border-[#18181B]/15 shadow-xl">
               <Image
                 src="/imgs/northline_architectural_hero.jpg"
                 alt="Architecture that elevates life - Brand Kettle BuildSpaces Atelier"
@@ -91,6 +94,7 @@ export default function HomePage() {
                 priority
                 sizes="100vw"
                 className="object-cover"
+                data-motion-image
               />
             </div>
 
@@ -103,15 +107,15 @@ export default function HomePage() {
           02. EDITORIAL MANIFESTO QUOTE (Second Scroll Statement)
           ───────────────────────────────────────────────────────────── */}
       <section className="bg-[#F2EDE4] px-5 py-24 text-center lg:py-36 text-[#18181B] border-b border-[#18181B]/15">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#A07A4F]">
+        <p data-motion="rise" className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#A07A4F]">
           Built for those who notice the details
         </p>
-        <blockquote className="mx-auto mt-8 max-w-5xl font-display text-4xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[0.96] font-light text-[#18181B]">
+        <blockquote data-motion="rise" className="mx-auto mt-8 max-w-5xl font-display text-4xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[0.96] font-light text-[#18181B]">
           “A perfectly aligned architectural reveal.<br />
           <em className="font-serif italic font-normal text-[#A07A4F]">A seamless joinery edge.</em><br />
           A space executed without compromise.”
         </blockquote>
-        <p className="mx-auto mt-9 max-w-xl text-sm leading-7 text-[#71717A] font-light">
+        <p data-motion="rise" className="mx-auto mt-9 max-w-xl text-sm leading-7 text-[#71717A] font-light">
           These details may seem subtle. Together, they define the difference between a routine fit-out and an enduring architectural benchmark.
         </p>
       </section>
@@ -121,9 +125,22 @@ export default function HomePage() {
       {/* ─────────────────────────────────────────────────────────────
           02. REALIZATIONS (Mindframe 3D Cascading Fan Showcase)
           ───────────────────────────────────────────────────────────── */}
-      <section id="collection" className="w-full bg-[#121214] text-[#F4F4F5] border-y border-white/10 py-16 lg:py-24 overflow-hidden">
-        <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10">
+      <section id="collection" data-motion="rise" className="relative isolate w-full overflow-hidden border-y border-[#18181B]/10 bg-[#F6F3EE] py-16 text-[#18181B] lg:py-24">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div
+            className="absolute inset-[-5%] bg-cover bg-center opacity-20 blur-[2px]"
+            style={{ backgroundImage: "url('/imgs/commercial/bk_hero_flagship.jpg')" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#FAF8F5]/95 via-[#F3EEE6]/80 to-[#E7E1D7]/95" />
+          <div className="absolute -left-24 top-12 size-80 rounded-full bg-[#A07A4F]/10 blur-3xl" />
+          <div className="absolute -right-24 bottom-0 size-96 rounded-full bg-[#60694B]/10 blur-3xl" />
+        </div>
+        <div className="relative z-10 mx-auto w-full max-w-[1800px] px-4 sm:px-6 lg:px-10">
           <MindframeRealizationFan />
+          <p className="mx-auto mt-2 max-w-[1800px] text-right text-xs leading-6 text-[#52525B] sm:text-sm">
+            <span className="mr-2 font-display text-2xl font-semibold tracking-tight text-[#18181B] sm:text-3xl">120+</span>
+            spaces delivered nationwide on budget and on schedule.
+          </p>
         </div>
       </section>
 
@@ -134,25 +151,25 @@ export default function HomePage() {
           ───────────────────────────────────────────────────────────── */}
       <section id="process" className="mx-auto max-w-[1480px] px-5 py-24 lg:px-10 lg:py-36">
         
-        <div className="grid gap-10 lg:grid-cols-12">
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#A07A4F] lg:col-span-2">
+        <div data-motion="stagger" className="grid gap-10 lg:grid-cols-12">
+          <p data-motion-item className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#A07A4F] lg:col-span-2">
             04 / Process
           </p>
-          <div className="lg:col-span-7">
+          <div data-motion-item className="lg:col-span-7">
             <h2 className="text-6xl leading-[0.88] lg:text-8xl font-light text-[#18181B]">
               Understand. Design.<br />
               <em className="font-normal font-serif italic text-[#A07A4F]">Engineer. Deliver.</em>
             </h2>
           </div>
-          <p className="max-w-md self-end text-sm leading-7 text-[#71717A] font-light lg:col-span-3">
+          <p data-motion-item className="max-w-md self-end text-sm leading-7 text-[#71717A] font-light lg:col-span-3">
             We work closely with corporate leaders, architects, retail directors, and developers to translate requirements into precisely executed physical spaces.
           </p>
         </div>
 
         {/* 6 Step Cards */}
-        <div className="mt-20 grid border-t border-[#18181B]/15 md:grid-cols-2 lg:grid-cols-3">
+        <div data-motion="stagger" className="mt-20 grid border-t border-[#18181B]/15 md:grid-cols-2 lg:grid-cols-3">
           
-          <article className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
+          <article data-motion-item className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
             <div className="flex items-center gap-3 font-mono text-[9px] text-[#A07A4F]">
               <span>01</span>
               <span className="h-px flex-1 origin-left bg-[#18181B]/20 transition-transform group-hover:scale-x-75" />
@@ -163,7 +180,7 @@ export default function HomePage() {
             </p>
           </article>
 
-          <article className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
+          <article data-motion-item className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
             <div className="flex items-center gap-3 font-mono text-[9px] text-[#A07A4F]">
               <span>02</span>
               <span className="h-px flex-1 origin-left bg-[#18181B]/20 transition-transform group-hover:scale-x-75" />
@@ -174,7 +191,7 @@ export default function HomePage() {
             </p>
           </article>
 
-          <article className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
+          <article data-motion-item className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
             <div className="flex items-center gap-3 font-mono text-[9px] text-[#A07A4F]">
               <span>03</span>
               <span className="h-px flex-1 origin-left bg-[#18181B]/20 transition-transform group-hover:scale-x-75" />
@@ -185,7 +202,7 @@ export default function HomePage() {
             </p>
           </article>
 
-          <article className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
+          <article data-motion-item className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
             <div className="flex items-center gap-3 font-mono text-[9px] text-[#A07A4F]">
               <span>04</span>
               <span className="h-px flex-1 origin-left bg-[#18181B]/20 transition-transform group-hover:scale-x-75" />
@@ -196,7 +213,7 @@ export default function HomePage() {
             </p>
           </article>
 
-          <article className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
+          <article data-motion-item className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
             <div className="flex items-center gap-3 font-mono text-[9px] text-[#A07A4F]">
               <span>05</span>
               <span className="h-px flex-1 origin-left bg-[#18181B]/20 transition-transform group-hover:scale-x-75" />
@@ -207,7 +224,7 @@ export default function HomePage() {
             </p>
           </article>
 
-          <article className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
+          <article data-motion-item className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
             <div className="flex items-center gap-3 font-mono text-[9px] text-[#A07A4F]">
               <span>06</span>
               <span className="h-px flex-1 origin-left bg-[#18181B]/20 transition-transform group-hover:scale-x-75" />
@@ -224,9 +241,9 @@ export default function HomePage() {
       {/* ─────────────────────────────────────────────────────────────
           07. THE PRECISION MINDSET (Deep Dark Contrast Banner)
           ───────────────────────────────────────────────────────────── */}
-      <section className="bg-[#121214] py-24 text-[#F4F4F5] lg:py-36">
+      <section data-motion="stagger" className="bg-[#121214] py-24 text-[#F4F4F5] lg:py-36">
         <div className="mx-auto grid max-w-[1480px] gap-16 px-5 lg:grid-cols-2 lg:px-10">
-          <div>
+          <div data-motion-item>
             <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C5A880]">
               Executed with technology. Perfected by craftsmanship.
             </p>
@@ -237,7 +254,7 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="self-end">
+          <div data-motion-item className="self-end">
             <p className="font-display text-3xl leading-tight font-light text-white">
               Engineering gives us precision. Eight years of site delivery gives us judgment.
             </p>
@@ -253,18 +270,18 @@ export default function HomePage() {
           ───────────────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-[1480px] px-5 py-24 lg:px-10 lg:py-36">
         
-        <div className="flex items-end justify-between border-b border-[#18181B]/15 pb-5">
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#A07A4F]">
+        <div data-motion="stagger" className="flex items-end justify-between border-b border-[#18181B]/15 pb-5">
+          <p data-motion-item className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#A07A4F]">
             05 / The Brand Kettle standard
           </p>
-          <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#71717A]">
+          <p data-motion-item className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#71717A]">
             Specification BK—06
           </p>
         </div>
 
-        <div className="mt-8 grid border-t border-[#18181B]/15 md:grid-cols-2 lg:grid-cols-3">
+        <div data-motion="stagger" className="mt-8 grid border-t border-[#18181B]/15 md:grid-cols-2 lg:grid-cols-3">
           
-          <article className="group border-b border-[#18181B]/15 py-9 lg:pr-10">
+          <article data-motion-item className="group border-b border-[#18181B]/15 py-9 lg:pr-10">
             <div className="flex items-center gap-3">
               <span className="font-mono text-[9px] text-[#A07A4F]">01</span>
               <span className="h-px flex-1 bg-[#18181B]/15" />
@@ -275,7 +292,7 @@ export default function HomePage() {
             </p>
           </article>
 
-          <article className="group border-b border-[#18181B]/15 py-9 lg:pr-10">
+          <article data-motion-item className="group border-b border-[#18181B]/15 py-9 lg:pr-10">
             <div className="flex items-center gap-3">
               <span className="font-mono text-[9px] text-[#A07A4F]">02</span>
               <span className="h-px flex-1 bg-[#18181B]/15" />
@@ -286,7 +303,7 @@ export default function HomePage() {
             </p>
           </article>
 
-          <article className="group border-b border-[#18181B]/15 py-9 lg:pr-10">
+          <article data-motion-item className="group border-b border-[#18181B]/15 py-9 lg:pr-10">
             <div className="flex items-center gap-3">
               <span className="font-mono text-[9px] text-[#A07A4F]">03</span>
               <span className="h-px flex-1 bg-[#18181B]/15" />
@@ -297,7 +314,7 @@ export default function HomePage() {
             </p>
           </article>
 
-          <article className="group border-b border-[#18181B]/15 py-9 lg:pr-10">
+          <article data-motion-item className="group border-b border-[#18181B]/15 py-9 lg:pr-10">
             <div className="flex items-center gap-3">
               <span className="font-mono text-[9px] text-[#A07A4F]">04</span>
               <span className="h-px flex-1 bg-[#18181B]/15" />
@@ -308,7 +325,7 @@ export default function HomePage() {
             </p>
           </article>
 
-          <article className="group border-b border-[#18181B]/15 py-9 lg:pr-10">
+          <article data-motion-item className="group border-b border-[#18181B]/15 py-9 lg:pr-10">
             <div className="flex items-center gap-3">
               <span className="font-mono text-[9px] text-[#A07A4F]">05</span>
               <span className="h-px flex-1 bg-[#18181B]/15" />
@@ -319,7 +336,7 @@ export default function HomePage() {
             </p>
           </article>
 
-          <article className="group border-b border-[#18181B]/15 py-9 lg:pr-10">
+          <article data-motion-item className="group border-b border-[#18181B]/15 py-9 lg:pr-10">
             <div className="flex items-center gap-3">
               <span className="font-mono text-[9px] text-[#A07A4F]">06</span>
               <span className="h-px flex-1 bg-[#18181B]/15" />
@@ -337,10 +354,10 @@ export default function HomePage() {
       {/* ─────────────────────────────────────────────────────────────
           10. SECTION 06 / START A PROJECT CTA
           ───────────────────────────────────────────────────────────── */}
-      <section id="contact" className="bg-[#18181B] py-24 text-[#FAF8F5] lg:py-32">
+      <section id="contact" data-motion="stagger" className="bg-[#18181B] py-24 text-[#FAF8F5] lg:py-32">
         <div className="mx-auto grid max-w-[1480px] items-end gap-12 px-5 lg:grid-cols-12 lg:px-10">
           
-          <div className="lg:col-span-8">
+          <div data-motion-item className="lg:col-span-8">
             <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60">
               06 / Start a project
             </p>
@@ -350,7 +367,7 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="lg:col-span-4">
+          <div data-motion-item className="lg:col-span-4">
             <p className="mb-8 max-w-md text-sm leading-7 text-white/70 font-light">
               Flagship retail, corporate headquarters, hospitality, or multi-city commercial expansion—our engineering team is ready to review your floor plans.
             </p>
@@ -380,5 +397,6 @@ export default function HomePage() {
       </section>
 
     </div>
+    </HomeMotion>
   );
 }

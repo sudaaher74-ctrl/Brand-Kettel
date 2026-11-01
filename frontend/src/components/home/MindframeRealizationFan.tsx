@@ -157,7 +157,7 @@ export default function MindframeRealizationFan() {
   };
 
   return (
-    <div className="relative w-full select-none font-sans">
+    <div className="relative w-full select-none font-sans text-[#18181B]">
       
       {/* Dynamic Font Styling for Exact Calligraphy & Typography */}
       <style jsx global>{`
@@ -179,10 +179,10 @@ export default function MindframeRealizationFan() {
             02 / Realizations
           </p>
           <h2 className="tracking-tight leading-[0.92]">
-            <span className="font-alex-brush text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white font-normal block -mb-2">
+            <span className="font-alex-brush text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-[#18181B] font-normal block -mb-2">
               Create your
             </span>
-            <span className="font-sans text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white tracking-tight">
+            <span className="font-sans text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#18181B] tracking-tight">
               space{' '}
             </span>
             <span className="font-serif italic text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-normal text-[#A07A4F]">
@@ -191,12 +191,12 @@ export default function MindframeRealizationFan() {
           </h2>
         </div>
 
-        {/* Right Badges: Staggered "Comfort" & "Buildings" in Dark Luxury Theme */}
+        {/* Right Badges: Staggered "Comfort" & "Buildings" */}
         <div className="relative flex flex-col items-end self-start md:self-end pt-2">
-          <div className="px-5 sm:px-6 py-2 rounded-full border border-white/25 bg-white/10 backdrop-blur-md text-xs sm:text-sm font-sans text-white z-10 shadow-sm">
+          <div className="px-5 sm:px-6 py-2 rounded-full border border-[#18181B]/20 bg-white/70 backdrop-blur-md text-xs sm:text-sm font-sans text-[#18181B] z-10 shadow-sm">
             Comfort
           </div>
-          <div className="-mt-2 sm:-mt-2.5 mr-3 sm:mr-4 px-5 sm:px-6 py-2 rounded-full border border-white/25 bg-white/10 backdrop-blur-md text-xs sm:text-sm font-sans text-white z-20 shadow-sm">
+          <div className="-mt-2 sm:-mt-2.5 mr-3 sm:mr-4 px-5 sm:px-6 py-2 rounded-full border border-[#18181B]/20 bg-white/70 backdrop-blur-md text-xs sm:text-sm font-sans text-[#18181B] z-20 shadow-sm">
             Buildings
           </div>
         </div>
@@ -204,7 +204,7 @@ export default function MindframeRealizationFan() {
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
-          2. 3D PERSPECTIVE FANNED CARDS (Wide Arc on Deep Dark Canvas)
+          2. 3D PERSPECTIVE FANNED CARDS (Wide Arc on Architectural Canvas)
           ───────────────────────────────────────────────────────────── */}
       <div className="relative w-full h-[470px] sm:h-[510px] lg:h-[560px] xl:h-[600px] flex items-center justify-center [perspective:1800px] overflow-hidden my-2">
         
@@ -237,8 +237,8 @@ export default function MindframeRealizationFan() {
                 }}
                 className={`absolute w-[86%] sm:w-[50%] md:w-[38%] lg:w-[30%] xl:w-[26%] 2xl:w-[24%] h-[430px] sm:h-[470px] lg:h-[515px] xl:h-[545px] rounded-[26px] sm:rounded-[32px] overflow-hidden cursor-pointer bg-neutral-900 transition-shadow duration-300 ${
                   isCenter
-                    ? 'shadow-[0_30px_70px_-15px_rgba(0,0,0,0.7)] ring-1 ring-white/20'
-                    : 'shadow-[0_15px_35px_-10px_rgba(0,0,0,0.5)] hover:shadow-2xl'
+                    ? 'shadow-[0_32px_80px_-24px_rgba(24,24,27,0.48)] ring-1 ring-white/80'
+                    : 'shadow-[0_22px_50px_-20px_rgba(24,24,27,0.30)] ring-1 ring-white/55 hover:shadow-2xl'
                 }`}
                 style={{
                   transformStyle: 'preserve-3d',
@@ -256,7 +256,7 @@ export default function MindframeRealizationFan() {
 
                 {/* Top-Right Tab Notch Badge (01/20, 02/20, 19/20, 20/20, etc.) */}
                 <div className="absolute top-0 right-0 z-20">
-                  <div className="bg-[#121214] pl-4 sm:pl-5 pr-3.5 sm:pr-4 py-2 rounded-bl-[20px] font-mono text-[10px] sm:text-xs font-semibold text-[#A1A1AA] tracking-wider">
+                  <div className="bg-[#FAF8F5]/95 pl-4 sm:pl-5 pr-3.5 sm:pr-4 py-2 rounded-bl-[20px] font-mono text-[10px] sm:text-xs font-semibold text-[#71717A] tracking-wider shadow-sm">
                     {card.number}
                   </div>
                 </div>
