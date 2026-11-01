@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-const clientRows = [
+type ClientWordmark = { name: string; className: string; accessibleName?: string };
+
+const clientRows: ClientWordmark[][] = [
   [
     { name: 'GUCCI', className: 'font-serif text-[2rem] tracking-[0.08em]' },
     { name: 'Taksha', className: 'font-display text-[1.8rem] font-medium tracking-[0.04em]' },
@@ -9,14 +11,14 @@ const clientRows = [
     { name: 'GIVA', className: 'font-display text-[2rem] font-semibold tracking-[0.18em]' },
     { name: 'INDRIYA', className: 'font-display text-[1.65rem] font-medium tracking-[0.14em]' },
     { name: 'Havana Lounge', className: 'font-serif text-[1.6rem] italic tracking-[0.01em]' },
-    { name: 'PRET', className: 'font-display text-[1.85rem] font-bold tracking-[0.12em]' },
+    { name: 'PRET A MANGER', className: 'font-display text-[1.25rem] font-bold tracking-[0.1em]' },
   ],
   [
     { name: 'Ramada Encore', className: 'font-display text-[1.55rem] font-semibold tracking-[0.01em]' },
     { name: 'Nanokirti', className: 'font-display text-[1.7rem] font-semibold tracking-[-0.04em]' },
     { name: '&Work', className: 'font-display text-[2rem] font-semibold tracking-[-0.08em]' },
     { name: 'Malabar Gold & Diamonds', className: 'font-serif text-[1.25rem] font-semibold tracking-[-0.02em]' },
-    { name: 'LIC', className: 'font-display text-[2.2rem] font-bold tracking-[0.12em]' },
+    { name: 'LIC', accessibleName: 'Life Insurance Corporation of India (LIC)', className: 'font-display text-[2.2rem] font-bold tracking-[0.12em]' },
     { name: 'GEM Jeevan Tara', className: 'font-display text-[1.45rem] font-semibold tracking-[-0.02em]' },
     { name: 'IEML', className: 'font-display text-[2rem] font-bold tracking-[0.16em]' },
   ],
@@ -37,6 +39,8 @@ function LogoRow({ row, reverse = false }: { row: number; reverse?: boolean }) {
             <div
               className="home-client-logo-card"
               key={`${row}-${client.name}-${index}`}
+              role="img"
+              aria-label={client.accessibleName ?? client.name}
               aria-hidden={isDuplicate ? true : undefined}
             >
               <span className={client.className} style={{ color: clientAccents[(index % clients.length)] }}>

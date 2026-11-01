@@ -13,6 +13,7 @@
   --ink-muted: #A1A1AA;
   --line: rgba(24, 24, 27, 0.15);
 }
+
 @layer base {
   * {
     @apply border-line;
@@ -230,7 +231,7 @@
   background: rgb(160 122 79 / 9%);
   padding: 0.45rem 0.8rem;
   color: #a07a4f;
-  font-family: var(--font-mono), monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.18em;
