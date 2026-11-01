@@ -58,7 +58,7 @@ export default function HomeProcess() {
   return (
     <section
       id="process"
-      className="relative isolate overflow-hidden bg-[#0C0C0D] px-5 py-24 text-white sm:px-8 lg:px-10 lg:py-32"
+      className="relative isolate scroll-mt-24 overflow-hidden bg-[#0C0C0D] px-5 py-24 text-white sm:px-8 lg:px-10 lg:py-32"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
