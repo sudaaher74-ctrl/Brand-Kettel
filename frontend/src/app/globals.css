@@ -184,33 +184,6 @@
   }
 }
 
-@keyframes bk-client-marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.bk-clients-viewport {
-  scrollbar-width: none;
-}
-
-.bk-clients-viewport::-webkit-scrollbar {
-  display: none;
-}
-
-.bk-clients-track {
-  animation: bk-client-marquee 48s linear infinite;
-  will-change: transform;
-}
-
-.bk-clients-viewport:hover .bk-clients-track,
-.bk-clients-viewport:focus-within .bk-clients-track {
-  animation-play-state: paused;
-}
-
 .bk-rise {
   animation: bk-rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -239,8 +212,4 @@
     transform: none;
   }
 
-  .bk-clients-track {
-    animation: none !important;
-    will-change: auto;
-  }
 }
