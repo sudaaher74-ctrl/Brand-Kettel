@@ -83,7 +83,7 @@ export default function HomePage() {
               <Link
                 href="/portfolio"
                 data-cursor-text="EXPLORE"
-                className="group inline-flex items-center gap-4 bg-[#3E4535] hover:bg-[#2F3528] text-[#FAF8F5] px-9 py-4 sm:py-4.5 text-xs font-mono uppercase tracking-[0.2em] font-medium transition-all duration-300 shadow-sm hover:shadow-md lg:bg-[#F2EDE4] lg:text-[#18181B] lg:hover:bg-[#D6B47E] lg:hover:text-[#18181B] lg:shadow-[0_8px_30px_rgba(0,0,0,0.18)]
+                className="group inline-flex items-center gap-4 bg-[#3E4535] hover:bg-[#2F3528] text-[#FAF8F5] px-9 py-4 sm:py-4.5 text-xs font-mono uppercase tracking-[0.2em] font-medium transition-all duration-300 shadow-sm hover:shadow-md lg:bg-[#F2EDE4] lg:text-[#18181B] lg:hover:bg-[#D6B47E] lg:hover:text-[#18181B] lg:shadow-[0_8px_30px_rgba(0,0,0,0.18)]"
               >
                 <span>EXPLORE OUR WORK</span>
                 <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1.5" />
