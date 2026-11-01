@@ -1,136 +1,162 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
+import { motion, useReducedMotion } from 'framer-motion';
 
-type ProcessStep = {
-  no: string;
-  title: string;
-  body: string;
-};
+type ProcessStep = { no: string; title: string; body: string };
+
+const phases = [
+  {
+    no: '01',
+    title: 'Consult',
+    verb: 'Understand.',
+    image: '/imgs/process/01-consult.webp',
+    alt: 'Brand Kettle architect and client reviewing a commercial space plan on site',
+    fallback: 'We begin with your brand, business goals, space, budget and timeline—so every decision serves the way your team and customers use it.',
+  },
+  {
+    no: '02',
+    title: 'Design',
+    verb: 'Imagine.',
+    image: '/imgs/process/02-design.webp',
+    alt: 'Interior design team presenting a retail concept and material palette',
+    fallback: 'Our studio turns the brief into a clear spatial concept, photorealistic 3D views and a considered material palette.',
+  },
+  {
+    no: '03',
+    title: 'Engineer',
+    verb: 'Make it real.',
+    image: '/imgs/process/03-engineer.webp',
+    alt: 'Craftspeople precisely fabricating bespoke retail joinery in a workshop',
+    fallback: 'Detailed drawings, quantities, schedules and custom joinery are coordinated before installation begins.',
+  },
+  {
+    no: '04',
+    title: 'Deliver',
+    verb: 'Open with confidence.',
+    image: '/imgs/process/04-deliver.webp',
+    alt: 'Project team inspecting a completed luxury retail interior before handover',
+    fallback: 'Our site team manages installation, quality checks and snag resolution, then hands over a finished space ready to use.',
+  },
+];
+
+const sourceGroups = [[0], [1], [2], [3, 4, 5]];
 
 export default function Process({
   steps,
-  eyebrow = 'Turnkey Methodology',
-  title = 'A Process Built for Certainty',
-  subtitle = 'Six disciplined stages — from discovery to factory joinery and final handover.',
+  eyebrow = 'Our process',
+  subtitle = 'One accountable team brings the vision into focus, engineers every detail, and delivers a space ready for business.',
 }: {
   steps: ProcessStep[];
   eyebrow?: string;
-  title?: string;
   subtitle?: string;
-  align?: 'left' | 'center';
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start center', 'end center'],
-  });
-  const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const reducedMotion = useReducedMotion();
+  const detailFor = (group: number[]) => {
+    const details = group.map((index) => steps[index]?.body).filter(Boolean);
+    return details.length ? details.join(' ') : undefined;
+  };
 
   return (
-    <section className="relative bg-[#FAF8F5] text-[#18181B] py-20 md:py-28 border-t border-[#18181B]/15 selection:bg-[#A07A4F] selection:text-white">
-      <div className="max-w-[1480px] mx-auto px-5 sm:px-8 lg:px-12">
-        
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
-          <div className="flex items-center justify-center gap-2 font-mono text-[10px] md:text-xs uppercase tracking-[0.24em] font-semibold text-[#A07A4F] mb-4">
-            <span>04</span>
-            <span className="text-[#18181B]/30">/</span>
-            <span>{eyebrow}</span>
+    <section className="relative bg-[#FAF8F5] text-[#18181B] selection:bg-[#A07A4F] selection:text-white">
+      <div className="mx-auto max-w-[1480px] px-5 pb-14 pt-16 sm:px-8 sm:pb-20 sm:pt-24 lg:px-12 lg:pt-28">
+        <div className="grid items-end gap-8 pb-10 sm:pb-14 lg:grid-cols-[1fr_360px] lg:gap-16">
+          <div>
+            <motion.div
+              initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.65 }}
+              className="mb-5 flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#A07A4F] sm:text-xs"
+            >
+              <span>04</span><span className="text-[#18181B]/30">/</span><span>{eyebrow}</span>
+            </motion.div>
+            <motion.h1
+              initial={reducedMotion ? false : { opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-4xl font-display text-[clamp(2.7rem,7vw,6.8rem)] font-light leading-[0.98] tracking-[-0.055em]"
+            >
+              From first conversation to <span className="font-serif italic tracking-[-0.04em] text-[#A07A4F]">final handover.</span>
+            </motion.h1>
           </div>
-          <h2 className="font-display font-light text-[38px] sm:text-[52px] md:text-[64px] leading-[1.05] tracking-tight uppercase text-[#18181B]">
-            Built for <br className="hidden sm:inline" />
-            <span className="font-serif italic font-normal text-[#A07A4F]">Absolute Certainty</span>
-          </h2>
-          <p className="mt-6 text-sm sm:text-base text-[#71717A] font-light leading-relaxed max-w-xl mx-auto">
+          <motion.p
+            initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.7, delay: 0.12 }}
+            className="max-w-md text-sm font-light leading-8 text-[#71717A] sm:text-base lg:pb-2"
+          >
             {subtitle}
-          </p>
+          </motion.p>
         </div>
 
-        {/* Timeline */}
-        <div ref={ref} className="relative mt-12 sm:mt-20 max-w-5xl mx-auto">
-          {/* Vertical Track Line */}
-          <div className="absolute left-[19px] top-0 h-full w-px bg-[#18181B]/15 sm:left-1/2 sm:-translate-x-1/2" />
-          
-          {/* Active Growing Bronze Fill Line */}
-          <motion.div
-            style={{ scaleY: lineScale }}
-            className="absolute left-[19px] top-0 h-full w-px origin-top bg-[#A07A4F] sm:left-1/2 sm:-translate-x-1/2"
-          />
+        <div className="space-y-5 sm:space-y-7">
+          {phases.map((phase, index) => (
+            <motion.article
+              key={phase.no}
+              initial={reducedMotion ? false : { opacity: 0, y: 42, clipPath: 'inset(8% 0 8% 0 round 2px)' }}
+              whileInView={{ opacity: 1, y: 0, clipPath: 'inset(0% 0 0% 0 round 2px)' }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+              className="group relative isolate min-h-[440px] overflow-hidden bg-[#292725] sm:min-h-[560px] lg:min-h-[650px]"
+            >
+              <Image
+                src={phase.image}
+                alt={phase.alt}
+                fill
+                priority={index === 0}
+                sizes="(max-width: 768px) 100vw, 1400px"
+                className="-z-20 object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.035]"
+              />
+              <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#171716]/85 via-[#171716]/52 to-[#171716]/5" />
+              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#171716]/35 via-transparent to-[#171716]/10" />
 
-          <ul className="space-y-12 sm:space-y-16">
-            {steps.map((s, i) => {
-              const left = i % 2 === 0;
-              return (
-                <li key={s.no} className="relative pl-14 sm:pl-0">
-                  {/* Timeline Center Node */}
-                  <span className="absolute left-[11px] top-6 z-10 grid h-5 w-5 place-items-center border border-[#A07A4F] bg-[#FAF8F5] sm:left-1/2 sm:-translate-x-1/2">
-                    <span className="h-1.5 w-1.5 bg-[#A07A4F]" />
-                  </span>
+              <div className="flex min-h-[440px] flex-col justify-between p-6 text-white sm:min-h-[560px] sm:p-10 lg:min-h-[650px] lg:p-14">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/75 sm:text-xs">Brand Kettle · {phase.title}</span>
+                  <span className="grid h-10 w-10 place-items-center rounded-full border border-white/35 font-mono text-xs text-white sm:h-12 sm:w-12">{phase.no}</span>
+                </div>
 
-                  <motion.div
-                    initial={{ opacity: 0, x: left ? -25 : 25, y: 15 }}
-                    whileInView={{ opacity: 1, x: 0, y: 0 }}
-                    viewport={{ once: true, margin: '-60px' }}
-                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                    className={`sm:w-[calc(50%-3rem)] ${
-                      left ? 'sm:mr-auto' : 'sm:ml-auto'
-                    }`}
+                <div className="max-w-3xl pb-4 sm:pb-7">
+                  <motion.p
+                    initial={reducedMotion ? false : { opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.35 }}
+                    transition={{ duration: 0.65, delay: 0.16 }}
+                    className="mb-3 font-mono text-[10px] uppercase tracking-[0.24em] text-[#D2B38C] sm:text-xs"
                   >
-                    <div className="bg-[#F2EDE4] p-7 sm:p-9 border border-[#18181B]/15 hover:border-[#18181B]/60 transition-all duration-300 shadow-sm group">
-                      <div className="flex items-center justify-between gap-4 mb-4">
-                        <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#A07A4F] font-semibold">
-                          Stage {s.no}
-                        </span>
-                        <span className="w-7 h-7 bg-white/70 group-hover:bg-[#18181B] group-hover:text-[#FAF8F5] text-[#18181B] border border-[#18181B]/10 flex items-center justify-center font-mono text-[11px] font-semibold transition-colors">
-                          {s.no}
-                        </span>
-                      </div>
-
-                      <h3 className="font-display font-light text-2xl sm:text-3xl text-[#18181B] uppercase tracking-wide group-hover:text-[#A07A4F] transition-colors">
-                        {s.title}
-                      </h3>
-
-                      <p className="mt-4 text-sm text-[#71717A] font-light leading-relaxed">
-                        {s.body}
-                      </p>
-                    </div>
-                  </motion.div>
-                </li>
-              );
-            })}
-          </ul>
+                    The process · 0{index + 1}
+                  </motion.p>
+                  <motion.h2
+                    initial={reducedMotion ? false : { opacity: 0, y: 26 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.35 }}
+                    transition={{ duration: 0.75, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                    className="font-display text-[clamp(3.3rem,9vw,8rem)] font-light leading-[0.88] tracking-[-0.06em]"
+                  >
+                    {phase.verb}
+                  </motion.h2>
+                  <p className="mt-5 max-w-xl text-sm font-light leading-7 text-white/80 sm:mt-7 sm:text-base sm:leading-8">
+                    {detailFor(sourceGroups[index]) || phase.fallback}
+                  </p>
+                </div>
+              </div>
+            </motion.article>
+          ))}
         </div>
 
-        {/* Bottom Consultation CTA Strip in Deep Charcoal (Home Page Contrast Banner) */}
-        <div className="mt-28 max-w-4xl mx-auto bg-[#121214] text-white border border-[#18181B]/20 p-8 sm:p-14 text-center shadow-xl">
-          <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A07A4F] font-semibold block mb-3">
-            Ready to Begin?
-          </span>
-          <h3 className="font-display font-light text-3xl sm:text-4xl text-white uppercase mb-4">
-            Discuss Your Space With Our Project Directors
-          </h3>
-          <p className="text-sm text-white/70 font-light max-w-xl mx-auto mb-8">
-            Get an upfront architectural consultation, timeline roadmap, and comprehensive turnkey fit-out estimate.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#FAF8F5] text-[#18181B] hover:bg-[#A07A4F] hover:text-white font-mono text-[11px] uppercase tracking-[0.18em] font-semibold transition-all shadow-sm"
-            >
-              Start a Project →
-            </Link>
-            <a
-              href="tel:+918959173790"
-              className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 hover:border-white text-white font-mono text-[11px] uppercase tracking-[0.18em] font-light transition-all"
-            >
-              Call +91 89591 73790
-            </a>
+        <div className="mt-12 flex flex-col gap-6 border-t border-[#18181B]/15 pt-8 sm:mt-16 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="mb-2 font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#A07A4F]">Ready to begin?</p>
+            <h2 className="max-w-2xl font-display text-3xl font-light leading-tight tracking-tight sm:text-5xl">Let’s make your next space work harder.</h2>
           </div>
+          <Link href="/contact" className="inline-flex w-fit items-center gap-5 border-b border-[#18181B] pb-2 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors hover:border-[#A07A4F] hover:text-[#A07A4F]">
+            Start a project <span aria-hidden="true">↗</span>
+          </Link>
         </div>
-
       </div>
     </section>
   );
