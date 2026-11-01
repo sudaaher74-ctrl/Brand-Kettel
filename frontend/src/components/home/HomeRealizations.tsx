@@ -144,10 +144,10 @@ export default function HomeRealizations() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={prefersReducedMotion ? undefined : { opacity: 0, y: -12 }}
                   transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-                  className="max-w-xl pb-3 pt-28 sm:pt-36 lg:pt-40"
+                  className="max-w-[22rem] pb-3 pt-28 sm:pt-36 lg:pt-40"
                 >
                   <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#60694B]">{active.category} / Brand Kettle BuildSpaces</p>
-                  <h3 className="mt-4 font-display text-4xl font-light leading-[0.98] tracking-[-0.05em] text-[#18181B] sm:text-5xl lg:text-6xl">{active.title}</h3>
+                  <h3 className="mt-4 font-display text-4xl font-light leading-[0.98] tracking-[-0.05em] text-[#18181B] sm:text-5xl lg:text-5xl">{active.title}</h3>
                   <p className="mt-4 max-w-lg text-sm leading-6 text-[#52525B] sm:text-base sm:leading-7">{active.detail}</p>
                 </motion.div>
               </AnimatePresence>

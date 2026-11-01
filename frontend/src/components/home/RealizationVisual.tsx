@@ -126,7 +126,7 @@ export default function RealizationVisual({ activeIndex }: RealizationVisualProp
   const SceneDrawing = Scene[activeIndex];
 
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute -right-8 -top-5 h-[19rem] w-[23rem] max-w-[78%] sm:right-2 sm:top-0 sm:h-[23rem] sm:w-[28rem]">
+    <div aria-hidden="true" className="pointer-events-none absolute -right-1 top-1 h-[17rem] w-[21rem] max-w-[72%] sm:right-2 sm:top-0 sm:h-[18rem] sm:w-[22rem]">
       <AnimatePresence mode="wait" initial={false}>
         <motion.svg
           key={activeIndex}
@@ -142,7 +142,7 @@ export default function RealizationVisual({ activeIndex }: RealizationVisualProp
           <path d="M64 80h312v201H64z" stroke="#60694B" strokeOpacity=".16" strokeDasharray="2 5" />
           <path d="M52 51v-9m336 9v-9M52 46h336" stroke={scene.accent} strokeOpacity=".62" strokeWidth=".9" />
           <path d="m52 46 6-3m-6 3 6 3m330-3-6-3m6 3-6 3" stroke={scene.accent} strokeOpacity=".62" strokeWidth=".9" />
-          <text x="166" y="38" fill={scene.accent} fontSize="7" fontFamily="monospace" letterSpacing="1.1">18,500 MM / PLANNING GRID</text>
+          <text x="166" y="38" fill={scene.accent} fontSize="7" fontFamily="monospace" letterSpacing="1.1">DESIGN STUDY / NOT TO SCALE</text>
           <SceneDrawing accent={scene.accent} />
           <rect x="65" y="305" width="167" height="24" rx="12" fill="#F8F5EF" fillOpacity=".94" stroke={scene.accent} strokeOpacity=".28" />
           <circle cx="78" cy="317" r="3" fill={scene.accent} />
