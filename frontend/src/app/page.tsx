@@ -147,94 +147,91 @@ export default function HomePage() {
 
 
       {/* ─────────────────────────────────────────────────────────────
-          06. SECTION 04 / PROCESS (6-Stage Architectural Delivery Grid)
+          06. SECTION 04 / PROCESS (Image-led Four-Stage Walkthrough)
           ───────────────────────────────────────────────────────────── */}
-      <section id="process" className="mx-auto max-w-[1480px] px-5 py-24 lg:px-10 lg:py-36">
-        
-        <div data-motion="stagger" className="grid gap-10 lg:grid-cols-12">
-          <p data-motion-item className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#A07A4F] lg:col-span-2">
-            04 / Process
-          </p>
-          <div data-motion-item className="lg:col-span-7">
-            <h2 className="text-6xl leading-[0.88] lg:text-8xl font-light text-[#18181B]">
-              Understand. Design.<br />
-              <em className="font-normal font-serif italic text-[#A07A4F]">Engineer. Deliver.</em>
-            </h2>
+      <section id="process" className="bg-[#F2EDE4] py-24 lg:py-32">
+        <div className="mx-auto max-w-[1480px] px-5 lg:px-10">
+          <div data-motion="stagger" className="mb-12 grid gap-8 lg:mb-16 lg:grid-cols-12 lg:items-end">
+            <p data-motion-item className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#A07A4F] lg:col-span-2">
+              04 / Process
+            </p>
+            <div data-motion-item className="lg:col-span-7">
+              <h2 className="text-5xl font-light leading-[0.92] tracking-tight text-[#18181B] sm:text-6xl lg:text-8xl">
+                From brief<br />
+                <em className="font-serif font-normal italic text-[#A07A4F]">to built.</em>
+              </h2>
+            </div>
+            <p data-motion-item className="max-w-md text-sm font-light leading-7 text-[#71717A] lg:col-span-3 lg:pb-2">
+              A joined-up team takes your space from first conversation to opening day—with clear decisions at every step.
+            </p>
           </div>
-          <p data-motion-item className="max-w-md self-end text-sm leading-7 text-[#71717A] font-light lg:col-span-3">
-            We work closely with corporate leaders, architects, retail directors, and developers to translate requirements into precisely executed physical spaces.
-          </p>
-        </div>
 
-        {/* 6 Step Cards */}
-        <div data-motion="stagger" className="mt-20 grid border-t border-[#18181B]/15 md:grid-cols-2 lg:grid-cols-3">
-          
-          <article data-motion-item className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
-            <div className="flex items-center gap-3 font-mono text-[9px] text-[#A07A4F]">
-              <span>01</span>
-              <span className="h-px flex-1 origin-left bg-[#18181B]/20 transition-transform group-hover:scale-x-75" />
-            </div>
-            <h3 className="mt-12 text-4xl font-light text-[#18181B]">Consult</h3>
-            <p className="mt-4 text-sm leading-7 text-[#71717A] font-light">
-              We evaluate operational requirements, spatial circulation, acoustic specifications, and brand guidelines to establish an objective scope.
-            </p>
-          </article>
+          <div data-motion="stagger" className="grid gap-4 sm:grid-cols-2 lg:gap-5">
+            <article data-motion-item className="group relative isolate min-h-[440px] overflow-hidden bg-[#292725] sm:min-h-[500px] lg:min-h-[570px]">
+              <div data-motion="image-reveal" className="absolute inset-0 -z-20 overflow-hidden">
+                <Image src="/imgs/process/01-consult.webp" alt="Brand Kettle architect and client reviewing a commercial space plan" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-105" data-motion-image />
+              </div>
+              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#151515]/90 via-[#151515]/25 to-[#151515]/10" />
+              <div className="flex min-h-[440px] flex-col justify-between p-6 text-white sm:min-h-[500px] sm:p-8 lg:min-h-[570px] lg:p-10">
+                <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-white/80"><span>01 / Consult</span><span>Listen closely</span></div>
+                <div className="max-w-xl">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#D2B38C]">Understand.</p>
+                  <h3 className="mt-2 text-4xl font-light text-white sm:text-5xl lg:text-6xl">A clear brief. A confident start.</h3>
+                  <p className="mt-4 max-w-lg text-sm font-light leading-6 text-white/80">We map your operational needs, spatial circulation, acoustic requirements and brand guidelines into a workable scope.</p>
+                </div>
+              </div>
+            </article>
 
-          <article data-motion-item className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
-            <div className="flex items-center gap-3 font-mono text-[9px] text-[#A07A4F]">
-              <span>02</span>
-              <span className="h-px flex-1 origin-left bg-[#18181B]/20 transition-transform group-hover:scale-x-75" />
-            </div>
-            <h3 className="mt-12 text-4xl font-light text-[#18181B]">Design</h3>
-            <p className="mt-4 text-sm leading-7 text-[#71717A] font-light">
-              Our studio develops 3D photorealistic visualizations, detailed space planning, and validated material specifications.
-            </p>
-          </article>
+            <article data-motion-item className="group relative isolate min-h-[440px] overflow-hidden bg-[#292725] sm:min-h-[500px] lg:min-h-[570px]">
+              <div data-motion="image-reveal" className="absolute inset-0 -z-20 overflow-hidden">
+                <Image src="/imgs/process/02-design.webp" alt="Interior design team reviewing a 3D retail concept and material samples" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-105" data-motion-image />
+              </div>
+              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#151515]/90 via-[#151515]/25 to-[#151515]/10" />
+              <div className="flex min-h-[440px] flex-col justify-between p-6 text-white sm:min-h-[500px] sm:p-8 lg:min-h-[570px] lg:p-10">
+                <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-white/80"><span>02 / Design</span><span>See the space</span></div>
+                <div className="max-w-xl">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#D2B38C]">Imagine.</p>
+                  <h3 className="mt-2 text-4xl font-light text-white sm:text-5xl lg:text-6xl">Make the vision tangible.</h3>
+                  <p className="mt-4 max-w-lg text-sm font-light leading-6 text-white/80">Our studio shapes the plan, 3D visualisation and material direction around your brand and the people who use the space.</p>
+                </div>
+              </div>
+            </article>
 
-          <article data-motion-item className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
-            <div className="flex items-center gap-3 font-mono text-[9px] text-[#A07A4F]">
-              <span>03</span>
-              <span className="h-px flex-1 origin-left bg-[#18181B]/20 transition-transform group-hover:scale-x-75" />
-            </div>
-            <h3 className="mt-12 text-4xl font-light text-[#18181B]">Engineer</h3>
-            <p className="mt-4 text-sm leading-7 text-[#71717A] font-light">
-              Every detail is modeled into shop drawings with MEP integration, HVAC coordination, fire clearance, and structural tolerances.
-            </p>
-          </article>
+            <article data-motion-item className="group relative isolate min-h-[440px] overflow-hidden bg-[#292725] sm:min-h-[500px] lg:min-h-[570px]">
+              <div data-motion="image-reveal" className="absolute inset-0 -z-20 overflow-hidden">
+                <Image src="/imgs/process/03-engineer.webp" alt="Craftspeople fabricating bespoke retail joinery in the Brand Kettle workshop" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-105" data-motion-image />
+              </div>
+              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#151515]/90 via-[#151515]/25 to-[#151515]/10" />
+              <div className="flex min-h-[440px] flex-col justify-between p-6 text-white sm:min-h-[500px] sm:p-8 lg:min-h-[570px] lg:p-10">
+                <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-white/80"><span>03 / Engineer</span><span>Precision in every detail</span></div>
+                <div className="max-w-xl">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#D2B38C]">Make it real.</p>
+                  <h3 className="mt-2 text-4xl font-light text-white sm:text-5xl lg:text-6xl">Drawn, detailed, crafted.</h3>
+                  <p className="mt-4 max-w-lg text-sm font-light leading-6 text-white/80">Shop drawings coordinate MEP, HVAC, fire clearances and structure; our joinery team then builds the details with German CNC precision.</p>
+                </div>
+              </div>
+            </article>
 
-          <article data-motion-item className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
-            <div className="flex items-center gap-3 font-mono text-[9px] text-[#A07A4F]">
-              <span>04</span>
-              <span className="h-px flex-1 origin-left bg-[#18181B]/20 transition-transform group-hover:scale-x-75" />
-            </div>
-            <h3 className="mt-12 text-4xl font-light text-[#18181B]">Manufacture</h3>
-            <p className="mt-4 text-sm leading-7 text-[#71717A] font-light">
-              Advanced German CNC machinery and skilled joinery craftsmen fabricate architectural millwork, fixtures, and vitrines off-site.
-            </p>
-          </article>
+            <article data-motion-item className="group relative isolate min-h-[440px] overflow-hidden bg-[#292725] sm:min-h-[500px] lg:min-h-[570px]">
+              <div data-motion="image-reveal" className="absolute inset-0 -z-20 overflow-hidden">
+                <Image src="/imgs/process/04-deliver.webp" alt="Project team inspecting a completed luxury retail interior before handover" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-1000 group-hover:scale-105" data-motion-image />
+              </div>
+              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#151515]/90 via-[#151515]/25 to-[#151515]/10" />
+              <div className="flex min-h-[440px] flex-col justify-between p-6 text-white sm:min-h-[500px] sm:p-8 lg:min-h-[570px] lg:p-10">
+                <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-white/80"><span>04 / Deliver</span><span>Ready for business</span></div>
+                <div className="max-w-xl">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#D2B38C]">Open with confidence.</p>
+                  <h3 className="mt-2 text-4xl font-light text-white sm:text-5xl lg:text-6xl">Finished to perform.</h3>
+                  <p className="mt-4 max-w-lg text-sm font-light leading-6 text-white/80">We manage site execution, milestone tracking, commissioning and quality checks, then hand over a snag-free space ready to open.</p>
+                </div>
+              </div>
+            </article>
+          </div>
 
-          <article data-motion-item className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
-            <div className="flex items-center gap-3 font-mono text-[9px] text-[#A07A4F]">
-              <span>05</span>
-              <span className="h-px flex-1 origin-left bg-[#18181B]/20 transition-transform group-hover:scale-x-75" />
-            </div>
-            <h3 className="mt-12 text-4xl font-light text-[#18181B]">Finish &amp; QA</h3>
-            <p className="mt-4 text-sm leading-7 text-[#71717A] font-light">
-              Rigorous on-site civil execution, milestone timeline tracking, edge alignments, and multi-stage quality assurance audits.
-            </p>
-          </article>
-
-          <article data-motion-item className="group min-h-64 border-b border-[#18181B]/15 p-7 md:odd:border-r lg:border-r lg:nth-[3n]:border-r-0 hover:bg-[#F2EDE4]/40 transition-colors">
-            <div className="flex items-center gap-3 font-mono text-[9px] text-[#A07A4F]">
-              <span>06</span>
-              <span className="h-px flex-1 origin-left bg-[#18181B]/20 transition-transform group-hover:scale-x-75" />
-            </div>
-            <h3 className="mt-12 text-4xl font-light text-[#18181B]">Handover</h3>
-            <p className="mt-4 text-sm leading-7 text-[#71717A] font-light">
-              Our site engineers conduct full testing &amp; commissioning, snag-free sign-off, and handover of your space ready for business.
-            </p>
-          </article>
-
+          <div className="mt-8 flex flex-col gap-4 border-t border-[#18181B]/15 pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm font-light text-[#71717A]">Six disciplined delivery steps. One accountable team.</p>
+            <Link href="/process" className="inline-flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-[#18181B] transition-colors hover:text-[#A07A4F]">Explore our full process <ArrowRight className="size-4" /></Link>
+          </div>
         </div>
       </section>
 
